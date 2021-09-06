@@ -10,7 +10,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { environment } from '../environments/environment';
 import { SharedModule } from './shared/shared.module';
-import { AppReducer } from './store';
+import { appReducer } from './store';
+import { RouterSerializer } from './store/router/router.serializer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,10 +20,10 @@ import { AppReducer } from './store';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    StoreModule.forRoot(AppReducer),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer })
   ],
   providers: [],
   bootstrap: [AppComponent]
