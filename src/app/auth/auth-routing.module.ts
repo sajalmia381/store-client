@@ -11,6 +11,11 @@ const routes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
   }
 ];
 

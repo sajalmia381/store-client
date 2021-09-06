@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { SharedModule } from './shared/shared.module';
 import { appReducer } from './store';
 import { RouterSerializer } from './store/router/router.serializer';
+import { AuthEffects } from './auth/state/auth.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,7 @@ import { RouterSerializer } from './store/router/router.serializer';
     SharedModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer })
   ],
   providers: [],

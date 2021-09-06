@@ -29,10 +29,23 @@ $store-admin-theme: mat.define-light-theme(
   )
 );
 
+$store-admin-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $store-admin-primary,
+      accent: $store-admin-accent,
+      warn: $store-admin-warn
+    )
+  )
+);
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($store-admin-theme);
+.dark {
+  @include mat.all-component-colors($store-admin-dark-theme);
+}
 
 // Tailwind css
 @import 'tailwindcss/base';

@@ -1,14 +1,16 @@
 <!-- component -->
 <div class="h-screen w-screen overflow-y-auto flex items-center justify-center">
   <div class="w-full max-w-md">
-    <form class="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4">
       <!-- @csrf -->
       <div class="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-4">
         StoreRestApi Login
       </div>
       <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-normal mb-2" for="username"> Email </label>
+        <label class="block text-gray-700 text-sm font-normal mb-2" for="id_email">Email</label>
         <input
+          formControlName="email"
+          
           class="
             shadow
             appearance-none
@@ -21,6 +23,7 @@
             leading-tight
             focus:outline-none focus:shadow-outline
           "
+          id="id_email"
           name="email"
           v-model="form.email"
           type="email"
@@ -28,12 +31,16 @@
           autofocus
           placeholder="Email"
         />
+        <p *ngIf="emailField.touched && emailField.hasError('required')" class="text-red-400 text-xs italic">Please fill out this field.</p>
+        <p *ngIf="(emailField.touched && emailField.hasError('email')) || emailField.hasError('incorrect')" class="text-red-400 text-xs italic">Email is not valid.</p>
+        <p *ngIf="emailField.touched && emailField.hasError('userNotFound')" class="text-red-400 text-xs italic">User is not found!.</p>
       </div>
       <div class="mb-6">
         <label class="block text-gray-700 text-sm font-normal mb-2" for="password">
           Password
         </label>
         <input
+          formControlName="password"
           class="
             shadow
             appearance-none
@@ -52,11 +59,13 @@
           placeholder="Password"
           name="password"
           required
-          autocomplete="current-password"
         />
+        <p *ngIf="passwordField.touched && passwordField.invalid" class="text-red-400 text-xs italic">Password is not valid.</p>
+        <p *ngIf="passwordField.hasError('incorrect')" class="text-red-400 text-xs italic">Password is not correct.</p>
       </div>
       <div class="flex items-center justify-between">
         <button
+          [disabled]="isLoading || loginForm.invalid"
           class="
             px-4
             py-2

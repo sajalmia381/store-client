@@ -7,6 +7,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
+
+import { LayoutComponent } from './components/layout/layout.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 const commonImportedModules = [
   FormsModule,
@@ -17,12 +23,16 @@ const commonImportedModules = [
   MatIconModule,
   MatSnackBarModule,
   MatDialogModule,
-  MatFormFieldModule
+  MatFormFieldModule,
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule, ...commonImportedModules],
-  exports: [...commonImportedModules]
+  declarations: [
+    LayoutComponent,
+    HeaderComponent,
+    SidenavComponent
+  ],
+  imports: [CommonModule, ...commonImportedModules, RouterModule, MatSidenavModule],
+  exports: [...commonImportedModules, LayoutComponent, HeaderComponent, SidenavComponent]
 })
 export class SharedModule {}
