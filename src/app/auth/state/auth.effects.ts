@@ -23,7 +23,7 @@ export class AuthEffects {
       exhaustMap(action => {
         return this.authService.onLogin(action?.username, action?.password).pipe(
           map(res => {
-            const userData = { ...res?.data?.user, token: res?.data?.token };
+            const userData = { ...res?.data, access_token: res?.access_token, refresh_token: res?.refresh_token };
             this.authService.setUserInLocalStorage(userData);
             this.store.dispatch(setLoading({ status: false }));
             return loginSuccess({ userData, redirect: true });
