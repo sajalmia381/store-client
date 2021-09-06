@@ -7,6 +7,11 @@ const childRoutes: Routes = [
     path: '',
     pathMatch: 'full',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: 'users',
+    pathMatch: 'full',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   }
 ];
 
