@@ -1,4 +1,4 @@
-import { createEntityAdapter, EntityState } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { User } from "../user";
 
 
@@ -7,10 +7,11 @@ export interface UserState extends EntityState<User> {
   loaded: boolean;
 }
 
-export const userAdapter = createEntityAdapter<User>({
+export const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({
   // adds extra
+  selectId: (user: User) => user._id,
 });
 
-export const initialState = userAdapter.getInitialState({
+export const initialState: UserState = userAdapter.getInitialState({
   loaded: false
 });

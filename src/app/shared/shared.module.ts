@@ -8,6 +8,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 import { RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './components/layout/layout.component';
@@ -24,6 +26,7 @@ const commonImportedModules = [
   MatSnackBarModule,
   MatDialogModule,
   MatFormFieldModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({

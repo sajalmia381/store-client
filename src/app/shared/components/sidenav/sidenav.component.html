@@ -1,7 +1,14 @@
-<ul class=" list-reset flex flex-col">
-  <li class=" rounded-t relative -mb-px block border p-4 border-grey">Cras justo odio</li>
-  <li class="relative -mb-px block border p-4 border-grey">Dapibus ac facilisis in</li>
-  <li class="relative -mb-px block border p-4 border-grey">Morbi leo risus</li>
-  <li class="relative -mb-px block border p-4 border-grey">Porta ac consectetur ac</li>
-  <li class="rounded-b relative block border p-4 border-grey">Vestibulum at eros</li>
-</ul>
+<div class="sidenav">
+  <div class="h-screen overflow-y-auto flex flex-col">
+    <div class="text-center py-6">
+      <a routerLink="/"><h2 class="text-xl text-blue-500">StoreApi</h2></a>
+    </div>
+    <ul class=" list-reset flex flex-col">
+      <li class="rounded-t relative -mb-px block border p-4 border-grey"><a class="w-full" [routerLink]="'users'">Users</a></li>
+      <li class="relative -mb-px block border p-4 border-grey"><a [routerLink]="'products'">Products</a></li>
+      <li class="relative -mb-px block border p-4 border-grey">Category</li>
+      <li class="relative -mb-px block border p-4 border-grey">Porta ac consectetur ac</li>
+      <li class="rounded-b relative block border p-4 border-grey">Vestibulum at eros</li>
+    </ul>
+  </div>
+</div>

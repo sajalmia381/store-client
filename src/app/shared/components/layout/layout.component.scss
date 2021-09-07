@@ -1,11 +1,48 @@
 .mat-drawer-container {
   height: 100vh;
 }
-// .mat-sidenav-content {
-//   padding: 0 15px 30px;
-// }
-// @media (min-width: 992px) {
-//   .mat-sidenav-content {
-//     padding: 0 30px 30px;
-//   }
-// }
+
+.layout {
+  $sidenavWidth: 260px;
+  &__container {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: hidden;
+    height: 100vh;
+  }
+  &__sidenav {
+    position: relative;
+    z-index: 4;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    outline: 0;
+    box-sizing: border-box;
+    // transform: translate3d(-100%, 0, 0);
+    width: $sidenavWidth;
+  }
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    margin-left: $sidenavWidth;
+  }
+}
+
+@media (max-width: 499px) {
+  .layout {
+    $sidenavWidth: 85px;
+    &__sidenav {
+      width: $sidenavWidth;
+    }
+    &__content {
+      margin-left: $sidenavWidth;
+    }
+  }
+}
