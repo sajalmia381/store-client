@@ -9,11 +9,11 @@ import { LOGIN_ENDPOINT } from './auth.endpoint';
 export class AuthService {
   constructor(private httpService: HttpService) {}
 
-  onLogin(username: string, password: string): Observable<any> {
-    return this.httpService.post(LOGIN_ENDPOINT, { username, password });
+  onLogin(email: string, password: string): Observable<any> {
+    return this.httpService.post(LOGIN_ENDPOINT, { email, password });
   }
 
   setUserInLocalStorage(userData: any): void {
-    localStorage.setItem('kc-requester', JSON.stringify(userData));
+    localStorage.setItem('requester', JSON.stringify(userData));
   }
 }

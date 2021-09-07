@@ -9,7 +9,7 @@ const _authReducer = createReducer(
     return { ...state, isSignedIn: true, userData, errors: {} };
   }),
   on(logoutSuccess, state => {
-    localStorage.removeItem('kc-requester');
+    localStorage.removeItem('requester');
     return { isSignedIn: false, userData: null, errors: {} };
   }),
   on(setLoginError, (state, action) => {

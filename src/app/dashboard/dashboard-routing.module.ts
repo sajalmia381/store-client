@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    canActivate: [RoleBaseGuard],
+    // canActivate: [RoleBaseGuard],
     data: {
       authorities: ['ROLE_SUPER_ADMIN']
     }

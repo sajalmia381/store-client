@@ -13,8 +13,8 @@ export class UserService {
   
   getUsers(): Observable<User[]> {
     return this.http.get('/users').pipe(
-      map(data => {
-        return data;
+      map(res => {
+        return res?.data;
       })
     );
   }

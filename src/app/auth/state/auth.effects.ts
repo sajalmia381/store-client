@@ -21,9 +21,9 @@ export class AuthEffects {
     this.action$.pipe(
       ofType(loginRequest),
       exhaustMap(action => {
-        return this.authService.onLogin(action?.username, action?.password).pipe(
+        return this.authService.onLogin(action?.email, action?.password).pipe(
           map(res => {
-            const userData = { ...res?.data, access_token: res?.access_token, refresh_token: res?.refresh_token };
+            const userData = { data: res?.data, access_token: res?.access_token, refresh_token: res?.refresh_token };
             this.authService.setUserInLocalStorage(userData);
             this.store.dispatch(setLoading({ status: false }));
             return loginSuccess({ userData, redirect: true });
@@ -34,7 +34,7 @@ export class AuthEffects {
                 setLoginError({ payload: { password: 'Password is not valid' } })
               );
             } else {
-              this.store.dispatch(setLoginError({ payload: { username: 'User is not found!' } }));
+              this.store.dispatch(setLoginError({ payload: { email: 'User is not found!' } }));
             }
             this.store.dispatch(setLoading({ status: false }));
             return throwError(error);

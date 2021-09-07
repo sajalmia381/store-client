@@ -1,0 +1,39 @@
+.page {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  &__content {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: hidden;
+    flex: 1;
+  }
+  &__inner,
+  &__table {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    @apply px-4;
+    @apply pb-6;
+    @apply pt-4;
+  }
+}
+@media (max-width: 499px) {
+  .page {
+    &__inner,
+    &__table {
+      @apply px-2;
+    }
+  }
+}

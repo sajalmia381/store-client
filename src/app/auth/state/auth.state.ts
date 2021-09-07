@@ -4,11 +4,11 @@ export interface AuthState {
   errors?: { username?: string; password?: string };
 }
 
-const locRequester = localStorage.getItem('api-requester');
+const locRequester = localStorage.getItem('requester');
 const userData = locRequester ? JSON.parse(locRequester) : null;
 
 export const initialState: AuthState = {
-  isSignedIn: !!userData?.token,
+  isSignedIn: !!userData?.access_token,
   userData: userData || null,
   errors: {}
 };
