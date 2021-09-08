@@ -8,13 +8,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { DeleteConformationComponent } from './components/delete-conformation/delete-conformation.component';
 
 const commonImportedModules = [
   FormsModule,
@@ -27,15 +28,17 @@ const commonImportedModules = [
   MatDialogModule,
   MatFormFieldModule,
   MatProgressSpinnerModule,
+  MatMenuModule,
 ];
 
 @NgModule({
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    DeleteConformationComponent
   ],
   imports: [CommonModule, ...commonImportedModules, RouterModule, MatSidenavModule],
-  exports: [...commonImportedModules, LayoutComponent, HeaderComponent, SidenavComponent]
+  exports: [...commonImportedModules, LayoutComponent, HeaderComponent, SidenavComponent, DeleteConformationComponent]
 })
 export class SharedModule {}

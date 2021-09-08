@@ -9,11 +9,17 @@ import { StoreModule } from '@ngrx/store';
 import { userReducer } from './state/user.reducer';
 import { USER_STATE_NAME } from './state/user.selectors';
 import { SharedModule } from '@shared/shared.module';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 
 @NgModule({
   declarations: [
-    UserListComponent
+    UserListComponent,
+    UserDetailsComponent,
+    UserUpdateComponent,
+    UserFormComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +28,6 @@ import { SharedModule } from '@shared/shared.module';
     StoreModule.forFeature(USER_STATE_NAME, userReducer),
     EffectsModule.forFeature([UserEffects]),
     MatTableModule,
-  ]
+  ],
 })
 export class UserModule { }

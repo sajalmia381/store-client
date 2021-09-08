@@ -1,0 +1,53 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { filterValidObjAttribute } from '@shared/helper/utils';
+import { takeWhile } from 'rxjs/operators';
+import { updateUser } from '../state/user.actions';
+import { getUserById } from '../state/user.selectors';
+import { UserState } from '../state/user.state';
+import { User } from '../user';
+
+@Component({
+  selector: 'app-user-update',
+  templateUrl: './user-update.component.html',
+  styleUrls: ['./user-update.component.scss']
+})
+export class UserUpdateComponent implements OnInit, OnDestroy {
+  isAlive = true;
+  userForm: FormGroup = new FormGroup({
+    name: new FormControl(null, Validators.required),
+    number: new FormControl(null, Validators.required),
+  });
+  user: User | undefined | null;
+  constructor(private store: Store<UserState>, private router: Router, private snackbar: MatSnackBar) {}
+
+  ngOnInit(): void {
+    this.store
+      .select(getUserById)
+      .pipe(takeWhile(() => this.isAlive))
+      .subscribe(data => {
+        this.user = data;
+        if (data) {
+          this.userForm.patchValue({
+            name: data?.name,
+            number: data?.number,
+          });
+        }
+      });
+  }
+  ngOnDestroy(): void {
+    this.isAlive = false;
+  }
+  onFormSubmit(): void {
+    if (this.userForm.invalid) {
+      this.snackbar.open('Form is not valid', 'close');
+      return;
+    }
+    const newFormData = filterValidObjAttribute(this.userForm.value)
+    this.store.dispatch(updateUser({ user: newFormData }));
+    this.router.navigate(['/products']);
+  }
+}

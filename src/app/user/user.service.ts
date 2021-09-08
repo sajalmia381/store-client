@@ -28,8 +28,6 @@ export class UserService {
     return this.http.put('/users/' + user?._id, user);
   }
   deleteUser(id: string): Observable<User> {
-    return this.http.delete('/users/' + id).pipe(map(res => {
-      return res
-    }))
+    return this.http.delete('/users/' + id)
   }
 }
