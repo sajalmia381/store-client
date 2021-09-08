@@ -5,9 +5,10 @@ import { RouterNavigatedAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, filter, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
+import { User } from '../user';
 import { UserService } from '../user.service';
 import * as userAction from './user.actions';
-import { isLoaded } from './user.selectors';
+import { getUsers, isLoaded } from './user.selectors';
 
 @Injectable()
 export class UserEffects {
@@ -30,64 +31,66 @@ export class UserEffects {
       })
     );
   });
-  // loadSingleProduct$ = createEffect(() => {
-  //   return this.action$.pipe(
-  //     ofType(ROUTER_NAVIGATION),
-  //     filter((r: RouterNavigatedAction) => {
-  //       console.log('router event', r);
-  //       return r.payload.routerState.url.startsWith('/products/');
-  //     }),
-  //     map((r: RouterNavigatedAction) => {
-  //       console.log('router event inner', r);
-  //       return r.payload.routerState['params']['id'];
-  //     }),
-  //     withLatestFrom(this.store.select(getProducts)),
-  //     switchMap(([id, products]) => {
-  //       if (!products.length) {
-  //         return this.productService.getProduct(id).pipe(
-  //           map(product => {
-  //             const postData = [{ ...product, id }];
-  //             return productAction.loadProductsSuccess({ products: postData });
-  //           })
-  //         );
-  //       }
-  //       return of(productAction.dummyAction());
-  //     })
-  //   );
-  // });
-  // updateProduct$ = createEffect(() =>
-  //   this.action$.pipe(
-  //     ofType(productAction.updateProduct),
-  //     switchMap(action => {
-  //       return this.productService.updateProduct(action.product).pipe(
-  //         map(product => {
-  //           const updatedProduct: Update<Product> = {
-  //             id: action.product.id,
-  //             changes: {
-  //               ...action.product
-  //             }
-  //           };
-  //           return productAction.updateProductSuccess({ product: updatedProduct });
-  //         })
-  //       );
-  //     })
-  //   )
-  // );
-  // deleteProduct$ = createEffect(() => {
-  //   return this.action$.pipe(
-  //     ofType(productAction.deleteProduct),
-  //     switchMap(action => {
-  //       console.log(action)
-  //       return this.productService.deleteProduct(action?.id).pipe(
-  //         catchError(err => {
-  //           console.log('catch error', err)
-  //           return of(err?.message)
-  //         }),
-  //         map(data => {
-  //           return productAction.deleteProductSuccess({ id: action.id });
-  //         })
-  //       );
-  //     })
-  //   );
-  // });
+  loadSingleUser$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(ROUTER_NAVIGATION),
+      filter((r: RouterNavigatedAction) => {
+        console.log('router event', r);
+        return r.payload.routerState.url.startsWith('/users/');
+      }),
+      map((r: RouterNavigatedAction) => {
+        console.log('router event inner', r);
+        // return r.payload.routerState['params']['id'];
+        console.log(r)
+        return 'asd'
+      }),
+      withLatestFrom(this.store.select(getUsers)),
+      switchMap(([id, users]) => {
+        if (!users.length) {
+          return this.userService.getUser(id).pipe(
+            map(user => {
+              const postData = [{ ...user, id }];
+              return userAction.loadUsersSuccess({ users: postData });
+            })
+          );
+        }
+        return of(userAction.dummyAction());
+      })
+    );
+  });
+  updateProduct$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(userAction.updateUser),
+      switchMap(action => {
+        return this.userService.updateUser(action.user).pipe(
+          map(user => {
+            const updatedProduct: Update<User> = {
+              id: action.user._id,
+              changes: {
+                ...action.user
+              }
+            };
+            return userAction.updateUserSuccess({ user: updatedProduct });
+          })
+        );
+      })
+    )
+  );
+  deleteUser$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(userAction.deleteUser),
+      switchMap(action => {
+        console.log(action)
+        return this.userService.deleteUser(action?.id).pipe(
+          catchError(err => {
+            console.log('catch error', err)
+            return of(err?.message)
+          }),
+          map(data => {
+            return userAction.deleteUserSuccess({ id: action.id });
+          })
+        );
+      })
+    );
+  });
 }

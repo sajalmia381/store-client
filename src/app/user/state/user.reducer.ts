@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { loadUsersSuccess } from "./user.actions";
+import { addOneUser, deleteUserSuccess, loadUsersSuccess, updateUserSuccess } from "./user.actions";
 import { initialState, userAdapter, UserState } from "./user.state";
 
 const _userReducer = createReducer(
@@ -11,6 +11,15 @@ const _userReducer = createReducer(
       loaded: true
     });
   }),
+  on(addOneUser, (state, action) => {
+    return userAdapter.addOne(action.user, state)
+  }),
+  on(updateUserSuccess, (state, action) => {
+    return userAdapter.updateOne(action.user, state);
+  }),
+  on(deleteUserSuccess, (state, action) => {
+    return userAdapter.removeOne(action.id, state);
+  })
 )
 
 export const userReducer = (state: UserState, action: Action) => {

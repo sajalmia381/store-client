@@ -1,11 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { DeleteConformationComponent } from '@shared/components/delete-conformation/delete-conformation.component';
 import { Observable } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
-import { loadUsers } from '../state/user.actions';
+import { deleteUser, loadUsers } from '../state/user.actions';
 import { getUsers, isLoaded } from '../state/user.selectors';
+import { UserState } from '../state/user.state';
 import { User } from '../user';
+import { UserFormComponent } from '../user-form/user-form.component';
+import { UserUpdateComponent } from '../user-update/user-update.component';
 
 @Component({
   selector: 'app-user-list',
@@ -14,14 +18,14 @@ import { User } from '../user';
 })
 export class UserListComponent implements OnInit, OnDestroy {
   isAlive: boolean = true;
-  users$!: Observable<User[]>;
+
   isLoaded$!: Observable<boolean>;
   loading: boolean = false;
   
   // Table
   displayedColumns: string[] = ['_id', 'email', 'name', 'role', 'number', 'createdAt', 'updatedAt', 'action'];
   dataSource: any;
-  constructor(private store: Store, private dialog: MatDialog) {}
+  constructor(private store: Store<UserState>, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.store.select(getUsers)
@@ -34,5 +38,17 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.isAlive = false;
+  }
+  onDelete(user: User): void {
+    const dialogRef = this.dialog.open(DeleteConformationComponent, {
+      data:{
+        message: `Are you sure want to delete "${user.email}"?`,
+      }
+    });
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.store.dispatch(deleteUser({ id: user?._id }));
+      }
+    });
   }
 }
