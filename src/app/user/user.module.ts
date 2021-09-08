@@ -6,6 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './state/user.effects';
 import { StoreModule } from '@ngrx/store';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { userReducer } from './state/user.reducer';
 import { USER_STATE_NAME } from './state/user.selectors';
 import { SharedModule } from '@shared/shared.module';
@@ -28,6 +29,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     StoreModule.forFeature(USER_STATE_NAME, userReducer),
     EffectsModule.forFeature([UserEffects]),
     MatTableModule,
+    MatTooltipModule,
   ],
 })
 export class UserModule { }

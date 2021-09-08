@@ -4,14 +4,16 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
 
 const childRoutes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    path: 'products',
+    loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
   },
   {
     path: 'users',
-    pathMatch: 'full',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   }
 ];
 

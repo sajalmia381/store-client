@@ -3,7 +3,7 @@
     <div class="flex items-center bg-gray-100 py-4 px-4">
       <h2>Users</h2>
       <div class="ml-auto">
-        <a routerLink="add-user" mat-flat-button>Add users</a>
+        <a routerLink="add-user" mat-flat-button><mat-icon class="mr-2">person_add</mat-icon> Add User</a>
       </div>
     </div>
     <div class="page__table">
@@ -47,7 +47,7 @@
                 <mat-icon>article</mat-icon>
                 <span>Details</span>
               </a>
-              <a mat-menu-item [routerLink]="element?._id">
+              <a mat-menu-item [routerLink]="[element?._id, 'edit']">
                 <mat-icon>edit</mat-icon>
                 <span>Edit</span>
               </a>

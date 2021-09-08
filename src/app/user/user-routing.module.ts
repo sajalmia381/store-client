@@ -7,22 +7,21 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 
 const routes: Routes = [
   {
-    path: ':id',
-    component: UserDetailsComponent
+    path: 'add-user',
+    component: UserFormComponent
   },
   {
     path: ':id/edit',
     component: UserUpdateComponent
   },
   {
-    path: 'add-user',
-    component: UserFormComponent
+    path: ':id',
+    component: UserDetailsComponent
   },
   {
     path: '',
-    pathMatch: 'full',
     component: UserListComponent
-  },
+  }
 ];
 
 @NgModule({

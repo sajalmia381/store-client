@@ -18,13 +18,14 @@ export class UserService {
       })
     );
   }
-  addUser(user: User): Observable<User[]> {
+  addUser(user: User): Observable<User> {
     return this.http.post('/users', user);
   }
   getUser(id: string): Observable<User> {
     return this.http.get('/users/' + id);
   }
   updateUser(user: User): Observable<User> {
+    console.log('user api', user)
     return this.http.put('/users/' + user?._id, user);
   }
   deleteUser(id: string): Observable<User> {
