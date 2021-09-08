@@ -38,6 +38,12 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
         }
       });
   }
+  get name(): any {
+    return this.userForm.get('name');
+  }
+  get email(): any {
+    return this.userForm.get('email');
+  }
   ngOnDestroy(): void {
     this.isAlive = false;
   }
@@ -46,8 +52,8 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
       this.snackbar.open('Form is not valid', 'close');
       return;
     }
-    const newFormData = filterValidObjAttribute(this.userForm.value)
-    this.store.dispatch(updateUser({ user: newFormData }));
-    this.router.navigate(['/products']);
+    const user = filterValidObjAttribute(this.userForm.value)
+    this.store.dispatch(updateUser({ user }));
+    // this.router.navigate(['/users']);
   }
 }
