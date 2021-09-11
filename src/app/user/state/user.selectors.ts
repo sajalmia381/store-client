@@ -10,6 +10,7 @@ export const userSelectors = userAdapter.getSelectors();
 
 // users
 export const getUsers = createSelector(getUsersState, userSelectors.selectAll);
+export const getUsersId = createSelector(getUsersState, userSelectors.selectIds);
 export const getUsersEntities = createSelector(getUsersState, userSelectors.selectEntities);
 export const isLoaded = createSelector(getUsersState, state => state.loaded);
 

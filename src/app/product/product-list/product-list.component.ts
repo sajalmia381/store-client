@@ -14,6 +14,7 @@ import { takeWhile } from 'rxjs/operators';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
+  currentView = 'grid';
   isAlive: boolean = true;
   isLoaded$!: Observable<boolean>;
   loading!: false;
@@ -32,6 +33,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.isAlive = false;
+  }
+  toggleView(): void {
+    this.currentView = this.currentView === 'grid' ? 'list' : 'grid';
   }
   onDelete(product: Product): void {
     const deleteDialogRef = this.dialog.open(DeleteConformationComponent, {
