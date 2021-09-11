@@ -13,6 +13,10 @@ const childRoutes: Routes = [
   },
   {
     path: '',
+    loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+  },
+  {
+    path: '',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   }
 ];

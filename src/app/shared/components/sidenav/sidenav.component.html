@@ -1,11 +1,9 @@
 <div class="sidenav">
   <div class="h-screen overflow-y-auto flex flex-col">
-    <ul class=" list-reset flex flex-col">
-      <li class="rounded-t relative -mb-px block border p-4 border-grey"><a class="w-full" [routerLink]="'users'">Users</a></li>
-      <li class="relative -mb-px block border p-4 border-grey"><a [routerLink]="'products'">Products</a></li>
-      <li class="relative -mb-px block border p-4 border-grey">Category</li>
-      <li class="relative -mb-px block border p-4 border-grey">Porta ac consectetur ac</li>
-      <li class="rounded-b relative block border p-4 border-grey">Vestibulum at eros</li>
+    <ul class="list-reset flex flex-col">
+      <li class="w-full"><a class="block py-2 px-4 shadow" [routerLink]="'users'" routerLinkActive="bg-white bg-opacity-5 text-primary">Users</a></li>
+      <li class="w-full"><a class="block py-2 px-4 shadow" [routerLink]="'products'" routerLinkActive="bg-white bg-opacity-5 text-primary">Products</a></li>
+      <li class="w-full"><a class="block py-2 px-4" [routerLink]="'categories'" routerLinkActive="bg-white bg-opacity-5 text-primary">Categories</a></li>
     </ul>
   </div>
 </div>
