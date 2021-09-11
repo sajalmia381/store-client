@@ -4,6 +4,7 @@ import { User } from "../user";
 
 const LOAD_USERS = '[user] load users';
 const LOAD_USERS_SUCCESS = '[user] load users success';
+const LOAD_USER = '[user] load single user';
 const ADD_ONE_USER = '[user] add user';
 const UPDATE_USER = '[user] update user';
 const UPDATE_USER_SUCCESS = '[user] update user success';
@@ -11,7 +12,8 @@ const DELETE_USER = '[user] delete user request';
 const DELETE_USER_SUCCESS = '[user] delete user success';
 export const loadUsers = createAction(LOAD_USERS)
 export const loadUsersSuccess = createAction(LOAD_USERS_SUCCESS, props<{users: User[]}>())
-
+export const loadUser = createAction(LOAD_USER);
+export const loadUserSuccess = createAction(ADD_ONE_USER, props<{user: User}>());
 export const addUser = createAction(ADD_ONE_USER, props<{user: User}>());
 export const addUserSuccess = createAction(ADD_ONE_USER, props<{user: User}>());
 export const updateUser = createAction(UPDATE_USER, props<{user: User}>());

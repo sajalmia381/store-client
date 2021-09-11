@@ -1,1 +1,22 @@
-<p>user-details works!</p>
+<div class="page__container">
+  <div class="page__content">
+    <div class="flex items-center bg-gray-100 py-4 px-4">
+      <h2>Users</h2>
+      <div class="ml-auto">
+        <a routerLink="/users" mat-flat-button><mat-icon class="mr-2">person_add</mat-icon> Back to users</a>
+      </div>
+    </div>
+    <div class="page__table">
+      <div *ngIf="(user$ | async) as user; else emptyUser">
+        <h2>User name: {{user.name}}</h2>
+        <p>Email: {{ user.email }}</p>
+      </div>
+      <ng-template #emptyUser>
+        <div class="flex justify-center flex-col">
+          <h4>Nothing found!</h4>
+          <a routerLink="/users">Back to user list</a>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

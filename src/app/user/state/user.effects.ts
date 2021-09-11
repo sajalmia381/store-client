@@ -5,11 +5,12 @@ import { RouterNavigatedAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, filter, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
+import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import * as userAction from './user.actions';
 import { addUserSuccess } from './user.actions';
-import { getUsers, isLoaded } from './user.selectors';
+import { getUsers, getUsersId, isLoaded } from './user.selectors';
 
 @Injectable()
 export class UserEffects {
@@ -34,27 +35,19 @@ export class UserEffects {
   });
   loadSingleUser$ = createEffect(() => {
     return this.action$.pipe(
-      ofType(ROUTER_NAVIGATION),
-      filter((r: RouterNavigatedAction) => {
-        console.log('router event', r);
-        return r.payload.routerState.url.startsWith('/users/');
-      }),
-      map((r: any) => { // RouterNavigatedAction
-        console.log('router event inner', r);
-        return r.payload.routerState?.params?.id
-      }),
-      withLatestFrom(this.store.select(getUsers)),
-      switchMap(([id, users]) => {
-        if (!users.length) {
-          return this.userService.getUser(id).pipe(
-            map((res: any) => {
-              console.log(res)
-              const postData = [{ ...res?.data, id }];
-              return userAction.loadUsersSuccess({ users: postData });
-            })
-          );
-        }
-        return of(userAction.dummyAction());
+      ofType(userAction.loadUser),
+      withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getUsersId)),
+      switchMap(([action, route]) => {
+        console.log(action, route)
+        console.log('route', route?.params?.id)
+        const id = route?.params?.id || '';
+        return this.userService.getUser(id).pipe(
+          map((res: any) => {
+            console.log(res)
+            const user = { ...res?.data, id: id };
+            return userAction.loadUserSuccess({ user });
+          })
+        );
       })
     );
   });
@@ -64,6 +57,7 @@ export class UserEffects {
       switchMap((action) => {
         return this.userService.addUser(action.user).pipe(
           map((data) => {
+            console.log('add user call')
             const user = { ...action.user, id: data._id };
             return addUserSuccess({ user });
           })

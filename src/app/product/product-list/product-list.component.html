@@ -1,9 +1,26 @@
 <div class="page__container">
   <div class="page__content">
     <div class="flex items-center bg-gray-100 py-4 px-4">
-      <h2>Products</h2>
+      <div class="flex items-center">
+        <h2>Products</h2>
+        <a class="ml-4" routerLink="add-user" mat-flat-button><mat-icon class="mr-2">add</mat-icon> Add Product</a>
+      </div>
       <div class="ml-auto">
-        <a routerLink="add-user" mat-flat-button><mat-icon class="mr-2">add</mat-icon> Add Product</a>
+        <div class="filter-view-btns">
+          <button (click)="toggleView()" [class.active]="currentView === 'list'" class="filter-view__btn me-2">
+            <svg width="25" height="23" viewBox="0 0 25 23" fill="none">
+              <path d="M0.625 20.0245C0.625 19.5597 0.762239 19.1052 1.01936 18.7187C1.27648 18.3322 1.64194 18.0309 2.06952 17.853C2.4971 17.6751 2.96759 17.6286 3.42151 17.7193C3.87543 17.81 4.29237 18.0338 4.61963 18.3625C4.94688 18.6912 5.16975 19.1101 5.26004 19.566C5.35033 20.0219 5.30399 20.4945 5.12688 20.924C4.94977 21.3535 4.64984 21.7206 4.26503 21.9789C3.88022 22.2371 3.42781 22.375 2.965 22.375C2.34439 22.375 1.7492 22.1274 1.31037 21.6866C0.871535 21.2458 0.625 20.6479 0.625 20.0245ZM2.965 5.13839C3.42781 5.13839 3.88022 5.00054 4.26503 4.74227C4.64984 4.484 4.94977 4.11691 5.12688 3.68742C5.30399 3.25793 5.35033 2.78534 5.26004 2.3294C5.16975 1.87346 4.94688 1.45465 4.61963 1.12593C4.29237 0.797215 3.87543 0.573357 3.42151 0.482664C2.96759 0.391972 2.4971 0.438518 2.06952 0.616418C1.64194 0.794318 1.27648 1.09558 1.01936 1.48211C0.762239 1.86864 0.625 2.32307 0.625 2.78795C0.625 3.41132 0.871535 4.00917 1.31037 4.44996C1.7492 4.89076 2.34439 5.13839 2.965 5.13839ZM2.965 13.7567C3.42781 13.7567 3.88022 13.6188 4.26503 13.3606C4.64984 13.1023 4.94977 12.7352 5.12688 12.3057C5.30399 11.8762 5.35033 11.4036 5.26004 10.9477C5.16975 10.4918 4.94688 10.0729 4.61963 9.74423C4.29237 9.41551 3.87543 9.19166 3.42151 9.10096C2.96759 9.01027 2.4971 9.05682 2.06952 9.23472C1.64194 9.41262 1.27648 9.71388 1.01936 10.1004C0.762239 10.4869 0.625 10.9414 0.625 11.4062C0.625 12.0296 0.871535 12.6275 1.31037 13.0683C1.7492 13.5091 2.34439 13.7567 2.965 13.7567ZM10.765 4.35491H22.465C22.8787 4.35491 23.2755 4.18982 23.5681 3.89596C23.8606 3.60209 24.025 3.20353 24.025 2.78795C24.025 2.37236 23.8606 1.9738 23.5681 1.67994C23.2755 1.38607 22.8787 1.22098 22.465 1.22098H10.765C10.3513 1.22098 9.95446 1.38607 9.66191 1.67994C9.36935 1.9738 9.205 2.37236 9.205 2.78795C9.205 3.20353 9.36935 3.60209 9.66191 3.89596C9.95446 4.18982 10.3513 4.35491 10.765 4.35491ZM10.765 12.9732H22.465C22.8787 12.9732 23.2755 12.8081 23.5681 12.5143C23.8606 12.2204 24.025 11.8218 24.025 11.4062C24.025 10.9907 23.8606 10.5921 23.5681 10.2982C23.2755 10.0044 22.8787 9.83928 22.465 9.83928H10.765C10.3513 9.83928 9.95446 10.0044 9.66191 10.2982C9.36935 10.5921 9.205 10.9907 9.205 11.4062C9.205 11.8218 9.36935 12.2204 9.66191 12.5143C9.95446 12.8081 10.3513 12.9732 10.765 12.9732ZM10.765 21.5915H22.465C22.8787 21.5915 23.2755 21.4264 23.5681 21.1326C23.8606 20.8387 24.025 20.4401 24.025 20.0245C24.025 19.609 23.8606 19.2104 23.5681 18.9165C23.2755 18.6227 22.8787 18.4576 22.465 18.4576H10.765C10.3513 18.4576 9.95446 18.6227 9.66191 18.9165C9.36935 19.2104 9.205 19.609 9.205 20.0245C9.205 20.4401 9.36935 20.8387 9.66191 21.1326C9.95446 21.4264 10.3513 21.5915 10.765 21.5915Z"/>
+            </svg>
+          </button>
+          <button (click)="toggleView()" [class.active]="currentView === 'grid'" class="filter-view__btn">
+            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.54464 10.5491H1.75446C1.33888 10.5491 0.940316 10.384 0.646453 10.0902C0.35259 9.79629 0.1875 9.39772 0.1875 8.98214L0.1875 2.19196C0.1875 1.77638 0.35259 1.37782 0.646453 1.08395C0.940316 0.79009 1.33888 0.625 1.75446 0.625L8.54464 0.625C8.96022 0.625 9.35879 0.79009 9.65265 1.08395C9.94651 1.37782 10.1116 1.77638 10.1116 2.19196V8.98214C10.1116 9.39772 9.94651 9.79629 9.65265 10.0902C9.35879 10.384 8.96022 10.5491 8.54464 10.5491ZM2.27678 8.45982H8.02232V2.71428H2.27678V8.45982Z"/>
+              <path d="M20.5583 10.5491H13.7681C13.3526 10.5491 12.954 10.384 12.6601 10.0902C12.3663 9.79629 12.2012 9.39772 12.2012 8.98214V2.19196C12.2012 1.77638 12.3663 1.37782 12.6601 1.08395C12.954 0.79009 13.3526 0.625 13.7681 0.625L20.5583 0.625C20.9739 0.625 21.3725 0.79009 21.6663 1.08395C21.9602 1.37782 22.1253 1.77638 22.1253 2.19196V8.98214C22.1253 9.39772 21.9602 9.79629 21.6663 10.0902C21.3725 10.384 20.9739 10.5491 20.5583 10.5491ZM14.2905 8.45982H20.036V2.71428H14.2905V8.45982Z"/>
+              <path d="M8.54464 22.5628H1.75446C1.33888 22.5628 0.940316 22.3977 0.646453 22.1038C0.35259 21.81 0.1875 21.4114 0.1875 20.9958L0.1875 14.2056C0.1875 13.7901 0.35259 13.3915 0.646453 13.0976C0.940316 12.8038 1.33888 12.6387 1.75446 12.6387H8.54464C8.96022 12.6387 9.35879 12.8038 9.65265 13.0976C9.94651 13.3915 10.1116 13.7901 10.1116 14.2056V20.9958C10.1116 21.4114 9.94651 21.81 9.65265 22.1038C9.35879 22.3977 8.96022 22.5628 8.54464 22.5628ZM2.27678 20.4735H8.02232V14.728H2.27678V20.4735Z"/>
+              <path d="M20.5583 22.5628H13.7681C13.3526 22.5628 12.954 22.3977 12.6601 22.1038C12.3663 21.81 12.2012 21.4114 12.2012 20.9958V14.2056C12.2012 13.7901 12.3663 13.3915 12.6601 13.0976C12.954 12.8038 13.3526 12.6387 13.7681 12.6387H20.5583C20.9739 12.6387 21.3725 12.8038 21.6663 13.0976C21.9602 13.3915 22.1253 13.7901 22.1253 14.2056V20.9958C22.1253 21.4114 21.9602 21.81 21.6663 22.1038C21.3725 22.3977 20.9739 22.5628 20.5583 22.5628ZM14.2905 20.4735H20.036V14.728H14.2905V20.4735Z"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
     <div class="page__table">
@@ -21,7 +38,7 @@
         <ng-container matColumnDef="image">
           <th mat-header-cell *matHeaderCellDef> Image </th>
           <td mat-cell *matCellDef="let element">
-						<img *ngIf="element?.image" [src]="'http://localhost:8000/' + element?.image" alt="">
+						<img width="60" *ngIf="element?.image" [src]="'http://localhost:8000/' + element?.image" alt="">
 					</td>
         </ng-container>
         <ng-container matColumnDef="createdAt">
@@ -52,6 +69,42 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+    </div>
+    <div class="page__inner">
+      <div class="flex flex-wrap -m-4">
+        <div class="xl:w-1/3 md:w-1/2 p-4">
+          <div class="bg-white p-6 rounded-lg">
+            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
+            <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+            <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
+            <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+          </div>
+        </div>
+        <div class="xl:w-1/3 md:w-1/2 p-4">
+          <div class="bg-white p-6 rounded-lg">
+            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://asset.kompas.com/crops/Pk_pN6vllxXy1RshYsEv74Q1BYA=/56x0:1553x998/750x500/data/photo/2021/06/16/60c8f9d68ff4a.jpg" alt="Image Size 720x400">
+            <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+            <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Colosseum Roma</h2>
+            <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+          </div>
+        </div>
+        <div class="xl:w-1/3 md:w-1/2 p-4">
+          <div class="bg-white p-6 rounded-lg">
+            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://images.immediate.co.uk/production/volatile/sites/7/2019/07/33-GettyImages-154260931-216706f.jpg?quality=90&amp;resize=768%2C574" alt="Image Size 720x400">
+            <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+            <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Great Pyramid of Giza</h2>
+            <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+          </div>
+        </div>
+        <div class="xl:w-1/3 md:w-1/2 p-4">
+          <div class="bg-white p-6 rounded-lg">
+            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6" src="https://wisatamuda.com/wp-content/uploads/2019/02/1-Golden-Gate-Bridge-Gambar-dan-Foto-Tempat-Wisata-Terbaik-di-San-Fransisco-USA.jpg" alt="Image Size 720x400">
+            <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
+            <h2 class="text-lg text-gray-900 font-medium title-font mb-4">San Francisco</h2>
+            <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

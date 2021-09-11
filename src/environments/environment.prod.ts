@@ -1,4 +1,7 @@
+const domain = 'https://storerestapi.com';
+
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://storerestapi.com/api'
+  apiBaseUrl: domain + '/api',
+  baseUrl: domain,
 };
