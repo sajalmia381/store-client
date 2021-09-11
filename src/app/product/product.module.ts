@@ -13,19 +13,25 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { SharedModule } from '@shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductDetailsComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    ProductFormComponent
   ],
   imports: [
     CommonModule,
     ProductRoutingModule,
     SharedModule,
     MatTableModule,
+    MatOptionModule,
+    MatSelectModule,
     StoreModule.forFeature(PRODUCT_STATE_NAME, productReducer),
     EffectsModule.forFeature([ProductEffects])
   ],

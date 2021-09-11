@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
-import { RouterNavigatedAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { catchError, filter, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import * as userAction from './user.actions';
 import { addUserSuccess } from './user.actions';
-import { getUsers, getUsersId, isLoaded } from './user.selectors';
+import { getUsersId, isLoaded } from './user.selectors';
 
 @Injectable()
 export class UserEffects {
@@ -37,17 +36,21 @@ export class UserEffects {
     return this.action$.pipe(
       ofType(userAction.loadUser),
       withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getUsersId)),
-      switchMap(([action, route]) => {
-        console.log(action, route)
+      switchMap(([action, route, ids]) => {
+        console.log(action, route, ids)
         console.log('route', route?.params?.id)
         const id = route?.params?.id || '';
-        return this.userService.getUser(id).pipe(
-          map((res: any) => {
-            console.log(res)
-            const user = { ...res?.data, id: id };
-            return userAction.loadUserSuccess({ user });
-          })
-        );
+        const isIdExists = ids.some(_id => _id === id)
+        if(!isIdExists) {
+          return this.userService.getUser(id).pipe(
+            map((res: any) => {
+              console.log(res)
+              const user = { ...res?.data, id: id };
+              return userAction.addUserSuccess({ user });
+            })
+          );
+        }
+        return of(userAction.dummyAction());
       })
     );
   });

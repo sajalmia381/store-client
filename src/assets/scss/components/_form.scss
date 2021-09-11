@@ -2,7 +2,36 @@
   label {
     @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
   }
+  textarea,
   input {
     @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500;
+  }
+}
+
+.field {
+  &__mat-field {
+    .mat-form-field-wrapper {
+      margin: 0;
+      padding: 0;
+    }
+    .mat-form-field-infix {
+      width: 170px;
+      padding: 10px 0;
+      border-top: 5px solid transparent;
+      font-size: 13px;
+    }
+    .mat-select-arrow-wrapper {
+      transform: none !important;
+    }
+  }
+}
+
+.theme-light {
+  .field {
+    &__mat-field {
+      .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+        background: rgba(0, 0, 0, 0.04);
+      }
+    }
   }
 }

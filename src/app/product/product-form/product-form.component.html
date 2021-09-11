@@ -1,0 +1,60 @@
+<div class="page__container">
+  <div class="page__content">
+    <div class="flex items-center bg-gray-100 py-4 px-4">
+      <div class="flex items-center">
+        <a routerLink="../" matTooltip="Back to Users" mat-icon-button class="mr-3 bg-white text-center"><mat-icon>keyboard_backspace</mat-icon></a>
+        <h2>New User Form</h2>
+      </div>
+      <div class="ml-auto">
+        <button [disabled]="productForm.invalid" color="primary" (click)="onFormSubmit()" mat-flat-button><mat-icon class="mr-2">save</mat-icon>Submit</button>
+      </div>
+    </div>
+    <div class="px-4 flex justify-center pt-12">
+      <form [formGroup]="productForm" class="ti-form w-full max-w-3xl">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label for="id_title" >
+              Title *
+            </label>
+            <input formControlName="title" [class.border-red-500]="title.touched && title.invalid" id="id_title" type="text" placeholder="Title">
+            <p *ngIf="title.touched && title.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label for="id_price" >
+              Price *
+            </label>
+            <input formControlName="price" [class.border-red-500]="price.touched && price.invalid" id="id_price" type="number" placeholder="Price">
+            <p *ngIf="price.touched && price.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label for="id_description" >
+              Descriptions
+            </label>
+            <textarea [class.border-red-500]="description.touched && description.invalid" formControlName="description" id="id_description" type="text" placeholder="Description" rows="5"></textarea>
+          </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label for="id_description" >
+              Category
+            </label>
+            <mat-form-field appearance="outline" class="field__mat-field">
+              <mat-label *ngIf="!category.value">Select Category</mat-label>
+              <mat-select formControlName="category" >
+                <mat-option *ngFor="let item of categories" [value]="item._id">
+                  {{ item.name| titlecase }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <p *ngIf="category.touched && category.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>

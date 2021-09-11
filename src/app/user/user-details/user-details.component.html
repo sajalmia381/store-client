@@ -1,10 +1,8 @@
 <div class="page__container">
   <div class="page__content">
     <div class="flex items-center bg-gray-100 py-4 px-4">
-      <h2>Users</h2>
-      <div class="ml-auto">
-        <a routerLink="/users" mat-flat-button><mat-icon class="mr-2">person_add</mat-icon> Back to users</a>
-      </div>
+      <a routerLink="/users" mat-flat-button><mat-icon class="mr-2">arrow_back</mat-icon> Back to users</a>
+      <!-- <div class="ml-auto"></div> -->
     </div>
     <div class="page__table">
       <div *ngIf="(user$ | async) as user; else emptyUser">
@@ -12,9 +10,9 @@
         <p>Email: {{ user.email }}</p>
       </div>
       <ng-template #emptyUser>
-        <div class="flex justify-center flex-col">
+        <div class="flex items-center flex-col">
           <h4>Nothing found!</h4>
-          <a routerLink="/users">Back to user list</a>
+          <a mat-flat-button color="accent" routerLink="/users">Back to user list</a>
         </div>
       </ng-template>
     </div>

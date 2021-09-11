@@ -10,6 +10,7 @@ export const productSelectors = productAdapter.getSelectors();
 
 // products
 export const getProducts = createSelector(getProductState, productSelectors.selectAll);
+export const getProductSlugs = createSelector(getProductState, productSelectors.selectIds);
 export const getProductEntities = createSelector(getProductState, productSelectors.selectEntities);
 export const isLoaded = createSelector(getProductState, state => state.loaded);
 
