@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from '../product';
+import { loadProduct } from '../state/product.actions';
 import { getProductBySlug } from '../state/product.selectors';
 
 @Component({
@@ -15,5 +16,6 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.product$ = this.store.select(getProductBySlug);
+    this.store.dispatch(loadProduct());
   }
 }

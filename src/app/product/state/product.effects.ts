@@ -8,7 +8,8 @@ import { catchError, filter, map, mergeMap, switchMap, tap, withLatestFrom } fro
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import * as productAction from './product.actions';
-import { getProductBySlug, getProducts, isLoaded } from './product.selectors';
+import { getProductSlugs, isLoaded } from './product.selectors';
+import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 @Injectable()
 export class ProductEffects {
   constructor(
@@ -31,22 +32,16 @@ export class ProductEffects {
   });
   loadSingleProduct$ = createEffect(() => {
     return this.action$.pipe(
-      ofType(ROUTER_NAVIGATION),
-      filter((r: RouterNavigatedAction) => {
-        console.log('router event', r);
-        return r.payload.routerState.url.startsWith('/products/');
-      }),
-      map((r: any) => { //RouterNavigatedAction
-        console.log('router event inner', r);
-        return r.payload.routerState?.params?.id;
-      }),
-      withLatestFrom(this.store.select(getProducts)),
-      switchMap(([id, products]) => {
-        if (!products.length) {
-          return this.productService.getProduct(id).pipe(
-            map(product => {
-              const postData = [{ ...product, id }];
-              return productAction.loadProductsSuccess({ products: postData });
+      ofType(productAction.loadProduct),
+      withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getProductSlugs)),
+      switchMap(([action, route, slugs]) => {
+        const slug = route.params.slug;
+        const isSlugExists = slugs.some(_slug => _slug === slug)
+        if (!isSlugExists) {
+          return this.productService.getProduct(slug).pipe(
+            map((res: any) => {
+              const product = { ...res?.data, slug };
+              return productAction.addOneProduct({ product });
             })
           );
         }

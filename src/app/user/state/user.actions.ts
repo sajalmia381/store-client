@@ -13,7 +13,6 @@ const DELETE_USER_SUCCESS = '[user] delete user success';
 export const loadUsers = createAction(LOAD_USERS)
 export const loadUsersSuccess = createAction(LOAD_USERS_SUCCESS, props<{users: User[]}>())
 export const loadUser = createAction(LOAD_USER);
-export const loadUserSuccess = createAction(ADD_ONE_USER, props<{user: User}>());
 export const addUser = createAction(ADD_ONE_USER, props<{user: User}>());
 export const addUserSuccess = createAction(ADD_ONE_USER, props<{user: User}>());
 export const updateUser = createAction(UPDATE_USER, props<{user: User}>());
@@ -24,4 +23,4 @@ export const updateUserSuccess = createAction(
 export const deleteUser = createAction(DELETE_USER, props<{id: string}>());
 export const deleteUserSuccess = createAction(DELETE_USER_SUCCESS, props<{id: string}>());
 
-export const dummyAction = createAction('[product] dummy action');
+export const dummyAction = createAction('[user] dummy action');

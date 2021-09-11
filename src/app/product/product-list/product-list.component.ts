@@ -14,7 +14,7 @@ import { takeWhile } from 'rxjs/operators';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  currentView = 'grid';
+  currentView = 'list';
   isAlive: boolean = true;
   isLoaded$!: Observable<boolean>;
   loading!: false;
