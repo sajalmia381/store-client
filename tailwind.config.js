@@ -18,7 +18,13 @@ module.exports = {
       xl: '1200px',
       xxl: '1440px'
     },
-    extend: {}
+    extend: {
+      colors: {
+        primary: '#5bc4d6',
+        accent: '#4164a9',
+        warn: '#ff9966',
+      },
+    },
   },
   variants: {
     extend: {}
