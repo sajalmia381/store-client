@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { loadCategories } from '../state/category.actions';
+import { CategoryState } from '../state/category.state';
 
 @Component({
   selector: 'app-categories',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<CategoryState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch(loadCategories())
   }
 
 }
