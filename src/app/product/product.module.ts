@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { CategoryEffects } from '../category/state/category.effects';
 
 
 @NgModule({

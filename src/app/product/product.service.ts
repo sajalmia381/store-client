@@ -4,9 +4,7 @@ import { map } from 'rxjs/operators';
 import { HttpService } from '../shared/services/http.service';
 import { Product } from './product';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductService {
   constructor(private http: HttpService) {}
 
