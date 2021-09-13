@@ -9,6 +9,7 @@ import * as categoryAction from './category.actions';
 import { getCategorySlugs, isLoaded } from './category.selectors';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 import { CategoryService } from '../category.service';
+import { Category } from '../category';
 @Injectable()
 export class CategoryEffects {
   constructor(
@@ -29,58 +30,58 @@ export class CategoryEffects {
       })
     );
   });
-  // loadSingleProduct$ = createEffect(() => {
-  //   return this.action$.pipe(
-  //     ofType(categoryAction.loadProduct),
-  //     withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getProductSlugs)),
-  //     switchMap(([action, route, slugs]) => {
-  //       const slug = route.params.slug;
-  //       const isSlugExists = slugs.some(_slug => _slug === slug)
-  //       if (!isSlugExists) {
-  //         return this.productService.getProduct(slug).pipe(
-  //           map((res: any) => {
-  //             const product = { ...res?.data, slug };
-  //             return categoryAction.addOneProduct({ product });
-  //           })
-  //         );
-  //       }
-  //       return of(categoryAction.dummyAction());
-  //     })
-  //   );
-  // });
-  // updateProduct$ = createEffect(() =>
-  //   this.action$.pipe(
-  //     ofType(categoryAction.updateProduct),
-  //     switchMap(action => {
-  //       return this.productService.updateProduct(action.product).pipe(
-  //         map(product => {
-  //           const updatedProduct: Update<Product> = {
-  //             id: action.product._id,
-  //             changes: {
-  //               ...action.product
-  //             }
-  //           };
-  //           return categoryAction.updateProductSuccess({ product: updatedProduct });
-  //         })
-  //       );
-  //     })
-  //   )
-  // );
-  // deleteProduct$ = createEffect(() => {
-  //   return this.action$.pipe(
-  //     ofType(categoryAction.deleteProduct),
-  //     switchMap(action => {
-  //       console.log(action)
-  //       return this.productService.deleteProduct(action?.id).pipe(
-  //         catchError(err => {
-  //           console.log('catch error', err)
-  //           return of(err?.message)
-  //         }),
-  //         map(data => {
-  //           return categoryAction.deleteProductSuccess({ id: action.id });
-  //         })
-  //       );
-  //     })
-  //   );
-  // });
+  loadSingleCategory$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(categoryAction.loadCategory),
+      withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getCategorySlugs)),
+      switchMap(([action, route, slugs]) => {
+        const slug = route.params.slug;
+        const isSlugExists = slugs.some(_slug => _slug === slug)
+        if (!isSlugExists) {
+          return this.categoryService.getCategory(slug).pipe(
+            map((res: any) => {
+              const category = { ...res?.data, slug };
+              return categoryAction.addOneCategory({ category });
+            })
+          );
+        }
+        return of(categoryAction.dummyAction());
+      })
+    );
+  });
+  updateCategory$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(categoryAction.updateCategory),
+      switchMap(action => {
+        return this.categoryService.updateCategory(action.category).pipe(
+          map(category => {
+            const updatedCategory: Update<Category> = {
+              id: action.category._id,
+              changes: {
+                ...action.category
+              }
+            };
+            return categoryAction.updateCategorySuccess({ category: updatedCategory });
+          })
+        );
+      })
+    )
+  );
+  deleteCategory$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(categoryAction.deleteCategory),
+      switchMap(action => {
+        console.log(action)
+        return this.categoryService.deleteCategory(action?.id).pipe(
+          catchError(err => {
+            console.log('catch error', err)
+            return of(err?.message)
+          }),
+          map(data => {
+            return categoryAction.deleteCategorySuccess({ id: action.id });
+          })
+        );
+      })
+    );
+  });
 }

@@ -1,7 +1,15 @@
 .sidenav {
   padding: 15px 0;
   width: 100%;
-  background-color: #253746;
-  color: #fff;
   position: relative;
+  width: 265px;
+}
+
+::ng-deep {
+  .theme-dark {
+    .mat-drawer-inner-container {
+      background-color: #253746;
+      color: #fff;
+    }
+  }
 }

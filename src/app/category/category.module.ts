@@ -11,19 +11,26 @@ import { categoryReducer } from './state/category.reducer';
 import { CategoryEffects } from './state/category.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { CategoryService } from './category.service';
+import { SharedModule } from '@shared/shared.module';
+import { MatTableModule } from '@angular/material/table';
+import { CategoryUpdateComponent } from './category-update/category-update.component';
 
 @NgModule({
   declarations: [
     CategoriesComponent,
     CategoryFormComponent,
-    CategoryDetailsComponent
+    CategoryDetailsComponent,
+    CategoryUpdateComponent,
   ],
   imports: [
     CommonModule,
     CategoryRoutingModule,
+    SharedModule,
+    MatTableModule,
     StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
     EffectsModule.forFeature([CategoryEffects]),
   ],
-  providers: [CategoryService]
+  providers: [CategoryService],
+  entryComponents: [CategoryUpdateComponent]
 })
 export class CategoryModule { }

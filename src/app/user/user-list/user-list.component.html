@@ -8,10 +8,9 @@
     </div>
     <div class="page__table">
       <table class="ti-table" mat-table [dataSource]="dataSource">
-        ['_id', 'email', 'role', 'name', 'number', 'createdAt', 'updatedAt']
         <ng-container matColumnDef="_id">
           <th mat-header-cell *matHeaderCellDef> Id. </th>
-          <td mat-cell *matCellDef="let element"><a mat-button [routerLink]="element?._id">{{element?._id}}</a></td>
+          <td mat-cell *matCellDef="let element"><a class="text-primary" [routerLink]="element?._id">{{element?._id}}</a></td>
         </ng-container>
       
         <ng-container matColumnDef="email">

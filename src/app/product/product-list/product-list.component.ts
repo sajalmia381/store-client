@@ -20,13 +20,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
   loading!: false;
   displayedColumns: string[] = ['title', 'price', 'image', 'createdAt', 'action'];
   dataSource: any;
+  products!: Product[];
   constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.store.select(getProducts)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(products => {
-        this.dataSource = products
+        this.dataSource = products;
+        this.products = products;
       });
     this.isLoaded$ = this.store.select(isLoaded);
     this.store.dispatch(loadProducts());

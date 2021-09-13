@@ -6,15 +6,15 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 
 const routes: Routes = [
   {
-    path: 'categories',
+    path: '',
     component: CategoriesComponent
   },
   {
-    path: 'category/add-new',
+    path: 'add-new',
     component: CategoryFormComponent
   },
   {
-    path: 'category/:slug',
+    path: ':slug',
     component: CategoryDetailsComponent
   }
 ];

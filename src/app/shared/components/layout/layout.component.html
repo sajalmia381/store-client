@@ -1,20 +1,18 @@
-<!-- <div [class.example-is-mobile]="isLessThenLargeDevice">
-  <mat-sidenav-container class="kc-sidenav-container">
+<div class="example-container" [class.example-is-mobile]="isLessThenLargeDevice">
+  <app-header class="example-toolbar"></app-header>
+  <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav #sidenav [opened]="isSidenavExpand" [mode]="isLessThenLargeDevice ? 'over' : 'side'" [fixedInViewport]="isLessThenLargeDevice">
       <app-sidenav class="layout__sidenav"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
-      <app-header (toggleSidenav)="toggleSidenav()"></app-header>
       <main><router-outlet></router-outlet></main>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div> -->
-<app-header></app-header>
+</div>
+<!-- <app-header></app-header>
 <div class="layout__container">
   <app-sidenav class="layout__sidenav"></app-sidenav>
   <div class="layout__content site-content flex-grow">
-    <!-- <div class="page__container"> -->
       <router-outlet></router-outlet>
-    <!-- </div> -->
   </div>
-</div>
+</div> -->
