@@ -27,8 +27,8 @@ import { CategoryUpdateComponent } from './category-update/category-update.compo
     CategoryRoutingModule,
     SharedModule,
     MatTableModule,
-    StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
-    EffectsModule.forFeature([CategoryEffects]),
+    // StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
+    // EffectsModule.forFeature([CategoryEffects]),
   ],
   providers: [CategoryService],
   entryComponents: [CategoryUpdateComponent]

@@ -16,7 +16,18 @@ export class ProductService {
     );
   }
   addProduct(product: Product): Observable<Product> {
-    return this.http.post('/products', product);
+    let img: any;
+    if (product.hasOwnProperty('image')) {
+      img = product['image']
+    }
+    console.log('img', img)
+    
+    return this.http.post('/products', product, [
+      { 
+        key: 'Content-Disposition',
+        value: 'attachment ' + img,
+      }
+    ]);
   }
   getProduct(id: string): Observable<Product> {
     return this.http.get('/products/' + id);

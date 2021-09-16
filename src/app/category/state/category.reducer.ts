@@ -21,6 +21,6 @@ const _categoryReducer = createReducer(
   })
 );
 
-export const categoryReducer = (state: CategoryState, action: Action) => {
+export const categoryReducer = (state: CategoryState | undefined, action: Action) => {
   return _categoryReducer(state, action);
 };

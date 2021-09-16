@@ -7,6 +7,8 @@ import { getProducts, isLoaded } from '../state/product.selectors';
 import { DeleteConformationComponent } from 'src/app/shared/components/delete-conformation/delete-conformation.component';
 import { Product } from '../product';
 import { takeWhile } from 'rxjs/operators';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-product-list',
@@ -18,20 +20,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
   isAlive: boolean = true;
   isLoaded$!: Observable<boolean>;
   loading!: false;
-  displayedColumns: string[] = ['title', 'price', 'image', 'createdAt', 'action'];
-  dataSource: any;
-  products!: Product[];
+  displayedColumns: string[] = ['select', 'title', 'price', 'image', 'createdAt', 'action'];
+  selection = new SelectionModel<Product>(true, []);
+  dataSource: any = new MatTableDataSource<Product>([]);
+  
   constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.store.select(getProducts)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(products => {
-        this.dataSource = products;
-        this.products = products;
+        this.dataSource.data = products;
       });
     this.isLoaded$ = this.store.select(isLoaded);
     this.store.dispatch(loadProducts());
+    
   }
   ngOnDestroy(): void {
     this.isAlive = false;
@@ -53,4 +56,29 @@ export class ProductListComponent implements OnInit, OnDestroy {
       }
     });
   }
+  
+    /** Whether the number of selected elements matches the total number of rows. */
+    isAllSelected() {
+      const numSelected = this.selection.selected.length;
+      const numRows = this.dataSource.data.length;
+      return numSelected === numRows;
+    }
+  
+    /** Selects all rows if they are not all selected; otherwise clear selection. */
+    masterToggle() {
+      if (this.isAllSelected()) {
+        this.selection.clear();
+        return;
+      }
+  
+      this.selection.select(...this.dataSource.data);
+    }
+  
+    /** The label for the checkbox on the passed row */
+    checkboxLabel(row?: Product): string {
+      if (!row) {
+        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+      }
+      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row._id + 1}`;
+    }
 }

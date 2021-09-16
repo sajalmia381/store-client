@@ -14,7 +14,7 @@
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     display: block;
-    overflow: hidden;
+    overflow: auto;
     flex: 1;
   }
   &__inner,
@@ -25,7 +25,9 @@
     height: 100%;
     overflow: auto;
     @apply px-4;
-    @apply pb-6;
+    @apply pb-4;
+  }
+  &__inner {
     @apply pt-4;
   }
 }
