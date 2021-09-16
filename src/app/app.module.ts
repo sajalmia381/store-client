@@ -13,6 +13,9 @@ import { SharedModule } from './shared/shared.module';
 import { appReducer } from './store';
 import { RouterSerializer } from './store/router/router.serializer';
 import { AuthEffects } from './auth/state/auth.effects';
+import { CategoryEffects } from './category/state/category.effects';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClintInterceptor } from '@shared/services/http.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,10 +26,16 @@ import { AuthEffects } from './auth/state/auth.effects';
     SharedModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, CategoryEffects]),
     StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpClintInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -29,9 +29,23 @@ export class HttpService {
     return this.http.get(this.apiBaseUrl + url, httpOptions);
   }
 
-  post(url: any, data: any): Observable<any> {
+  post(url: any, data: any, additionalHeaders?: any[]): Observable<any> {
+    const _headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      'Content-Disposition': 'attachment',
+    })
+    // if (additionalHeaders) {
+    //   console.log('additionalHeaders', additionalHeaders)
+    //   additionalHeaders.map(item => {
+    //     if (item?.key && item?.value) {
+    //       console.log('exist', item.key, item.value)
+    //       _headers.append(item.key, item.value)
+    //     }
+    //   })
+    // }
+    // console.log('_header', _headers)
     let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: _headers
     };
     const body = JSON.stringify(data);
     return this.http.post(this.apiBaseUrl + url, body, httpOptions);

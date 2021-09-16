@@ -7,7 +7,11 @@
       <div class="flex items-center">
         <button mat-icon-button class="bg-gray-100 mx-3"><mat-icon>subject</mat-icon></button>
         <button mat-icon-button class="bg-gray-100 mr-3"><mat-icon>dark_mode</mat-icon></button>
-        <button class="bg-white w-full flex items-center">
+        <div class="flex items-center">
+          <a *ngIf="!userData" routerLink="/auth/login" mat-flat-button class="bg-gray-100 mx-3"><mat-icon class="mr-2">login</mat-icon> Login</a>
+          <a *ngIf="!userData" routerLink="/auth/register" mat-flat-button class="bg-gray-100 mr-3"><mat-icon class="mr-2">person_add</mat-icon> Register</a>
+        </div>
+        <button *ngIf="userData" class="bg-white w-full flex items-center">
           <div class="flex items-center">
             <div class="w-10 h-10 rounded-lg bg-gray-500">
               

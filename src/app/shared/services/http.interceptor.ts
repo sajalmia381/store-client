@@ -29,7 +29,7 @@ export class HttpClintInterceptor implements HttpInterceptor {
           return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
         }
         let modifiedReq = request.clone({
-          headers: request.headers.append('x-auth-token', token)
+          headers: request.headers.append('Authorization', 'Bearer ' + token)
         });
         return next.handle(modifiedReq).pipe(catchError(res => this.errorHandler(res)));
       })

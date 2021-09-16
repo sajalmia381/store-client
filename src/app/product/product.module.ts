@@ -16,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { CategoryEffects } from '../category/state/category.effects';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -33,6 +33,7 @@ import { CategoryEffects } from '../category/state/category.effects';
     MatTableModule,
     MatOptionModule,
     MatSelectModule,
+    MatCheckboxModule,
     StoreModule.forFeature(PRODUCT_STATE_NAME, productReducer),
     EffectsModule.forFeature([ProductEffects])
   ],

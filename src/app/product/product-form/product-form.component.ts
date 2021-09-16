@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
-import { addOneProduct } from '../state/product.actions';
 import { ProductState } from '../state/product.state';
+import * as categorySelectors from '../../category/state/category.selectors';
+import { takeWhile } from 'rxjs/operators';
+import { loadCategories } from 'src/app/category/state/category.actions';
+import { Category } from 'src/app/category/category';
+import { addProduct } from '../state/product.actions';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss']
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent implements OnInit, OnDestroy {
+  isAlive: boolean = true;
   productForm!: FormGroup;
-  categories = [{_id: 'hello', name: 'shoes', slug: 'shoes'},{_id: 'hello', name: 'cloth', slug: 'cloth'}]
+  categories: Category[] = [];
   
   constructor(private store: Store<ProductState>, private snackBar: MatSnackBar) { }
 
@@ -22,7 +27,21 @@ export class ProductFormComponent implements OnInit {
       price: new FormControl('', Validators.required),
       description: new FormControl(''),
       category: new FormControl('', Validators.required),
+      image: new FormControl('', Validators.required)
     })
+    this.fetchCategory();
+  }
+  ngOnDestroy(): void {
+    this.isAlive = false;
+  }
+  
+  fetchCategory(): void {
+    this.store.select(categorySelectors.getCategories)
+      .pipe(takeWhile(() => this.isAlive))
+      .subscribe(data => {
+        this.categories = data;
+      })
+    this.store.dispatch(loadCategories());
   }
   
   get title(): any {
@@ -30,6 +49,9 @@ export class ProductFormComponent implements OnInit {
   }
   get price(): any {
     return this.productForm.get('price')
+  }
+  get image(): any {
+    return this.productForm.get('image')
   }
   get description(): any {
     return this.productForm.get('description')
@@ -44,6 +66,6 @@ export class ProductFormComponent implements OnInit {
       })
       return
     }
-    this.store.dispatch(addOneProduct({product: this.productForm.value}))
+    this.store.dispatch(addProduct({product: this.productForm.value}))
   }
 }

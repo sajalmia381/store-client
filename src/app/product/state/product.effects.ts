@@ -41,7 +41,7 @@ export class ProductEffects {
           return this.productService.getProduct(slug).pipe(
             map((res: any) => {
               const product = { ...res?.data, slug };
-              return productAction.addOneProduct({ product });
+              return productAction.addProductSuccess({ product });
             })
           );
         }
@@ -49,6 +49,35 @@ export class ProductEffects {
       })
     );
   });
+  addProduct$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(productAction.addProduct),
+      switchMap((action) => {
+        return this.productService.addProduct(action.product).pipe(
+          map((res: any) => {
+            console.log('add product call', res)
+            
+            const product = { ...res.data, id: res.data?.slug };
+            return productAction.addProductSuccess({ product });
+          })
+        );
+      })
+    );
+  });
+  // addUser$ = createEffect(() => {
+  //   return this.action$.pipe(
+  //     ofType(userAction.addUser),
+  //     switchMap((action) => {
+  //       return this.userService.addUser(action.user).pipe(
+  //         map((data) => {
+  //           console.log('add user call')
+  //           const user = { ...action.user, id: data._id };
+  //           return addUserSuccess({ user });
+  //         })
+  //       );
+  //     })
+  //   );
+  // });
   updateProduct$ = createEffect(() =>
     this.action$.pipe(
       ofType(productAction.updateProduct),
