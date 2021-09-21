@@ -9,6 +9,7 @@ import { Product } from '../product';
 import { takeWhile } from 'rxjs/operators';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-product-list',
@@ -23,7 +24,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['select', 'title', 'price', 'image', 'createdAt', 'action'];
   selection = new SelectionModel<Product>(true, []);
   dataSource: any = new MatTableDataSource<Product>([]);
-  
+  backendBaseUrl: string = environment.baseUrl;
   constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -57,28 +58,44 @@ export class ProductListComponent implements OnInit, OnDestroy {
     });
   }
   
-    /** Whether the number of selected elements matches the total number of rows. */
-    isAllSelected() {
-      const numSelected = this.selection.selected.length;
-      const numRows = this.dataSource.data.length;
-      return numSelected === numRows;
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
     }
+
+    this.selection.select(...this.dataSource.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: Product): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row._id + 1}`;
+  }
   
-    /** Selects all rows if they are not all selected; otherwise clear selection. */
-    masterToggle() {
-      if (this.isAllSelected()) {
-        this.selection.clear();
-        return;
+  onBulkDelete(): void {
+    const dialogRef = this.dialog.open(DeleteConformationComponent, {
+      width: '100%',
+      maxWidth: '400px',
+      data: {
+        message: 'Are you sure! you want to bulk delete "' + this.selection.selected.map(item => item.slug) + '"?'
       }
-  
-      this.selection.select(...this.dataSource.data);
-    }
-  
-    /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: Product): string {
-      if (!row) {
-        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    });
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        // this.store.dispatch(deleteProduct({ id: product?.slug }));
+        console.log(this.selection)
       }
-      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row._id + 1}`;
-    }
+    });
+  }
 }

@@ -22,12 +22,7 @@ export class ProductService {
     }
     console.log('img', img)
     
-    return this.http.post('/products', product, [
-      { 
-        key: 'Content-Disposition',
-        value: 'attachment ' + img,
-      }
-    ]);
+    return this.http.post('/products', product);
   }
   getProduct(id: string): Observable<Product> {
     return this.http.get('/products/' + id);
@@ -35,8 +30,14 @@ export class ProductService {
   updateProduct(product: Product): Observable<Product> {
     return this.http.put('/products/' + product?._id, product);
   }
-  deleteProduct(id: string): Observable<Product> {
+  deleteProduct(id: string): Observable<any> {
     return this.http.delete('/products/' + id).pipe(map(res => {
+      return res
+    }))
+  }
+  
+  bulkDeleteProducts(slugs: string[]): Observable<any> {
+    return this.http.delete('/products/bulk' + slugs).pipe(map(res => {
       return res
     }))
   }

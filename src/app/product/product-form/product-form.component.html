@@ -34,7 +34,13 @@
             <label for="id_image" >
               Image *
             </label>
-            <input formControlName="image" [class.border-red-500]="image.touched && image.invalid" id="id_image" type="file" placeholder="image">
+            <div *ngIf="uploadedImage">
+              <img width="100" [src]="baseUrl + '/' + uploadedImage?.webUrl" alt="product img" />
+              <div class="flex">
+                <button mat-icon-button (click)="onImageDelete()"><mat-icon>delete</mat-icon></button>
+              </div>
+            </div>
+            <input *ngIf="!uploadedImage" (change)="onFileSelect($event)" [class.border-red-500]="image.touched && image.invalid" id="id_image" type="file" placeholder="image">
             <p *ngIf="image.touched && image.hasError('required')" class="text-red-500 text-xs italic">Please attach product image.</p>
           </div>
         </div>

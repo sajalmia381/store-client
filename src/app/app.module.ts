@@ -16,6 +16,7 @@ import { AuthEffects } from './auth/state/auth.effects';
 import { CategoryEffects } from './category/state/category.effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClintInterceptor } from '@shared/services/http.interceptor';
+import { ImageEffects } from './media/state/media.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,7 @@ import { HttpClintInterceptor } from '@shared/services/http.interceptor';
     SharedModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AuthEffects, CategoryEffects]),
+    EffectsModule.forRoot([AuthEffects, CategoryEffects, ImageEffects]),
     StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer })
   ],
   providers: [

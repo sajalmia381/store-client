@@ -113,4 +113,16 @@ export class ProductEffects {
       })
     );
   });
+  bulkDeleteProducts$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(productAction.bulkDeleteProducts),
+      switchMap(action => {
+        return this.productService.bulkDeleteProducts(action.slugs).pipe(
+          map(data => {
+            return productAction.bulkDeleteProductsSuccess({ slugs: action.slugs });
+          })
+        );
+      })
+    );
+  });
 }
