@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { getUserData } from 'src/app/auth/state/auth.selectors';
 import { AuthState } from 'src/app/auth/state/auth.state';
+import { setThemeMode } from 'src/app/store/shared/shared.actions';
+import { getThemeMode } from 'src/app/store/shared/shared.selectors';
+import { SharedState } from 'src/app/store/shared/shared.state';
 
 @Component({
   selector: 'app-header',
@@ -12,14 +15,21 @@ import { AuthState } from 'src/app/auth/state/auth.state';
 })
 export class HeaderComponent implements OnInit {
   userData!: any;
-  constructor(private store: Store<AuthState>) { }
+  themeMode!: string;
+  constructor(private store: Store<AuthState | SharedState>) { }
 
   ngOnInit(): void {
     this.store.select(getUserData).pipe(take(1))
       .subscribe(data => {
         console.log('userData form header', data)
-        this.userData = data;
+        this.userData = data?.data;
+      })
+    this.store.select(getThemeMode)
+      .subscribe(theme => {
+        this.themeMode = theme;
       })
   }
-
+  toggleTheme(): void {
+    this.store.dispatch(setThemeMode({theme: this.themeMode === 'dark' ? 'light' : 'dark'}))
+  }
 }

@@ -30,6 +30,9 @@
   &__inner {
     @apply pt-4;
   }
+  &__toolbar {
+    @apply bg-gray-100 dark:bg-gray-500;
+  }
 }
 @media (max-width: 499px) {
   .page {

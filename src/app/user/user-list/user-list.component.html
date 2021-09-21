@@ -1,11 +1,11 @@
 <div class="page__container">
-  <div class="page__content">
-    <div class="flex items-center bg-gray-100 py-4 px-4">
-      <h2>Users</h2>
-      <div class="ml-auto">
-        <a routerLink="add-user" mat-flat-button><mat-icon class="mr-2">person_add</mat-icon> Add User</a>
-      </div>
+  <div class="page__toolbar flex items-center py-4 px-4">
+    <h2>Users</h2>
+    <div class="ml-auto">
+      <a routerLink="add-user" mat-flat-button><mat-icon class="mr-2">person_add</mat-icon> Add User</a>
     </div>
+  </div>
+  <div class="page__content">
     <div class="page__table">
       <table class="ti-table" mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="_id">
