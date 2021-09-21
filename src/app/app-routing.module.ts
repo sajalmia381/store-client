@@ -16,6 +16,10 @@ const childRoutes: Routes = [
     loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
   },
   {
+    path: 'media',
+    loadChildren: () => import('./media/media.module').then(m => m.MediaModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   }

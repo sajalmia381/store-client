@@ -24,12 +24,12 @@ export class HttpClintInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.store.select(getToken).pipe(
-      exhaustMap(token => {
-        if (!token) {
+      exhaustMap(accessToken => {
+        if (!accessToken) {
           return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
         }
         let modifiedReq = request.clone({
-          headers: request.headers.append('Authorization', 'Bearer ' + token)
+          headers: request.headers.append('Authorization', 'Bearer ' + accessToken)
         });
         return next.handle(modifiedReq).pipe(catchError(res => this.errorHandler(res)));
       })
