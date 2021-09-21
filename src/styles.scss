@@ -44,6 +44,8 @@ $store-dark-theme: mat.define-dark-theme(
 // that you are using.
 @include mat.all-component-themes($store-theme);
 .dark {
+  background-color: #333333;
+  color: #ffffff;
   @include mat.all-component-colors($store-dark-theme);
 }
 

@@ -1,3 +1,12 @@
 .ti-table {
   width: 100%;
+  th,
+  td {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  th {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { getUserData } from 'src/app/auth/state/auth.selectors';
 import { AuthState } from 'src/app/auth/state/auth.state';
+import { logoutSuccess } from 'src/app/auth/state/auth.actions';
 import { setThemeMode } from 'src/app/store/shared/shared.actions';
 import { getThemeMode } from 'src/app/store/shared/shared.selectors';
 import { SharedState } from 'src/app/store/shared/shared.state';
@@ -32,4 +32,7 @@ export class HeaderComponent implements OnInit {
   toggleTheme(): void {
     this.store.dispatch(setThemeMode({theme: this.themeMode === 'dark' ? 'light' : 'dark'}))
   }
+  onLogout(): void {
+    this.store.dispatch(logoutSuccess())
+  } 
 }

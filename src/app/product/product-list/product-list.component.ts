@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   isAlive: boolean = true;
   isLoaded$!: Observable<boolean>;
   loading!: false;
-  displayedColumns: string[] = ['select', 'title', 'price', 'image', 'createdAt', 'action'];
+  displayedColumns: string[] = ['select', 'title', 'price', 'category', 'createdAt', 'action'];
   selection = new SelectionModel<Product>(true, []);
   dataSource: any = new MatTableDataSource<Product>([]);
   backendBaseUrl: string = environment.baseUrl;
