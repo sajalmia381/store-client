@@ -8,3 +8,7 @@ const getSharedState = createFeatureSelector<SharedState>(SHARED_STATE_NAME);
 export const getLoadingStatus = createSelector(getSharedState, state => {
   return state.loading;
 });
+
+export const getThemeMode = createSelector(getSharedState, state => {
+  return state.themeMode
+})
