@@ -1,20 +1,28 @@
 <div class="topbar bg-blue-600 shadow p-4">
   <div class="flex flex-wrap items-center">
     <div class="flex-grow flex items-center">
-      <a routerLink="/"><h2 class="text-xl text-white">StoreApi</h2></a>
+      <a routerLink="/">
+        <h2 class="text-xl text-white">StoreApi</h2>
+      </a>
     </div>
     <div class="topbar__right sm:ml-auto mt-2 sm:mt-0">
       <div class="flex items-center">
-        <button mat-icon-button class="bg-gray-100 mx-3"><mat-icon>subject</mat-icon></button>
-        <button mat-icon-button class="bg-gray-100 mr-3"><mat-icon>dark_mode</mat-icon></button>
+        <button mat-icon-button class="bg-gray-100 mx-3">
+          <mat-icon>subject</mat-icon>
+        </button>
+        <button mat-icon-button class="bg-gray-100 mr-3">
+          <mat-icon>dark_mode</mat-icon>
+        </button>
         <div class="flex items-center">
-          <a *ngIf="!userData" routerLink="/auth/login" mat-flat-button class="bg-gray-100 mx-3"><mat-icon class="mr-2">login</mat-icon> Login</a>
-          <a *ngIf="!userData" routerLink="/auth/register" mat-flat-button class="bg-gray-100 mr-3"><mat-icon class="mr-2">person_add</mat-icon> Register</a>
+          <a *ngIf="!userData" routerLink="/auth/login" mat-flat-button class="bg-gray-100 mx-3">
+            <mat-icon class="mr-2">login</mat-icon> Login
+          </a>
+          <!-- <a *ngIf="!userData" routerLink="/auth/register" mat-flat-button class="bg-gray-100 mr-3"><mat-icon class="mr-2">person_add</mat-icon> Register</a> -->
         </div>
         <button *ngIf="userData" class="bg-white w-full flex items-center">
           <div class="flex items-center">
             <div class="w-10 h-10 rounded-lg bg-gray-500">
-              
+
             </div>
             <!-- <img class="w-10 h-10 rounded-lg" src="https://avatars2.githubusercontent.com/u/1490347?s=460&u=39d7a6b9bc030244e2c509119e5f64eabb2b1727&v=4" alt="My profile" > -->
           </div>
