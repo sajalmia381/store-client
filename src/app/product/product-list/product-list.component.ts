@@ -35,7 +35,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
       });
     this.isLoaded$ = this.store.select(isLoaded);
     this.store.dispatch(loadProducts());
-    
   }
   ngOnDestroy(): void {
     this.isAlive = false;
