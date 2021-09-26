@@ -34,7 +34,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       price: new FormControl('', Validators.required),
       description: new FormControl(''),
       category: new FormControl('', Validators.required),
-      image: new FormControl('', Validators.required)
+      image: new FormControl(''),
+      imageSource: new FormControl('')
     })
     this.fetchCategory();
   }
@@ -70,17 +71,13 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   // Image
   onFileSelect(event: Event) {
     const file = <File>(event.target as HTMLInputElement).files?.[0];
-    // const reader = new FileReader();
-    // reader.readAsDataURL(this.imageFile)
-    // reader.onload = (event: any) => {
-    //   this.imagePreview = (event.target as FileReader).result;
-    // };
     if (file) {
       const fd = new FormData();
       fd.append('image', file, file.name)
       this.httpService.upload('/images', fd).subscribe(res => {
         const image: Image = res.data;
-        this.productForm.get('image')?.setValue(image.webUrl);
+        // this.productForm.get('image')?.setValue(image.webUrl);
+        this.productForm.get('imageSource')?.setValue(image._id);
         this.uploadedImage = image;
         this.store.dispatch(addImageSuccess({image}));
       })
