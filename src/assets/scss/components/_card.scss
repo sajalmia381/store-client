@@ -1,0 +1,10 @@
+.card {
+  @apply flex flex-col;
+  @apply min-w-0;
+  @apply rounded;
+  @apply break-words;
+  background-color: var(--bg-card);
+  &__body {
+    @apply p-page;
+  }
+}

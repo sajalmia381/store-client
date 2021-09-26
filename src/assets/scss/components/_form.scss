@@ -5,8 +5,10 @@
   }
   textarea,
   input {
-    @apply appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500;
-    @apply bg-gray-200 dark:text-gray-200;
+    border-color: var(--border-color);
+    @apply appearance-none block w-full rounded py-3 px-4 mb-3 leading-tight focus:outline-none;
+    @apply text-gray-700 border focus:border-gray-500;
+    @apply dark:text-gray-200;
   }
 }
 
@@ -24,16 +26,6 @@
     }
     .mat-select-arrow-wrapper {
       transform: none !important;
-    }
-  }
-}
-
-.theme-light {
-  .field {
-    &__mat-field {
-      .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-        background: rgba(0, 0, 0, 0.04);
-      }
     }
   }
 }

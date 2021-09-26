@@ -1,11 +1,11 @@
 <div class="page__container">
-  <div class="page__content">
-    <div class="page__toolbar flex items-center py-4 px-4">
-      <div class="flex items-center">
-        <h2>Categories</h2>
-        <a class="ml-4" routerLink="add-new" mat-flat-button><mat-icon class="mr-2">add</mat-icon> Add Category</a>
-      </div>
+  <div class="page__toolbar">
+    <div class="flex items-center">
+      <h2>Categories</h2>
+      <a class="ml-4" routerLink="add-new" mat-flat-button><mat-icon class="mr-2">add</mat-icon> Add Category</a>
     </div>
+  </div>
+  <div class="page__content">
     <div class="page__table">
       <table class="ti-table" mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="name">
