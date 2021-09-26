@@ -1,5 +1,5 @@
 <div class="page__container">
-  <div class="page__toolbar flex items-center py-4 px-4">
+  <div class="page__toolbar">
     <div class="flex items-center">
       <h2>Products #.{{ this.dataSource.data.length }} </h2>
       <button *ngIf="currentView == 'list'" class="ml-3" mat-flat-button [matMenuTriggerFor]="bulkMenu"><mat-icon class="mr-2">more_vert</mat-icon> Bulk Actions</button>
@@ -17,10 +17,10 @@
     </div>
     <div class="ml-auto">
       <div class="filter-view-btns">
-        <button (click)="toggleView()" [class.active]="currentView === 'list'" class="filter-view__btn me-2">
+        <button (click)="toggleView()" [class.text-primary]="currentView === 'list'" class="filter-view__btn me-2">
           <mat-icon>view_list</mat-icon>
         </button>
-        <button (click)="toggleView()" [class.active]="currentView === 'grid'" class="filter-view__btn">
+        <button (click)="toggleView()" [class.text-primary]="currentView === 'grid'" class="filter-view__btn">
           <mat-icon>grid_view</mat-icon>
         </button>
       </div>
@@ -62,19 +62,19 @@
         </ng-container>
       
         <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Price </th>
-          <td mat-cell *matCellDef="let element"> ${{element.price}} </td>
+          <th mat-header-cell *matHeaderCellDef>Price </th>
+          <td mat-cell *matCellDef="let element">${{element.price}} </td>
         </ng-container>
         <ng-container matColumnDef="category">
-          <th mat-header-cell *matHeaderCellDef> Category </th>
-          <td mat-cell *matCellDef="let element"> ${{element?.category?.name | titlecase}} </td>
+          <th mat-header-cell *matHeaderCellDef>Category </th>
+          <td mat-cell *matCellDef="let element">{{element?.category?.name | titlecase}} </td>
         </ng-container>
         <ng-container matColumnDef="createdAt">
-          <th mat-header-cell *matHeaderCellDef> Created </th>
-          <td mat-cell *matCellDef="let element"> {{element.createdAt|date}} </td>
+          <th mat-header-cell *matHeaderCellDef>Created </th>
+          <td mat-cell *matCellDef="let element">{{element.createdAt|date}} </td>
         </ng-container>
         <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <th mat-header-cell *matHeaderCellDef>Actions </th>
           <td mat-cell *matCellDef="let element">
             <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
             <mat-menu #menu="matMenu" xPosition="before">

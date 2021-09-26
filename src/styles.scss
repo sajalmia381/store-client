@@ -44,9 +44,19 @@ $store-dark-theme: mat.define-dark-theme(
 // that you are using.
 @include mat.all-component-themes($store-theme);
 .dark {
-  background-color: #333333;
+  background-color: var(--bg-color);
   color: #ffffff;
   @include mat.all-component-colors($store-dark-theme);
+  .mat-drawer {
+    background-color: var(--sidenav-bg-color);
+    &-container {
+      background-color: var(--bg-color);
+    }
+  }
+  .mat-dialog-container,
+  .mat-table {
+    background-color: var(--bg-card);
+  }
 }
 
 // Tailwind css
@@ -55,6 +65,8 @@ $store-dark-theme: mat.define-dark-theme(
 @import 'tailwindcss/utilities';
 
 /* You can add global styles to this file, and also import other style files */
+// Variables always will be top
+@import './assets/scss/variables.scss';
 @import './assets/scss';
 html,
 body {

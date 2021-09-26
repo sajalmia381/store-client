@@ -24,6 +24,9 @@ module.exports = {
         accent: '#4164a9',
         warn: '#ff9966',
       },
+      spacing: {
+        'page': '1.25rem',
+      }
     },
   },
   variants: {

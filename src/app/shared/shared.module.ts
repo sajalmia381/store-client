@@ -11,11 +11,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { CdkTreeModule } from '@angular/cdk/tree';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DeleteConformationComponent } from './components/delete-conformation/delete-conformation.component';
+
 
 const commonImportedModules = [
   FormsModule,
@@ -38,7 +40,7 @@ const commonImportedModules = [
     SidenavComponent,
     DeleteConformationComponent
   ],
-  imports: [CommonModule, ...commonImportedModules, RouterModule, MatSidenavModule],
+  imports: [CommonModule, ...commonImportedModules, RouterModule, MatSidenavModule, CdkTreeModule],
   exports: [...commonImportedModules, LayoutComponent, HeaderComponent, SidenavComponent, DeleteConformationComponent]
 })
 export class SharedModule {}
