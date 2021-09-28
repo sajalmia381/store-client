@@ -56,7 +56,21 @@ const TREE_DATA: MenuItem[] = [
     name: 'Media',
     iconName: 'image',
     url: '/media/images'
-  }
+  },
+  {
+    name: 'Authentication',
+    iconName: 'person',
+    children: [
+      {
+        name: 'Login',
+        url: '/auth/login'
+      },
+      // {
+      //   name: 'Registration',
+      //   url: '/auth/register'
+      // },
+    ]
+  },
 ];
 
 @Component({

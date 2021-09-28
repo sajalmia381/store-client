@@ -53,9 +53,13 @@ $store-dark-theme: mat.define-dark-theme(
       background-color: var(--bg-color);
     }
   }
-  .mat-dialog-container,
   .mat-table {
     background-color: var(--bg-card);
+  }
+  .mat-select-panel,
+  .mat-menu-panel,
+  .mat-dialog-container {
+    background-color: var(--bg-popup);
   }
 }
 
@@ -75,6 +79,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+  letter-spacing: 0.3px;
 }
 
 .global-loader {
