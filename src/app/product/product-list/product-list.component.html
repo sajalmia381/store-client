@@ -54,7 +54,7 @@
                 <img *ngIf="element?.image" [src]="backendBaseUrl + '/' + element?.image" alt="img">
               </a>
               <div class="flex-grow">
-                <a class="text-primary font-semibold" [routerLink]="element?.slug">{{element?.title | titlecase}}</a>
+                <a class="text-primary font-semibold block" [routerLink]="element?.slug">{{element?.title | titlecase}}</a>
                 <p class="mt-1 text-sm text-gray-300">id: {{ element?._id }}</p>
               </div>
             </div>

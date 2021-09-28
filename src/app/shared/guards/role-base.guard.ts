@@ -41,6 +41,7 @@ export class RoleBaseGuard implements CanActivate {
   isAuthTokenValid(accessToken: string): boolean {
     const decoded: any = jwtDecode(accessToken);
     const currentTime = Date.now();
+    console.log(decoded?.token_expiration_date, currentTime)
     if (decoded?.token_expiration_date < currentTime) {
       this.snackBar.open('Your Session have been Expired!! Please Sign In again.', 'Close', {
         duration: 10000

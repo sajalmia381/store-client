@@ -1,5 +1,5 @@
 const { guessProductionMode } = require('@ngneat/tailwind');
-
+const colors = require('tailwindcss/colors')
 process.env.TAILWIND_MODE = guessProductionMode() ? 'build' : 'watch';
 
 module.exports = {
@@ -23,6 +23,7 @@ module.exports = {
         primary: '#5bc4d6',
         accent: '#4164a9',
         warn: '#ff9966',
+        cyan: colors.cyan,
       },
       spacing: {
         'page': '1.25rem',
