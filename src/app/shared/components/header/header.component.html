@@ -19,7 +19,7 @@
           </a>
           <!-- <a *ngIf="!userData" routerLink="/auth/register" mat-flat-button class="bg-gray-100 mr-3"><mat-icon class="mr-2">person_add</mat-icon> Register</a> -->
         </div>
-        <button *ngIf="userData" [matMenuTriggerFor]="profileMenu" class="bg-white dark:bg-black w-full flex items-center py-1 px-2">
+        <button *ngIf="userData" [matMenuTriggerFor]="profileMenu" class="bg-white dark:bg-black w-full flex items-center py-1 px-2 rounded">
           <div class="flex items-center">
             <img class="w-10 h-10 rounded-lg" [src]="userData?.avatar || 'assets/images/user-avatar.png'" alt="My profile" >
           </div>

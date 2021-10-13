@@ -13,7 +13,9 @@ import { ImageState } from 'src/app/media/state/media.state';
 import { HttpService } from '@shared/services/http.service';
 import { addImageSuccess } from 'src/app/media/state/media.actions';
 import { environment } from '@env/environment';
-
+import { ProductEffects } from '../state/product.effects';
+import { ofType } from '@ngrx/effects';
+import * as productActions from '../state/product.actions';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -26,7 +28,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   // Image
   uploadedImage!: Image | null;
   baseUrl: string = environment.baseUrl;
-  constructor(private store: Store<ProductState | ImageState>, private snackBar: MatSnackBar, private httpService: HttpService) { }
+  productUpdated?: boolean;
+  constructor(
+    private store: Store<ProductState | ImageState>,
+    private snackBar: MatSnackBar,
+    private httpService: HttpService,
+    private productEffect: ProductEffects) { }
 
   ngOnInit(): void {
     this.productForm = new FormGroup({
@@ -38,6 +45,13 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       imageSource: new FormControl('')
     })
     this.fetchCategory();
+    this.productEffect.addProduct$
+      .pipe(ofType(productActions.addProductSuccess))
+      .subscribe(_ => {
+        this.productUpdated = true;
+        this.productForm.reset();
+        this.uploadedImage = null;
+      });
   }
   ngOnDestroy(): void {
     this.isAlive = false;

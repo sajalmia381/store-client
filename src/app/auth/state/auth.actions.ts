@@ -9,6 +9,7 @@ export const loginSuccess = createAction(
   props<{ userData: any; redirect: boolean }>()
 );
 export const logoutSuccess = createAction('[Auth] Logout success');
+export const resetRequester = createAction('[Auth] Reset requester');
 
 export const setLoginError = createAction(
   '[Auth] Set login error',

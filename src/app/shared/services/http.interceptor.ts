@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode';
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -13,6 +14,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
 import { catchError, exhaustMap } from 'rxjs/operators';
 import { getToken } from 'src/app/auth/state/auth.selectors';
+import { resetRequester } from 'src/app/auth/state/auth.actions';
 
 @Injectable()
 export class HttpClintInterceptor implements HttpInterceptor {
@@ -23,17 +25,42 @@ export class HttpClintInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('intercept er call')
     return this.store.select(getToken).pipe(
       exhaustMap(accessToken => {
+        console.log('exhaust map access token', accessToken)
         if (!accessToken) {
           return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
         }
+        // if (this.isAuthTokenInvalid(accessToken)) {
+        //   this.store.dispatch(resetRequester());          
+        //   return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
+        // }
         let modifiedReq = request.clone({
           headers: request.headers.append('Authorization', 'Bearer ' + accessToken)
         });
         return next.handle(modifiedReq).pipe(catchError(res => this.errorHandler(res)));
       })
     );
+  }
+  
+  isAuthTokenInvalid(accessToken: string): boolean {
+    const decoded: any = jwtDecode(accessToken);
+    console.log('recoded', decoded)
+    const currentTime = Date.now();
+    console.log(decoded?.exp, currentTime)
+    console.log(typeof decoded?.exp, typeof currentTime)
+    console.log(new Date(decoded?.exp))
+    console.log('now', new Date(currentTime))
+    
+    console.log(decoded?.exp - currentTime)
+    if (decoded?.exp < currentTime) {
+      this.snackBar.open('Your Session have been Expired!! Please Sign In again.', 'Close', {
+        duration: 10000
+      });
+      return false;
+    }
+    return true;
   }
 
   private errorHandler(response: any) {
