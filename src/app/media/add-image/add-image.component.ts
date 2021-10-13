@@ -16,7 +16,10 @@ export class AddImageComponent implements OnInit {
   imagePreview!: any;
   uploaded!: boolean;
 
-  constructor(private store: Store<ImageState>, private imageEffect: ImageEffects, private dialogRef: MatDialogRef<AddImageComponent>) { }
+  constructor(
+    private store: Store<ImageState>,
+    private imageEffect: ImageEffects,
+    private dialogRef: MatDialogRef<AddImageComponent>) { }
 
   ngOnInit(): void {
     this.imageEffect.addImage$.pipe(ofType(addImageSuccess))

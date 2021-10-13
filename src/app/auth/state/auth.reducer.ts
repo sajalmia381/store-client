@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { logoutSuccess, loginSuccess, setLoginError } from './auth.actions';
+import { logoutSuccess, loginSuccess, setLoginError, resetRequester } from './auth.actions';
 import { AuthState, initialState } from './auth.state';
 
 const _authReducer = createReducer(
@@ -8,7 +8,11 @@ const _authReducer = createReducer(
     const { userData } = action;
     return { ...state, isSignedIn: true, userData, errors: {} };
   }),
-  on(logoutSuccess, state => {
+  on(logoutSuccess, () => {
+    localStorage.removeItem('requester');
+    return { isSignedIn: false, userData: null, errors: {} };
+  }),
+  on(resetRequester, () => {
     localStorage.removeItem('requester');
     return { isSignedIn: false, userData: null, errors: {} };
   }),

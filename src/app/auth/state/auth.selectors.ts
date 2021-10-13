@@ -10,7 +10,6 @@ export const isSignedIn = createSelector(getAuthState, state => {
 });
 
 export const getToken = createSelector(getAuthState, state => {
-  console.log('token state', state)
   return state?.userData?.access_token || null;
 });
 
