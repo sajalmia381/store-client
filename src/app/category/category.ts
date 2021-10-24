@@ -4,5 +4,5 @@ export interface Category {
   _id: string;
   name: string,
   slug: string,
-  products: Product[] | string[]
+  products: Product[]
 }

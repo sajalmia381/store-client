@@ -36,16 +36,12 @@ export class CategoryEffects {
       withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getCategorySlugs)),
       switchMap(([action, route, slugs]) => {
         const slug = route.params.slug;
-        const isSlugExists = slugs.some(_slug => _slug === slug)
-        if (!isSlugExists) {
-          return this.categoryService.getCategory(slug).pipe(
-            map((res: any) => {
-              const category = { ...res?.data, slug };
-              return categoryAction.addOneCategory({ category });
-            })
-          );
-        }
-        return of(categoryAction.dummyAction());
+        return this.categoryService.getCategory(slug).pipe(
+          map((res: any) => {
+            const category = { ...res?.data, slug };
+            return categoryAction.addOneCategory({ category });
+          })
+        );
       })
     );
   });
