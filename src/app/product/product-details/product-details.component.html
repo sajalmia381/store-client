@@ -1,11 +1,11 @@
 
 
 <div class="page__container">
+	<div class="page__toolbar">
+		<a routerLink="/products" mat-flat-button><mat-icon class="mr-2">arrow_back</mat-icon> Back to products</a>
+		<!-- <div class="ml-auto"></div> -->
+	</div>
   <div class="page__content">
-    <div class="page__toolbar">
-      <a routerLink="/products" mat-flat-button><mat-icon class="mr-2">arrow_back</mat-icon> Back to products</a>
-      <!-- <div class="ml-auto"></div> -->
-    </div>
 		<div class="pt-5 px-4" *ngIf="product$ | async as product; else emptyProduct">
 			<div class="container">
 				<div class="grid grid-cols-12 gap-8">
