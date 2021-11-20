@@ -19,9 +19,9 @@ export class HeaderComponent implements OnInit {
   constructor(private store: Store<AuthState | SharedState>) { }
 
   ngOnInit(): void {
-    this.store.select(getUserData).pipe(take(1))
+    this.store.select(getUserData)
       .subscribe(data => {
-        console.log('userData form header', data)
+        // console.log('userData form header', data)
         this.userData = data?.data;
       })
     this.store.select(getThemeMode)

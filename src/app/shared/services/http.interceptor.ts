@@ -4,8 +4,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor,
-  HttpErrorResponse
+  HttpInterceptor
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,7 +13,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
 import { catchError, exhaustMap } from 'rxjs/operators';
 import { getToken } from 'src/app/auth/state/auth.selectors';
-import { resetRequester } from 'src/app/auth/state/auth.actions';
+import { logoutSuccess } from 'src/app/auth/state/auth.actions';
 
 @Injectable()
 export class HttpClintInterceptor implements HttpInterceptor {
@@ -32,10 +31,10 @@ export class HttpClintInterceptor implements HttpInterceptor {
         if (!accessToken) {
           return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
         }
-        // if (this.isAuthTokenInvalid(accessToken)) {
-        //   this.store.dispatch(resetRequester());          
-        //   return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
-        // }
+        if (this.isAuthTokenInvalid(accessToken)) {
+          this.store.dispatch(logoutSuccess());          
+          return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
+        }
         let modifiedReq = request.clone({
           headers: request.headers.append('Authorization', 'Bearer ' + accessToken)
         });
@@ -46,23 +45,17 @@ export class HttpClintInterceptor implements HttpInterceptor {
   
   isAuthTokenInvalid(accessToken: string): boolean {
     const decoded: any = jwtDecode(accessToken);
-    console.log('recoded', decoded)
-    const currentTime = Date.now();
-    console.log(decoded?.exp, currentTime)
-    console.log(typeof decoded?.exp, typeof currentTime)
-    console.log(new Date(decoded?.exp))
-    console.log('now', new Date(currentTime))
-    
-    console.log(decoded?.exp - currentTime)
-    if (decoded?.exp < currentTime) {
+    // default decoded exp format is second
+    const expMilSecond: number = decoded?.exp * 1000 // milliseconds
+    const currentTime = Date.now(); // milliseconds
+    if (expMilSecond < currentTime) {
       this.snackBar.open('Your Session have been Expired!! Please Sign In again.', 'Close', {
         duration: 10000
       });
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
-
   private errorHandler(response: any) {
     console.log('errorHandler Response', response);
     const status = response?.status;
