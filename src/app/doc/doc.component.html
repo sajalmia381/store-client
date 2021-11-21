@@ -1,0 +1,42 @@
+<div class="py-20">
+  <div class="container">
+    <div class="doc__container">
+      <div class="doc__sidebar">
+        <app-default-sidenav></app-default-sidenav>
+      </div>
+      <div class="doc__content">
+        <div class="card">
+          <h2 class="card__title"><mat-icon>view_in_ar</mat-icon> Product</h2>
+          <div class="card__body">
+              <div id="id_product" class="card__content">
+                  <div class="card__api">
+                    <h4 id="id_product--1" class="card__sub_title mt-2">{{docData?.product?.[0]?.name}}</h4>
+                    <app-prism [code]="docData?.product?.[0]?.code"></app-prism>
+                  </div>
+                  <div class="card__api">
+                    <h4 id="id_product--2" class="card__sub_title mt-2">{{docData?.product?.[1]?.name}}</h4>
+                    <app-prism [code]="docData?.product?.[1]?.code"></app-prism>
+                  </div>
+                  <div class="card__api">
+                    <h4 id="id_product--3" class="card__sub_title mt-2">{{docData?.product?.[2]?.name}}</h4>
+                    <app-prism [code]="docData?.product?.[2]?.code"></app-prism>
+                  </div>
+                  <div class="card__api">
+                    <h4 id="id_product--4" class="card__sub_title mt-2">{{docData?.product?.[3]?.name}}</h4>
+                    <app-prism [code]="docData?.product?.[3]?.code"></app-prism>
+                  </div>
+                  <div class="card__api">
+                    <h4 id="id_product--5" class="card__sub_title mt-2">{{docData?.product?.[4]?.name}}</h4>
+                    <app-prism [code]="docData?.product?.[4]?.code"></app-prism>
+                  </div>
+                  <div class="card__api">
+                    <h4 id="id_product--6" class="card__sub_title mt-2">{{docData?.product?.[5]?.name}}</h4>
+                    <app-prism [code]="docData?.product?.[5]?.code"></app-prism>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

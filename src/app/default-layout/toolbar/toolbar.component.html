@@ -1,0 +1,31 @@
+<div class="topbar bg-white dark:bg-gray-900 shadow py-4">
+  <div class="container flex flex-wrap items-center">
+    <div class="flex-grow flex items-center">
+      <a routerLink="/">
+        <h2 class="text-xl font-bold">Store Rest API</h2>
+      </a>
+    </div>
+    <div class="topbar__right sm:ml-auto mt-2 sm:mt-0">
+      <div class="flex flex-wrap items-center">
+        <nav>
+          <ul class="navbar__nav">
+            <li class="nav__item">
+              <a class="nav__link" routerLink="" routerLinkActive="active">Home</a>
+            </li>
+            <li>
+              <a class="nav__link" routerLink="/docs" routerLinkActive="active">Docs</a>
+            </li>
+            <li>
+              <a class="nav__link" href="">Github</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="navbar__icons flex items-center">
+          <button (click)="toggleTheme()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
+            <mat-icon>{{ themeMode ==='light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

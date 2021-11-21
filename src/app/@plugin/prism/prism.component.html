@@ -1,0 +1,4 @@
+<pre *ngIf="language" class="language-{{ language }}">
+  <code *ngIf="code" #codeEle class="language-{{ language }}">{{code}}</code>
+  <code *ngIf="!code" #codeEle class="language-{{ language }}"><ng-content></ng-content></code>
+</pre>

@@ -1,0 +1,30 @@
+.navbar {
+  &__nav {
+    @apply flex items-center flex-wrap;
+  }
+  &__icons {
+    @apply relative pl-4;
+    &::before {
+      content: '';
+      @apply absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      height: 100%;
+      max-height: 26px;
+      width: 1px;
+      @apply bg-gray-400;
+    }
+  }
+}
+.nav {
+  &__item {
+  }
+  &__link {
+    @apply p-4;
+    opacity: 0.9;
+    &.active {
+      opacity: 1;
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { take } from 'rxjs/operators';
 import { getUserData } from 'src/app/auth/state/auth.selectors';
 import { AuthState } from 'src/app/auth/state/auth.state';
 import { logoutSuccess } from 'src/app/auth/state/auth.actions';
