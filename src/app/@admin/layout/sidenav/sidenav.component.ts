@@ -16,11 +16,11 @@ const TREE_DATA: MenuItem[] = [
     children: [
       {
         name: 'Product List',
-        url: '/products'
+        url: '/admin/products'
       },
       {
         name: 'Add Product',
-        url: '/products/add-product'
+        url: '/admin/products/add-product'
       },
     ]
   },
@@ -30,11 +30,11 @@ const TREE_DATA: MenuItem[] = [
     children: [
       {
         name: 'Categories',
-        url: '/categories'
+        url: '/admin/categories'
       },
       {
         name: 'Add category',
-        url: '/categories/add-new'
+        url: '/admin/categories/add-new'
       },
     ]
   },
@@ -44,33 +44,19 @@ const TREE_DATA: MenuItem[] = [
     children: [
       {
         name: 'User list',
-        url: '/users'
+        url: '/admin/users'
       },
       {
         name: 'Add user',
-        url: '/users/add-user'
+        url: '/admin/users/add-user'
       },
     ]
   },
   {
     name: 'Media',
     iconName: 'image',
-    url: '/media/images'
-  },
-  {
-    name: 'Authentication',
-    iconName: 'person',
-    children: [
-      {
-        name: 'Login',
-        url: '/auth/login'
-      },
-      // {
-      //   name: 'Registration',
-      //   url: '/auth/register'
-      // },
-    ]
-  },
+    url: '/admin/media/images'
+  }
 ];
 
 @Component({
