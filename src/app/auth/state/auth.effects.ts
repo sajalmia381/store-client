@@ -9,7 +9,7 @@ import { setLoading } from 'src/app/store/shared/shared.actions';
 import { AuthService } from '../auth.service';
 import { loginRequest, loginSuccess, logoutSuccess, setLoginError } from './auth.actions';
 
-@Injectable()
+@Injectable({ providedIn: '<USERNAME>'})
 export class AuthEffects {
   constructor(
     private action$: Actions,

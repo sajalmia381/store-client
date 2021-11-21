@@ -10,13 +10,13 @@
         <nav>
           <ul class="navbar__nav">
             <li class="nav__item">
-              <a class="nav__link" routerLink="" routerLinkActive="active">Home</a>
+              <a class="nav__link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Home</a>
             </li>
-            <li>
-              <a class="nav__link" routerLink="/docs" routerLinkActive="active">Docs</a>
+            <li class="nav__item">
+              <a class="nav__link" routerLink="/docs" routerLinkActive="active" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Docs</a>
             </li>
-            <li>
-              <a class="nav__link" href="">Github</a>
+            <li class="nav__item">
+              <a class="nav__link" href="http://github.com" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Github</a>
             </li>
           </ul>
         </nav>

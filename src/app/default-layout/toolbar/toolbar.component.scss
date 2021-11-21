@@ -19,12 +19,19 @@
 }
 .nav {
   &__item {
+    &:not(:first-child) {
+      .nav__link {
+        @apply ml-2;
+      }
+    }
   }
   &__link {
-    @apply p-4;
-    opacity: 0.9;
+    @apply py-3 px-6 rounded;
+    opacity: 0.5;
+    &:hover,
     &.active {
       opacity: 1;
+      @apply font-semibold bg-indigo-50;
     }
   }
 }
