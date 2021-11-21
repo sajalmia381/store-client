@@ -31,9 +31,8 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
-            "scripts": [],
-            "allowedCommonJsDependencies": [
-              "prismjs"
+            "scripts": [
+              "node_modules/prismjs/prism.js"
             ]
           },
           "configurations": {
