@@ -1,0 +1,42 @@
+.doc {
+  &__container {
+    @apply flex;
+  }
+  &__sidebar {
+    max-width: 260px;
+    width: 100%;
+    @apply pr-4 flex-none;
+  }
+  &__content {
+    @apply pl-4 flex-grow;
+  }
+}
+.card {
+  @apply flex flex-col;
+  @apply min-w-0 p-4;
+  @apply rounded border dark:border-gray-700;
+  @apply break-words;
+  background-color: var(--bg-card);
+  position: relative;
+  background-clip: border-box;
+  border-radius: 0.25rem;
+  &__title {
+    @apply mb-0 text-4xl mb-10 font-extrabold flex items-center;
+    .mat-icon {
+      font-size: 2rem;
+      line-height: 2rem;
+      height: 2rem;
+      width: 2rem;
+      margin-right: 1rem;
+      @apply text-primary;
+    }
+  }
+  &__api {
+    &:not(last-child) {
+      margin-bottom: 2.5rem;
+    }
+  }
+  &__sub_title {
+    @apply text-2xl font-semibold;
+  }
+}

@@ -9,7 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { environment } from '../environments/environment';
-import { SharedModule } from './shared/shared.module';
 import { appReducer } from './store';
 import { RouterSerializer } from './store/router/router.serializer';
 import { AuthEffects } from './auth/state/auth.effects';
@@ -17,6 +16,7 @@ import { CategoryEffects } from './category/state/category.effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClintInterceptor } from '@shared/services/http.interceptor';
 import { ImageEffects } from './media/state/media.effects';
+import { DefaultLayoutModule } from './default-layout/default-layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,11 +24,11 @@ import { ImageEffects } from './media/state/media.effects';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule,
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AuthEffects, CategoryEffects, ImageEffects]),
-    StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer })
+    // EffectsModule.forRoot([AuthEffects, CategoryEffects, ImageEffects]),
+    StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer }),
+    DefaultLayoutModule,
   ],
   providers: [
     {

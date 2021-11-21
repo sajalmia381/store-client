@@ -1,27 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './shared/components/layout/layout.component';
+import { DefaultLayoutComponent } from './default-layout/default-layout.component';
 
-const childRoutes: Routes = [
+const rootRoutes: Routes = [
   {
-    path: 'products',
-    loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
-  },
-  {
-    path: 'users',
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
-  },
-  {
-    path: 'categories',
-    loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
-  },
-  {
-    path: 'media',
-    loadChildren: () => import('./media/media.module').then(m => m.MediaModule)
+    path: 'docs',
+    loadChildren: () => import('./doc/doc.module').then(m => m.DocModule)
   },
   {
     path: '',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   }
 ];
 
@@ -31,10 +19,14 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: '',
-    component: LayoutComponent,
-    children: childRoutes,
+    path: 'admin',
+    loadChildren: () => import('./@admin/admin.module').then(m => m.adminModule)
   },
+  {
+    path: '',
+    component: DefaultLayoutComponent,
+    children: rootRoutes,
+  }
 ];
 
 @NgModule({

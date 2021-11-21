@@ -68,6 +68,18 @@ $store-dark-theme: mat.define-dark-theme(
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+// Prism css
+/* Prismjs theme */
+// @import 'prismjs/themes/prism.css';
+/* Available themes */
+// @import 'prismjs/themes/prism-coy.css';
+// @import 'prismjs/themes/prism-dark.css';
+// @import 'prismjs/themes/prism-funky.css';
+@import 'prismjs/themes/prism-okaidia.css';
+// @import 'prismjs/themes/prism-solarizedlight.css';
+// @import 'prismjs/themes/prism-tomorrow.css';
+// @import 'prismjs/themes/prism-twilight.css';
+
 /* You can add global styles to this file, and also import other style files */
 // Variables always will be top
 @import './assets/scss/variables.scss';
@@ -78,10 +90,18 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
   letter-spacing: 0.3px;
+  font-size: 16px;
 }
-
+a {
+  transition: all 0.3s linear;
+}
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  @apply pl-4 pr-4;
+}
 .global-loader {
   @apply fixed;
   top: 0;
