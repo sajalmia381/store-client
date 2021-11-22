@@ -50,7 +50,7 @@ export class AuthEffects {
         ofType(loginSuccess),
         tap(action => {
           if (action.redirect) {
-            this.router.navigate(['/']);
+            this.router.navigate(['/admin']);
           }
         })
       ),
