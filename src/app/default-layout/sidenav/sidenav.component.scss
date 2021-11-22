@@ -1,6 +1,6 @@
 .link__group__heading {
   font-size: 20px;
-  @apply font-bold text-gray-800 dark:text-gray-200;
+  @apply font-bold;
   @apply flex items-center;
   .mat-icon {
     @apply text-primary;

@@ -6,6 +6,7 @@ import { AuthState } from 'src/app/auth/state/auth.state';
 import { setThemeMode } from 'src/app/store/shared/shared.actions';
 import { getThemeMode } from 'src/app/store/shared/shared.selectors';
 import { SharedState } from 'src/app/store/shared/shared.state';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,6 +16,7 @@ import { SharedState } from 'src/app/store/shared/shared.state';
 export class ToolbarComponent implements OnInit {
   userData!: any;
   themeMode!: string;
+  isProductionMode: boolean = environment.production;
   constructor(private store: Store<AuthState | SharedState>) { }
 
   ngOnInit(): void {

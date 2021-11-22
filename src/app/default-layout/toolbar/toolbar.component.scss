@@ -35,3 +35,15 @@
     }
   }
 }
+::ng-deep {
+  .dark {
+    .nav {
+      &__link {
+        &:hover,
+        &.active {
+          @apply bg-gray-800;
+        }
+      }
+    }
+  }
+}
