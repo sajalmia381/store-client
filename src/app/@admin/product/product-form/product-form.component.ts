@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { ProductState } from '../state/product.state';
 import * as categorySelectors from '../../category/state/category.selectors';
-import { takeWhile } from 'rxjs/operators';
+import { takeWhile, tap } from 'rxjs/operators';
 import { loadCategories } from 'src/app/@admin/category/state/category.actions';
 import { Category } from 'src/app/@admin/category/category';
 import { addProduct } from '../state/product.actions';
@@ -13,8 +13,7 @@ import { ImageState } from 'src/app/@admin/media/state/media.state';
 import { HttpService } from '@shared/services/http.service';
 import { addImageSuccess } from 'src/app/@admin/media/state/media.actions';
 import { environment } from '@env/environment';
-import { ProductEffects } from '../state/product.effects';
-import { ofType } from '@ngrx/effects';
+import { Actions, ofType } from '@ngrx/effects';
 import * as productActions from '../state/product.actions';
 @Component({
   selector: 'app-product-form',
@@ -33,7 +32,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private store: Store<ProductState | ImageState>,
     private snackBar: MatSnackBar,
     private httpService: HttpService,
-    private productEffect: ProductEffects) { }
+    private action$: Actions
+  ) { }
 
   ngOnInit(): void {
     this.productForm = new FormGroup({
@@ -45,13 +45,16 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       imageSource: new FormControl('')
     })
     this.fetchCategory();
-    this.productEffect.addProduct$
-      .pipe(ofType(productActions.addProductSuccess))
-      .subscribe(_ => {
+    this.action$
+      .pipe(
+        takeWhile(() => this.isAlive),
+        ofType(productActions.addProductSuccess),
+      )
+      .subscribe((_) => {
         this.productUpdated = true;
         this.productForm.reset();
         this.uploadedImage = null;
-      });
+      })
   }
   ngOnDestroy(): void {
     this.isAlive = false;
