@@ -56,7 +56,6 @@ export class ProductEffects {
         return this.productService.addProduct(action.product).pipe(
           map((res: any) => {
             console.log('add product call', res)
-            
             const product = { ...res.data, id: res.data?.slug };
             return productAction.addProductSuccess({ product });
           })
