@@ -8,7 +8,7 @@ const childRoutes: Routes = [
   },
   {
     path: 'users',
-    loadChildren: () => import('../user/user.module').then(m => m.UserModule)
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
   },
   {
     path: 'categories',

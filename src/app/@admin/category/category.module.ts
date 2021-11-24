@@ -14,6 +14,7 @@ import { CategoryService } from './category.service';
 import { SharedModule } from '@shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
 import { CategoryUpdateComponent } from './category-update/category-update.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CategoryUpdateComponent } from './category-update/category-update.compo
     CategoryRoutingModule,
     SharedModule,
     MatTableModule,
+    MatMenuModule,
     // StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
     // EffectsModule.forFeature([CategoryEffects]),
   ],

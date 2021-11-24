@@ -6,15 +6,19 @@ import { DefaultLayoutComponent } from './default-layout.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     ToolbarComponent,
-    DefaultLayoutComponent
+    DefaultLayoutComponent,
+    SidenavComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    MatSidenavModule,
     MatIconModule,
     MatButtonModule
   ]

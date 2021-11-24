@@ -11,6 +11,11 @@ interface MenuItem {
 
 const TREE_DATA: MenuItem[] = [
   {
+    name: 'Dashboard',
+    iconName: 'dashboard',
+    url: '/admin'
+  },
+  {
     name: 'Product',
     iconName: 'storage',
     children: [

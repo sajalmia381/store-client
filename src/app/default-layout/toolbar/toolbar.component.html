@@ -1,13 +1,16 @@
-<div class="topbar bg-white dark:bg-gray-900 shadow py-4">
-  <div class="container flex flex-wrap items-center">
+<div class="topbar bg-white dark:bg-gray-900 border-b dark:border-gray-700 shadow py-4">
+  <div class="container-fluid flex flex-wrap items-center">
     <div class="flex-grow flex items-center">
       <a routerLink="/">
         <h2 class="text-xl font-bold">Store Rest API</h2>
       </a>
+      <button (click)="toggleSidenav.emit()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 ml-3 md:hidden">
+        <mat-icon>menu</mat-icon>
+      </button>
     </div>
     <div class="topbar__right sm:ml-auto mt-2 sm:mt-0">
       <div class="flex flex-wrap items-center">
-        <nav>
+        <nav class="hidden md:block">
           <ul class="navbar__nav">
             <li class="nav__item">
               <a class="nav__link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Home</a>
@@ -24,7 +27,7 @@
           <button (click)="toggleTheme()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
             <mat-icon>{{ themeMode ==='light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
           </button>
-          <a routerLink="/admin" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
+          <a *ngIf="!isProductionMode" routerLink="/admin" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
             <mat-icon>people</mat-icon>
           </a>
         </div>

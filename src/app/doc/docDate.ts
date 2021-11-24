@@ -1,26 +1,28 @@
+import { environment } from "@env/environment"
+const apiBaseUrl = environment.apiBaseUrl;
 export default {
   "product": [
     {
       "name": "Get all Products",
-      "code": `fetch('https://storerestapi.com/api/products')
+      "code": `fetch('${apiBaseUrl}/products')
         .then(response => response.json())
         .then(json => console.log(json))`
     },
     {
       "name": "Get a single product",
-      "code": `fetch('https://storerestapi.com/api/products/mens-casual-shoes-sports-running-sneakers')
+      "code": `fetch('${apiBaseUrl}/products/mens-casual-shoes-sports-running-sneakers')
       .then(response => response.json())
       .then(json => console.log(json))`
     },
     {
       "name": "Pagination results",
-      "code": `fetch('https://storerestapi.com/api/products?limit=10&page=1')
+      "code": `fetch('${apiBaseUrl}/products?limit=10&page=1')
       .then(response => response.json())
       .then(json => console.log(json))`
     },
     {
       "name": "Create product",
-      "code": `fetch('https://storerestapi.com/api/products',
+      "code": `fetch('${apiBaseUrl}/products',
       {
           method: 'POST',
           body: JSON.stringify({
@@ -38,7 +40,7 @@ export default {
     },
     {
       "name": "Update product",
-      "code": `fetch('https://storerestapi.com/api/products/mens-casual-shoes-sports-running-sneakers',
+      "code": `fetch('${apiBaseUrl}/products/mens-casual-shoes-sports-running-sneakers',
       {
           method: 'PUT',
           body: JSON.stringify({
@@ -56,7 +58,7 @@ export default {
     },
     {
       "name": "Delete product",
-      "code": `fetch('https://storerestapi.com/api/products/mens-casual-shoes-sports-running-sneakers',
+      "code": `fetch('${apiBaseUrl}/products/mens-casual-shoes-sports-running-sneakers',
       {
           method: 'DELETE',
       })

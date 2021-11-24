@@ -13,6 +13,7 @@ import { SharedModule } from '@shared/shared.module';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     EffectsModule.forFeature([UserEffects]),
     MatTableModule,
     MatTooltipModule,
+    MatMenuModule,
   ],
 })
 export class UserModule { }
