@@ -1,0 +1,30 @@
+.doc-sidenav {
+  width: 220px;
+  @apply px-4 py-6 lg:pt-16 xxl:pt-24 xxl:px-8;
+}
+.link__group__heading {
+  font-size: 18px;
+  @apply font-bold;
+  @apply flex items-center;
+  .mat-icon {
+    @apply text-primary;
+  }
+}
+.link__nav {
+  a {
+    display: block;
+    padding: 8px 0;
+    opacity: 0.6;
+    font-size: 14px;
+    &.active,
+    &:hover {
+      @apply font-semibold;
+      opacity: 1;
+    }
+  }
+}
+@screen xxl {
+  .doc-sidenav {
+    width: 270px;
+  }
+}

@@ -16,49 +16,79 @@
 </div>
 <div class="pb-16">
   <div class="container">
-    <div id="try_area" class="py-16">
+    <div id="try_area" class="pt-16">
       <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Try it</h3>
-      <p class="text-lg mt-2 text-gray-500">Run this code here, in a console or from any site:</p>
+      <p class="text-lg mt-2 text-gray-500">Run this code in a console or from any site:</p>
       <div class="grid grid-cols-2 -mx-2">
         <div class="px-2">
           <app-prism [code]="code"></app-prism>
-          <button type="button" class="bg-primary text-black font-semibold py-1 px-3 mt-2 rounded">Run script</button>
+          <button (click)="fetchProduct()" type="button" class="bg-primary text-black font-semibold py-1 px-3 mt-2 rounded text-sm">Run script</button>
         </div>
         <div class="px-2">
-          <app-prism [code]="'{}'"></app-prism>
-          
+          <div *ngIf="isProductLoading" style="background-color: #272822; padding: 16px; margin: 8px 0; border-radius: 0.3em;">
+            <mat-spinner [strokeWidth]="2" [diameter]="20"></mat-spinner>
+          </div>
+          <app-prism *ngIf="!isProductLoading" [code]="productRes ? (productRes | json) : '{}'"></app-prism>
         </div>
       </div>
     </div>
-    <div class="mt-8">
-      <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Resources</h3>
-      <p class="text-lg mt-2 text-gray-500">The main resources need in shopping prototypes</p>
-      <div class="flex flex-col max-w-xl shadow rounded mt-2">
-        <a href="/api/users" class="flex justify-between items-center hover:bg-indigo-100 py-4 px-4 border-b dark:border-gray-700">
-          <div class="mr-2">
-            <div>User</div>
-          </div>
-          <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
-        </a>
-        <a href="/api/products" class="flex justify-between items-center hover:bg-indigo-100 py-4 px-4 border-b dark:border-gray-700">
-          <div class="mr-2">
-            <div>Product</div>
-          </div>
-          <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
-        </a>
-        <a href="/api/categories" class="flex justify-between items-center hover:bg-indigo-100 py-4 px-4">
-          <div class="mr-2">
-            <div>Category</div>
-          </div>
-          <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
-        </a>
+    <div class="grid xl:grid-cols-2 -mx-4">
+      <div class="mt-16 px-4">
+        <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Resources</h3>
+        <p class="text-lg mt-2 text-gray-500">The main resources need in shopping prototypes</p>
+        <div class="flex flex-col max-w-xl shadow rounded mt-2">
+          <a target="_blank" [href]="apiBaseUrl + '/users'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700">
+            <div class="mr-2">
+              <div>User</div>
+            </div>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+          </a>
+          <a target="_blank" [href]="apiBaseUrl + '/products'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700">
+            <div class="mr-2">
+              <div>Product</div>
+            </div>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+          </a>
+          <a target="_blank" [href]="apiBaseUrl + '/categories'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4">
+            <div class="mr-2">
+              <div>Category</div>
+            </div>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+          </a>
+        </div>
+        <p class="mt-4">Note: resources have relations. For example: category have many product, product have many carts</p>
+        <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
       </div>
-      <p class="mt-4">Note: resources have relations. For example: category have many product, product have many carts</p>
-      <a routerLink="/docs" class="text-indigo-400 font-bold">Check all APIs documentation</a>
+      <div class="mt-16 px-4">
+        <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Auth</h3>
+        <p class="text-lg mt-2 text-gray-500">JWT Authentication</p>
+        <div class="flex flex-col max-w-xl shadow rounded mt-2">
+          <a target="_blank" [href]="apiBaseUrl + '/users'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700">
+            <div class="mr-2">
+              <div>User</div>
+            </div>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+          </a>
+          <a target="_blank" [href]="apiBaseUrl + '/products'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700">
+            <div class="mr-2">
+              <div>Product</div>
+            </div>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+          </a>
+          <a target="_blank" [href]="apiBaseUrl + '/categories'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4">
+            <div class="mr-2">
+              <div>Category</div>
+            </div>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+          </a>
+        </div>
+        <p class="mt-4">Note: resources have relations. For example: category have many product, product have many carts</p>
+        <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
+      </div>
     </div>
     <div class="mt-16">
       <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Routes</h3>
-      <p class="text-lg mt-2 text-gray-500">Http methods are not supported</p>
+      <p class="text-lg mt-2 mb-2 text-gray-500">Http protocol is not supported</p>
       <ul class="shadow rounded max-w-xl">
         <li class="flex items-center justify-between font-bold bg-gray-400 p-4">
           <div class="ms-2 me-auto">
@@ -98,7 +128,16 @@
         </li>
       </ul>
       <p class="mt-4">Note: User and Cart case slug will replace by object _id.</p>
-      <a routerLink="/docs" class="text-indigo-400 font-bold">Check all APIs documentation</a>
+      <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
     </div>
   </div>
 </div>
+<!-- Footer -->
+<footer class="border-t dark:border-gray-700 dark:bg-gray-900 py-6">
+  <div class="container-fluid">
+    <div class="flex items-center justify-between flex-wrap">
+      <p class="mb-0 font-medium">© Copyright 2021. All Rights Reserved.</p>
+      <p><span class="font-bold">Created By</span>: <a ref="nofollow" href="https://techincent.com">Tech Incent</a></p>
+    </div>
+  </div>
+</footer>

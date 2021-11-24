@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { logoutSuccess } from 'src/app/auth/state/auth.actions';
 import { getUserData } from 'src/app/auth/state/auth.selectors';
@@ -14,6 +14,7 @@ import { environment } from '@env/environment';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  @Output() toggleSidenav = new EventEmitter();
   userData!: any;
   themeMode!: string;
   isProductionMode: boolean = environment.production;

@@ -1,22 +1,25 @@
+// Layout
+.doc-layout-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+// Layout end
+
 .doc {
-  &__container {
-    @apply flex;
-  }
-  &__sidebar {
-    max-width: 260px;
-    width: 100%;
-    @apply pr-4 flex-none;
-  }
   &__content {
-    @apply pl-4 flex-grow;
+    @apply p-4 sm:p-8 xxl:p-12 flex-grow;
   }
 }
 .card {
   @apply flex flex-col;
-  @apply min-w-0 p-4;
-  @apply rounded border dark:border-gray-700;
+  @apply min-w-0 p-4 xxl:p-8;
+  @apply rounded;
   @apply break-words;
-  background-color: var(--bg-card);
   position: relative;
   background-clip: border-box;
   border-radius: 0.25rem;

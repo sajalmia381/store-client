@@ -1,20 +1,21 @@
 .navbar {
   &__nav {
     @apply flex items-center flex-wrap;
-  }
-  &__icons {
-    @apply relative pl-4;
+    @apply relative;
     &::before {
       content: '';
       @apply absolute;
       top: 50%;
-      left: 0;
+      right: 0;
       transform: translateY(-50%);
       height: 100%;
       max-height: 26px;
       width: 1px;
       @apply bg-gray-400;
     }
+  }
+  &__icons {
+    @apply pl-4;
   }
 }
 .nav {

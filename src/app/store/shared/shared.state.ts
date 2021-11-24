@@ -6,5 +6,5 @@ export interface SharedState {
 const clintCurrentMode = localStorage.getItem('theme-mode')
 export const initialState: SharedState = {
   loading: false,
-  themeMode: clintCurrentMode || 'light'
+  themeMode: clintCurrentMode || 'dark'
 };

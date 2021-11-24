@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '@env/environment';
+import { HttpService } from '@shared/services/http.service';
 
 @Component({
   selector: 'app-home',
@@ -6,12 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  code: string = `fetch('https://storerestapi.com/api/products/leather-shoes')
+  apiBaseUrl: string = environment.apiBaseUrl
+  productEndpoint: string = '/products/men-shoes';
+  code: string = `fetch('${environment.apiBaseUrl + this.productEndpoint}')
 	.then(response => response.json())
 	.then(json => console.log(json))`
-  constructor() { }
+  productRes: any;
+  isProductLoading!: boolean;
+  constructor(private http: HttpService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+  
+  fetchProduct(): void {
+    this.isProductLoading = true;
+    this.http.get(this.productEndpoint).subscribe(res => {
+      this.productRes = res;
+      this.isProductLoading = false
+    }, (errRes) => {
+      this.isProductLoading = false;
+      console.log(errRes)
+    })
   }
-
 }

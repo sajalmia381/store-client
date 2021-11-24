@@ -17,6 +17,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatOptionModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatMenuModule,
     StoreModule.forFeature(PRODUCT_STATE_NAME, productReducer),
     EffectsModule.forFeature([ProductEffects])
   ],
