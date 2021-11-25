@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { addOneCategory } from '../state/category.actions';
+import { CategoryState } from '../state/category.state';
 
 @Component({
   selector: 'app-category-form',
@@ -6,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-form.component.scss']
 })
 export class CategoryFormComponent implements OnInit {
-
-  constructor() { }
+  categoryForm!: FormGroup;
+  constructor(private fb: FormBuilder, private store: Store<CategoryState>) { }
 
   ngOnInit(): void {
+    this.categoryForm = this.fb.group({
+      name: [, [Validators.required]]
+    })
   }
-
+  get name(): any {
+    return this.categoryForm.get('name')
+  }
+  onFormSubmit(): void {
+    this.store.dispatch(addOneCategory({ category: this.categoryForm.value }))
+  }
 }

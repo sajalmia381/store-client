@@ -18,6 +18,7 @@ export class CategoryService {
       }))
   }
   addCategory(category: Category): Observable<Category> {
+    console.log(category)
     return this.http.post('/categories', category);
   }
   getCategory(slug: string): Observable<Category> {

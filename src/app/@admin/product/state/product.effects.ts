@@ -22,7 +22,8 @@ export class ProductEffects {
       ofType(productAction.loadProducts),
       withLatestFrom(this.store.select(isLoaded)),
       mergeMap(([action, loaded]) => {
-        return this.productService.getProducts().pipe(
+        console.log(action)
+        return this.productService.getProducts(action?.queryParams && action?.queryParams).pipe(
           map(products => {
             return productAction.loadProductsSuccess({ products });
           })

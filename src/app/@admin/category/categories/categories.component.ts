@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { Category } from '../category';
 import { CategoryUpdateComponent } from '../category-update/category-update.component';
-import { loadCategories } from '../state/category.actions';
+import { deleteCategory, loadCategories } from '../state/category.actions';
 import { getCategories, isLoaded } from '../state/category.selectors';
 import { CategoryState } from '../state/category.state';
 
@@ -44,7 +44,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     });
     deleteDialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
-        // this.store.dispatch(deleteProduct({ id: product?.slug }));
+        this.store.dispatch(deleteCategory({ id: category?.slug }));
       }
     });
   }
@@ -55,7 +55,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       data: category
     });
     deleteDialogRef.afterClosed().subscribe((confirmed: boolean) => {
-      // tigger when dialog close
+      // trigger when dialog close
     });
   }
 }

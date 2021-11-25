@@ -15,7 +15,7 @@ export const UPDATE_PRODUCT_SUCCESS = '[product] update product success';
 export const BULK_DELETE_PRODUCT = '[product] bulk products delete'
 export const BULK_DELETE_PRODUCT_SUCCESS = '[product] bulk products delete success'
 
-export const loadProducts = createAction(LOAD_PRODUCTS);
+export const loadProducts = createAction(LOAD_PRODUCTS, props<{ queryParams?: any }>());
 export const loadProductsSuccess = createAction(LOAD_PRODUCTS_SUCCESS, props<{ products: Product[] }>());
 export const loadProduct = createAction(LOAD_PRODUCT);
 export const addProduct = createAction(ADD_PRODUCT, props<{product: Product}>())

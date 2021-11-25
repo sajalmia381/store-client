@@ -33,6 +33,6 @@ import { MatMenuModule } from '@angular/material/menu';
     // EffectsModule.forFeature([CategoryEffects]),
   ],
   providers: [CategoryService],
-  entryComponents: [CategoryUpdateComponent]
+  entryComponents: [CategoryFormComponent, CategoryUpdateComponent]
 })
 export class CategoryModule { }

@@ -18,6 +18,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSelectModule,
     MatCheckboxModule,
     MatMenuModule,
+    MatSidenavModule,
     StoreModule.forFeature(PRODUCT_STATE_NAME, productReducer),
     EffectsModule.forFeature([ProductEffects])
   ],
