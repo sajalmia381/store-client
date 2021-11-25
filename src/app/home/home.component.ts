@@ -9,7 +9,7 @@ import { HttpService } from '@shared/services/http.service';
 })
 export class HomeComponent implements OnInit {
   apiBaseUrl: string = environment.apiBaseUrl
-  productEndpoint: string = '/products/men-shoes';
+  productEndpoint: string = '/products/running-sneaker';
   code: string = `fetch('${environment.apiBaseUrl + this.productEndpoint}')
 	.then(response => response.json())
 	.then(json => console.log(json))`
@@ -24,9 +24,10 @@ export class HomeComponent implements OnInit {
     this.http.get(this.productEndpoint).subscribe(res => {
       this.productRes = res;
       this.isProductLoading = false
-    }, (errRes) => {
+    }, (res) => {
       this.isProductLoading = false;
-      console.log(errRes)
+      this.productRes = res.error;
+      console.error(res)
     })
   }
 }

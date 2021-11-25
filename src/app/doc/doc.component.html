@@ -44,6 +44,56 @@
             </div>
         </div>
       </div>
+      <div class="card border dark:border-gray-700 mt-8">
+        <h2 class="card__title"><mat-icon>group</mat-icon> User</h2>
+        <div class="card__body">
+            <div id="id_user" class="card__content">
+                <div class="card__api">
+                  <h4 id="id_user--1" class="card__sub_title mt-2">{{docData?.user?.[0]?.name}}</h4>
+                  <app-prism [code]="docData?.user?.[0]?.code"></app-prism>
+                </div>
+                <div class="card__api">
+                  <h4 id="id_user--2" class="card__sub_title mt-2">{{docData?.user?.[1]?.name}}</h4>
+                  <app-prism [code]="docData?.user?.[1]?.code"></app-prism>
+                </div>
+                <div class="card__api">
+                  <h4 id="id_user--3" class="card__sub_title mt-2">{{docData?.user?.[2]?.name}}</h4>
+                  <app-prism [code]="docData?.user?.[2]?.code"></app-prism>
+                </div>
+                <div class="card__api">
+                  <h4 id="id_user--4" class="card__sub_title mt-2">{{docData?.user?.[3]?.name}}</h4>
+                  <app-prism [code]="docData?.user?.[3]?.code"></app-prism>
+                </div>
+                <div class="card__api">
+                  <h4 id="id_user--5" class="card__sub_title mt-2">{{docData?.user?.[4]?.name}}</h4>
+                  <app-prism [code]="docData?.user?.[4]?.code"></app-prism>
+                </div>
+                <div class="card__api">
+                  <h4 id="id_user--6" class="card__sub_title mt-2">{{docData?.user?.[5]?.name}}</h4>
+                  <app-prism [code]="docData?.user?.[5]?.code"></app-prism>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="card border dark:border-gray-700 mt-8">
+        <h2 class="card__title"><mat-icon>app_registration</mat-icon> Auth</h2>
+        <div class="card__body">
+            <div id="id_auth" class="card__content">
+                <div class="card__api">
+                  <h4 id="id_auth--1" class="card__sub_title mt-2">{{docData?.user?.[0]?.name}}</h4>
+                  <app-prism [code]="docData?.auth?.[0]?.code"></app-prism>
+                </div>
+                <div class="card__api">
+                  <h4 id="id_auth--2" class="card__sub_title mt-2">{{docData?.auth?.[1]?.name}}</h4>
+                  <app-prism [code]="docData?.auth?.[1]?.code"></app-prism>
+                </div>
+                <div class="card__api">
+                  <h4 id="id_auth--3" class="card__sub_title mt-2">{{docData?.auth?.[2]?.name}}</h4>
+                  <app-prism [code]="docData?.auth?.[2]?.code"></app-prism>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
     <footer class="border-t dark:border-gray-700 dark:bg-gray-900 py-6">
       <div class="container-fluid">
