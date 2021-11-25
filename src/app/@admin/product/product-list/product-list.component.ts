@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -10,6 +10,9 @@ import { takeWhile } from 'rxjs/operators';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { environment } from '@env/environment';
+import { MatSidenav } from '@angular/material/sidenav';
+import { FormControl, FormGroup } from '@angular/forms';
+import { filterValidObjAttribute } from '@shared/helper/utils';
 
 @Component({
   selector: 'app-product-list',
@@ -17,6 +20,7 @@ import { environment } from '@env/environment';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit, OnDestroy {
+  @ViewChild('filterSidenav') filterSidenav!: MatSidenav;
   currentView = 'list';
   isAlive: boolean = true;
   isLoaded$!: Observable<boolean>;
@@ -25,16 +29,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
   selection = new SelectionModel<Product>(true, []);
   dataSource: any = new MatTableDataSource<Product>([]);
   backendBaseUrl: string = environment.baseUrl;
+  filterForm!: FormGroup;
   constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.filterForm = new FormGroup({
+      q: new FormControl(['']),
+      sort: new FormControl([''])
+    })
     this.store.select(getProducts)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(products => {
         this.dataSource.data = products;
       });
     this.isLoaded$ = this.store.select(isLoaded);
-    this.store.dispatch(loadProducts());
+    this.store.dispatch(loadProducts({}));
   }
   ngOnDestroy(): void {
     this.isAlive = false;
@@ -96,5 +105,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
         console.log(this.selection)
       }
     });
+  }
+  // Filter
+  toggleSidenav(): void {
+    this.filterSidenav.toggle();
+  }
+  onFilter(): void {
+    console.log()
+    if (this.filterForm.dirty) {
+      this.store.dispatch(loadProducts({queryParams: filterValidObjAttribute(this.filterForm.value)}))
+    }
   }
 }

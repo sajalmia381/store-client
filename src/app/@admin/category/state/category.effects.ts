@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
-import { RouterNavigatedAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { catchError, filter, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import * as categoryAction from './category.actions';
-import { getCategorySlugs, isLoaded } from './category.selectors';
-import { getCurrentRoute } from 'src/app/store/router/router.selectors';
+import { isLoaded } from './category.selectors';
 import { CategoryService } from '../category.service';
 import { Category } from '../category';
 @Injectable()
@@ -30,16 +28,16 @@ export class CategoryEffects {
       })
     );
   });
-  loadSingleCategory$ = createEffect(() => {
+  addCategory$ = createEffect(() => {
     return this.action$.pipe(
-      ofType(categoryAction.loadCategory),
-      withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getCategorySlugs)),
-      switchMap(([action, route, slugs]) => {
-        const slug = route.params.slug;
-        return this.categoryService.getCategory(slug).pipe(
+      ofType(categoryAction.addOneCategory),
+      switchMap((action) => {
+        console.log(action)
+        return this.categoryService.addCategory(action.category).pipe(
           map((res: any) => {
-            const category = { ...res?.data, slug };
-            return categoryAction.addOneCategory({ category });
+            console.log('add Category call', res)
+            const category = { ...res.data, id: res.data?.slug };
+            return categoryAction.addOneCategorySuccess({ category });
           })
         );
       })

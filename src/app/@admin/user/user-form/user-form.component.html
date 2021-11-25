@@ -1,16 +1,13 @@
 <div class="page__container">
-  <div class="page__content">
-    <div class="page__toolbar">
-      <div class="flex items-center">
-        <a routerLink="../" matTooltip="Back to Users" mat-icon-button class="mr-3 bg-white text-center"><mat-icon>keyboard_backspace</mat-icon></a>
-        <h2>New User Form</h2>
-      </div>
-      <div class="ml-auto">
-        <button [disabled]="userForm.invalid" color="primary" (click)="onSubmit()" mat-flat-button><mat-icon class="mr-2">save</mat-icon>Submit</button>
-      </div>
+  <div class="page__toolbar">
+    <div class="flex items-center">
+      <a routerLink="../" matTooltip="Back to Users" mat-icon-button class="mr-3 bg-white text-center"><mat-icon>keyboard_backspace</mat-icon></a>
+      <h2>New User Form</h2>
     </div>
+  </div>
+  <div class="page__content">
     <div class="px-4 flex justify-center pt-12">
-      <form [formGroup]="userForm" class="ti-form bg-card p-page rounded w-full max-w-3xl">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="ti-form bg-card p-page rounded w-full max-w-3xl">
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full px-3">
             <label for="id_email" >
@@ -54,6 +51,9 @@
             </label>
             <input formControlName="number" type="number" placeholder="Number" id="id_number">
           </div>
+        </div>
+        <div class="flex justify-end">
+          <button [disabled]="userForm.invalid" class="mt-2" color="primary" mat-flat-button type="submit"><mat-icon class="mr-2">save</mat-icon>Submit</button>
         </div>
       </form>
     </div>

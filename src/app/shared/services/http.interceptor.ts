@@ -24,10 +24,8 @@ export class HttpClintInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('intercept er call')
     return this.store.select(getToken).pipe(
       exhaustMap(accessToken => {
-        console.log('exhaust map access token', accessToken)
         if (!accessToken) {
           return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
         }

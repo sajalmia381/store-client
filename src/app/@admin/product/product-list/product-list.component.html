@@ -1,145 +1,179 @@
-<div class="page__container">
-  <div class="page__toolbar">
-    <div class="flex items-center">
-      <h2>Products #.{{ this.dataSource.data.length }} </h2>
-      <button *ngIf="currentView == 'list' && this.selection.selected.length" class="ml-3" mat-flat-button [matMenuTriggerFor]="bulkMenu"><mat-icon class="mr-2">more_vert</mat-icon> Bulk Actions</button>
-      <mat-menu #bulkMenu="matMenu" xPosition="before">
-        <a mat-menu-item >
-          <mat-icon>edit</mat-icon>
-          <span>Edit</span>
-        </a>
-        <button mat-menu-item (click)="onBulkDelete()">
-          <mat-icon>delete</mat-icon>
-          <span>Delete</span>
-        </button>
-      </mat-menu>
-      <a class="ml-4" routerLink="add-product" mat-flat-button><mat-icon class="mr-2">add</mat-icon> Add Product</a>
-      <button class="ml-4" mat-icon-button><mat-icon>filter_alt</mat-icon></button>
-    </div>
-    <div class="ml-auto">
-      <div class="filter-view-btns">
-        <button (click)="toggleView()" [class.text-primary]="currentView === 'list'" class="filter-view__btn me-2">
-          <mat-icon>list_alt</mat-icon>
-        </button>
-        <button (click)="toggleView()" [class.text-primary]="currentView === 'grid'" class="filter-view__btn">
-          <mat-icon>grid_view</mat-icon>
-        </button>
+<mat-sidenav-container class="product-sidenav-container">
+  <div class="page__container">
+    <div class="page__toolbar">
+      <div class="flex items-center">
+        <h2>Products #.{{ this.dataSource.data.length }} </h2>
+        <button *ngIf="currentView == 'list' && this.selection.selected.length" class="ml-3" mat-flat-button [matMenuTriggerFor]="bulkMenu"><mat-icon class="mr-2">more_vert</mat-icon> Bulk Actions</button>
+        <mat-menu #bulkMenu="matMenu" xPosition="before">
+          <a mat-menu-item >
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </a>
+          <button mat-menu-item (click)="onBulkDelete()">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+        <a class="ml-4" routerLink="add-product" mat-flat-button><mat-icon class="mr-2">add</mat-icon> Add Product</a>
+        <button (click)="toggleSidenav()" class="ml-4" mat-icon-button><mat-icon>filter_alt</mat-icon></button>
+      </div>
+      <div class="ml-auto">
+        <div class="filter-view-btns">
+          <button (click)="toggleView()" [class.text-primary]="currentView === 'list'" class="filter-view__btn me-2">
+            <mat-icon>list_alt</mat-icon>
+          </button>
+          <button (click)="toggleView()" [class.text-primary]="currentView === 'grid'" class="filter-view__btn">
+            <mat-icon>grid_view</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="page__content">
-    <div class="page__table" *ngIf="currentView === 'list'">
-      <table class="ti-table" mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef>
-            <mat-checkbox (change)="$event ? masterToggle() : null"
-                          [checked]="selection.hasValue() && isAllSelected()"
-                          [indeterminate]="selection.hasValue() && !isAllSelected()"
-                          [aria-label]="checkboxLabel()">
-            </mat-checkbox>
-          </th>
-          <td mat-cell *matCellDef="let row">
-            <mat-checkbox (click)="$event.stopPropagation()"
-                          (change)="$event ? selection.toggle(row) : null"
-                          [checked]="selection.isSelected(row)"
-                          [aria-label]="checkboxLabel(row)">
-            </mat-checkbox>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef width="25%"> Title </th>
-          <td mat-cell *matCellDef="let element">
-            
-            <div class="flex items-center py-2">
-              <a class="w-16 mr-3" [routerLink]="element?.slug">
-                <img *ngIf="element?.image" [src]="backendBaseUrl + '/' + element?.image" alt="img">
-              </a>
-              <div class="flex-grow">
-                <a class="text-primary font-semibold block" [routerLink]="element?.slug">{{element?.title | titlecase}}</a>
-                <p class="mt-1 text-sm text-gray-300">id: {{ element?._id }}</p>
+    <div class="page__content">
+      <div class="page__table" *ngIf="currentView === 'list'">
+        <table class="ti-table" mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                            [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef width="25%"> Title </th>
+            <td mat-cell *matCellDef="let element">
+              
+              <div class="flex items-center py-2">
+                <a class="w-16 mr-3" [routerLink]="element?.slug">
+                  <img *ngIf="element?.image" [src]="backendBaseUrl + '/' + element?.image" alt="img">
+                </a>
+                <div class="flex-grow">
+                  <a class="text-primary font-semibold block" [routerLink]="element?.slug">{{element?.title | titlecase}}</a>
+                  <p class="mt-1 text-sm text-gray-300">id: {{ element?._id }}</p>
+                </div>
               </div>
-            </div>
-          </td>
-        </ng-container>
-      
-        <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef>Price </th>
-          <td mat-cell *matCellDef="let element">${{element.price}} </td>
-        </ng-container>
-        <ng-container matColumnDef="category">
-          <th mat-header-cell *matHeaderCellDef>Category </th>
-          <td mat-cell *matCellDef="let element">
-            <a [routerLink]="'/categories/' + element?.category?.slug">{{element?.category?.name | titlecase}}</a>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="createdAt">
-          <th mat-header-cell *matHeaderCellDef>Created </th>
-          <td mat-cell *matCellDef="let element">{{element.createdAt|date}} </td>
-        </ng-container>
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef>Actions </th>
-          <td mat-cell *matCellDef="let element">
-            <!-- <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <a mat-menu-item [routerLink]="element?.slug">
-                <mat-icon>article</mat-icon>
-                <span>Details</span>
+            </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price </th>
+            <td mat-cell *matCellDef="let element">${{element.price}} </td>
+          </ng-container>
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef>Category </th>
+            <td mat-cell *matCellDef="let element">
+              <a [routerLink]="'/categories/' + element?.category?.slug">{{element?.category?.name | titlecase}}</a>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef>Created </th>
+            <td mat-cell *matCellDef="let element">{{element.createdAt|date}} </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Actions </th>
+            <td mat-cell *matCellDef="let element">
+              <!-- <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <a mat-menu-item [routerLink]="element?.slug">
+                  <mat-icon>article</mat-icon>
+                  <span>Details</span>
+                </a>
+                <a mat-menu-item [routerLink]="[element?.slug, 'edit']">
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit</span>
+                </a>
+                <button mat-menu-item (click)="onDelete(element)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu> -->
+              <div class="flex items-center">
+                <a mat-icon-button [routerLink]="element?.slug">
+                  <mat-icon>article</mat-icon>
+                </a>
+                <a mat-icon-button [routerLink]="[element?.slug, 'edit']">
+                  <mat-icon>edit</mat-icon>
+                </a>
+                <button mat-icon-button (click)="onDelete(element)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <div class="page__inner" *ngIf="currentView === 'grid'">
+        <div class="flex flex-wrap -m-4">
+          <div *ngFor="let product of dataSource.data" class="xxl:w-1/4 xl:w-1/3 md:w-1/2 p-4">
+            <div class="bg-card p-6 rounded-lg">
+              <a [routerLink]="product?.slug">
+                <img *ngIf="product?.image" class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" [src]="backendBaseUrl + '/' + product?.image" alt="Image Size 720x400">
               </a>
-              <a mat-menu-item [routerLink]="[element?.slug, 'edit']">
-                <mat-icon>edit</mat-icon>
-                <span>Edit</span>
+              <img *ngIf="!product?.image" class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
+              <a [routerLink]="['/categories', product?.category?.slug]">
+                <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{ product?.category?.name |titlecase}}</h3>
               </a>
-              <button mat-menu-item (click)="onDelete(element)">
-                <mat-icon>delete</mat-icon>
-                <span>Delete</span>
-              </button>
-            </mat-menu> -->
-            <div class="flex items-center">
-              <a mat-icon-button [routerLink]="element?.slug">
-                <mat-icon>article</mat-icon>
+              <a [routerLink]="product?.slug">
+                <h2 class="text-lg text-gray-900 dark:text-gray-50 font-medium title-font mb-4">{{ product.title }}</h2>
               </a>
-              <a mat-icon-button [routerLink]="[element?.slug, 'edit']">
-                <mat-icon>edit</mat-icon>
-              </a>
-              <button mat-icon-button (click)="onDelete(element)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </div>
-          </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </div>
-    <div class="page__inner" *ngIf="currentView === 'grid'">
-      <div class="flex flex-wrap -m-4">
-        <div *ngFor="let product of dataSource.data" class="xxl:w-1/4 xl:w-1/3 md:w-1/2 p-4">
-          <div class="bg-card p-6 rounded-lg">
-            <a [routerLink]="product?.slug">
-              <img *ngIf="product?.image" class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" [src]="backendBaseUrl + '/' + product?.image" alt="Image Size 720x400">
-            </a>
-            <img *ngIf="!product?.image" class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
-            <a [routerLink]="['/categories', product?.category?.slug]">
-              <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{ product?.category?.name |titlecase}}</h3>
-            </a>
-            <a [routerLink]="product?.slug">
-              <h2 class="text-lg text-gray-900 dark:text-gray-50 font-medium title-font mb-4">{{ product.title }}</h2>
-            </a>
-            <p *ngIf="product?.description" class="leading-relaxed text-base">{{ product.description }}</p>
-            <div class="flex items-center flex-wrap gap-4">
-              <a mat-flat-button color="primary" [routerLink]="[product?.slug, 'edit']">
-                <mat-icon>edit</mat-icon>
-                <span>Edit</span>
-              </a>
-              <button mat-flat-button color="warn" (click)="onDelete(product)">
-                <mat-icon>delete</mat-icon>
-                <span>Delete</span>
-              </button>
+              <p *ngIf="product?.description" class="leading-relaxed text-base">{{ product.description }}</p>
+              <div class="flex items-center flex-wrap gap-4">
+                <a mat-flat-button color="primary" [routerLink]="[product?.slug, 'edit']">
+                  <mat-icon>edit</mat-icon>
+                  <span>Edit</span>
+                </a>
+                <button mat-flat-button color="warn" (click)="onDelete(product)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <mat-sidenav #filterSidenav mode="over" position="end">
+    <div class="w-80 max-w-xs px-4 sm:px-6 py-6">
+      <form class="ti-form" [formGroup]="filterForm" (ngSubmit)="onFilter()">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label for="id_q" >
+              search
+            </label>
+            <input formControlName="q" id="id_q" type="text" placeholder="Search ...">
+          </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label for="id_description" >
+              Sort
+            </label>
+            <mat-form-field appearance="outline" class="field__mat-field w-full">
+              <mat-label *ngIf="!filterForm.get('sort')?.value">None</mat-label>
+              <mat-select formControlName="sort">
+                <mat-option [value]="'asc'">Asc</mat-option>
+                <mat-option [value]="'desc'">Desc</mat-option>
+              </mat-select>
+            </mat-form-field>
+            value: {{!filterForm.get('sort')?.value}}
+          </div>
+        </div>
+        <div class="flex flex-end">
+          <button mat-raised-button color="primary" type="submit">Filter</button>
+        </div>
+      </form>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

@@ -1,16 +1,13 @@
 <div class="page__container">
   <div class="page__toolbar">
     <div class="flex items-center">
-      <a routerLink="../" matTooltip="Back to Users" mat-icon-button class="mr-3 bg-white dark:bg-gray-400 text-center"><mat-icon>keyboard_backspace</mat-icon></a>
+      <a routerLink="../" matTooltip="Back to products" mat-icon-button class="mr-3 bg-white dark:bg-gray-400 text-center"><mat-icon>keyboard_backspace</mat-icon></a>
       <h2>Add Product</h2>
-    </div>
-    <div class="ml-auto">
-      <button [disabled]="productForm.invalid" color="primary" (click)="onFormSubmit()" mat-flat-button><mat-icon class="mr-2">save</mat-icon>Submit</button>
     </div>
   </div>
   <div class="page__content">
     <div class="flex justify-center pt-12">
-      <form [formGroup]="productForm" class="ti-form bg-card p-page rounded w-full max-w-3xl">
+      <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()" class="ti-form bg-card p-page rounded w-full max-w-3xl">
         <h3 *ngIf="productUpdated && productForm.untouched" class="bg-green-400 bg-opacity-70 rounded px-4 py-1 mb-4">Product uploaded</h3>
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full px-3">
@@ -69,7 +66,9 @@
             <p *ngIf="category.touched && category.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
           </div>
         </div>
-        
+        <div class="flex justify-end">
+          <button [disabled]="productForm.invalid" type="submit" color="primary" mat-flat-button><mat-icon class="mr-2">save</mat-icon>Submit</button>
+        </div>        
       </form>
     </div>
   </div>

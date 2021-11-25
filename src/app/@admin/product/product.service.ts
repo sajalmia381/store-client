@@ -8,8 +8,8 @@ import { Product } from './product';
 export class ProductService {
   constructor(private http: HttpService) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get('/products').pipe(
+  getProducts(queryParams?: any): Observable<Product[]> {
+    return this.http.get('/products', queryParams && queryParams).pipe(
       map(res => {
         return res?.data;
       })
