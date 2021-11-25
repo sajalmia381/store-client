@@ -22,7 +22,7 @@
       <div class="grid grid-cols-2 -mx-2">
         <div class="px-2">
           <app-prism [code]="code"></app-prism>
-          <button (click)="fetchProduct()" type="button" class="bg-primary text-black font-semibold py-1 px-3 mt-2 rounded text-sm">Run script</button>
+          <button (click)="fetchProduct()" type="button" class="bg-primary text-black py-1 px-3 mt-2 rounded text-sm">Run script</button>
         </div>
         <div class="px-2">
           <div *ngIf="isProductLoading" style="background-color: #272822; padding: 16px; margin: 8px 0; border-radius: 0.3em;">
@@ -55,6 +55,12 @@
             </div>
             <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
           </a>
+          <a class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4">
+            <div class="mr-2">
+              <div>Order</div>
+            </div>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs">Coming soon</span>
+          </a>
         </div>
         <p class="mt-4">Note: resources have relations. For example: category have many product, product have many carts</p>
         <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
@@ -62,27 +68,26 @@
       <div class="mt-16 px-4">
         <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Auth</h3>
         <p class="text-lg mt-2 text-gray-500">JWT Authentication</p>
-        <div class="flex flex-col max-w-xl shadow rounded mt-2">
-          <a target="_blank" [href]="apiBaseUrl + '/users'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700">
-            <div class="mr-2">
-              <div>User</div>
+        <ul class="shadow rounded max-w-xl mt-2">
+          <li class="flex items-center justify-between px-4 py-4 border-b dark:border-gray-700">
+            <div class="ms-2 me-auto">
+              <div class="font-semibold">Login</div>
             </div>
-            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
-          </a>
-          <a target="_blank" [href]="apiBaseUrl + '/products'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700">
-            <div class="mr-2">
-              <div>Product</div>
+            <span class="text-primary">/auth/login</span>
+          </li>
+          <li class="flex items-center justify-between px-4 py-4 border-b dark:border-gray-700">
+            <div class="ms-2 me-auto">
+              <div class="font-semibold">Registration</div>
             </div>
-            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
-          </a>
-          <a target="_blank" [href]="apiBaseUrl + '/categories'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4">
-            <div class="mr-2">
-              <div>Category</div>
+            <span class="text-primary">/auth/register</span>
+          </li>
+          <li class="flex items-center justify-between px-4 py-4 border-b dark:border-gray-700">
+            <div class="ms-2 me-auto">
+              <div class="font-semibold">Refresh token</div>
             </div>
-            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
-          </a>
-        </div>
-        <p class="mt-4">Note: resources have relations. For example: category have many product, product have many carts</p>
+            <span class="text-primary">/auth/slug</span>
+          </li>
+        </ul>
         <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
       </div>
     </div>
