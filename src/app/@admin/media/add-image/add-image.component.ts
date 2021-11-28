@@ -46,10 +46,6 @@ export class AddImageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.imageFile) {
-      alert('please select image')
-      return
-    }
     const fd = new FormData();
     fd.append('image', this.imageFile, this.imageFile.name)
     this.store.dispatch(addImage({ image: fd }))
