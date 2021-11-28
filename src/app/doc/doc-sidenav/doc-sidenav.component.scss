@@ -2,12 +2,38 @@
   width: 220px;
   @apply px-4 py-6 xxl:pt-12 xxl:px-8;
 }
-.link__group__heading {
-  font-size: 18px;
-  @apply font-bold;
-  @apply flex items-center;
-  .mat-icon {
-    @apply text-primary;
+.link__group {
+  &__heading {
+    font-size: 18px;
+    @apply font-medium;
+    @apply inline-flex items-center relative;
+    .mat-icon {
+      $size: 1.15rem;
+      @apply text-primary;
+      font-size: $size;
+      line-height: $size;
+      height: $size;
+      width: $size;
+    }
+    &::after {
+      content: '#';
+      position: absolute;
+      left: calc(100% + 5px);
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: all 0.2s linear;
+    }
+  }
+  &__link {
+    display: block;
+    &:hover {
+      .link__group__heading {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
   }
 }
 .link__nav {

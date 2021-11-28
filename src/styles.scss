@@ -88,11 +88,14 @@ html,
 body {
   height: 100%;
 }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 body {
   margin: 0;
   font-family: 'Roboto', 'Helvetica Neue', sans-serif;
   letter-spacing: 0.3px;
-  font-size: 16px;
 }
 a {
   transition: all 0.3s linear;

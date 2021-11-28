@@ -9,15 +9,15 @@ const routes: Routes = [
   {
     path: 'images',
     component: ImageListComponent,
-    canActivate: [RoleBaseGuard],
-    data: {
-      authorities
-    }
+    // canActivate: [RoleBaseGuard],
+    // data: {
+    //   authorities
+    // }
   },
   {
     path: '',
     pathMatch: 'exact',
-    redirectTo: '/media/images'
+    redirectTo: './images'
   }
 ];
 

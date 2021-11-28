@@ -5,6 +5,7 @@ import { MediaRoutingModule } from './media-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { ImageListComponent } from './image-list/image-list.component';
 import { AddImageComponent } from './add-image/add-image.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { AddImageComponent } from './add-image/add-image.component';
     CommonModule,
     MediaRoutingModule,
     SharedModule,
+    MatDialogModule,
   ],
   entryComponents: [AddImageComponent]
 })

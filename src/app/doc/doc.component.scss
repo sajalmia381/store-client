@@ -24,22 +24,23 @@
   background-clip: border-box;
   border-radius: 0.25rem;
   &__title {
-    @apply mb-0 text-4xl mb-10 font-extrabold flex items-center;
+    @apply mb-0 mb-10 font-extrabold flex items-center;
+    font-size: 1.5rem;
     .mat-icon {
-      font-size: 2rem;
-      line-height: 2rem;
-      height: 2rem;
-      width: 2rem;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      height: 1.5rem;
+      width: 1.5rem;
       margin-right: 1rem;
       @apply text-primary;
     }
   }
   &__api {
-    &:not(last-child) {
-      margin-bottom: 2.5rem;
+    &:not(:first-child) {
+      padding-top: 2.5rem;
     }
   }
   &__sub_title {
-    @apply text-2xl font-semibold;
+    font-size: 1.25rem;
   }
 }
