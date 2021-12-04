@@ -6,17 +6,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '@shared/shared.module';
 
-
 @NgModule({
-  declarations: [
-    HomeComponent
-  ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    SharedModule,
-    MatIconModule,
-    PrismModule,
-  ]
+  declarations: [HomeComponent],
+  imports: [CommonModule, HomeRoutingModule, SharedModule, MatIconModule, PrismModule]
 })
-export class HomeModule { }
+export class HomeModule {}

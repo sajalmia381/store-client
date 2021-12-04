@@ -4,7 +4,11 @@
       <a routerLink="/">
         <h2 class="text-xl font-bold">Store Rest API</h2>
       </a>
-      <button (click)="toggleSidenav.emit()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 ml-3 md:hidden">
+      <button
+        (click)="toggleSidenav.emit()"
+        mat-icon-button
+        class="bg-gray-100 dark:bg-gray-800 ml-3 md:hidden"
+      >
         <mat-icon>menu</mat-icon>
       </button>
     </div>
@@ -13,21 +17,45 @@
         <nav class="hidden md:block">
           <ul class="navbar__nav">
             <li class="nav__item">
-              <a class="nav__link" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Home</a>
+              <a
+                class="nav__link"
+                routerLink=""
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Home</a
+              >
             </li>
             <li class="nav__item">
-              <a class="nav__link" routerLink="/docs" routerLinkActive="active" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Docs</a>
+              <a
+                class="nav__link"
+                routerLink="/docs"
+                routerLinkActive="active"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Docs</a
+              >
             </li>
             <li class="nav__item">
-              <a class="nav__link" href="http://github.com/sajalmia381" routerLinkActive="active" [routerLinkActiveOptions]="{'exact': true}">Github</a>
+              <a
+                class="nav__link"
+                href="http://github.com/sajalmia381"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Github</a
+              >
             </li>
           </ul>
         </nav>
         <div class="navbar__icons flex items-center">
           <button (click)="toggleTheme()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
-            <mat-icon>{{ themeMode ==='light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+            <mat-icon>{{ themeMode === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
           </button>
-          <a *ngIf="!isProductionMode" routerLink="/admin" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
+          <a
+            *ngIf="!isProductionMode"
+            routerLink="/admin"
+            mat-icon-button
+            class="bg-gray-100 dark:bg-gray-800 mr-3"
+          >
             <mat-icon>people</mat-icon>
           </a>
         </div>

@@ -26,7 +26,7 @@ const TREE_DATA: MenuItem[] = [
       {
         name: 'Add Product',
         url: '/admin/products/add-product'
-      },
+      }
     ]
   },
   {
@@ -40,7 +40,7 @@ const TREE_DATA: MenuItem[] = [
       {
         name: 'Add category',
         url: '/admin/categories/add-new'
-      },
+      }
     ]
   },
   {
@@ -54,7 +54,7 @@ const TREE_DATA: MenuItem[] = [
       {
         name: 'Add user',
         url: '/admin/users/add-user'
-      },
+      }
     ]
   },
   {
@@ -70,14 +70,12 @@ const TREE_DATA: MenuItem[] = [
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  treeControl = new NestedTreeControl<MenuItem> (node => node.children);
+  treeControl = new NestedTreeControl<MenuItem>(node => node.children);
   dataSource = new ArrayDataSource(TREE_DATA);
 
   hasChild = (_: number, node: MenuItem) => !!node.children && node.children.length > 0;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

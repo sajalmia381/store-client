@@ -6,7 +6,7 @@ export interface ImageState extends EntityState<Image> {
 }
 
 export const imageAdapter: EntityAdapter<Image> = createEntityAdapter<Image>({
-  selectId: (image: Image) => image._id,
+  selectId: (image: Image) => image._id
 });
 
 export const initialState: ImageState = imageAdapter.getInitialState({

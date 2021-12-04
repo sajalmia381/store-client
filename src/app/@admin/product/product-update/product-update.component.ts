@@ -19,7 +19,7 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
     title: new FormControl(null, Validators.required),
     description: new FormControl(null, Validators.required),
     price: new FormControl(null, Validators.required)
-  });;
+  });
   product!: Product | undefined | null;
   constructor(private store: Store, private router: Router, private snackbar: MatSnackBar) {}
 

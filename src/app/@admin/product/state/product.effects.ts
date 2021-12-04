@@ -4,7 +4,16 @@ import { Update } from '@ngrx/entity';
 import { RouterNavigatedAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { catchError, filter, map, mergeMap, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  filter,
+  map,
+  mergeMap,
+  switchMap,
+  take,
+  tap,
+  withLatestFrom
+} from 'rxjs/operators';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import * as productAction from './product.actions';
@@ -22,7 +31,7 @@ export class ProductEffects {
       ofType(productAction.loadProducts),
       withLatestFrom(this.store.select(isLoaded)),
       mergeMap(([action, loaded]) => {
-        console.log(action)
+        console.log(action);
         return this.productService.getProducts(action?.queryParams && action?.queryParams).pipe(
           map(products => {
             return productAction.loadProductsSuccess({ products });
@@ -37,7 +46,7 @@ export class ProductEffects {
       withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getProductSlugs)),
       switchMap(([action, route, slugs]) => {
         const slug = route.params.slug;
-        const isSlugExists = slugs.some(_slug => _slug === slug)
+        const isSlugExists = slugs.some(_slug => _slug === slug);
         if (!isSlugExists) {
           return this.productService.getProduct(slug).pipe(
             map((res: any) => {
@@ -53,10 +62,10 @@ export class ProductEffects {
   addProduct$ = createEffect(() => {
     return this.action$.pipe(
       ofType(productAction.addProduct),
-      switchMap((action) => {
+      switchMap(action => {
         return this.productService.addProduct(action.product).pipe(
           map((res: any) => {
-            console.log('add product call', res)
+            console.log('add product call', res);
             const product = { ...res.data, id: res.data?.slug };
             return productAction.addProductSuccess({ product });
           })
@@ -100,11 +109,11 @@ export class ProductEffects {
     return this.action$.pipe(
       ofType(productAction.deleteProduct),
       switchMap(action => {
-        console.log(action)
+        console.log(action);
         return this.productService.deleteProduct(action?.id).pipe(
           catchError(err => {
-            console.log('catch error', err)
-            return of(err?.message)
+            console.log('catch error', err);
+            return of(err?.message);
           }),
           map(data => {
             return productAction.deleteProductSuccess({ id: action.id });

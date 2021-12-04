@@ -1,11 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -30,7 +25,7 @@ export class HttpClintInterceptor implements HttpInterceptor {
           return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
         }
         if (this.isAuthTokenInvalid(accessToken)) {
-          this.store.dispatch(logoutSuccess());          
+          this.store.dispatch(logoutSuccess());
           return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
         }
         let modifiedReq = request.clone({
@@ -40,11 +35,11 @@ export class HttpClintInterceptor implements HttpInterceptor {
       })
     );
   }
-  
+
   isAuthTokenInvalid(accessToken: string): boolean {
     const decoded: any = jwtDecode(accessToken);
     // default decoded exp format is second
-    const expMilSecond: number = decoded?.exp * 1000 // milliseconds
+    const expMilSecond: number = decoded?.exp * 1000; // milliseconds
     const currentTime = Date.now(); // milliseconds
     if (expMilSecond < currentTime) {
       this.snackBar.open('Your Session have been Expired!! Please Sign In again.', 'Close', {

@@ -15,11 +15,10 @@ import { CategoryState } from '../state/category.state';
 export class CategoryDetailsComponent implements OnInit {
   category$!: Observable<Category | undefined | null>;
   backendBaseUrl: string = environment.baseUrl;
-  constructor(private store: Store<CategoryState>) { }
+  constructor(private store: Store<CategoryState>) {}
 
   ngOnInit(): void {
     this.category$ = this.store.select(getCategoryBySlug);
-    this.store.dispatch(loadCategory())
+    this.store.dispatch(loadCategory());
   }
-
 }

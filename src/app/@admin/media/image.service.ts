@@ -9,7 +9,7 @@ import { Image } from './Image';
 })
 export class ImageService {
   constructor(private http: HttpService) {}
-  
+
   getImages(): Observable<Image[]> {
     return this.http.get('/images').pipe(
       map(res => {
@@ -25,14 +25,18 @@ export class ImageService {
   }
 
   deleteImage(id: string): Observable<any> {
-    return this.http.delete('/images/' + id).pipe(map(res => {
-      return res
-    }))
+    return this.http.delete('/images/' + id).pipe(
+      map(res => {
+        return res;
+      })
+    );
   }
-  
+
   bulkDeleteImages(slugs: string[]): Observable<any> {
-    return this.http.delete('/images/bulk' + slugs).pipe(map(res => {
-      return res
-    }))
+    return this.http.delete('/images/bulk' + slugs).pipe(
+      map(res => {
+        return res;
+      })
+    );
   }
 }

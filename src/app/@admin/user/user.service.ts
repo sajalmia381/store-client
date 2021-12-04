@@ -8,9 +8,8 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
+  constructor(private http: HttpService) {}
 
-  constructor(private http: HttpService) { }
-  
   getUsers(): Observable<User[]> {
     return this.http.get('/users').pipe(
       map(res => {
@@ -25,10 +24,10 @@ export class UserService {
     return this.http.get('/users/' + id);
   }
   updateUser(user: User): Observable<User> {
-    console.log('user api', user)
+    console.log('user api', user);
     return this.http.put('/users/' + user?._id, user);
   }
   deleteUser(id: string): Observable<User> {
-    return this.http.delete('/users/' + id)
+    return this.http.delete('/users/' + id);
   }
 }

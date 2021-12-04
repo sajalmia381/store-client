@@ -13,9 +13,10 @@ export class DefaultLayoutComponent implements OnInit {
   isAlive: boolean = true;
   isSmallDevice!: boolean;
   constructor(private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver.observe(['(max-width: 767px)'])
+    this.breakpointObserver
+      .observe(['(max-width: 767px)'])
       .pipe(takeWhile(() => this.isAlive))
-      .subscribe(({matches}) => {
+      .subscribe(({ matches }) => {
         this.isSmallDevice = matches;
       });
   }

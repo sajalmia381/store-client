@@ -1,5 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { addOneCategory, deleteCategorySuccess, loadCategoriesSuccess, updateCategorySuccess } from './category.actions';
+import {
+  addOneCategory,
+  deleteCategorySuccess,
+  loadCategoriesSuccess,
+  updateCategorySuccess
+} from './category.actions';
 import { initialState, categoryAdapter, CategoryState } from './category.state';
 
 const _categoryReducer = createReducer(
@@ -11,7 +16,7 @@ const _categoryReducer = createReducer(
     });
   }),
   on(addOneCategory, (state, action) => {
-    return categoryAdapter.addOne(action.category, state)
+    return categoryAdapter.addOne(action.category, state);
   }),
   on(updateCategorySuccess, (state, action) => {
     return categoryAdapter.updateOne(action.category, state);

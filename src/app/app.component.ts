@@ -13,16 +13,16 @@ export class AppComponent {
       const body = document.body;
       if (theme === 'dark') {
         if (body.classList.contains('light')) {
-          body.classList.remove('light')
+          body.classList.remove('light');
         }
-        body.classList.add('dark')
+        body.classList.add('dark');
       } else {
         if (body.classList.contains('dark')) {
-          body.classList.remove('dark')
+          body.classList.remove('dark');
         }
-        body.classList.add('light')
+        body.classList.add('light');
       }
-    })
+    });
   }
   title = 'store-admin';
 }

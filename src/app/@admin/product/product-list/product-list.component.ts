@@ -25,7 +25,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
   isAlive: boolean = true;
   isLoaded$!: Observable<boolean>;
   loading!: false;
-  displayedColumns: string[] = ['select', 'title', 'price', 'category', 'createdAt', 'action'];
+  displayedColumns: string[] = [
+    'select',
+    'title',
+    'price',
+    'category',
+    'createdBy',
+    'createdAt',
+    'action'
+  ];
   selection = new SelectionModel<Product>(true, []);
   dataSource: any = new MatTableDataSource<Product>([]);
   backendBaseUrl: string = environment.baseUrl;
@@ -36,8 +44,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.filterForm = new FormGroup({
       q: new FormControl(['']),
       sort: new FormControl([''])
-    })
-    this.store.select(getProducts)
+    });
+    this.store
+      .select(getProducts)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(products => {
         this.dataSource.data = products;
@@ -65,7 +74,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -90,19 +99,22 @@ export class ProductListComponent implements OnInit, OnDestroy {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row._id + 1}`;
   }
-  
+
   onBulkDelete(): void {
     const dialogRef = this.dialog.open(DeleteConformationComponent, {
       width: '100%',
       maxWidth: '400px',
       data: {
-        message: 'Are you sure! you want to bulk delete "' + this.selection.selected.map(item => item.slug) + '"?'
+        message:
+          'Are you sure! you want to bulk delete "' +
+          this.selection.selected.map(item => item.slug) +
+          '"?'
       }
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         // this.store.dispatch(deleteProduct({ id: product?.slug }));
-        console.log(this.selection)
+        console.log(this.selection);
       }
     });
   }
@@ -111,9 +123,11 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.filterSidenav.toggle();
   }
   onFilter(): void {
-    console.log()
+    console.log();
     if (this.filterForm.dirty) {
-      this.store.dispatch(loadProducts({queryParams: filterValidObjAttribute(this.filterForm.value)}))
+      this.store.dispatch(
+        loadProducts({ queryParams: filterValidObjAttribute(this.filterForm.value) })
+      );
     }
   }
 }

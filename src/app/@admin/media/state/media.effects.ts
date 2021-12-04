@@ -2,7 +2,15 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import {
+  catchError,
+  exhaustMap,
+  map,
+  mergeMap,
+  switchMap,
+  tap,
+  withLatestFrom
+} from 'rxjs/operators';
 import * as imageAction from './media.actions';
 import { getImageIds, isLoaded } from './media.selectors';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
@@ -10,11 +18,7 @@ import { ImageService } from '../image.service';
 
 @Injectable()
 export class ImageEffects {
-  constructor(
-    private store: Store,
-    private action$: Actions,
-    private imageService: ImageService
-  ) { }
+  constructor(private store: Store, private action$: Actions, private imageService: ImageService) {}
   loadImages$ = createEffect(() => {
     return this.action$.pipe(
       ofType(imageAction.loadImages),
@@ -34,7 +38,7 @@ export class ImageEffects {
       withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getImageIds)),
       switchMap(([action, route, ids]) => {
         const id = route.params.id;
-        const isIdExists = ids.some(_id => _id === id)
+        const isIdExists = ids.some(_id => _id === id);
         if (!isIdExists) {
           return this.imageService.getImage(id).pipe(
             map((res: any) => {
@@ -50,10 +54,10 @@ export class ImageEffects {
   addImage$ = createEffect(() => {
     return this.action$.pipe(
       ofType(imageAction.addImage),
-      exhaustMap((action) => {
+      exhaustMap(action => {
         return this.imageService.addImage(action.image).pipe(
           map((res: any) => {
-            console.log('add image call', res)
+            console.log('add image call', res);
             const image = { ...res.data, id: res.data?._id };
             return imageAction.addImageSuccess({ image });
           })
@@ -79,11 +83,11 @@ export class ImageEffects {
     return this.action$.pipe(
       ofType(imageAction.deleteImage),
       switchMap(action => {
-        console.log(action)
+        console.log(action);
         return this.imageService.deleteImage(action?.id).pipe(
           catchError(err => {
-            console.log('catch error', err)
-            return of(err?.message)
+            console.log('catch error', err);
+            return of(err?.message);
           }),
           map(data => {
             return imageAction.deleteImageSuccess({ id: action.id });

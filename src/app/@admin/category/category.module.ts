@@ -21,18 +21,18 @@ import { MatMenuModule } from '@angular/material/menu';
     CategoriesComponent,
     CategoryFormComponent,
     CategoryDetailsComponent,
-    CategoryUpdateComponent,
+    CategoryUpdateComponent
   ],
   imports: [
     CommonModule,
     CategoryRoutingModule,
     SharedModule,
     MatTableModule,
-    MatMenuModule,
+    MatMenuModule
     // StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
     // EffectsModule.forFeature([CategoryEffects]),
   ],
   providers: [CategoryService],
   entryComponents: [CategoryFormComponent, CategoryUpdateComponent]
 })
-export class CategoryModule { }
+export class CategoryModule {}

@@ -31,11 +31,11 @@ export class CategoryEffects {
   addCategory$ = createEffect(() => {
     return this.action$.pipe(
       ofType(categoryAction.addOneCategory),
-      switchMap((action) => {
-        console.log(action)
+      switchMap(action => {
+        console.log(action);
         return this.categoryService.addCategory(action.category).pipe(
           map((res: any) => {
-            console.log('add Category call', res)
+            console.log('add Category call', res);
             const category = { ...res.data, id: res.data?.slug };
             return categoryAction.addOneCategorySuccess({ category });
           })
@@ -65,11 +65,11 @@ export class CategoryEffects {
     return this.action$.pipe(
       ofType(categoryAction.deleteCategory),
       switchMap(action => {
-        console.log(action)
+        console.log(action);
         return this.categoryService.deleteCategory(action?.id).pipe(
           catchError(err => {
-            console.log('catch error', err)
-            return of(err?.message)
+            console.log('catch error', err);
+            return of(err?.message);
           }),
           map(data => {
             return categoryAction.deleteCategorySuccess({ id: action.id });

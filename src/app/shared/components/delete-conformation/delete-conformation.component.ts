@@ -7,14 +7,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./delete-conformation.component.scss']
 })
 export class DeleteConformationComponent implements OnInit {
-  message: string = "Are you sure?"
+  message: string = 'Are you sure?';
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private dialogRef: MatDialogRef<DeleteConformationComponent>) {
-      if(data) {
-        this.message = data.message || this.message;
-      }
+    private dialogRef: MatDialogRef<DeleteConformationComponent>
+  ) {
+    if (data) {
+      this.message = data.message || this.message;
     }
+  }
   ngOnInit(): void {}
 
   onConfirmClick(): void {

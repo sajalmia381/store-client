@@ -31,7 +31,7 @@ export class HttpService {
 
   post(url: any, data: any): Observable<any> {
     let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     const body = JSON.stringify(data);
     return this.http.post(this.apiBaseUrl + url, body, httpOptions);
