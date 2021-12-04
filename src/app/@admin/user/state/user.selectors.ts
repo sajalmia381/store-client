@@ -1,7 +1,7 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { getCurrentRoute } from "src/app/store/router/router.selectors";
-import { RouterStateUrl } from "src/app/store/router/router.serializer";
-import { userAdapter, UserState } from "./user.state";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { getCurrentRoute } from 'src/app/store/router/router.selectors';
+import { RouterStateUrl } from 'src/app/store/router/router.serializer';
+import { userAdapter, UserState } from './user.state';
 
 export const USER_STATE_NAME = 'users';
 

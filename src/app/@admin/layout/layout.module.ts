@@ -12,11 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  declarations: [
-    LayoutComponent,
-    HeaderComponent,
-    SidenavComponent
-  ],
+  declarations: [LayoutComponent, HeaderComponent, SidenavComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -25,7 +21,7 @@ import { SharedModule } from '@shared/shared.module';
     CdkTreeModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule,
+    MatButtonModule
   ]
 })
-export class LayoutModule { }
+export class LayoutModule {}

@@ -17,13 +17,11 @@ const commonImportedModules = [
   // Material
   MatButtonModule,
   MatIconModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
-  declarations: [
-    DeleteConformationComponent
-  ],
+  declarations: [DeleteConformationComponent],
   imports: [CommonModule, ...commonImportedModules, RouterModule, MatDialogModule],
   exports: [...commonImportedModules, DeleteConformationComponent]
 })

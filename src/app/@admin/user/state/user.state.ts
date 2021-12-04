@@ -1,6 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { User } from "../user";
-
+import { User } from '../user';
 
 export interface UserState extends EntityState<User> {
   // add extra fields
@@ -9,7 +8,7 @@ export interface UserState extends EntityState<User> {
 
 export const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({
   // adds extra
-  selectId: (user: User) => user._id,
+  selectId: (user: User) => user._id
 });
 
 export const initialState: UserState = userAdapter.getInitialState({

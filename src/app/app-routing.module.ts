@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-    children: <USERNAME>Routes,
+    children: <USERNAME>Routes
   }
 ];
 

@@ -54,8 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   ngOnDestroy(): void {
     this.store.dispatch(setLoading({ status: false }));
   }
@@ -67,6 +66,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   onSubmit(): void {
     this.store.dispatch(setLoading({ status: true }));
-    this.store.dispatch(loginRequest( this.loginForm.value ));
+    this.store.dispatch(loginRequest(this.loginForm.value));
   }
 }

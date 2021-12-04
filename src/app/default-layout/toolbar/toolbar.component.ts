@@ -18,23 +18,21 @@ export class ToolbarComponent implements OnInit {
   userData!: any;
   themeMode!: string;
   isProductionMode: boolean = environment.production;
-  constructor(private store: Store<AuthState | SharedState>) { }
+  constructor(private store: Store<AuthState | SharedState>) {}
 
   ngOnInit(): void {
-    this.store.select(getUserData)
-      .subscribe(data => {
-        // console.log('userData form header', data)
-        this.userData = data?.data;
-      })
-    this.store.select(getThemeMode)
-      .subscribe(theme => {
-        this.themeMode = theme;
-      })
+    this.store.select(getUserData).subscribe(data => {
+      // console.log('userData form header', data)
+      this.userData = data?.data;
+    });
+    this.store.select(getThemeMode).subscribe(theme => {
+      this.themeMode = theme;
+    });
   }
   toggleTheme(): void {
-    this.store.dispatch(setThemeMode({theme: this.themeMode === 'dark' ? 'light' : 'dark'}))
+    this.store.dispatch(setThemeMode({ theme: this.themeMode === 'dark' ? 'light' : 'dark' }));
   }
   onLogout(): void {
-    this.store.dispatch(logoutSuccess())
-  } 
+    this.store.dispatch(logoutSuccess());
+  }
 }

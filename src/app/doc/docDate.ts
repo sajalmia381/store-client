@@ -1,28 +1,28 @@
-import { environment } from "@env/environment"
+import { environment } from '@env/environment';
 const apiBaseUrl = environment.apiBaseUrl;
 export default {
   product: [
     {
-      "name": "Get all Products",
-      "code": `fetch('${apiBaseUrl}/products')
+      name: 'Get all Products',
+      code: `fetch('${apiBaseUrl}/products')
         .then(response => response.json())
         .then(json => console.log(json))`
     },
     {
-      "name": "Get a single product",
-      "code": `fetch('${apiBaseUrl}/products/running-sneaker')
+      name: 'Get a single product',
+      code: `fetch('${apiBaseUrl}/products/running-sneaker')
       .then(response => response.json())
       .then(json => console.log(json))`
     },
     {
-      "name": "Pagination results",
-      "code": `fetch('${apiBaseUrl}/products?limit=10&page=1')
+      name: 'Pagination results',
+      code: `fetch('${apiBaseUrl}/products?limit=10&page=1')
       .then(response => response.json())
       .then(json => console.log(json))`
     },
     {
-      "name": "Create product",
-      "code": `fetch('${apiBaseUrl}/products',
+      name: 'Create product',
+      code: `fetch('${apiBaseUrl}/products',
       {
           method: 'POST',
           body: JSON.stringify({
@@ -39,8 +39,8 @@ export default {
       .then(json => console.log(json))`
     },
     {
-      "name": "Update product",
-      "code": `fetch('${apiBaseUrl}/products/running-sneaker',
+      name: 'Update product',
+      code: `fetch('${apiBaseUrl}/products/running-sneaker',
       {
           method: 'PUT',
           body: JSON.stringify({
@@ -57,8 +57,8 @@ export default {
       .then(json => console.log(json))`
     },
     {
-      "name": "Delete product",
-      "code": `fetch('${apiBaseUrl}/products/running-sneaker',
+      name: 'Delete product',
+      code: `fetch('${apiBaseUrl}/products/running-sneaker',
       {
           method: 'DELETE',
       })
@@ -71,7 +71,7 @@ export default {
       name: 'Get User',
       code: `fetch('${apiBaseUrl}/users')
       .then(response => response.json())
-      .then(json => console.log(json))`,
+      .then(json => console.log(json))`
     },
     {
       name: 'Get Single User',
@@ -126,15 +126,14 @@ export default {
   )
   .then(response => response.json())
   .then(json => console.log(json))`
-    },
-    
+    }
   ],
   category: [
     {
       name: 'Get Categories',
       code: `fetch('${apiBaseUrl}/categories')
       .then(response => response.json())
-      .then(json => console.log(json))`,
+      .then(json => console.log(json))`
     },
     {
       name: 'Get Single Category',
@@ -181,7 +180,7 @@ export default {
   )
   .then(response => response.json())
   .then(json => console.log(json))`
-    },
+    }
   ],
   auth: [
     {
@@ -235,4 +234,4 @@ export default {
       .then(json => console.log(json))`
     }
   ]
-}
+};

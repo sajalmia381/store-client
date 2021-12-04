@@ -8,8 +8,8 @@ const _sharedReducer = createReducer(
     return { ...state, loading: action.status };
   }),
   on(setThemeMode, (state, action) => {
-    localStorage.setItem('theme-mode', action.theme)
-    return {...state, themeMode: action.theme}
+    localStorage.setItem('theme-mode', action.theme);
+    return { ...state, themeMode: action.theme };
   })
 );
 

@@ -11,17 +11,17 @@ import { CategoryState } from '../state/category.state';
 })
 export class CategoryFormComponent implements OnInit {
   categoryForm!: FormGroup;
-  constructor(private fb: FormBuilder, private store: Store<CategoryState>) { }
+  constructor(private fb: FormBuilder, private store: Store<CategoryState>) {}
 
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
       name: [, [Validators.required]]
-    })
+    });
   }
   get name(): any {
-    return this.categoryForm.get('name')
+    return this.categoryForm.get('name');
   }
   onFormSubmit(): void {
-    this.store.dispatch(addOneCategory({ category: this.categoryForm.value }))
+    this.store.dispatch(addOneCategory({ category: this.categoryForm.value }));
   }
 }

@@ -13,11 +13,7 @@ import { getUsersId, isLoaded } from './user.selectors';
 
 @Injectable()
 export class UserEffects {
-  constructor(
-    private store: Store,
-    private action$: Actions,
-    private userService: UserService
-  ) {}
+  constructor(private store: Store, private action$: Actions, private userService: UserService) {}
   loadUsers$ = createEffect(() => {
     return this.action$.pipe(
       ofType(userAction.loadUsers),
@@ -25,7 +21,7 @@ export class UserEffects {
       mergeMap(([action, loaded]) => {
         return this.userService.getUsers().pipe(
           map(users => {
-            console.log(users)
+            console.log(users);
             return userAction.loadUsersSuccess({ users });
           })
         );
@@ -37,14 +33,14 @@ export class UserEffects {
       ofType(userAction.loadUser),
       withLatestFrom(this.store.select(getCurrentRoute), this.store.select(getUsersId)),
       switchMap(([action, route, ids]) => {
-        console.log(action, route, ids)
-        console.log('route', route?.params?.id)
+        console.log(action, route, ids);
+        console.log('route', route?.params?.id);
         const id = route?.params?.id || '';
-        const isIdExists = ids.some(_id => _id === id)
-        if(!isIdExists) {
+        const isIdExists = ids.some(_id => _id === id);
+        if (!isIdExists) {
           return this.userService.getUser(id).pipe(
             map((res: any) => {
-              console.log(res)
+              console.log(res);
               const user = { ...res?.data, id: id };
               return userAction.addUserSuccess({ user });
             })
@@ -57,10 +53,10 @@ export class UserEffects {
   addUser$ = createEffect(() => {
     return this.action$.pipe(
       ofType(userAction.addUser),
-      switchMap((action) => {
+      switchMap(action => {
         return this.userService.addUser(action.user).pipe(
-          map((data) => {
-            console.log('add user call')
+          map(data => {
+            console.log('add user call');
             const user = { ...action.user, id: data._id };
             return addUserSuccess({ user });
           })
@@ -74,7 +70,7 @@ export class UserEffects {
       switchMap(action => {
         return this.userService.updateUser(action.user).pipe(
           map(user => {
-            console.log('effect update user', user)
+            console.log('effect update user', user);
             const updatedUser: Update<User> = {
               id: action.user._id,
               changes: {
@@ -91,11 +87,11 @@ export class UserEffects {
     return this.action$.pipe(
       ofType(userAction.deleteUser),
       switchMap(action => {
-        console.log(action)
+        console.log(action);
         return this.userService.deleteUser(action?.id).pipe(
           catchError(err => {
-            console.log('catch error', err)
-            return of(err?.message)
+            console.log('catch error', err);
+            return of(err?.message);
           }),
           map(data => {
             return userAction.deleteUserSuccess({ id: action.id });

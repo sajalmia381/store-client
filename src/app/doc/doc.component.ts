@@ -18,9 +18,10 @@ export class DocComponent implements OnInit, OnDestroy {
   isSmallDevice!: boolean;
   isSidenavExpand: boolean = true;
   constructor(private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver.observe(['(max-width: 991px)'])
+    this.breakpointObserver
+      .observe(['(max-width: 991px)'])
       .pipe(takeWhile(() => this.isAlive))
-      .subscribe(({matches}) => {
+      .subscribe(({ matches }) => {
         this.isSmallDevice = matches;
         if (matches) {
           this.isSidenavExpand = false;

@@ -1,24 +1,33 @@
 <div class="sidenav pt-6 pb-2">
-  <h4 class="text-sm mb-3 px-4" style="color:#8fa7b2">Application</h4>
+  <h4 class="text-sm mb-3 px-4" style="color: #8fa7b2">Application</h4>
   <cdk-tree [dataSource]="dataSource" [treeControl]="treeControl">
     <!-- This is the tree node template for leaf nodes -->
     <cdk-nested-tree-node *cdkTreeNodeDef="let node" class="tree-node">
       <!-- use a disabled button to provide padding for tree leaf -->
-      <a [routerLink]="node?.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="menu-item w-full flex items-center justify-start">
-        <mat-icon class="menu-item__icon" *ngIf="node?.iconName">{{node.iconName}}</mat-icon>        
-        {{node.name}}
+      <a
+        [routerLink]="node?.url"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="menu-item w-full flex items-center justify-start"
+      >
+        <mat-icon class="menu-item__icon" *ngIf="node?.iconName">{{ node.iconName }}</mat-icon>
+        {{ node.name }}
       </a>
     </cdk-nested-tree-node>
     <!-- This is the tree node template for expandable nodes -->
     <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: hasChild" class="tree-node">
-      <button class="menu-item flex items-center w-full" [attr.aria-label]="'Toggle ' + node.name" cdkTreeNodeToggle>
-        <mat-icon class="menu-item__icon" *ngIf="node?.iconName">{{node.iconName}}</mat-icon>
-        <span>{{node.name}}</span>
+      <button
+        class="menu-item flex items-center w-full"
+        [attr.aria-label]="'Toggle ' + node.name"
+        cdkTreeNodeToggle
+      >
+        <mat-icon class="menu-item__icon" *ngIf="node?.iconName">{{ node.iconName }}</mat-icon>
+        <span>{{ node.name }}</span>
         <mat-icon class="mat-icon-rtl-mirror ml-auto menu-item__icon--toggler">
-          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
         </mat-icon>
       </button>
-      
+
       <div [class.example-tree-invisible]="!treeControl.isExpanded(node)">
         <ng-container cdkTreeNodeOutlet></ng-container>
       </div>

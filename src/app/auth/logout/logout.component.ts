@@ -11,6 +11,6 @@ export class LogoutComponent implements OnInit {
   constructor(private store: Store<AuthState>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(logoutSuccess())
+    this.store.dispatch(logoutSuccess());
   }
 }

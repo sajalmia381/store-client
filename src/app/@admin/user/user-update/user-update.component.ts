@@ -19,10 +19,14 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
   isAlive = true;
   userForm: FormGroup = new FormGroup({
     name: new FormControl(null, Validators.required),
-    number: new FormControl(null, Validators.required),
+    number: new FormControl(null, Validators.required)
   });
   user: User | undefined | null;
-  constructor(private store: Store<UserState>, private router: Router, private snackbar: MatSnackBar) {}
+  constructor(
+    private store: Store<UserState>,
+    private router: Router,
+    private snackbar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.store
@@ -33,7 +37,7 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
         if (data) {
           this.userForm.patchValue({
             name: data?.name,
-            number: data?.number,
+            number: data?.number
           });
         }
       });
@@ -52,7 +56,7 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
       this.snackbar.open('Form is not valid', 'close');
       return;
     }
-    const user = filterValidObjAttribute(this.userForm.value)
+    const user = filterValidObjAttribute(this.userForm.value);
     this.store.dispatch(updateUser({ user }));
     // this.router.navigate(['/users']);
   }

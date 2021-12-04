@@ -8,8 +8,6 @@ import { deleteUser, loadUsers } from '../state/user.actions';
 import { getUsers, isLoaded } from '../state/user.selectors';
 import { UserState } from '../state/user.state';
 import { User } from '../user';
-import { UserFormComponent } from '../user-form/user-form.component';
-import { UserUpdateComponent } from '../user-update/user-update.component';
 
 @Component({
   selector: 'app-user-list',
@@ -21,14 +19,24 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   isLoaded$!: Observable<boolean>;
   loading: boolean = false;
-  
+
   // Table
-  displayedColumns: string[] = ['_id', 'email', 'name', 'role', 'number', 'createdAt', 'updatedAt', 'action'];
-  dataSource: any;
+  displayedColumns: string[] = [
+    '_id',
+    'email',
+    'name',
+    'role',
+    'number',
+    'createdAt',
+    'updatedAt',
+    'action'
+  ];
+  dataSource!: User[];
   constructor(private store: Store<UserState>, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.store.select(getUsers)
+    this.store
+      .select(getUsers)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(data => {
         this.dataSource = data;
@@ -41,8 +49,8 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
   onDelete(user: User): void {
     const dialogRef = this.dialog.open(DeleteConformationComponent, {
-      data:{
-        message: `Are you sure want to delete "${user.email}"?`,
+      data: {
+        message: `Are you sure want to delete "${user.email}"?`
       }
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {

@@ -17,8 +17,8 @@ export interface AppState {
   [SHARED_STATE_NAME]: SharedState;
   [ROUTER_STATE_NAME]: RouterReducerState;
   [AUTH_STATE_NAME]: AuthState;
-  [CATEGORY_STATE_NAME]: CategoryState,
-  [IMAGE_STATE_NAME]: ImageState
+  [CATEGORY_STATE_NAME]: CategoryState;
+  [IMAGE_STATE_NAME]: ImageState;
 }
 
 export const appReducer = {

@@ -15,28 +15,31 @@ export class LayoutComponent implements OnInit, OnDestroy {
   isAlive: boolean = true;
   isSidenavExpand = true;
   isLessThenLargeDevice = true;
-  
+
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
-    this.breakpointObserver.observe(['(max-width: 1199px)'])
+    this.breakpointObserver
+      .observe(['(max-width: 1199px)'])
       .pipe(takeWhile(() => this.isAlive))
-      .subscribe(({matches}) => {
+      .subscribe(({ matches }) => {
         this.isLessThenLargeDevice = matches;
         if (matches) {
           this.isSidenavExpand = false;
         } else {
           this.isSidenavExpand = true;
         }
-        this.router.events.pipe(
-          takeWhile(() => this.isLessThenLargeDevice),
-          filter(event => event instanceof NavigationEnd)
-        ).subscribe(() => {
-          this.isSidenavExpand = false;
-        })
+        this.router.events
+          .pipe(
+            takeWhile(() => this.isLessThenLargeDevice),
+            filter(event => event instanceof NavigationEnd)
+          )
+          .subscribe(() => {
+            this.isSidenavExpand = false;
+          });
       });
   }
 
   ngOnInit(): void {}
-  
+
   ngOnDestroy(): void {
     this.isAlive = false;
   }

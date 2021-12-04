@@ -8,14 +8,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { CategoryEffects } from './category/state/category.effects';
 import { ImageEffects } from './media/state/media.effects';
 
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     adminRoutingModule,
     LayoutModule,
-    EffectsModule.forRoot([AuthEffects, CategoryEffects, ImageEffects]),
+    EffectsModule.forRoot([AuthEffects, CategoryEffects, ImageEffects])
   ]
 })
-export class adminModule { }
+export class adminModule {}

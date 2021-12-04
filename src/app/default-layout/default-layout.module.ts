@@ -10,17 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
-  declarations: [
-    ToolbarComponent,
-    DefaultLayoutComponent,
-    SidenavComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule
-  ]
+  declarations: [ToolbarComponent, DefaultLayoutComponent, SidenavComponent],
+  imports: [CommonModule, RouterModule, MatSidenavModule, MatIconModule, MatButtonModule]
 })
-export class DefaultLayoutModule { }
+export class DefaultLayoutModule {}

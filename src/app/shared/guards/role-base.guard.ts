@@ -14,7 +14,7 @@ import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 export class RoleBaseGuard implements CanActivate {
   constructor(private store: Store, private router: Router, private snackBar: MatSnackBar) {}
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log('call role guard')
+    console.log('call role guard');
     return this.store.select(getUserData).pipe(
       withLatestFrom(this.store.select(getCurrentRoute)),
       map(([userData, routeData]) => {
@@ -29,9 +29,9 @@ export class RoleBaseGuard implements CanActivate {
         //   return this.router.createUrlTree(['/auth/logout']);
         // }
         // Check Roles permission
-        console.log('check permission')
+        console.log('check permission');
         const _role = userData?.data?.role;
-        console.log('routes data', routeData)
+        console.log('routes data', routeData);
         const validRoles = routeData.data?.authorities || [];
         if (!validRoles.includes(_role)) {
           //!validRoles.some((r: string) => userAuthorities.includes(r))
@@ -45,7 +45,7 @@ export class RoleBaseGuard implements CanActivate {
   isAuthTokenInvalid(accessToken: string): boolean {
     const decoded: any = jwtDecode(accessToken);
     const currentTime = Date.now();
-    console.log(decoded?.exp, currentTime)
+    console.log(decoded?.exp, currentTime);
     if (decoded?.exp < currentTime) {
       this.snackBar.open('Your Session have been Expired!! Please Sign In again.', 'Close', {
         duration: 10000

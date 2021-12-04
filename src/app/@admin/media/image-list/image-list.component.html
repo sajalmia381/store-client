@@ -1,7 +1,7 @@
 <div class="page__container">
   <div class="page__toolbar">
     <div class="flex items-center">
-      <h2>Images </h2>
+      <h2>Images</h2>
     </div>
     <div class="ml-auto">
       <button (click)="onImageForm()" class="ml-4" mat-flat-button>
@@ -10,20 +10,38 @@
     </div>
   </div>
   <div class="page__content">
-    <div *ngIf="(images$ | async ) as imageList">
+    <div *ngIf="images$ | async as imageList">
       <div class="flex flex-wrap">
         <div *ngFor="let image of imageList" class="xxl:w-1/6 xl:w-1/3 md:w-1/2 p-4">
           <div class="rounded-lg border overflow-hidden">
             <a>
-              <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 w-full object-cover object-center mb-6"
-                [src]="'http://localhost:8000/' + image.webUrl" alt="Image Size 720x400">
+              <img
+                class="
+                  lg:h-60
+                  xl:h-56
+                  md:h-64
+                  sm:h-72
+                  xs:h-72
+                  h-72
+                  w-full
+                  object-cover object-center
+                  mb-6
+                "
+                [src]="'http://localhost:8000/' + image.webUrl"
+                alt="Image Size 720x400"
+              />
             </a>
             <div class="p-4">
               <h2 class="text-sm font-medium title-font mb-4">{{ image.name }}</h2>
               <p class="text-sm">Size: {{ image.size }}</p>
               <p class="text-sm">type: {{ image.type }}</p>
               <div class="flex items-center flex-wrap mt-4">
-                <button class="text-sm leading-8" mat-flat-button color="warn" (click)="onDelete(image)">
+                <button
+                  class="text-sm leading-8"
+                  mat-flat-button
+                  color="warn"
+                  (click)="onDelete(image)"
+                >
                   <mat-icon class="text-xl leading-6">delete</mat-icon>
                   <span>Delete</span>
                 </button>
@@ -33,8 +51,6 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!(isLoaded$ | async )">
-      loading
-    </div>
+    <div *ngIf="!(isLoaded$ | async)">loading</div>
   </div>
 </div>

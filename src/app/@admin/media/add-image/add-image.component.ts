@@ -19,17 +19,17 @@ export class AddImageComponent implements OnInit {
   constructor(
     private store: Store<ImageState>,
     private imageEffect: ImageEffects,
-    private dialogRef: MatDialogRef<AddImageComponent>) { }
+    private dialogRef: MatDialogRef<AddImageComponent>
+  ) {}
 
   ngOnInit(): void {
-    this.imageEffect.addImage$.pipe(ofType(addImageSuccess))
-      .subscribe(_ => {
-        // close dialog
-        // this.dialogRef.close();
-        if (!this.uploaded) {
-          this.uploaded = true
-        }
-      })
+    this.imageEffect.addImage$.pipe(ofType(addImageSuccess)).subscribe(_ => {
+      // close dialog
+      // this.dialogRef.close();
+      if (!this.uploaded) {
+        this.uploaded = true;
+      }
+    });
   }
 
   onFileSelect(event: Event) {
@@ -38,7 +38,7 @@ export class AddImageComponent implements OnInit {
     // reader.onload = () => {
     //   this.imagePreview = reader.result.toString();
     // };
-    reader.readAsDataURL(this.imageFile)
+    reader.readAsDataURL(this.imageFile);
 
     reader.onload = (event: any) => {
       this.imagePreview = (event.target as FileReader).result;
@@ -47,7 +47,7 @@ export class AddImageComponent implements OnInit {
 
   onSubmit(): void {
     const fd = new FormData();
-    fd.append('image', this.imageFile, this.imageFile.name)
-    this.store.dispatch(addImage({ image: fd }))
+    fd.append('image', this.imageFile, this.imageFile.name);
+    this.store.dispatch(addImage({ image: fd }));
   }
 }

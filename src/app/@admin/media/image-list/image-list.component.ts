@@ -17,8 +17,8 @@ import { ImageState } from '../state/media.state';
 export class ImageListComponent implements OnInit {
   images$!: Observable<Image[]>;
   isLoaded$!: Observable<boolean>;
-  
-  constructor(private store: Store<ImageState>, private dialog: MatDialog) { }
+
+  constructor(private store: Store<ImageState>, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.images$ = this.store.select(getImages);

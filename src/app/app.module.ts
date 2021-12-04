@@ -27,7 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer }),
     DefaultLayoutModule,
     HttpClientModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
   providers: [
     {

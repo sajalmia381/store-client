@@ -1,12 +1,14 @@
 <div class="page__container">
   <div class="page__content">
     <div class="page__toolbar">
-      <a routerLink="/users" mat-flat-button><mat-icon class="mr-2">arrow_back</mat-icon> Back to users</a>
+      <a routerLink="../" mat-flat-button
+        ><mat-icon class="mr-2">arrow_back</mat-icon> Back to users</a
+      >
       <!-- <div class="ml-auto"></div> -->
     </div>
     <div class="page__table">
-      <div *ngIf="(user$ | async) as user; else emptyUser">
-        <h2>User name: {{user.name}}</h2>
+      <div *ngIf="user$ | async as user; else emptyUser">
+        <h2>User name: {{ user.name }}</h2>
         <p>Email: {{ user.email }}</p>
       </div>
       <ng-template #emptyUser>

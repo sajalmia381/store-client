@@ -10,5 +10,5 @@ export const getLoadingStatus = createSelector(getSharedState, state => {
 });
 
 export const getThemeMode = createSelector(getSharedState, state => {
-  return state.themeMode
-})
+  return state.themeMode;
+});

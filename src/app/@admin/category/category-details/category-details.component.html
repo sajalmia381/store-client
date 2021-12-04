@@ -1,28 +1,64 @@
-
-
 <div class="page__container">
-	<div class="page__toolbar">
-		<a routerLink="../" mat-flat-button><mat-icon class="mr-2">arrow_back</mat-icon> Back to categories</a>
-		<!-- <div class="ml-auto"></div> -->
-	</div>
+  <div class="page__toolbar">
+    <a routerLink="../" mat-flat-button
+      ><mat-icon class="mr-2">arrow_back</mat-icon> Back to categories</a
+    >
+    <!-- <div class="ml-auto"></div> -->
+  </div>
   <div class="page__content">
-		<div class="pt-5 px-4" *ngIf="category$ | async as category; else emptyMessage">
-			<div class="container">
+    <div class="pt-5 px-4" *ngIf="category$ | async as category; else emptyMessage">
+      <div class="container">
         <div>
-          <h2>{{category.name}}</h2>
+          <h2>{{ category.name }}</h2>
         </div>
         <hr class="mt-2 mb-4" />
         <div class="flex flex-wrap -m-4">
           <div *ngFor="let product of category.products" class="xxl:w-1/4 xl:w-1/3 md:w-1/2 p-4">
             <div class="bg-card p-6 rounded-lg">
               <a [routerLink]="product?.slug">
-                <img *ngIf="product?.image" class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" [src]="backendBaseUrl + '/' + product?.image" alt="Image Size 720x400">
+                <img
+                  *ngIf="product?.image"
+                  class="
+                    lg:h-60
+                    xl:h-56
+                    md:h-64
+                    sm:h-72
+                    xs:h-72
+                    h-72
+                    rounded
+                    w-full
+                    object-cover object-center
+                    mb-6
+                  "
+                  [src]="backendBaseUrl + '/' + product?.image"
+                  alt="Image Size 720x400"
+                />
               </a>
-              <img *ngIf="!product?.image" class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6" src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg" alt="Image Size 720x400">
+              <img
+                *ngIf="!product?.image"
+                class="
+                  lg:h-60
+                  xl:h-56
+                  md:h-64
+                  sm:h-72
+                  xs:h-72
+                  h-72
+                  rounded
+                  w-full
+                  object-cover object-center
+                  mb-6
+                "
+                src="https://kuyou.id/content/images/ctc_2020021605150668915.jpg"
+                alt="Image Size 720x400"
+              />
               <a [routerLink]="product?.slug">
-                <h2 class="text-lg text-gray-900 dark:text-gray-50 font-medium title-font mb-4">{{ product?.title }}</h2>
+                <h2 class="text-lg text-gray-900 dark:text-gray-50 font-medium title-font mb-4">
+                  {{ product?.title }}
+                </h2>
               </a>
-              <p *ngIf="product?.description" class="leading-relaxed text-base">{{ product?.description }}</p>
+              <p *ngIf="product?.description" class="leading-relaxed text-base">
+                {{ product?.description }}
+              </p>
               <div class="flex items-center flex-wrap gap-4">
                 <a mat-flat-button color="primary" [routerLink]="[product?.slug, 'edit']">
                   <mat-icon>edit</mat-icon>
@@ -32,14 +68,14 @@
             </div>
           </div>
         </div>
-			</div>
-		</div>
+      </div>
+    </div>
   </div>
 </div>
 
 <ng-template #emptyMessage>
-	<div class="flex items-center flex-col pt-5">
-		<h4>Nothing found!</h4>
-		<a mat-flat-button color="accent" routerLink="../">Back to Categories</a>
-	</div>
+  <div class="flex items-center flex-col pt-5">
+    <h4>Nothing found!</h4>
+    <a mat-flat-button color="accent" routerLink="../">Back to Categories</a>
+  </div>
 </ng-template>

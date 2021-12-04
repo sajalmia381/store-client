@@ -7,14 +7,8 @@ import 'prismjs/components/prism-typescript';
 // import 'prismjs/components/prism-scss';
 
 @NgModule({
-  declarations: [
-    PrismComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    PrismComponent
-  ]
+  declarations: [PrismComponent],
+  imports: [CommonModule],
+  exports: [PrismComponent]
 })
-export class PrismModule { }
+export class PrismModule {}

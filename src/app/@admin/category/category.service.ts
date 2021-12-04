@@ -8,17 +8,17 @@ import { Category } from './category';
   providedIn: '<USERNAME>'
 })
 export class CategoryService {
+  constructor(private http: HttpService) {}
 
-  constructor(private http: HttpService) { }
-  
   getCategories(): Observable<Category[]> {
-    return this.http.get('/categories')
-      .pipe(map(res => {
-        return res?.data
-      }))
+    return this.http.get('/categories').pipe(
+      map(res => {
+        return res?.data;
+      })
+    );
   }
   addCategory(category: Category): Observable<Category> {
-    console.log(category)
+    console.log(category);
     return this.http.post('/categories', category);
   }
   getCategory(slug: string): Observable<Category> {
@@ -28,8 +28,10 @@ export class CategoryService {
     return this.http.put('/categories/' + category?.slug, category);
   }
   deleteCategory(slug: string): Observable<Category> {
-    return this.http.delete('/categories/' + slug).pipe(map(res => {
-      return res
-    }))
+    return this.http.delete('/categories/' + slug).pipe(
+      map(res => {
+        return res;
+      })
+    );
   }
 }

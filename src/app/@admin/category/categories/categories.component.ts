@@ -20,16 +20,17 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['name', '_id', 'products', 'action'];
   dataSource: any;
   isAlive: boolean = true;
-  constructor(private store: Store<CategoryState>, private dialog: MatDialog) { }
+  constructor(private store: Store<CategoryState>, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.store.select(getCategories)
-    .pipe(takeWhile(() => this.isAlive))
-    .subscribe(categories => {
-      this.dataSource = categories;
-    });
+    this.store
+      .select(getCategories)
+      .pipe(takeWhile(() => this.isAlive))
+      .subscribe(categories => {
+        this.dataSource = categories;
+      });
     this.isLoaded$ = this.store.select(isLoaded);
-    this.store.dispatch(loadCategories())
+    this.store.dispatch(loadCategories());
   }
   ngOnDestroy(): void {
     this.isAlive = false;

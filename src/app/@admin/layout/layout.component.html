@@ -1,7 +1,12 @@
 <div class="example-container" [class.example-is-mobile]="isLessThenLargeDevice">
   <app-header class="example-toolbar"></app-header>
   <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #sidenav [opened]="isSidenavExpand" [mode]="isLessThenLargeDevice ? 'over' : 'side'" [fixedInViewport]="isLessThenLargeDevice">
+    <mat-sidenav
+      #sidenav
+      [opened]="isSidenavExpand"
+      [mode]="isLessThenLargeDevice ? 'over' : 'side'"
+      [fixedInViewport]="isLessThenLargeDevice"
+    >
       <app-sidenav class="layout__sidenav"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>

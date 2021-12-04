@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import * as Prism from 'prismjs';
 
 @Component({
@@ -11,11 +19,11 @@ export class PrismComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() code?: string;
   @Input() language?: string;
 
-  constructor() { }
-  
+  constructor() {}
+
   ngOnInit(): void {
     if (!this.language) {
-      this.language = 'typescript'
+      this.language = 'typescript';
     }
   }
 

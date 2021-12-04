@@ -18,10 +18,10 @@ export class ProductService {
   addProduct(product: Product): Observable<Product> {
     let img: any;
     if (product.hasOwnProperty('image')) {
-      img = product['image']
+      img = product['image'];
     }
-    console.log('img', img)
-    
+    console.log('img', img);
+
     return this.http.post('/products', product);
   }
   getProduct(id: string): Observable<Product> {
@@ -31,14 +31,18 @@ export class ProductService {
     return this.http.put('/products/' + product?._id, product);
   }
   deleteProduct(id: string): Observable<any> {
-    return this.http.delete('/products/' + id).pipe(map(res => {
-      return res
-    }))
+    return this.http.delete('/products/' + id).pipe(
+      map(res => {
+        return res;
+      })
+    );
   }
-  
+
   bulkDeleteProducts(slugs: string[]): Observable<any> {
-    return this.http.delete('/products/bulk' + slugs).pipe(map(res => {
-      return res
-    }))
+    return this.http.delete('/products/bulk' + slugs).pipe(
+      map(res => {
+        return res;
+      })
+    );
   }
 }

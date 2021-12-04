@@ -13,20 +13,22 @@ import { UserState } from '../state/user.state';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-  
   userForm!: FormGroup;
   constructor(private store: Store<UserState>, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.userForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      number: new FormControl(null, Validators.minLength(10)),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      password_repeat: new FormControl('', [Validators.required])
-    }, {
-      validators: MustMatch('password', 'password_repeat')
-    })
+    this.userForm = new FormGroup(
+      {
+        name: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        number: new FormControl(null, Validators.minLength(10)),
+        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        password_repeat: new FormControl('', [Validators.required])
+      },
+      {
+        validators: MustMatch('password', 'password_repeat')
+      }
+    );
   }
   get name(): any {
     return this.userForm.get('name');
@@ -47,10 +49,10 @@ export class UserFormComponent implements OnInit {
     if (this.userForm.invalid) {
       this.snackBar.open('User form is not valid', 'Close', {
         duration: 2000
-      })
-      return
+      });
+      return;
     }
     const user = filterValidObjAttribute(this.userForm.value);
-    this.store.dispatch(addUser({user}))
+    this.store.dispatch(addUser({ user }));
   }
 }

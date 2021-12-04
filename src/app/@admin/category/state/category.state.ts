@@ -6,7 +6,7 @@ export interface CategoryState extends EntityState<Category> {
 }
 
 export const categoryAdapter: EntityAdapter<Category> = createEntityAdapter<Category>({
-  selectId: (category: Category) => category.slug,
+  selectId: (category: Category) => category.slug
 });
 
 export const initialState: CategoryState = categoryAdapter.getInitialState({

@@ -1,13 +1,35 @@
 <div class="border-b dark:border-gray-700 pb-44 pt-40">
   <div class="container">
     <div class="flex flex-col items-center">
-      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-200">eCommerce Rest API</h2>
-      <p class="mt-3 max-w-2xl text-xl text-gray-500 lg:mx-auto">Free complete store rest api for testing your application and prototypes</p>
+      <h2
+        class="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-200"
+      >
+        eCommerce Rest API
+      </h2>
+      <p class="mt-3 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+        Free complete store rest api for testing your application and prototypes
+      </p>
       <div class="flex items-center mt-8">
-        <a href="#try_area" class="bg-primary font-bold py-3 px-6 border border-transparent text-lg rounded mr-4">
+        <a
+          href="#try_area"
+          class="bg-primary font-bold py-3 px-6 border border-transparent text-lg rounded mr-4"
+        >
           Try now
         </a>
-        <a routerLink="/docs" class="items-center justify-center px-5 py-3 border border-transparent text-lg font-semibold rounded-md bg-yellow-400">
+        <a
+          routerLink="/docs"
+          class="
+            items-center
+            justify-center
+            px-5
+            py-3
+            border border-transparent
+            text-lg
+            font-semibold
+            rounded-md
+            bg-yellow-400
+          "
+        >
           <span class="flex items-center">Read Docs <mat-icon class="ml-2">article</mat-icon></span>
         </a>
       </div>
@@ -17,56 +39,129 @@
 <div class="pb-16">
   <div class="container">
     <div id="try_area" class="pt-16">
-      <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Try it</h3>
+      <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">
+        Try it
+      </h3>
       <p class="text-lg mt-2 text-gray-500">Run this code in a console or from any site:</p>
       <div class="grid grid-cols-2 -mx-2">
         <div class="px-2">
           <app-prism [code]="code"></app-prism>
-          <button (click)="fetchProduct()" type="button" class="bg-primary text-black py-1 px-3 mt-2 rounded text-sm">Run script</button>
+          <button
+            (click)="fetchProduct()"
+            type="button"
+            class="bg-primary text-black py-1 px-3 mt-2 rounded text-sm"
+          >
+            Run script
+          </button>
         </div>
         <div class="px-2">
-          <div *ngIf="isProductLoading" style="background-color: #272822; padding: 16px; margin: 8px 0; border-radius: 0.3em;">
+          <div
+            *ngIf="isProductLoading"
+            style="background-color: #272822; padding: 16px; margin: 8px 0; border-radius: 0.3em"
+          >
             <mat-spinner [strokeWidth]="2" [diameter]="20"></mat-spinner>
           </div>
-          <app-prism *ngIf="!isProductLoading" [code]="productRes ? (productRes | json) : '{}'"></app-prism>
+          <app-prism
+            *ngIf="!isProductLoading"
+            [code]="productRes ? (productRes | json) : '{}'"
+          ></app-prism>
         </div>
       </div>
     </div>
     <div class="grid xl:grid-cols-2 -mx-4">
       <div class="mt-16 px-4">
-        <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Resources</h3>
+        <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">
+          Resources
+        </h3>
         <p class="text-lg mt-2 text-gray-500">The main resources need in shopping prototypes</p>
         <div class="flex flex-col max-w-xl shadow rounded mt-2">
-          <a target="_blank" [href]="apiBaseUrl + '/users'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700">
+          <a
+            target="_blank"
+            [href]="apiBaseUrl + '/users'"
+            class="
+              flex
+              justify-between
+              items-center
+              hover:bg-indigo-100
+              dark:hover:bg-gray-700
+              py-4
+              px-4
+              border-b
+              dark:border-gray-700
+            "
+          >
             <div class="mr-2">
               <div>User</div>
             </div>
-            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold">14</span>
           </a>
-          <a target="_blank" [href]="apiBaseUrl + '/products'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700">
+          <a
+            target="_blank"
+            [href]="apiBaseUrl + '/products'"
+            class="
+              flex
+              justify-between
+              items-center
+              hover:bg-indigo-100
+              dark:hover:bg-gray-700
+              py-4
+              px-4
+              border-b
+              dark:border-gray-700
+            "
+          >
             <div class="mr-2">
               <div>Product</div>
             </div>
-            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold">14</span>
           </a>
-          <a target="_blank" [href]="apiBaseUrl + '/categories'" class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4">
+          <a
+            target="_blank"
+            [href]="apiBaseUrl + '/categories'"
+            class="
+              flex
+              justify-between
+              items-center
+              hover:bg-indigo-100
+              dark:hover:bg-gray-700
+              py-4
+              px-4
+            "
+          >
             <div class="mr-2">
               <div>Category</div>
             </div>
-            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold ">14</span>
+            <span class="rounded-full bg-primary text-white px-2 py-1 text-xs font-bold">14</span>
           </a>
-          <a class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4">
+          <a
+            class="
+              flex
+              justify-between
+              items-center
+              hover:bg-indigo-100
+              dark:hover:bg-gray-700
+              py-4
+              px-4
+            "
+          >
             <div class="mr-2">
               <div>Order</div>
             </div>
             <span class="rounded-full bg-primary text-white px-2 py-1 text-xs">Coming soon</span>
           </a>
         </div>
-        <p class="mt-4">Note: resources have relations. For example: category have many product, product have many carts</p>
-        <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
+        <p class="mt-4">
+          Note: resources have relations. For example: category have many product, product have many
+          carts
+        </p>
+        <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block"
+          >Check all APIs documentation</a
+        >
       </div>
       <div class="mt-16 px-4">
-        <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Auth</h3>
+        <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">
+          Auth
+        </h3>
         <p class="text-lg mt-2 text-gray-500">JWT Authentication</p>
         <ul class="shadow rounded max-w-xl mt-2">
           <li class="flex items-center justify-between px-4 py-4 border-b dark:border-gray-700">
@@ -88,11 +183,15 @@
             <span class="text-primary">/auth/slug</span>
           </li>
         </ul>
-        <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
+        <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block"
+          >Check all APIs documentation</a
+        >
       </div>
     </div>
     <div class="mt-16">
-      <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Routes</h3>
+      <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">
+        Routes
+      </h3>
       <p class="text-lg mt-2 mb-2 text-gray-500">Http protocol is not supported</p>
       <ul class="shadow rounded max-w-xl">
         <li class="flex items-center justify-between font-bold bg-gray-400 p-4">
@@ -105,35 +204,45 @@
           <div class="ms-2 me-auto">
             <div class="font-semibold">GET</div>
           </div>
-          <a class="text-primary" href="/api/products">/api/products</a>
+          <a class="text-primary" [href]="apiBaseUrl + '/products'">/api/products</a>
         </li>
         <li class="flex items-center justify-between px-4 py-4 border-b dark:border-gray-700">
           <div class="ms-2 me-auto">
             <div class="font-semibold">GET</div>
           </div>
-          <a class="text-primary" href="/api/products/running-shoes">/api/products/slug</a>
+          <a class="text-primary" [href]="apiBaseUrl + '/products/running-sneaker'"
+            >/products/[slug]</a
+          >
         </li>
         <li class="flex items-center justify-between px-4 py-4 border-b dark:border-gray-700">
           <div class="ms-2 me-auto">
             <div class="font-semibold">POST</div>
           </div>
-          <a class="text-primary" href="/api/products/running-shoes">/api/products/slug</a>
+          <a class="text-primary" [href]="apiBaseUrl + '/products/running-sneaker'"
+            >/products/[slug]</a
+          >
         </li>
         <li class="flex items-center justify-between px-4 py-4 border-b dark:border-gray-700">
           <div class="ms-2 me-auto">
             <div class="font-semibold">PATCH</div>
           </div>
-          <a class="text-primary" href="/api/products/running-shoes">/api/products/slug</a>
+          <a class="text-primary" [href]="apiBaseUrl + '/products/running-sneaker'"
+            >/products/[slug]</a
+          >
         </li>
         <li class="flex items-center justify-between px-4 py-4">
           <div class="ms-2 me-auto">
             <div class="font-semibold">DELETE</div>
           </div>
-          <a class="text-primary" href="/api/products/running-shoes">/api/products/slug</a>
+          <a class="text-primary" [href]="apiBaseUrl + '/products/running-sneaker'"
+            >/products/[slug]</a
+          >
         </li>
       </ul>
       <p class="mt-4">Note: User and Cart case slug will replace by object _id.</p>
-      <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
+      <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block"
+        >Check all APIs documentation</a
+      >
     </div>
   </div>
 </div>
@@ -142,7 +251,10 @@
   <div class="container-fluid">
     <div class="flex items-center justify-between flex-wrap">
       <p class="mb-0 font-medium">© Copyright 2021. All Rights Reserved.</p>
-      <p><span class="font-bold">Created By</span>: <a ref="nofollow" href="https://techincent.com">Tech Incent</a></p>
+      <p>
+        <span class="font-bold">Created By</span>:
+        <a ref="nofollow" href="https://techincent.com">Tech Incent</a>
+      </p>
     </div>
   </div>
 </footer>

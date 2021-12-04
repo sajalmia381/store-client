@@ -11,7 +11,7 @@ const _imageReducer = createReducer(
     });
   }),
   on(addImageSuccess, (state, action) => {
-    return imageAdapter.addOne(action.image, state)
+    return imageAdapter.addOne(action.image, state);
   }),
   on(deleteImageSuccess, (state, action) => {
     return imageAdapter.removeOne(action.id, state);

@@ -9,7 +9,7 @@ import { setLoading } from 'src/app/store/shared/shared.actions';
 import { AuthService } from '../auth.service';
 import { loginRequest, loginSuccess, logoutSuccess, setLoginError } from './auth.actions';
 
-@Injectable({ providedIn: '<USERNAME>'})
+@Injectable({ providedIn: '<USERNAME>' })
 export class AuthEffects {
   constructor(
     private action$: Actions,
@@ -23,7 +23,11 @@ export class AuthEffects {
       exhaustMap(action => {
         return this.authService.onLogin(action?.email, action?.password).pipe(
           map(res => {
-            const userData = { data: res?.data, access_token: res?.access_token, refresh_token: res?.refresh_token };
+            const userData = {
+              data: res?.data,
+              access_token: res?.access_token,
+              refresh_token: res?.refresh_token
+            };
             this.authService.setUserInLocalStorage(userData);
             this.store.dispatch(setLoading({ status: false }));
             return loginSuccess({ userData, redirect: true });
