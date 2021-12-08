@@ -6,7 +6,8 @@ const domain = 'http://localhost:8000';
 export const environment = {
   production: false,
   apiBaseUrl: domain,
-  baseUrl: domain
+  baseUrl: domain,
+  GA: '',
 };
 
 /*
