@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="page__content">
-    <div *ngIf="images$ | async as imageList">
+    <div *ngIf="(isLoaded$ | async) && (images$ | async) as imageList">
       <div class="flex flex-wrap">
         <div *ngFor="let image of imageList" class="xxl:w-1/6 xl:w-1/3 md:w-1/2 p-4">
           <div class="rounded-lg border overflow-hidden">
@@ -50,6 +50,7 @@
           </div>
         </div>
       </div>
+      <div *ngIf="!imageList?.length">Nothing found</div>
     </div>
     <div *ngIf="!(isLoaded$ | async)">loading</div>
   </div>

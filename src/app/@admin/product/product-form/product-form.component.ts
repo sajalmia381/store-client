@@ -34,7 +34,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   uploadedImage!: Image | null;
   baseUrl: string = environment.baseUrl;
   productUpdated?: boolean;
-  isLoggedIn: boolean = environment.production;
+  isLoggedIn!: boolean;
   users: any[] = [];
 
   constructor(
