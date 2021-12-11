@@ -28,7 +28,8 @@ export class ProductService {
     return this.http.get('/products/' + id);
   }
   updateProduct(product: Product): Observable<Product> {
-    return this.http.put('/products/' + product?._id, product);
+    const {slug, ...payload} = product;
+    return this.http.put('/products/' + slug, payload).pipe(map(res => res?.data));
   }
   deleteProduct(id: string): Observable<any> {
     return this.http.delete('/products/' + id).pipe(

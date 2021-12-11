@@ -29,7 +29,6 @@
     "@ngrx/store": "^12.4.0",
     "@ngrx/store-devtools": "^12.4.0",
     "jwt-decode": "^3.1.2",
-    "ngx-google-analytics": "^11.2.1",
     "prismjs": "^1.25.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
@@ -57,15 +56,5 @@
     "tailwindcss": "2.2.9",
     "tslint-config-prettier": "1.18.0",
     "typescript": "~4.3.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,css,scss,less,md,ts,html,component.html}": [
-      "prettier --write"
-    ]
   }
 }

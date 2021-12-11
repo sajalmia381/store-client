@@ -92,11 +92,11 @@ export class ProductEffects {
       ofType(productAction.updateProduct),
       switchMap(action => {
         return this.productService.updateProduct(action.product).pipe(
-          map(product => {
+          map(_product => {
             const updatedProduct: Update<Product> = {
-              id: action.product._id,
+              id: _product._id,
               changes: {
-                ...action.product
+                ..._product
               }
             };
             return productAction.updateProductSuccess({ product: updatedProduct });

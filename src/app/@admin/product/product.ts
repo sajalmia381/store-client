@@ -8,5 +8,6 @@ export interface Product {
   category: any;
   description?: string;
   image?: string;
-  createBy?: any;
+  createdBy?: any;
+  imageSource?: string
 }
