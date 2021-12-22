@@ -17,22 +17,21 @@ import { CategoryUpdateComponent } from './category-update/category-update.compo
 import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [
-    CategoriesComponent,
-    CategoryFormComponent,
-    CategoryDetailsComponent,
-    CategoryUpdateComponent
-  ],
-  imports: [
-    CommonModule,
-    CategoryRoutingModule,
-    SharedModule,
-    MatTableModule,
-    MatMenuModule
-    // StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
-    // EffectsModule.forFeature([CategoryEffects]),
-  ],
-  providers: [CategoryService],
-  entryComponents: [CategoryFormComponent, CategoryUpdateComponent]
+    declarations: [
+        CategoriesComponent,
+        CategoryFormComponent,
+        CategoryDetailsComponent,
+        CategoryUpdateComponent
+    ],
+    imports: [
+        CommonModule,
+        CategoryRoutingModule,
+        SharedModule,
+        MatTableModule,
+        MatMenuModule
+        // StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
+        // EffectsModule.forFeature([CategoryEffects]),
+    ],
+    providers: [CategoryService]
 })
 export class CategoryModule {}
