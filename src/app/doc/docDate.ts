@@ -189,7 +189,7 @@ export default {
       {
           method: 'POST',
           body: JSON.stringify({
-              email: 'Example@mail.com',
+              email: 'example@mail.com',
               password: 'Simple12345'
           }),
           headers: {
@@ -206,7 +206,7 @@ export default {
           method: 'POST',
           body: JSON.stringify({
               name: 'Alex Pi',
-              email: 'Example@mail.com',
+              email: 'example@mail.com',
               number: 12025550108,
               password: 'Simple12345'
               password_repeat: 'Simple12345'
