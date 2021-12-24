@@ -42,8 +42,8 @@ export class CategoryEffects {
             if (!isSlugExists) {
               return categoryAction.addOneCategorySuccess({ category });
             }
-            console.log(category)
-            return categoryAction.updateCategorySuccess({category})
+            console.log(category);
+            return categoryAction.updateCategorySuccess({ category });
           })
         );
       })

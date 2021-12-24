@@ -7,7 +7,7 @@ import { environment } from '@env/environment';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  apiBaseUrl: string = environment.apiBaseUrl
+  apiBaseUrl: string = environment.apiBaseUrl;
   constructor() {}
 
   ngOnInit(): void {}

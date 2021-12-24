@@ -45,18 +45,18 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
     private snackbar: MatSnackBar,
     private fb: FormBuilder,
     private userService: UserService,
-    private httpService: HttpService,
+    private httpService: HttpService
   ) {
-      this.productForm = this.fb.group({
-        slug: ['', Validators.required],
-        title: ['', Validators.required],
-        price: [, Validators.required],
-        description: [''],
-        category: ['', Validators.required],
-        image: [''],
-        imageSource: [''],
-        createdBy: ['']
-      })
+    this.productForm = this.fb.group({
+      slug: ['', Validators.required],
+      title: ['', Validators.required],
+      price: [, Validators.required],
+      description: [''],
+      category: ['', Validators.required],
+      image: [''],
+      imageSource: [''],
+      createdBy: ['']
+    });
   }
 
   ngOnInit(): void {
@@ -64,16 +64,14 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
       .select(isSignedIn)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(bol => (this.isLoggedIn = bol));
-    this.store.dispatch(loadProduct())
+    this.store.dispatch(loadProduct());
     this.store
       .select(isSignedIn)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(bol => (this.isLoggedIn = bol));
     this.store
       .select(getProductBySlug)
-      .pipe(
-        takeWhile(() => this.isAlive),
-      )
+      .pipe(takeWhile(() => this.isAlive))
       .subscribe(data => {
         this.product = data;
         if (data) {
@@ -89,7 +87,7 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
           });
         }
       });
-    this.fetchCategory()
+    this.fetchCategory();
     if (this.isLoggedIn) {
       this.fetchUsers();
     }
@@ -138,24 +136,24 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
       this.users = users;
     });
   }
-    // Image
-    onFileSelect(event: Event) {
-      const file = <File>(event.target as HTMLInputElement).files?.[0];
-      if (file) {
-        const fd = new FormData();
-        fd.append('image', file, file.name);
-        this.httpService.upload('/images', fd).subscribe(res => {
-          const image: Image = res.data;
-          // this.productForm.get('image')?.setValue(image.webUrl);
-          this.productForm.get('imageSource')?.setValue(image._id);
-          this.uploadedImage = image;
-          this.store.dispatch(addImageSuccess({ image }));
-        });
-      }
-    }
-    onImageDelete(): void {
-      this.httpService.delete('/images/' + this.uploadedImage?._id).subscribe(res => {
-        this.uploadedImage = null;
+  // Image
+  onFileSelect(event: Event) {
+    const file = <File>(event.target as HTMLInputElement).files?.[0];
+    if (file) {
+      const fd = new FormData();
+      fd.append('image', file, file.name);
+      this.httpService.upload('/images', fd).subscribe(res => {
+        const image: Image = res.data;
+        // this.productForm.get('image')?.setValue(image.webUrl);
+        this.productForm.get('imageSource')?.setValue(image._id);
+        this.uploadedImage = image;
+        this.store.dispatch(addImageSuccess({ image }));
       });
     }
+  }
+  onImageDelete(): void {
+    this.httpService.delete('/images/' + this.uploadedImage?._id).subscribe(res => {
+      this.uploadedImage = null;
+    });
+  }
 }
