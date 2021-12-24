@@ -4,5 +4,5 @@ export const environment = {
   production: true,
   apiBaseUrl: domain,
   baseUrl: domain,
-  GA: 'G-FZ9HXX4GYB',
+  GA: 'G-FZ9HXX4GYB'
 };

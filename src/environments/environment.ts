@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   apiBaseUrl: domain,
   baseUrl: domain,
-  GA: '',
+  GA: ''
 };
 
 /*
