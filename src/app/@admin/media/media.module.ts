@@ -9,7 +9,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [ImageListComponent, AddImageComponent],
-  imports: [CommonModule, MediaRoutingModule, SharedModule, MatDialogModule],
-  entryComponents: [AddImageComponent]
+  imports: [CommonModule, MediaRoutingModule, SharedModule, MatDialogModule]
 })
 export class MediaModule {}
