@@ -9,5 +9,5 @@ export interface Product {
   description?: string;
   image?: string;
   createdBy?: any;
-  imageSource?: string
+  imageSource?: string;
 }

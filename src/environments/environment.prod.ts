@@ -4,5 +4,5 @@ export const environment = {
   production: true,
   apiBaseUrl: domain,
   baseUrl: domain,
-  GA: ${STORE_CLIENT_PORT},
+  GA: ${STORE_CLIENT_PORT}
 };

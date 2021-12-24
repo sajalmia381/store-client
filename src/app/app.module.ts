@@ -26,7 +26,7 @@ import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-go
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer }),
     NgxGoogleAnalyticsModule.forRoot(environment.GA),
-    NgxGoogleAnalyticsRouterModule.forRoot({exclude: ['/admin/*'] }),
+    NgxGoogleAnalyticsRouterModule.forRoot({ exclude: ['/admin/*'] }),
     DefaultLayoutModule,
     HttpClientModule,
     MatSnackBarModule
