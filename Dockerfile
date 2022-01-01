@@ -1,0 +1,20 @@
+### STAGE 1: Build app
+
+FROM node:16.13-alpine as builder
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run prod
+
+### STAGE 2: Setup Server
+FROM nginx:1.21.5-alpine
+
+## Copy our default nginx config
+COPY nginx/default.conf /etc/nginx/conf.d/
+
+COPY --from=builder /app/dist/store-admin /usr/share/nginx/html
