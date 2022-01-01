@@ -189,8 +189,8 @@ export default {
       {
           method: 'POST',
           body: JSON.stringify({
-              email: 'example@mail.com',
-              password: 'Simple12345'
+              email: 'marklyan@gmail.com',
+              password: 'simple_password'
           }),
           headers: {
               'Content-type': 'application/json; charset=UTF-8',
