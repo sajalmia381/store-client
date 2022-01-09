@@ -18,3 +18,7 @@ FROM nginx:1.21.5-alpine
 COPY nginx/default.conf /etc/nginx/conf.d/
 
 COPY --from=builder /app/dist/store-admin /usr/share/nginx/html
+
+EXPOSE 3000
+
+CMD nginx -g "daemon off;"
