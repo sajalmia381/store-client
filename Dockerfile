@@ -14,7 +14,9 @@ RUN npm run prod
 FROM nginx:1.21.5-alpine
 
 # Copy our default nginx config
-COPY nginx/default.conf /etc/nginx/conf.d/
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=builder /app/dist/store-admin /usr/share/nginx/html
 
