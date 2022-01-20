@@ -1,4 +1,4 @@
-const domain = 'https://storerestapi.com/api/';
+const domain = 'https://api.storerestapi.com';
 
 export const environment = {
   production: true,
