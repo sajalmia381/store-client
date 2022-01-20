@@ -37,6 +37,10 @@
       height: 18px;
     }
   }
+  &:hover,
+  &.active {
+    background-color: #e1e7ed;
+  }
 }
 .tree-node .tree-node .menu-item {
   padding-left: 40px;
