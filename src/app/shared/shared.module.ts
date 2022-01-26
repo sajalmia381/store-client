@@ -9,6 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 
 import { DeleteConformationComponent } from './components/delete-conformation/delete-conformation.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const commonImportedModules = [
   FormsModule,
@@ -21,8 +22,8 @@ const commonImportedModules = [
 ];
 
 @NgModule({
-  declarations: [DeleteConformationComponent],
+  declarations: [DeleteConformationComponent, FooterComponent],
   imports: [CommonModule, ...commonImportedModules, RouterModule, MatDialogModule],
-  exports: [...commonImportedModules, DeleteConformationComponent]
+  exports: [...commonImportedModules, DeleteConformationComponent, FooterComponent]
 })
 export class SharedModule {}
