@@ -7,4 +7,5 @@
 
 ## My Server
 
-- sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-admin/\* ubuntu@ec2-13-126-172-117.ap-south-1.compute.amazonaws.com:/opt/frontend
+- sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-admin/\* ubuntu@ec2-3-111-52-119.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html
+0
