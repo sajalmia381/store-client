@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store';
 import { catchError, exhaustMap } from 'rxjs/operators';
-import { getToken } from 'src/app/auth/state/auth.selectors';
+import { getAccessToken } from 'src/app/auth/state/auth.selectors';
 import { logoutSuccess } from 'src/app/auth/state/auth.actions';
 
 @Injectable()
@@ -19,7 +19,7 @@ export class HttpClintInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return this.store.select(getToken).pipe(
+    return this.store.select(getAccessToken).pipe(
       exhaustMap(accessToken => {
         if (!accessToken) {
           return next.handle(request).pipe(catchError(res => this.errorHandler(res)));

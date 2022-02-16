@@ -29,9 +29,10 @@ export class HttpService {
     return this.http.get(this.apiBaseUrl + url, httpOptions);
   }
 
-  post(url: any, data: any): Observable<any> {
+  post(url: any, data: any, queryParams?: any): Observable<any> {
     let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: queryParams ? queryParams : {}
     };
     const body = JSON.stringify(data);
     return this.http.post(this.apiBaseUrl + url, body, httpOptions);

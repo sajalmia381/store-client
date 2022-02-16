@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(getUserData).subscribe(data => {
       // console.log('userData form header', data)
-      this.userData = data?.data;
+      this.userData = data?.userInfo;
     });
     this.store.select(getThemeMode).subscribe(theme => {
       this.themeMode = theme;

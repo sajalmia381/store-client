@@ -9,8 +9,12 @@ export const isSignedIn = createSelector(getAuthState, state => {
   return state.isSignedIn;
 });
 
-export const getToken = createSelector(getAuthState, state => {
+export const getAccessToken = createSelector(getAuthState, state => {
   return state?.userData?.access_token || null;
+});
+
+export const getRefreshToken = createSelector(getAuthState, state => {
+  return state?.userData?.refresh_token || null;
 });
 
 export const getUserData = createSelector(getAuthState, state => {

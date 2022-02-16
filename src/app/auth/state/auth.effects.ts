@@ -21,16 +21,14 @@ export class AuthEffects {
     this.action$.pipe(
       ofType(loginRequest),
       exhaustMap(action => {
+        console.log('action', action)
         return this.authService.onLogin(action?.email, action?.password).pipe(
           map(res => {
-            const userData = {
-              data: res?.data,
-              access_token: res?.access_token,
-              refresh_token: res?.refresh_token
-            };
-            this.authService.setUserInLocalStorage(userData);
+            console.log(res);
+            const tokens = res?.data;
+            this.authService.saveTokensLocalStorage(tokens);
             this.store.dispatch(setLoading({ status: false }));
-            return loginSuccess({ userData, redirect: true });
+            return loginSuccess({ userData: tokens, redirect: true });
           }),
           catchError(error => {
             if (error?.error?.code === 'INVALID_USER') {
@@ -67,8 +65,8 @@ export class AuthEffects {
     () =>
       this.action$.pipe(
         ofType(logoutSuccess),
-        map(action => {
-          return this.router.navigate(['/auth/login']);
+        tap(action => {
+          this.router.navigate(['/auth/login']);
         })
       ),
     {
