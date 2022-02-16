@@ -1,4 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
+import JwtService from '@shared/helper/JwtService';
 import { logoutSuccess, loginSuccess, setLoginError } from './auth.actions';
 import { AuthState, initialState } from './auth.state';
 
@@ -6,10 +7,12 @@ const _authReducer = createReducer(
   initialState,
   on(loginSuccess, (state, action) => {
     const { userData } = action;
-    return { ...state, isSignedIn: true, userData, errors: {} };
+    const userInfo = JwtService.getTokenPayload(userData?.access_token);
+    return { isSignedIn: true, userData: {...userData, userInfo}, errors: {} };
   }),
   on(logoutSuccess, () => {
-    localStorage.removeItem('requester');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     return { isSignedIn: false, userData: null, errors: {} };
   }),
   on(setLoginError, (state, action) => {
