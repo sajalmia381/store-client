@@ -133,6 +133,8 @@
             <div class="card__api">
               <h4 id="id_auth--1" class="card__sub_title mt-2">{{docData?.auth?.[0]?.name}}</h4>
               <app-prism [code]="docData?.auth?.[0]?.code"></app-prism>
+              <p>Default access_token validity <strong>15 minutes</strong> and refresh_token validity 1 hour.</p>
+              <p>More tokens validity option: in development</p>
             </div>
             <div class="card__api">
               <h4 id="id_auth--2" class="card__sub_title mt-2">{{docData?.auth?.[1]?.name}}</h4>
