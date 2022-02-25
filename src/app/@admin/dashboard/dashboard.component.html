@@ -1,7 +1,7 @@
 <div class="page__container">
   <div class="page__content pt-page">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <a [href]="apiBaseUrl + '/users'" class="bg-purple-500 rounded p-4">
+      <a [routerLink]="'/admin/users'" class="bg-purple-500 rounded p-4">
         <h3 class="text-base">Users</h3>
         <h4 class="text-4xl font-medium mt-2">15</h4>
         <p class="mt-8 text-sm">
@@ -10,7 +10,7 @@
         </p>
       </a>
       <a
-        [href]="apiBaseUrl + '/products'"
+        [routerLink]="'/admin/products'"
         class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded p-4"
       >
         <h3 class="text-base">Products</h3>
@@ -21,7 +21,7 @@
         </p>
       </a>
       <a
-        [href]="apiBaseUrl + '/categories'"
+        [routerLink]="'/admin/categories'"
         class="bg-gradient-to-r from-green-400 to-blue-500 rounded p-4"
       >
         <h3 class="text-base">Categories</h3>
