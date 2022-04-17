@@ -22,4 +22,4 @@ COPY --from=builder /app/dist/store-admin /usr/share/nginx/html
 
 EXPOSE 3000
 
-CMD nginx -g "daemon off;"
+ENTRYPOINT ["bin/sh", "/app/run.sh"]

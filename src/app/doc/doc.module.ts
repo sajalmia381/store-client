@@ -9,6 +9,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { DocSidenavComponent } from './doc-sidenav/doc-sidenav.component';
 import { SharedModule } from '@shared/shared.module';
 
+import 'prismjs/components/prism-typescript';
+
+
 @NgModule({
   declarations: [DocComponent, DocSidenavComponent],
   imports: [CommonModule, DocRoutingModule, SharedModule, MatSidenavModule, MatIconModule, PrismModule]
