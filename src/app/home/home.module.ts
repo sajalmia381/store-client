@@ -6,6 +6,8 @@ import { HomeRoutingModule } from './home-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '@shared/shared.module';
 
+import 'prismjs/components/prism-typescript';
+
 @NgModule({
   declarations: [HomeComponent],
   imports: [CommonModule, HomeRoutingModule, SharedModule, MatIconModule, PrismModule]
