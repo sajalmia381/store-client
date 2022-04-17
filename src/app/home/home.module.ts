@@ -7,8 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '@shared/shared.module';
 
 import 'prismjs/components/prism-typescript';
-// import 'prismjs/components/prism-yaml';
-// import 'prismjs/components/prism-scss';
 
 @NgModule({
   declarations: [HomeComponent],
