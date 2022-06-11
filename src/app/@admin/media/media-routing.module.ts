@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    pathMatch: 'exact',
+    pathMatch: 'full',
     redirectTo: './images'
   }
 ];
@@ -25,4 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MediaRoutingModule {}
+export class MediaRoutingModule { }
