@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
@@ -33,17 +33,17 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
   uploadedImage!: Image | null;
   baseUrl: string = environment.baseUrl;
   productUpdated?: boolean;
-  productForm: FormGroup = new FormGroup({
-    title: new FormControl(null, Validators.required),
-    description: new FormControl(null, Validators.required),
-    price: new FormControl(null, Validators.required)
+  productForm: UntypedFormGroup = new UntypedFormGroup({
+    title: new UntypedFormControl(null, Validators.required),
+    description: new UntypedFormControl(null, Validators.required),
+    price: new UntypedFormControl(null, Validators.required)
   });
   product!: Product | undefined | null;
   constructor(
     private store: Store,
     private router: Router,
     private snackbar: MatSnackBar,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private userService: UserService,
     private httpService: HttpService
   ) {
