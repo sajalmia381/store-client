@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -17,9 +17,9 @@ import { User } from '../user';
 })
 export class UserUpdateComponent implements OnInit, OnDestroy {
   isAlive = true;
-  userForm: FormGroup = new FormGroup({
-    name: new FormControl(null, Validators.required),
-    number: new FormControl(null, Validators.required)
+  userForm: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl(null, Validators.required),
+    number: new UntypedFormControl(null, Validators.required)
   });
   user: User | undefined | null;
   constructor(
