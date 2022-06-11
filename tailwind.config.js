@@ -3,12 +3,10 @@ const colors = require('tailwindcss/colors');
 process.env.TAILWIND_MODE = guessProductionMode() ? 'build' : 'watch';
 
 module.exports = {
+  content: ['./src/**/*.{html,ts,css,scss,sass,less,styl}'],
   prefix: '',
   important: ':<USERNAME>',
   mode: 'jit',
-  purge: {
-    content: ['./src/**/*.{html,ts,css,scss,sass,less,styl}']
-  },
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     screens: {
@@ -33,5 +31,5 @@ module.exports = {
   variants: {
     extend: {}
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')]
+  plugins: []
 };

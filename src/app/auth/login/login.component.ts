@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { takeWhile } from 'rxjs/operators';
@@ -16,9 +16,9 @@ import { getLoginErrors, isSignedIn } from '../state/auth.selectors';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   isAlive: boolean = true;
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
+  loginForm: UntypedFormGroup = new UntypedFormGroup({
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.required])
   });
   isLoading!: boolean;
   formErrors: any;

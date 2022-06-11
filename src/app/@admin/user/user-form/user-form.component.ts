@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { filterValidObjAttribute } from '@shared/helper/utils';
@@ -13,17 +13,17 @@ import { UserState } from '../state/user.state';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-  userForm!: FormGroup;
+  userForm!: UntypedFormGroup;
   constructor(private store: Store<UserState>, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.userForm = new FormGroup(
+    this.userForm = new UntypedFormGroup(
       {
-        name: new FormControl('', [Validators.required]),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        number: new FormControl(null, Validators.minLength(10)),
-        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-        password_repeat: new FormControl('', [Validators.required])
+        name: new UntypedFormControl('', [Validators.required]),
+        email: new UntypedFormControl('', [Validators.required, Validators.email]),
+        number: new UntypedFormControl(null, Validators.minLength(10)),
+        password: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
+        password_repeat: new UntypedFormControl('', [Validators.required])
       },
       {
         validators: MustMatch('password', 'password_repeat')
