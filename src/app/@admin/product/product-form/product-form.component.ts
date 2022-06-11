@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { ProductState } from '../state/product.state';
@@ -28,7 +28,7 @@ import { isSignedIn } from 'src/app/auth/state/auth.selectors';
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   isAlive: boolean = true;
-  productForm!: FormGroup;
+  productForm!: UntypedFormGroup;
   categories: Category[] = [];
   // Image
   uploadedImage!: Image | null;
@@ -38,7 +38,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   users: any[] = [];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private store: Store<ProductState | ImageState | AuthState>,
     private snackBar: MatSnackBar,
     private httpService: HttpService,

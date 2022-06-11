@@ -11,7 +11,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { environment } from '@env/environment';
 import { MatSidenav } from '@angular/material/sidenav';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { filterValidObjAttribute } from '@shared/helper/utils';
 
 @Component({
@@ -37,13 +37,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
   selection = new SelectionModel<Product>(true, []);
   dataSource: any = new MatTableDataSource<Product>([]);
   backendBaseUrl: string = environment.baseUrl;
-  filterForm!: FormGroup;
+  filterForm!: UntypedFormGroup;
   constructor(private store: Store, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.filterForm = new FormGroup({
-      q: new FormControl(['']),
-      sort: new FormControl([''])
+    this.filterForm = new UntypedFormGroup({
+      q: new UntypedFormControl(['']),
+      sort: new UntypedFormControl([''])
     });
     this.store
       .select(getProducts)
