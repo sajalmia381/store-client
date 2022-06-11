@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Title } from '@angular/platform-browser';
 import { environment } from '@env/environment';
 import { takeWhile } from 'rxjs/operators';
 import DocData from './docDate';
@@ -17,7 +18,7 @@ export class DocComponent implements OnInit, OnDestroy {
   docData: any = DocData;
   isSmallDevice!: boolean;
   isSidenavExpand: boolean = true;
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver, private title: Title) {
     this.breakpointObserver
       .observe(['(max-width: 991px)'])
       .pipe(takeWhile(() => this.isAlive))
@@ -31,7 +32,9 @@ export class DocComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.title.setTitle("Documentation | StoreRestApi")
+  }
   ngOnDestroy(): void {
     this.isAlive = false;
   }
