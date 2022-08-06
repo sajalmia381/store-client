@@ -18,8 +18,4 @@
 
 ### New Instance
 
-$ sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-admin/\* ubuntu@ec2-65-2-138-99.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html
-
-### Old
-
 $ sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-admin/\* ubuntu@ec2-52-66-223-120.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html
