@@ -105,7 +105,6 @@ export default {
           method: 'PUT',
           body: JSON.stringify({
               name: 'Alex Pi',
-              email: 'Example@mail.com',
               number: 12025550108,
               password: 'Simple12345'
               password_repeat: 'Simple12345'
