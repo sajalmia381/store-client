@@ -56,7 +56,6 @@
             <mat-icon>{{ themeMode === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
           </button>
           <a
-            *ngIf="!isProductionMode"
             routerLink="/admin"
             mat-icon-button
             class="bg-gray-100 dark:bg-gray-800 mr-3"
