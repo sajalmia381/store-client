@@ -22,7 +22,7 @@
                 routerLink=""
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                >Home</a
+                ><mat-icon>home</mat-icon></a
               >
             </li>
             <li class="nav__item">
@@ -38,10 +38,15 @@
             <li class="nav__item">
               <a
                 class="nav__link"
-                href="http://github.com/sajalmia381"
+                href="https://github.com/sajalmia381/store-api-go"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                >Github</a
+                >
+                <div class="flex items-center">
+                  <mat-icon class="icon_sm mr-2">location_on</mat-icon>
+                  <span>Github</span>
+                </div>
+                </a
               >
             </li>
           </ul>
