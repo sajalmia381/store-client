@@ -1,7 +1,8 @@
 .navbar {
   &__nav {
-    @apply flex items-center flex-wrap;
+    @apply flex items-center flex-wrap pr-1;
     @apply relative;
+
     &::before {
       content: '';
       @apply absolute;
@@ -14,10 +15,12 @@
       @apply bg-gray-400;
     }
   }
+
   &__icons {
     @apply pl-4;
   }
 }
+
 .nav {
   &__item {
     &:not(:first-child) {
@@ -26,9 +29,13 @@
       }
     }
   }
+
   &__link {
-    @apply py-3 px-6 rounded;
+    @apply py-2 px-6 rounded;
     opacity: 0.5;
+    display: block;
+    height: 40px;
+
     &:hover,
     &.active {
       opacity: 1;
@@ -36,10 +43,12 @@
     }
   }
 }
+
 ::ng-deep {
   .dark {
     .nav {
       &__link {
+
         &:hover,
         &.active {
           @apply bg-gray-800;
