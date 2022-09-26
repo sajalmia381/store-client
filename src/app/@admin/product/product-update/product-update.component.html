@@ -70,7 +70,7 @@
           <div class="w-full px-3">
             <label for="id_image"> Image * </label>
             <div *ngIf="uploadedImage">
-              <img width="100" [src]="baseUrl + '/' + uploadedImage?.webUrl" alt="product img" />
+              <img width="100" [src]="baseUrl + '/' + uploadedImage.webUrl" alt="product img" />
               <div class="flex">
                 <button mat-icon-button (click)="onImageDelete()">
                   <mat-icon>delete</mat-icon>
