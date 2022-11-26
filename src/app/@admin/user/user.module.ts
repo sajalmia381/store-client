@@ -15,6 +15,7 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [UserListComponent, UserDetailsComponent, UserUpdateComponent, UserFormComponent],
@@ -27,7 +28,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     MatTableModule,
     MatTooltipModule,
     MatMenuModule,
-    ClipboardModule
+    ClipboardModule,
+    ReactiveFormsModule
   ]
 })
-export class UserModule {}
+export class UserModule { }

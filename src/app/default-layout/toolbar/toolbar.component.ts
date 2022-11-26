@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { logoutSuccess } from 'src/app/auth/state/auth.actions';
-import { getUserData } from 'src/app/auth/state/auth.selectors';
 import { AuthState } from 'src/app/auth/state/auth.state';
 import { setThemeMode } from 'src/app/store/shared/shared.actions';
 import { getThemeMode } from 'src/app/store/shared/shared.selectors';
@@ -15,16 +14,11 @@ import { environment } from '@env/environment';
 })
 export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter();
-  userData!: any;
   themeMode!: string;
   isProductionMode: boolean = environment.production;
-  constructor(private store: Store<AuthState | SharedState>) {}
+  constructor(private store: Store<AuthState | SharedState>) { }
 
   ngOnInit(): void {
-    this.store.select(getUserData).subscribe(data => {
-      // console.log('userData form header', data)
-      this.userData = data?.data;
-    });
     this.store.select(getThemeMode).subscribe(theme => {
       this.themeMode = theme;
     });

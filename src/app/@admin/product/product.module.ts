@@ -20,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { UserService } from '../user/user.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,10 @@ import { UserService } from '../user/user.service';
     MatCheckboxModule,
     MatMenuModule,
     MatSidenavModule,
+    ReactiveFormsModule,
     StoreModule.forFeature(PRODUCT_STATE_NAME, productReducer),
     EffectsModule.forFeature([ProductEffects])
   ],
   providers: [ProductService, UserService]
 })
-export class ProductModule {}
+export class ProductModule { }

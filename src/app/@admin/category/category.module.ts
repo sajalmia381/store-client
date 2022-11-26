@@ -15,6 +15,7 @@ import { SharedModule } from '@shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
 import { CategoryUpdateComponent } from './category-update/category-update.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,11 @@ import { MatMenuModule } from '@angular/material/menu';
     CategoryRoutingModule,
     SharedModule,
     MatTableModule,
-    MatMenuModule
+    MatMenuModule,
+    ReactiveFormsModule,
     // StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
     // EffectsModule.forFeature([CategoryEffects]),
   ],
   providers: [CategoryService]
 })
-export class CategoryModule {}
+export class CategoryModule { }
