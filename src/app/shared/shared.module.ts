@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RouterModule } from '@angular/router';
 
 import { DeleteConformationComponent } from './components/delete-conformation/delete-conformation.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 const commonImportedModules = [
-  FormsModule,
-  ReactiveFormsModule,
-  HttpClientModule,
   // Material
   MatButtonModule,
   MatIconModule,
@@ -22,8 +17,15 @@ const commonImportedModules = [
 ];
 
 @NgModule({
-  declarations: [DeleteConformationComponent, FooterComponent],
-  imports: [CommonModule, ...commonImportedModules, RouterModule, MatDialogModule],
+  declarations: [],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatDialogModule,
+    ...commonImportedModules,
+    FooterComponent,
+    DeleteConformationComponent
+  ],
   exports: [...commonImportedModules, DeleteConformationComponent, FooterComponent]
 })
-export class SharedModule {}
+export class SharedModule { }
