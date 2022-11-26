@@ -1,7 +1,7 @@
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
-import { authReducer } from '../auth/state/auth.reducer';
-import { AUTH_STATE_NAME } from '../auth/state/auth.selectors';
-import { AuthState } from '../auth/state/auth.state';
+import { authReducer } from '../v0/auth/state/auth.reducer';
+import { AUTH_STATE_NAME } from '../v0/auth/state/auth.selectors';
+import { AuthState } from '../v0/auth/state/auth.state';
 import { categoryReducer } from '../@admin/category/state/category.reducer';
 import { CATEGORY_STATE_NAME } from '../@admin/category/state/category.selectors';
 import { CategoryState } from '../@admin/category/state/category.state';

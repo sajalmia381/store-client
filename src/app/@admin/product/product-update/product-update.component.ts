@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { Store } from '@ngrx/store';
 import { takeWhile } from 'rxjs/operators';
-import { isSignedIn } from 'src/app/auth/state/auth.selectors';
+import { isSignedIn } from 'src/app/v0/auth/state/auth.selectors';
 import { Category } from '../../category/category';
 import { loadCategories } from '../../category/state/category.actions';
 import { getCategories } from '../../category/state/category.selectors';

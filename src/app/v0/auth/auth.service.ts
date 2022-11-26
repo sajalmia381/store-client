@@ -1,7 +1,7 @@
 import { HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpService } from '../shared/services/http.service';
+import { HttpService } from '@shared/services/http.service';
 import { LOGIN_ENDPOINT, REFRESH_ENDPOINT } from './auth.endpoint';
 
 @Injectable({

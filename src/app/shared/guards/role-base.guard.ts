@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { map, withLatestFrom } from 'rxjs/operators';
-import { getUserData } from 'src/app/auth/state/auth.selectors';
+import { getUserData } from 'src/app/v0/auth/state/auth.selectors';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 
 @Injectable({

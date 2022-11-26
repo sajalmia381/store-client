@@ -7,11 +7,11 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { exhaustMap, switchMap, take } from 'rxjs/operators';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from 'src/app/v0/auth/auth.service';
 import { Store } from '@ngrx/store';
-import { getAccessToken, getUserData } from 'src/app/auth/state/auth.selectors';
+import { getAccessToken, getUserData } from 'src/app/v0/auth/state/auth.selectors';
 import JwtService from '@shared/helper/JwtService';
-import { loginSuccess } from 'src/app/auth/state/auth.actions';
+import { loginSuccess } from 'src/app/v0/auth/state/auth.actions';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
