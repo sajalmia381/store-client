@@ -8,8 +8,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { DeleteConformationComponent } from './components/delete-conformation/delete-conformation.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 const commonImportedModules = [
+  RouterModule,
   // Material
   MatButtonModule,
   MatIconModule,

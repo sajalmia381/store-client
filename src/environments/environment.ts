@@ -1,12 +1,14 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const domain = 'http://localhost:8000';
+// const domain = 'http://localhost:8000';
+const domain = 'https://api.storerestapi.com';
 
 export const environment = {
   production: false,
   apiBaseUrl: domain,
   baseUrl: domain,
+  v1BaseUrl: domain + "/v1",
   GA: ''
 };
 

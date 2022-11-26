@@ -1,9 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 import { HttpService } from '@shared/services/http.service';
+import { SharedModule } from '@shared/shared.module';
+import { PrismModule } from '../../@plugin/prism/prism.module';
+
+import 'prismjs/components/prism-typescript';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, SharedModule, PrismModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -15,9 +22,9 @@ export class HomeComponent implements OnInit {
 	.then(json => console.log(json))`;
   productRes: any;
   isProductLoading!: boolean;
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   fetchProduct(): void {
     this.isProductLoading = true;

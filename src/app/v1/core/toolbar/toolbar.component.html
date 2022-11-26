@@ -19,7 +19,7 @@
             <li class="nav__item">
               <a
                 class="nav__link"
-                routerLink=""
+                routerLink="/v1"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
                 ><mat-icon>home</mat-icon></a
@@ -28,7 +28,7 @@
             <li class="nav__item">
               <a
                 class="nav__link"
-                routerLink="/docs"
+                routerLink="/v1/docs"
                 routerLinkActive="active"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
@@ -54,7 +54,7 @@
         <div class="navbar__icons flex items-center">
           <button mat-button [matMenuTriggerFor]="menu">
             <span class="flex items-center">
-              V0
+              V1
               <mat-icon class="icon_sm">arrow_drop_down</mat-icon>
             </span>
           </button>
@@ -65,13 +65,13 @@
           <button (click)="toggleTheme()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
             <mat-icon>{{ themeMode === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
           </button>
-          <a
+          <!-- <a
             routerLink="/admin"
             mat-icon-button
             class="bg-gray-100 dark:bg-gray-800 mr-3"
           >
             <mat-icon>people</mat-icon>
-          </a>
+          </a> -->
         </div>
       </div>
     </div>

@@ -9,21 +9,21 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { Store } from '@ngrx/store';
-import { AuthState } from 'src/app/auth/state/auth.state';
-import { logoutSuccess } from 'src/app/auth/state/auth.actions';
+import { AuthState } from 'src/app/v0/auth/state/auth.state';
+import { logoutSuccess } from 'src/app/v0/auth/state/auth.actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ErrorsInterceptor implements HttpInterceptor {
 
-  constructor(private store: Store<AuthState>, private snackBar: MatSnackBar) {}
+  constructor(private store: Store<AuthState>, private snackBar: MatSnackBar) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError((res) => this.errorHandler(res)));
   }
-  
+
   private errorHandler(response: any): Observable<any> {
-    if(!environment.production) {
+    if (!environment.production) {
       console.log('errorHandler Response', response);
     }
     const status = response?.status;
