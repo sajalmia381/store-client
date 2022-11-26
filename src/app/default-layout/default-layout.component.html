@@ -1,7 +1,7 @@
 <div class="<USERNAME>-container">
   <app-toolbar (toggleSidenav)="toggleSidenav()"></app-toolbar>
   <mat-sidenav-container class="default-layout-container">
-    <mat-sidenav #sidenav [mode]="'over'">
+    <mat-sidenav #sidenav [mode]="'over'" position="end">
       <app-default-sidenav></app-default-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
