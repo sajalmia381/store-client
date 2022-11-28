@@ -1,0 +1,59 @@
+.navbar {
+  &__nav {
+    @apply flex items-center flex-wrap pr-1;
+    @apply relative;
+
+    &::before {
+      content: '';
+      @apply absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      height: 100%;
+      max-height: 26px;
+      width: 1px;
+      @apply bg-gray-400;
+    }
+  }
+
+  &__icons {
+    @apply pl-4;
+  }
+}
+
+.nav {
+  &__item {
+    &:not(:first-child) {
+      .nav__link {
+        @apply ml-2;
+      }
+    }
+  }
+
+  &__link {
+    @apply py-2 px-6 rounded;
+    opacity: 0.5;
+    display: block;
+    height: 40px;
+
+    &:hover,
+    &.active {
+      opacity: 1;
+      @apply font-semibold bg-indigo-50;
+    }
+  }
+}
+
+::ng-deep {
+  .dark {
+    .nav {
+      &__link {
+
+        &:hover,
+        &.active {
+          @apply bg-gray-800;
+        }
+      }
+    }
+  }
+}

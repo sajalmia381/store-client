@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getUserData } from 'src/app/auth/state/auth.selectors';
-import { AuthState } from 'src/app/auth/state/auth.state';
-import { logoutSuccess } from 'src/app/auth/state/auth.actions';
+import { getUserData } from 'src/app/v0/auth/state/auth.selectors';
+import { AuthState } from 'src/app/v0/auth/state/auth.state';
+import { logoutSuccess } from 'src/app/v0/auth/state/auth.actions';
 import { setThemeMode } from 'src/app/store/shared/shared.actions';
 import { getThemeMode } from 'src/app/store/shared/shared.selectors';
 import { SharedState } from 'src/app/store/shared/shared.state';
@@ -15,7 +15,7 @@ import { SharedState } from 'src/app/store/shared/shared.state';
 export class HeaderComponent implements OnInit {
   userData!: any;
   themeMode!: string;
-  constructor(private store: Store<AuthState | SharedState>) {}
+  constructor(private store: Store<AuthState | SharedState>) { }
 
   ngOnInit(): void {
     this.store.select(getUserData).subscribe(data => {

@@ -5,32 +5,39 @@ import { DefaultLayoutComponent } from './default-layout/default-layout.componen
 const <USERNAME>Routes: Routes = [
   {
     path: 'docs',
-    loadChildren: () => import('./doc/doc.module').then(m => m.DocModule)
+    loadChildren: () => import('./v0/doc/doc.module').then(m => m.DocModule)
   },
   {
     path: '',
-    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-  }
+    pathMatch: 'full',
+    loadComponent: () => import('./v0/home/home.component').then(m => m.HomeComponent)
+  },
 ];
 
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./v0/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'admin',
     loadChildren: () => import('./@admin/admin.module').then(m => m.adminModule)
   },
+  // V1
+  {
+    path: 'v1',
+    loadChildren: () => import('./v1/v1.module').then(m => m.V1Module)
+  },
   {
     path: '',
     component: DefaultLayoutComponent,
     children: <USERNAME>Routes
-  }
+  },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

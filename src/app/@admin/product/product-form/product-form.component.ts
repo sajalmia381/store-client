@@ -18,8 +18,8 @@ import * as productActions from '../state/product.actions';
 import { filterValidObjAttribute } from '@shared/helper/utils';
 import { User } from '../../user/user';
 import { UserService } from '../../user/user.service';
-import { AuthState } from 'src/app/auth/state/auth.state';
-import { isSignedIn } from 'src/app/auth/state/auth.selectors';
+import { AuthState } from 'src/app/v0/auth/state/auth.state';
+import { isSignedIn } from 'src/app/v0/auth/state/auth.selectors';
 
 @Component({
   selector: 'app-product-form',
@@ -44,7 +44,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private httpService: HttpService,
     private action$: Actions,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.store
