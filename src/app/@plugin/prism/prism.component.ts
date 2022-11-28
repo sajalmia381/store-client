@@ -19,7 +19,7 @@ export class PrismComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() code?: string;
   @Input() language?: string;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     if (!this.language) {
@@ -30,6 +30,7 @@ export class PrismComponent implements OnInit, AfterViewInit, OnChanges {
   ngAfterViewInit() {
     Prism.highlightElement(this.codeEle.nativeElement);
   }
+
   ngOnChanges(changes: any): void {
     if (changes?.code) {
       if (this.codeEle?.nativeElement) {

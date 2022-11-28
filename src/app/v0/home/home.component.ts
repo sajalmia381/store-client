@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 	.then(json => console.log(json))`;
   productRes: any;
   isProductLoading!: boolean;
+
   constructor(private http: HttpService) { }
 
   ngOnInit(): void { }

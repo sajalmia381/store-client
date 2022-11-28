@@ -5,13 +5,10 @@ import { V1RoutingModule } from './v1-routing.module';
 import { V1Component } from './v1.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { SharedModule } from '@shared/shared.module';
 import { ToolbarComponent } from './core/toolbar/toolbar.component';
 import { SidenavComponent } from './core/sidenav/sidenav.component';
-
 
 @NgModule({
   declarations: [
