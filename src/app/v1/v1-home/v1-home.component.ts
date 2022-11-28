@@ -7,7 +7,6 @@ import { PrismModule } from 'src/app/@plugin/prism/prism.module';
 
 import 'prismjs/components/prism-typescript';
 
-
 @Component({
   selector: 'app-v1-home',
   standalone: true,
@@ -23,6 +22,7 @@ export class V1HomeComponent implements OnInit {
 	.then(json => console.log(json))`;
   productRes: any;
   isProductLoading!: boolean;
+  
   constructor(private http: V1HttpService) { }
 
   ngOnInit(): void { }
