@@ -16,7 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 import { AuthInterceptor } from '@shared/services/auth.interceptor';
 import { ErrorsInterceptor } from '@shared/services/errors.interceptor';
-import { AuthEffects } from './auth/state/auth.effects';
+import { AuthEffects } from './v0/auth/state/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer }),
-    EffectsModule.forRoot([ AuthEffects ]),
+    EffectsModule.forRoot([AuthEffects]),
     NgxGoogleAnalyticsModule.forRoot(environment.GA),
     NgxGoogleAnalyticsRouterModule.forRoot({ exclude: ['/admin/*'] }),
     DefaultLayoutModule,
@@ -49,4 +49,4 @@ import { EffectsModule } from '@ngrx/effects';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
