@@ -5,7 +5,7 @@ import { MediaRoutingModule } from './media-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { ImageListComponent } from './image-list/image-list.component';
 import { AddImageComponent } from './add-image/add-image.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 
 @NgModule({
   declarations: [ImageListComponent, AddImageComponent],
