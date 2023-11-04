@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { environment } from '@env/environment';
 import { V1HttpService } from '@shared/services/v1-http.service';
 import { SharedModule } from '@shared/shared.module';
-import { PrismModule } from 'src/app/@plugin/prism/prism.module';
+import { AsPrismModule } from 'as-prism';
 
 import 'prismjs/components/prism-typescript';
 
 @Component({
   selector: 'app-v1-home',
   standalone: true,
-  imports: [CommonModule, SharedModule, PrismModule],
+  imports: [CommonModule, SharedModule, AsPrismModule],
   templateUrl: './v1-home.component.html',
   styleUrls: ['./v1-home.component.scss']
 })
