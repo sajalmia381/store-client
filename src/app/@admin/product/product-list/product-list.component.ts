@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Observable } from 'rxjs';
 import { deleteProduct, loadProducts } from '../state/product.actions';
 import { getProducts, isLoaded } from '../state/product.selectors';
@@ -8,7 +8,7 @@ import { DeleteConformationComponent } from 'src/app/shared/components/delete-co
 import { Product } from '../product';
 import { takeWhile } from 'rxjs/operators';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { environment } from '@env/environment';
 import { MatSidenav } from '@angular/material/sidenav';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';

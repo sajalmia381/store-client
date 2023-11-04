@@ -12,7 +12,7 @@ import { appReducer } from './store';
 import { RouterSerializer } from './store/router/router.serializer';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DefaultLayoutModule } from './default-layout/default-layout.module';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 import { AuthInterceptor } from '@shared/services/auth.interceptor';
 import { ErrorsInterceptor } from '@shared/services/errors.interceptor';
