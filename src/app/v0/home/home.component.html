@@ -45,7 +45,7 @@
       <p class="text-lg mt-2 text-gray-500">Run this code in a console or from any site:</p>
       <div class="grid grid-cols-1 md:grid-cols-2 -mx-2">
         <div class="px-2">
-          <app-prism [code]="code"></app-prism>
+          <as-prism [code]="code" language="typescript"></as-prism>
           <button
             (click)="fetchProduct()"
             type="button"
@@ -61,10 +61,7 @@
           >
             <mat-spinner [strokeWidth]="2" [diameter]="20"></mat-spinner>
           </div>
-          <app-prism
-            *ngIf="!isProductLoading"
-            [code]="productRes ? (productRes | json) : '{}'"
-          ></app-prism>
+            <as-prism *ngIf="!isProductLoading" [code]="productRes ? (productRes | json) : '{}'" language="typescript"></as-prism>
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@ import { environment } from '@env/environment';
 import { takeWhile } from 'rxjs/operators';
 import DocData from './docDate';
 
+import 'prismjs/components/prism-typescript';
+
 @Component({
   selector: 'app-doc',
   templateUrl: './doc.component.html',
