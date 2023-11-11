@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatButtonModule as MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
+import { MatDialogModule as MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { DeleteConformationComponent } from './components/delete-conformation/delete-conformation.component';
 import { FooterComponent } from './components/footer/footer.component';

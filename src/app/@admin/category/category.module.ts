@@ -12,9 +12,9 @@ import { CategoryEffects } from './state/category.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { CategoryService } from './category.service';
 import { SharedModule } from '@shared/shared.module';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
+import { MatTableModule } from '@angular/material/table';
 import { CategoryUpdateComponent } from './category-update/category-update.component';
-import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
