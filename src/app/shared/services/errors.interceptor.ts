@@ -11,7 +11,7 @@ import { environment } from '@env/environment';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'src/app/v0/auth/state/auth.state';
 import { logoutSuccess } from 'src/app/v0/auth/state/auth.actions';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ErrorsInterceptor implements HttpInterceptor {

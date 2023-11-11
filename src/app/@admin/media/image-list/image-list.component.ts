@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { DeleteConformationComponent } from '@shared/components/delete-conformation/delete-conformation.component';
 import { Observable } from 'rxjs';
