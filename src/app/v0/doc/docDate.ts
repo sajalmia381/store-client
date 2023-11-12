@@ -230,5 +230,29 @@ export default {
         .then(response => response.json())
         .then(json => console.log(json))`
     }
-  ]
+  ],
+  todo: [
+    {
+      name: 'Get Todos',
+      code: `fetch('${apiBaseUrl}/todos')
+        .then(response => response.json())
+        .then(json => console.log(json))`
+    },
+    {
+      name: 'Add New todo',
+      code: `fetch('${apiBaseUrl}/todos', 
+        {
+            method: 'POST',
+            body: JSON.stringify({
+              "title": "Conduct code reviews regularly",
+              "completed": false
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))`
+    }
+  ],
 };
