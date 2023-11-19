@@ -58,6 +58,11 @@ const TREE_DATA: MenuItem[] = [
     ]
   },
   {
+    name: 'Todo',
+    iconName: 'format_list_bulleted',
+    url: '/admin/todo'
+  },
+  {
     name: 'Media',
     iconName: 'image',
     url: '/admin/media/images'
