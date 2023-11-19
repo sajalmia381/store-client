@@ -2,9 +2,9 @@
   <div class="page__toolbar">
     <div class="flex items-center">
       <h2>Todos #.{{ this.dataSource?.data?.length }}</h2>
-      <a class="ml-4" routerLink="add-new" mat-flat-button
-        ><mat-icon class="mr-2">add</mat-icon> Add Category</a
-      >
+      <button (click)="onTodoForm()" type="button" class="ml-4" mat-flat-button>
+        <mat-icon class="mr-2">add</mat-icon> Add Todo
+      </button>
     </div>
   </div>
   <div class="page__content">
@@ -17,10 +17,12 @@
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="title">
+        <ng-container matColumnDef="completed">
           <th mat-header-cell *matHeaderCellDef>Completed</th>
           <td mat-cell *matCellDef="let element">
-            {{ element?.completed }}
+            <div [ngClass]="element?.completed ? 'bg-green-500' : 'bg-blue-500'" class="center relative inline-block select-none whitespace-nowrap rounded-lg py-2 px-3.5 align-baseline font-sans text-xs font-bold uppercase leading-none text-white">
+              <div class="mt-px">{{ element?.completed }}</div>
+            </div>
           </td>
         </ng-container>
 

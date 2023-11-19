@@ -73,20 +73,6 @@ export class ProductEffects {
       })
     );
   });
-  // addUser$ = createEffect(() => {
-  //   return this.action$.pipe(
-  //     ofType(userAction.addUser),
-  //     switchMap((action) => {
-  //       return this.userService.addUser(action.user).pipe(
-  //         map((data) => {
-  //           console.log('add user call')
-  //           const user = { ...action.user, id: data._id };
-  //           return addUserSuccess({ user });
-  //         })
-  //       );
-  //     })
-  //   );
-  // });
   updateProduct$ = createEffect(() =>
     this.action$.pipe(
       ofType(productAction.updateProduct),

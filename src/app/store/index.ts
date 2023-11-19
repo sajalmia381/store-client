@@ -12,12 +12,16 @@ import { ROUTER_STATE_NAME } from './router/router.selectors';
 import { sharedReducer } from './shared/shared.reducer';
 import { SHARED_STATE_NAME } from './shared/shared.selectors';
 import { SharedState } from './shared/shared.state';
+import { TODO_STATE_NAME } from '../@admin/todo/state/todo.selectors';
+import { TodoState } from '../@admin/todo/state/todo.state';
+// import { todoReducer } from '../@admin/todo/state/todo.reducer';
 
 export interface AppState {
   [SHARED_STATE_NAME]: SharedState;
   [ROUTER_STATE_NAME]: RouterReducerState;
   [AUTH_STATE_NAME]: AuthState;
   [CATEGORY_STATE_NAME]: CategoryState;
+  [TODO_STATE_NAME]: TodoState;
   [IMAGE_STATE_NAME]: ImageState;
 }
 
@@ -26,5 +30,6 @@ export const appReducer = {
   [ROUTER_STATE_NAME]: routerReducer,
   [AUTH_STATE_NAME]: authReducer,
   [CATEGORY_STATE_NAME]: categoryReducer,
+  // [TODO_STATE_NAME]: todoReducer,
   [IMAGE_STATE_NAME]: imageReducer
 };
