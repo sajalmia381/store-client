@@ -8,6 +8,7 @@ import { Image } from '../Image';
 import { deleteImage, loadImages } from '../state/media.actions';
 import { getImages, isLoaded } from '../state/media.selectors';
 import { ImageState } from '../state/media.state';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-image-list',
@@ -18,11 +19,12 @@ export class ImageListComponent implements OnInit {
   images$!: Observable<Image[]>;
   isLoaded$!: Observable<boolean>;
 
-  constructor(private store: Store<ImageState>, private dialog: MatDialog) {}
+  constructor(private store: Store<ImageState>, private dialog: MatDialog) {
+    this.images$ = this.store.select(getImages).pipe(takeUntilDestroyed());
+    this.isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());
+  }
 
   ngOnInit(): void {
-    this.images$ = this.store.select(getImages);
-    this.isLoaded$ = this.store.select(isLoaded);
     this.store.dispatch(loadImages());
   }
   onImageForm(): void {

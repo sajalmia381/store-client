@@ -6,25 +6,24 @@ import { deleteProduct, loadProducts } from '../state/product.actions';
 import { getProducts, isLoaded } from '../state/product.selectors';
 import { DeleteConformationComponent } from 'src/app/shared/components/delete-conformation/delete-conformation.component';
 import { Product } from '../product';
-import { takeWhile } from 'rxjs/operators';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { environment } from '@env/environment';
 import { MatSidenav } from '@angular/material/sidenav';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { filterValidObjAttribute } from '@shared/helper/utils';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit {
   @ViewChild('filterSidenav') filterSidenav!: MatSidenav;
   currentView = 'list';
-  isAlive: boolean = true;
   isLoaded$!: Observable<boolean>;
-  loading!: false;
+  products$!: Observable<Product[]>;
   displayedColumns: string[] = [
     'select',
     'title',
@@ -38,28 +37,27 @@ export class ProductListComponent implements OnInit, OnDestroy {
   dataSource: any = new MatTableDataSource<Product>([]);
   backendBaseUrl: string = environment.baseUrl;
   filterForm!: UntypedFormGroup;
-  constructor(private store: Store, private dialog: MatDialog) {}
+
+  constructor(private store: Store, private dialog: MatDialog) {
+    this.isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());
+    this.products$ = this.store.select(getProducts).pipe(takeUntilDestroyed());
+  }
 
   ngOnInit(): void {
     this.filterForm = new UntypedFormGroup({
       q: new UntypedFormControl(['']),
       sort: new UntypedFormControl([''])
     });
-    this.store
-      .select(getProducts)
-      .pipe(takeWhile(() => this.isAlive))
-      .subscribe(products => {
-        this.dataSource.data = products;
-      });
-    this.isLoaded$ = this.store.select(isLoaded);
+    this.products$.subscribe(products => {
+      this.dataSource.data = products;
+    });
     this.store.dispatch(loadProducts({}));
   }
-  ngOnDestroy(): void {
-    this.isAlive = false;
-  }
+
   toggleView(): void {
     this.currentView = this.currentView === 'grid' ? 'list' : 'grid';
   }
+
   onDelete(product: Product): void {
     const deleteDialogRef = this.dialog.open(DeleteConformationComponent, {
       width: '100%',

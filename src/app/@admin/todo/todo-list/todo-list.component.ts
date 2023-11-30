@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import { TodoState } from '../state/todo.state';
@@ -15,22 +15,19 @@ import { Todo } from '../todo';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent {
-  // private destroyRef = inject(DestroyRef);
+  private store = inject<Store<TodoState>>(Store);
+  private dialog = inject(MatDialog)
 
-  isLoaded$!: Observable<boolean>;
   displayedColumns: string[] = ['title', 'completed'];
   dataSource: any;
-  isAlive: boolean = true;
 
+  isLoaded$: Observable<boolean> = this.store.select(isLoaded).pipe(takeUntilDestroyed());
   private todos$: Observable<Todo[]> = this.store.select(getTodos).pipe(takeUntilDestroyed())
-
-  constructor(private store: Store<TodoState>, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.todos$.subscribe(categories => {
       this.dataSource = categories;
     });
-    this.isLoaded$ = this.store.select(isLoaded);
     this.store.dispatch(loadTodos());
   }
 
