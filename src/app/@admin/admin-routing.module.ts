@@ -15,8 +15,12 @@ const childRoutes: Routes = [
     loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
   },
   {
-    path: 'todo',
+    path: 'todos',
     loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule)
+  },
+  {
+    path: 'carts',
+    loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
   },
   {
     path: 'media',
