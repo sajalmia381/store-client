@@ -31,8 +31,8 @@ import { EffectsModule } from '@ngrx/effects';
     EffectsModule.forRoot([AuthEffects]),
 
     NgxGoogleAnalyticsModule.forRoot(environment.GA),
-    NgxGoogleAnalyticsRouterModule.forRoot({ exclude: ['/admin/*'] }),
-    
+    // NgxGoogleAnalyticsRouterModule.forRoot({ exclude: ['/admin/*'] }),
+
     DefaultLayoutModule,
     HttpClientModule,
     MatSnackBarModule
