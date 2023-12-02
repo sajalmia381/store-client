@@ -44,7 +44,12 @@ const TREE_DATA: MenuItem[] = [
     ]
   },
   {
-    name: 'Users',
+    name: 'Cart',
+    iconName: 'shopping_cart',
+    url: '/admin/carts'
+  },
+  {
+    name: 'User',
     iconName: 'person',
     children: [
       {
@@ -60,7 +65,7 @@ const TREE_DATA: MenuItem[] = [
   {
     name: 'Todo',
     iconName: 'format_list_bulleted',
-    url: '/admin/todo'
+    url: '/admin/todos'
   },
   {
     name: 'Media',

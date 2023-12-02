@@ -40,7 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     MatSidenavModule,
     ReactiveFormsModule,
-    StoreModule.forFeature(PRODUCT_STATE_NAME, productReducer),
+    // StoreModule.forFeature(PRODUCT_STATE_NAME, productReducer),
     EffectsModule.forFeature([ProductEffects])
   ],
   providers: [ProductService, UserService]

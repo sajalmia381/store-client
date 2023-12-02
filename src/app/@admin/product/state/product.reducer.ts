@@ -26,6 +26,6 @@ const _productReducer = createReducer(
   })
 );
 
-export const productReducer = (state: ProductState, action: Action) => {
+export const productReducer = (state: ProductState | undefined, action: Action) => {
   return _productReducer(state, action);
 };

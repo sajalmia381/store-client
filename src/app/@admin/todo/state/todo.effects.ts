@@ -10,7 +10,7 @@ import { TodoService } from '../todo.service';
 export class TodoEffects {
   constructor(private store: Store, private action$: Actions, private todoService: TodoService) {}
 
-  loadCategories$ = createEffect(() => {
+  loadtodos$ = createEffect(() => {
     return this.action$.pipe(
       ofType(todoAction.loadCategories),
       withLatestFrom(this.store.select(isLoaded)),
@@ -24,7 +24,7 @@ export class TodoEffects {
     );
   });
 
-  addCategory$ = createEffect(() => {
+  addtodo$ = createEffect(() => {
     return this.action$.pipe(
       ofType(todoAction.addOneTodo),
       switchMap(action => {

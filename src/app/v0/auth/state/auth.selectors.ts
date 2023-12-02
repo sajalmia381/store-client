@@ -21,6 +21,10 @@ export const getUserData = createSelector(getAuthState, state => {
   return state?.userData || null;
 });
 
+export const isSuperAdmin = createSelector(getAuthState, state => {
+  return state?.userData?.userInfo?.role === 'ROLE_SUPER_ADMIN';
+});
+
 export const getLoginErrors = createSelector(getAuthState, state => {
   return state?.errors || null;
 });

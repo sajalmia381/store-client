@@ -11,13 +11,13 @@
           <label for="id_title"> Title * </label>
           <input
             formControlName="title"
-            [class.border-red-500]="form.get('tiele')?.touched && form.get('tiele')?.invalid"
+            [class.border-red-500]="form.get('title')?.touched && form.get('title')?.invalid"
             id="id_title"
             type="text"
             placeholder="Todo title"
           />
           <p
-            *ngIf="form.get('tiele')?.touched && form.get('tiele')?.hasError('required')"
+            *ngIf="form.get('title')?.touched && form.get('title')?.hasError('required')"
             class="text-red-500 text-xs italic"
           >
             Please fill out this field.
