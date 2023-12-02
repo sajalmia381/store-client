@@ -18,7 +18,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class CategoriesComponent implements OnInit {
   isLoaded$!: Observable<boolean>;
   categories$!: Observable<Category[]>;
-  displayedColumns: string[] = ['name', '_id', 'products', 'action'];
+  displayedColumns: string[] = ['name', 'products', 'action'];
   dataSource: any;
   constructor(private store: Store<CategoryState>, private dialog: MatDialog) {
     this.isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());

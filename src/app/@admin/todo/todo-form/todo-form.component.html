@@ -1,10 +1,10 @@
 <div class="bg-card rounded">
-  <h3 mat-dialog-title>Add todo</h3>
+  <h3 mat-dialog-title class="border-b dark:border-gray-700">Add todo</h3>
   <mat-dialog-content>
     <form
       [formGroup]="form"
       (ngSubmit)="onFormSubmit()"
-      class="ti-form mt-4"
+      class="ti-form mt-4 pt-4"
     >
       <div class="flex flex-wrap -mx-3">
         <div class="w-full px-3">
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="flex justify-end mt-2">
-        <button class="mr-4" type="button" mat-button mat-dialog-close>Cancle</button>
+        <button class="mr-4" type="button" mat-button mat-dialog-close>Cancel</button>
         <button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
           Submit
         </button>
