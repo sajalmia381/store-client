@@ -66,10 +66,6 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
       .subscribe(bol => (this.isLoggedIn = bol));
     this.store.dispatch(loadProduct());
     this.store
-      .select(isSignedIn)
-      .pipe(takeWhile(() => this.isAlive))
-      .subscribe(bol => (this.isLoggedIn = bol));
-    this.store
       .select(getProductBySlug)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(data => {

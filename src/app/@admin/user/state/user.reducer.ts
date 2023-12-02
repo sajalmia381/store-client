@@ -28,6 +28,6 @@ const _userReducer = createReducer(
   })
 );
 
-export const userReducer = (state: UserState, action: Action) => {
+export const userReducer = (state: UserState | undefined, action: Action) => {
   return _userReducer(state, action);
 };
