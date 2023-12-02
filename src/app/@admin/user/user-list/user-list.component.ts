@@ -22,7 +22,6 @@ export class UserListComponent implements OnInit {
 
   // Table
   displayedColumns: string[] = [
-    '_id',
     'email',
     'name',
     'role',
