@@ -23,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     UserRoutingModule,
     SharedModule,
-    StoreModule.forFeature(USER_STATE_NAME, userReducer),
+    // StoreModule.forFeature(USER_STATE_NAME, userReducer),
     EffectsModule.forFeature([UserEffects]),
     MatTableModule,
     MatTooltipModule,

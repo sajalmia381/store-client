@@ -1,0 +1,71 @@
+<div class="page__container">
+  <div class="page__toolbar">
+    <div class="flex items-center">
+      <h2>Carts</h2>
+      <button (click)="onCartForm()" type="button" class="ml-4" mat-flat-button>
+        <mat-icon class="mr-2">add</mat-icon> Add Cart
+      </button>
+    </div>
+  </div>
+  <div class="page__content">
+    @if (!(isLoaded$ | async)) {
+    <mat-spinner [strokeWidth]="2" [diameter]="35"></mat-spinner>
+    } @else {
+    <mat-accordion *ngIf="carts$ | async as cartList" class="example-headers-align" multi>
+      <mat-expansion-panel *ngFor="let cart of cartList; let i = index">
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{ i + 1 }}. {{ cart?.user?.email }} </mat-panel-title>
+          <mat-panel-description> products: {{ cart.products.length }} </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div>
+          <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead class="text-xs uppercase dark:text-gray-300 dark:bg-gray-700">
+                <tr>
+                  <th scope="col" class="px-6 py-3" width="40%">Product name</th>
+                  <th scope="col" class="px-6 py-3">Price</th>
+                  <th scope="col" class="px-6 py-3">Quantity</th>
+                  <th scope="col" class="px-6 py-3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let item of cart.products"
+                  class="bg-gray-100 border-b dark:bg-gray-800 dark:border-gray-700"
+                >
+                  <td class="px-6 py-4 font-medium text-gray-800 whitespace-nowrap dark:text-white">
+                    {{ item.product.title }}
+                  </td>
+                  <td class="px-6 py-4">{{ item.product.price }}</td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <span>{{ item.quantity }}</span>
+                      <button
+                        (click)="onUpdateCart(cart.user._id, item)"
+                        mat-icon-button
+                        class="dark:bg-slate-500 dark:bg-opacity-50 h-6 w-6 leading-9 p-0 ml-2"
+                      >
+                        <mat-icon class="text-sm">edit</mat-icon>
+                      </button>
+                    </div>
+                  </td>
+                  <td class="text-end">
+                    <button
+                      (click)="onRemoveProduct(cart.user._id, item.product._id)"
+                      mat-icon-button
+                      class="dark:bg-slate-500 h-8 w-8 p-0 ml-3"
+                    >
+                      <mat-icon class="text-lg">delete</mat-icon>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    }
+  </div>
+</div>

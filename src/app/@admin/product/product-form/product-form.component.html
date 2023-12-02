@@ -104,26 +104,26 @@
           <div class="w-full px-3">
             <label for="id_category"> Category </label>
             <mat-form-field appearance="outline" class="field__mat-field">
-              <mat-label *ngIf="!category.value">Select Category</mat-label>
+              <!-- <mat-label *ngIf="!category.value">Select Category</mat-label> -->
               <mat-select formControlName="category" id="id_category">
                 <mat-option *ngFor="let item of categories" [value]="item._id">
                   {{ item.name | titlecase }}
                 </mat-option>
               </mat-select>
+              <mat-error
+                *ngIf="category.touched && category.hasError('required')"
+                class="text-xs italic"
+              >
+                Please fill out this field.
+              </mat-error>
             </mat-form-field>
-            <p
-              *ngIf="category.touched && category.hasError('required')"
-              class="text-red-500 text-xs italic"
-            >
-              Please fill out this field.
-            </p>
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6" *ngIf="isLoggedIn">
           <div class="w-full px-3">
             <label for="id_user"> Create By </label>
             <mat-form-field appearance="outline" class="field__mat-field">
-              <mat-label *ngIf="!createdBy.value">Select product owner</mat-label>
+              <!-- <mat-label *ngIf="!createdBy.value">Select product owner</mat-label> -->
               <mat-select formControlName="createdBy" id="id_user">
                 <mat-option *ngFor="let item of users" [value]="item._id">
                   {{ item.name | titlecase }}
