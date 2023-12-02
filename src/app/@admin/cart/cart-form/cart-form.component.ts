@@ -17,9 +17,7 @@ import { filter, take } from 'rxjs/operators';
 import { loadUsers } from '../../user/state/user.actions';
 import { loadProducts } from '../../product/state/product.actions';
 import { addOneCart } from '../state/cart.actions';
-import { CartEffects } from '../state/cart.effects';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Cart } from '../cart';
 
 @Component({
   selector: 'app-cart-form',
@@ -29,7 +27,6 @@ import { Cart } from '../cart';
 export class CartFormComponent implements OnInit {
   private fb = inject(FormBuilder);
   private store: Store<CartState | ProductState | UserState> = inject(Store);
-  private cartEffect = inject(CartEffects);
   public data?: any = inject(MAT_DIALOG_DATA);
 
   users$ = this.store.select(getUsers).pipe(takeUntilDestroyed());
@@ -45,7 +42,6 @@ export class CartFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log(this.data);
     if (this.data) {
       this.form.patchValue({
         userId: this.data.userId,
@@ -74,8 +70,5 @@ export class CartFormComponent implements OnInit {
 
   onSubmit(): void {
     this.store.dispatch(addOneCart({ payload: this.form.value }));
-    this.cartEffect.addCart$.subscribe(res => {
-      console.log('res');
-    });
   }
 }
