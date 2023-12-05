@@ -16,40 +16,7 @@ const TREE_DATA: MenuItem[] = [
     url: '/admin'
   },
   {
-    name: 'Product',
-    iconName: 'storage',
-    children: [
-      {
-        name: 'Product List',
-        url: '/admin/products'
-      },
-      {
-        name: 'Add Product',
-        url: '/admin/products/add-product'
-      }
-    ]
-  },
-  {
-    name: 'Category',
-    iconName: 'category',
-    children: [
-      {
-        name: 'Categories',
-        url: '/admin/categories'
-      },
-      {
-        name: 'Add category',
-        url: '/admin/categories/add-new'
-      }
-    ]
-  },
-  {
-    name: 'Cart',
-    iconName: 'shopping_cart',
-    url: '/admin/carts'
-  },
-  {
-    name: 'User',
+    name: 'Users',
     iconName: 'person',
     children: [
       {
@@ -63,7 +30,40 @@ const TREE_DATA: MenuItem[] = [
     ]
   },
   {
-    name: 'Todo',
+    name: 'Products',
+    iconName: 'storage',
+    children: [
+      {
+        name: 'Product List',
+        url: '/admin/products'
+      },
+      {
+        name: 'Add Product',
+        url: '/admin/products/add-product'
+      }
+    ]
+  },
+  {
+    name: 'Categories',
+    iconName: 'category',
+    children: [
+      {
+        name: 'Categories',
+        url: '/admin/categories'
+      },
+      {
+        name: 'Add category',
+        url: '/admin/categories/add-new'
+      }
+    ]
+  },
+  {
+    name: 'Carts',
+    iconName: 'shopping_cart',
+    url: '/admin/carts'
+  },
+  {
+    name: 'Todos',
     iconName: 'format_list_bulleted',
     url: '/admin/todos'
   },

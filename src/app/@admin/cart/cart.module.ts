@@ -20,6 +20,7 @@ import { ProductEffects } from '../product/state/product.effects';
 import { UserEffects } from '../user/state/user.effects';
 import { UserService } from '../user/user.service';
 import { ProductService } from '../product/product.service';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [CartListComponent, CartFormComponent],
@@ -32,6 +33,7 @@ import { ProductService } from '../product/product.service';
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatProgressBarModule,
     StoreModule.forFeature(CART_STATE_NAME, cartReducer),
     EffectsModule.forFeature([CartEffects, ProductEffects, UserEffects])
   ],

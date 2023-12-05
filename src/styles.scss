@@ -56,12 +56,14 @@ $store-dark-theme: mat.define-dark-theme(
   background-color: var(--bg-color);
   color: #ffffff;
   @include mat.all-component-colors($store-dark-theme);
+
   .mat-drawer {
     background-color: var(--sidenav-bg-color);
     &-container {
       background-color: var(--bg-color);
     }
   }
+  .mat-expansion-panel,
   .mat-table {
     background-color: var(--bg-card);
   }
