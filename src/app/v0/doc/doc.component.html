@@ -75,7 +75,7 @@
               <h4 id="id_category--1" class="card__sub_title mt-2">
                 {{docData?.category?.[0]?.name}}
               </h4>
-              <as-prism [code]="docData?.product?.[0]?.code" language="typescript"></as-prism>
+              <as-prism [code]="docData?.category?.[0]?.code" language="typescript"></as-prism>
 
             </div>
             <div class="card__api">
@@ -104,6 +104,38 @@
                 {{docData?.category?.[4]?.name}}
               </h4>
               <as-prism [code]="docData?.category?.[4]?.code" language="typescript"></as-prism>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card border dark:border-gray-700 mt-8">
+        <h2 id="id_cart" class="card__title"><mat-icon>shopping_cart</mat-icon> Cart</h2>
+        <div class="card__body">
+          <div id="id_cart" class="card__content">
+            <div class="card__api">
+              <h4 id="id_cart--1" class="card__sub_title mt-2">{{docData?.cart?.[0]?.name}}</h4>
+              <as-prism [code]="docData?.cart?.[0]?.code" language="typescript"></as-prism>
+
+            </div>
+            <div class="card__api">
+              <h4 id="id_cart--2" class="card__sub_title mt-2">{{docData?.cart?.[1]?.name}}</h4>
+              <as-prism [code]="docData?.cart?.[1]?.code" language="typescript"></as-prism>
+
+            </div>
+            <div class="card__api">
+              <h4 id="id_cart--3" class="card__sub_title mt-2">{{docData?.cart?.[2]?.name}}</h4>
+              <as-prism [code]="docData?.cart?.[2]?.code" language="typescript"></as-prism>
+
+            </div>
+            <div class="card__api">
+              <h4 id="id_cart--4" class="card__sub_title mt-2">{{docData?.cart?.[3]?.name}}</h4>
+              <as-prism [code]="docData?.cart?.[3]?.code" language="typescript"></as-prism>
+
+            </div>
+            <div class="card__api">
+              <h4 id="id_cart--5" class="card__sub_title mt-2">{{docData?.cart?.[4]?.name}}</h4>
+              <as-prism [code]="docData?.cart?.[4]?.code" language="typescript"></as-prism>
 
             </div>
           </div>
