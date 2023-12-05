@@ -1,26 +1,48 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { IDeleteConformation } from './delete-conformation.interface';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-delete-conformation',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, MatProgressBarModule, MatIconModule],
   templateUrl: './delete-conformation.component.html',
   styleUrls: ['./delete-conformation.component.scss']
 })
-export class DeleteConformationComponent implements OnInit {
+export class DeleteConformationComponent {
+  @Input() isSubmitting: boolean = false;
+
   message: string = 'Are you sure?';
+
+  // dialog Config
+  config: IDeleteConformation = {
+    // Static Props
+    message: 'Are you sure!',
+    successBtnText: 'Delete',
+    cancelBtnText: 'Cancel'
+  };
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: any,
+    @Inject(MAT_DIALOG_DATA) private data: Partial<IDeleteConformation>,
     private dialogRef: MatDialogRef<DeleteConformationComponent>
   ) {
-    if (data) {
-      this.message = data.message || this.message;
+    dialogRef.disableClose = true;
+    const { successBtnText, cancelBtnText, message } = data;
+    if (successBtnText !== undefined) {
+      this.config.successBtnText = successBtnText;
+    }
+    if (cancelBtnText !== undefined) {
+      this.config.cancelBtnText = cancelBtnText;
+    }
+
+    if (message !== undefined) {
+      this.message = message;
     }
   }
-  ngOnInit(): void { }
 
   onConfirmClick(): void {
     this.dialogRef.close(true);

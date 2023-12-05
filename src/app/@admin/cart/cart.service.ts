@@ -15,10 +15,32 @@ export class CartService {
       })
     );
   }
-  
 
   addCart(payload: CartFormPayload): Observable<Cart> {
     console.log('payload', payload)
+    return this.http.post('/carts', payload);
+  }
+
+  updateCart(cartId: string, payload: Pick<CartFormPayload, 'products'>): Observable<Cart> {
+    console.log('payload', payload)
+    return this.http.post('/carts/' + cartId, payload);
+  }
+
+  deleteCart(cartId: string): Observable<Cart> {
+    return this.http.delete('/carts/' + cartId);
+  }
+  
+  // User Cart
+  addUserCart(payload: CartFormPayload): Observable<Cart> {
+    console.log('payload', payload)
     return this.http.post('/cart/add', payload);
+  }
+
+  updateProductQuantity(payload: CartFormPayload): Observable<Cart> {
+    return this.http.put('/cart/update', payload);
+  }
+
+  removeProduct(userId: string, productId: string): Observable<Cart> {
+    return this.http.delete('/cart/remove', {userId, productId});
   }
 }

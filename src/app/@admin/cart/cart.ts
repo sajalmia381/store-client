@@ -20,7 +20,18 @@ export type Cart = {
   createdAt: Date;
 }
 
+export type CartFormProductSpecPayload = {
+  productId: string,
+  quantity: number
+}
+
 export type CartFormPayload = {
+  userId: string,
+  products: CartFormProductSpecPayload[]
+}
+
+// Single User payload
+export type CartUserFormPayload = {
   userId?: string,
   productId: string,
   quantity: number
