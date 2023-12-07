@@ -3,13 +3,12 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
     "start": "ng serve",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "deploy": "sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-admin/* ubuntu@ec2-52-66-223-120.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html",
-    "prod": "ng build --configuration production --source-map=false"
+    "build": "ng build --configuration production --source-map=false",
+    "deploy": "sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-admin/* ubuntu@ec2-3-7-68-106.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html",
+    "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
