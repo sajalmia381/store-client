@@ -1,0 +1,31 @@
+.product-spec {
+  border: 2px solid var(--border-color);
+  padding: 12px 12px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  &__add-btn {
+    font-size: 12px;
+    line-height: 30px;
+    height: 34px;
+    padding: 0 16px;
+  }
+}
+
+::ng-deep {
+  .product-spec {
+    &__form-field {
+      --mdc-filled-text-field-label-text-size: 14px;
+      .mat-mdc-text-field-wrapper {
+        border-radius: 5px;
+        padding: 0 14px;
+      }
+      .mdc-line-ripple,
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
+    }
+  }
+}

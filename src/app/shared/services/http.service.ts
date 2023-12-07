@@ -55,13 +55,13 @@ export class HttpService {
     return this.http.put(this.apiBaseUrl + url, body, httpOptions);
   }
 
-  delete(url: any, queryParams?: any): Observable<any> {
+  delete(url: any, data?: Record<string, any>, queryParams?: any): Observable<any> {
     const queryParameters = queryParams ? queryParams : {};
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      params: queryParameters
+      params: queryParameters,
+      ...(data && { body: JSON.stringify(data) })
     };
-
     return this.http.delete(this.apiBaseUrl + url, httpOptions);
   }
 }
