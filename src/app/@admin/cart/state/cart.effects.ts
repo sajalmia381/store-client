@@ -27,7 +27,6 @@ export class CartEffects {
       })
     );
   });
-
   addCart$ = createEffect(() => {
     return this.action$.pipe(
       ofType(cartAction.addOneCart),
@@ -42,7 +41,6 @@ export class CartEffects {
       })
     );
   });
-
   updateCart$ = createEffect(() => {
     return this.action$.pipe(
       ofType(cartAction.updateOneCart),
@@ -57,7 +55,6 @@ export class CartEffects {
       })
     );
   });
-
   removeCart$ = createEffect(() => {
     return this.action$.pipe(
       ofType(cartAction.removeCart),
@@ -68,6 +65,44 @@ export class CartEffects {
             console.log('cart', cart);
             this.store.dispatch(setLoading({ status: false }));
             return cartAction.removeCartSuccess({ cartId });
+          }),
+          catchError(error => {
+            this.store.dispatch(setLoading({ status: false }));
+            return throwError(error);
+          })
+        );
+      })
+    );
+  });
+
+  // Request User Action
+  updateRequestUserCart$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(cartAction.updateProductCart),
+      switchMap(action => {
+        return this.cartService.updateRequestUserCart(action.payload).pipe(
+          map((res: any) => {
+            const cart = res.data;
+            this.store.dispatch(setLoading({ status: false }));
+            return cartAction.updateOneCartSuccess({ cart });
+          }),
+          catchError(error => {
+            this.store.dispatch(setLoading({ status: false }));
+            return throwError(error);
+          })
+        );
+      })
+    );
+  });
+  removeProductRequestUserCart$ = createEffect(() => {
+    return this.action$.pipe(
+      ofType(cartAction.removeProductCart),
+      switchMap(({ userId, productId }) => {
+        return this.cartService.removeProductRequestUserCart(userId, productId).pipe(
+          map((res: any) => {
+            const cart = res.data;
+            this.store.dispatch(setLoading({ status: false }));
+            return cartAction.updateOneCartSuccess({ cart });
           }),
           catchError(error => {
             this.store.dispatch(setLoading({ status: false }));

@@ -3,10 +3,10 @@ import { CartState } from '../state/cart.state';
 import { Store } from '@ngrx/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { getCarts, isLoaded } from '../state/cart.selectors';
-import { loadCarts, removeCart } from '../state/cart.actions';
+import { loadCarts, removeCart, removeProductCart } from '../state/cart.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { CartFormComponent } from '../cart-form/cart-form.component';
-import { Cart, CartProduct } from '../cart';
+import { Cart, CartProduct, ProductSpecification } from '../cart';
 import { DeleteConformationComponent } from '@shared/components/delete-conformation/delete-conformation.component';
 import { setLoading } from '@shared/store/shared.actions';
 import { SharedState } from '@shared/store/shared.state';
@@ -78,25 +78,12 @@ export class CartListComponent implements OnInit {
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.store.dispatch(setLoading({ status: true }));
-        // this.store.dispatch(removeCart({ payload: { , productId: product._id } }));
+        this.store.dispatch(removeProductCart({ userId, productId: product._id }));
       }
     });
   }
 
-  // onRemoveCart(cartId: string) {
-  //   const dialogRef = this.dialog.open(DeleteConformationComponent, {
-  //     width: '100%',
-  //     maxWidth: '400px',
-  //     data: {
-  //       message: `Are you sure! you want to remove "${product.title}" product?`,
-  //       successBtnText: "Remove"
-  //     }
-  //   });
-  //   dialogRef.afterClosed().subscribe((confirmed: boolean) => {
-  //     if (confirmed) {
-  //       this.store.dispatch(setLoading({status: true}))
-  //       // this.store.dispatch(removeCart({ payload: { , productId: product._id } }));
-  //     }
-  //   });
-  // }
+  onUpdateProduct(userId: string, product: ProductSpecification) {
+
+  }
 }

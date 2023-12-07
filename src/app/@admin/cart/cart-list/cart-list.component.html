@@ -53,25 +53,25 @@
                   </td>
                   <td class="px-6 py-4">{{ item.product.price }}</td>
                   <td class="px-6 py-4">
-                    <div class="flex items-center">
-                      <span>{{ item.quantity }}</span>
-                      <!-- <button
-                        (click)="onUpdateCart(item)"
-                        mat-icon-button
-                        class="bg-gray-200 dark:bg-slate-500 dark:bg-opacity-50 h-6 w-6 leading-9 p-0 ml-2"
-                      >
-                        <mat-icon class="text-sm">edit</mat-icon>
-                      </button> -->
+                    <div>
+                      <div class="flex justify-center w-1/5">
+                        <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                        </svg>
+                        <input class="mx-2 border text-center w-8 dark:bg-gray-600 dark:border-gray-800 rounded" type="text" [value]="item.quantity" />
+                        <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512">
+                          <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                        </svg>
+                      </div>
                     </div>
                   </td>
                   <td class="text-end">
-                    <!-- <button
+                    <button
                       (click)="onRemoveProduct(cart.user._id, item.product)"
                       mat-icon-button
                       class="bg-gray-200 dark:bg-slate-500 dark:bg-opacity-50 h-8 w-8 p-0 ml-3"
                     >
                       <mat-icon class="text-lg">delete</mat-icon>
-                    </button> -->
+                    </button>
                   </td>
                 </tr>
                 }
