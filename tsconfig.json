@@ -25,7 +25,10 @@
         "src/environments/*"
       ],
       "@shared/*": [
-        "src/app/shared/*"
+        "src/app/shared/*",
+      ],
+      "@shared/store/*": [
+        "src/app/store/shared/*",
       ]
     },
     "useDefineForClassFields": false
