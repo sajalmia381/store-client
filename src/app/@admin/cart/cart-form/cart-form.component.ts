@@ -2,26 +2,24 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CartState } from '../state/cart.state';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { UserService } from '../../user/user.service';
-import { User } from '../../user/user';
-import { Product } from '../../product/product';
 import { ProductState } from '../../product/state/product.state';
 import { UserState } from '../../user/state/user.state';
 import { getProducts, isLoaded as isProductLoadSelector } from '../../product/state/product.selectors';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { getUsers, isLoaded as isUserLoadSelector } from '../../user/state/user.selectors';
-import { filter, map, startWith, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
+import { filter, map, switchMap, take, withLatestFrom } from 'rxjs/operators';
 import { loadUsers } from '../../user/state/user.actions';
 import { loadProducts } from '../../product/state/product.actions';
-import { ADD_ONE_CART_SUCCESS, addOneCart, addOneCartSuccess } from '../state/cart.actions';
+import { addOneCart, addOneCartSuccess, updateOneCart, updateOneCartSuccess } from '../state/cart.actions';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { setLoading } from 'src/app/store/shared/shared.actions';
 import { getLoadingStatus } from '@shared/store/shared.selectors';
 import { Actions, ofType } from '@ngrx/effects';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartFormPayload, ProductSpecification } from '../cart';
-import { combineLatest, forkJoin, merge, of } from 'rxjs';
+import { ProductSpecification } from '../cart';
+import { combineLatest, merge, of } from 'rxjs';
 import { getCarts } from '../state/cart.selectors';
+import { CustomDuplicateValidators } from '@shared/validations/duplicate.validator';
 
 @Component({
   selector: 'app-cart-form',
@@ -61,10 +59,13 @@ export class CartFormComponent implements OnInit {
   isSharedLoading$ = this.store.select(getLoadingStatus).pipe(takeUntilDestroyed());
 
   isSumitting!: boolean;
-  successAction$ = this.action$.pipe(ofType(addOneCartSuccess), takeUntilDestroyed());
+  successAction$ = merge(
+    this.action$.pipe(ofType(addOneCartSuccess)),
+    this.action$.pipe(ofType(updateOneCartSuccess))
+  ).pipe(takeUntilDestroyed());
 
   form: FormGroup = this.fb.group({
-    products: this.fb.array([])
+    products: this.fb.array([], [CustomDuplicateValidators('productId')])
   });
 
   get productsArray(): FormArray {
@@ -127,18 +128,32 @@ export class CartFormComponent implements OnInit {
         this.store.dispatch(loadProducts({}));
       });
 
-    this.successAction$.subscribe(res => {
-      console.log(res);
-      this.dialogRef.close()
-      this.form.markAsUntouched();
+    this.successAction$.subscribe(() => {
+      // if (this.data) {
+      // } else {
+      //   this.form.reset({quantity: 1});
+      //   this.form.markAsPristine();
+      //   this.form.markAsUntouched();
+      //   this.form.clearValidators();
+      //   this.form.updateValueAndValidity();
+      // }
+      this.dialogRef.close();
       this.snackbar.open(`Success! Cart ${this.data ? 'Updated' : 'Added'}`, 'Close', { duration: 4000 });
     });
   }
 
   onSubmit(): void {
-    this.store.dispatch(setLoading({ status: true }));
-    if (!this.data) {
-      this.store.dispatch(addOneCart({ payload: this.form.value }));
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return
     }
+    this.store.dispatch(setLoading({ status: true }));
+    console.log('this.data' ,this.data)
+    if (this.data) {
+      this.store.dispatch(updateOneCart({ cartId: this.data._id,  payload: this.form.value }));
+      return 
+    }
+
+    this.store.dispatch(addOneCart({ payload: this.form.value }));
   }
 }

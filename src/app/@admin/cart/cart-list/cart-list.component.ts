@@ -6,7 +6,7 @@ import { getCarts, isLoaded } from '../state/cart.selectors';
 import { loadCarts, removeCart } from '../state/cart.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { CartFormComponent } from '../cart-form/cart-form.component';
-import { Cart, CartProduct, ProductSpecification } from '../cart';
+import { Cart, CartProduct } from '../cart';
 import { DeleteConformationComponent } from '@shared/components/delete-conformation/delete-conformation.component';
 import { setLoading } from '@shared/store/shared.actions';
 import { SharedState } from '@shared/store/shared.state';
@@ -30,7 +30,7 @@ export class CartListComponent implements OnInit {
   onCartForm(): void {
     this.dialog.open(CartFormComponent, {
       width: '100%',
-      maxWidth: '500px',
+      maxWidth: '600px',
       disableClose: true
     });
   }
@@ -40,7 +40,7 @@ export class CartListComponent implements OnInit {
 
     this.dialog.open(CartFormComponent, {
       width: '100%',
-      maxWidth: '500px',
+      maxWidth: '600px',
       disableClose: true,
       data: cart
     });
