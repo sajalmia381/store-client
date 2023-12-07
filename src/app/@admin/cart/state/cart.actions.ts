@@ -6,8 +6,8 @@ export const LOAD_CARTS = '[cart] load carts';
 export const ADD_CART = '[cart] add cart';
 export const ADD_ONE_CART = '[cart] add one cart';
 export const ADD_ONE_CART_SUCCESS = '[cart] add one cart success';
-export const UPDATE_ONE_CART = '[cart] add one cart';
-export const UPDATE_ONE_CART_SUCCESS = '[cart] add one cart success';
+export const UPDATE_ONE_CART = '[cart] update one cart';
+export const UPDATE_ONE_CART_SUCCESS = '[cart] update one cart success';
 export const REMOVE_CART = '[cart] remove product from cart';
 export const REMOVE_CART_SUCCESS = '[cart] remove product from cart success';
 

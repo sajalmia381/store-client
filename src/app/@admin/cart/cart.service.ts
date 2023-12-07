@@ -17,13 +17,11 @@ export class CartService {
   }
 
   addCart(payload: CartFormPayload): Observable<Cart> {
-    console.log('payload', payload)
     return this.http.post('/carts', payload);
   }
 
   updateCart(cartId: string, payload: Pick<CartFormPayload, 'products'>): Observable<Cart> {
-    console.log('payload', payload)
-    return this.http.post('/carts/' + cartId, payload);
+    return this.http.put('/carts/' + cartId, payload);
   }
 
   deleteCart(cartId: string): Observable<Cart> {
