@@ -12,4 +12,5 @@ export const getCartEntities = createSelector(
   getCartState,
   CartSelectors.selectEntities
 );
+
 export const isLoaded = createSelector(getCartState, state => state.loaded);

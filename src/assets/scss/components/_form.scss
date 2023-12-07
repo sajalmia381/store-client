@@ -3,9 +3,11 @@
     @apply block uppercase tracking-wide text-xs font-bold mb-2;
     @apply text-gray-700 dark:text-white;
   }
-  select,
-  textarea,
-  input {
+
+  
+  select:not(.mat-mdc-input-element),
+  textarea:not(.mat-mdc-input-element),
+  input:not(.mat-mdc-input-element) {
     border-color: var(--border-color);
     @apply appearance-none block w-full rounded py-3 px-4 mb-3 leading-tight focus:outline-none;
     @apply text-gray-700 border focus:border-gray-500;
@@ -35,9 +37,10 @@
 
 .dark {
   .ti-form {
-    select,
-    textarea,
-    input {
+    .mdc-text-field--filled:not(.mdc-text-field--disabled),
+    select:not(.mat-mdc-input-element),
+    textarea:not(.mat-mdc-input-element),
+    input:not(.mat-mdc-input-element) {
       background-color: #30384b;
     }
   }

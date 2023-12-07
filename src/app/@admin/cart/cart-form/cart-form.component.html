@@ -1,68 +1,82 @@
 <div class="bg-card rounded">
-  <h3 *ngIf="!data" mat-dialog-title class="border-b dark:border-gray-700">Add Cart</h3>
+  <div class="flex items-center justify-between border-b dark:border-gray-700">
+    <h3 mat-dialog-title>{{ data ? 'Update' : 'Add'}} Cart</h3>
+    <button mat-icon-button mat-dialog-close class="ml-auto"><mat-icon>close</mat-icon></button>
+  </div>
+
   <mat-dialog-content>
-    @if ((isProductLoaded$ | async) && (isUserLoaded$ | async) ) {
+    @if (isDependencyLoading$ | async) {
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="ti-form mt-4 pt-4">
-      <ng-container *ngIf="!data">
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3">
-            <mat-form-field appearance="fill" class="w-full">
-              <mat-label >User</mat-label>
-              <mat-select formControlName="userId" id="id_user">
-                <mat-option *ngFor="let item of users$ | async" [value]="item._id">
-                  {{ item.name | titlecase }}
-                </mat-option>
-              </mat-select>
-              <mat-error
-                *ngIf="form.get('userId')?.touched && form.get('userId')?.hasError('required')"
-                class="text-xs italic"
-              >
-                Please fill out this field.
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3">
-            <mat-form-field appearance="fill" class="w-full">
-              <mat-label>Product</mat-label>
-              <mat-select formControlName="productId" id="id_product">
-                <mat-option *ngFor="let item of products$ | async" [value]="item._id">
-                  {{ item.title | titlecase }}
-                </mat-option>
-              </mat-select>
-              <mat-error
-                *ngIf="form.get('productId')?.touched && form.get('productId')?.hasError('required')"
-                class="text-xs italic"
-              >
-                Please fill out this field.
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-      </ng-container>
-      <div class="flex flex-wrap -mx-3">
+      <div *ngIf="form.get('userId')" class="flex flex-wrap -mx-3 mb-6">
         <div class="w-full px-3">
-          <label for="id_quantity"> Quantity * </label>
-          <input
-            formControlName="quantity"
-            [class.border-red-500]="form.get('quantity')?.touched && form.get('quantity')?.invalid"
-            id="id_quantity"
-            type="number"
-            [min]="1"
-          />
-          <p
-            *ngIf="form.get('quantity')?.touched && form.get('quantity')?.hasError('required')"
-            class="text-red-500 text-xs italic"
-          >
-            Please fill out this field.
-          </p>
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>User</mat-label>
+            <mat-select formControlName="userId" id="id_user">
+              <mat-option *ngFor="let item of users$ | async" [value]="item._id">
+                {{ item.name | titlecase }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('userId')?.touched && form.get('userId')?.hasError('required')" class="text-xs italic">
+              Please fill out this field.
+            </mat-error>
+          </mat-form-field>
         </div>
       </div>
-      <div class="flex justify-end mt-2">
-        <button class="mr-4 px-4" type="button" mat-button mat-dialog-close>Cancel</button>
-        <button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
+      <h3 class="mb-4">Products</h3>
+      <div class="flex flex-col gap-4" formArrayName="products">
+        <div *ngFor="let spec of productsArray.controls; let i = index" [formGroupName]="i">
+          <div class="product-spec">
+            <div class="w-full">
+              <mat-form-field appearance="fill" class="product-spec__form-field w-full">
+                <mat-label>Product</mat-label>
+                <mat-select formControlName="productId">
+                  <mat-option *ngFor="let item of products$ | async" [value]="item._id">
+                    {{ item.title | titlecase }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="max-w-[110px]">
+              <mat-form-field appearance="fill" class="product-spec__form-field w-full">
+                <mat-label>Quantity</mat-label>
+                <input formControlName="quantity" matInput type="number" [min]="1" />
+              </mat-form-field>
+            </div>
+            <div class="max-w-[140px]">
+              <button
+                type="button"
+                [disabled]="productsArray.controls.length < 2"
+                (click)="removeProductSpec(i)"
+                mat-icon-button
+                color="accent"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </div>
+          @if (spec.get('productId')?.touched && spec.get('productId')?.invalid) { @if (spec.get('productId')?.hasError('required')) {
+          <mat-error class="text-xs italic"> Select a product. </mat-error>
+          } @else if (spec.get('productId')?.hasError('duplicate')) {
+          <mat-error class="text-xs italic">Product must be unique</mat-error>
+          } } @else if (spec.get('quantity')?.touched && spec.get('quantity')?.hasError('required')) {
+          <mat-error class="text-xs italic"> Please provide product quantity. </mat-error>
+          }
+        </div>
+
+        <div class="flex justify-end">
+          <button type="button" mat-flat-button (click)="addProductSpec()" class="product-spec__add-btn">Add more</button>
+        </div>
+      </div>
+
+      <div class="flex flex-col mt-4">
+        <button [disabled]="isSumitting" type="submit" mat-flat-button color="primary" class="h-[42px]">
+          @if (!isSumitting) {
           {{ data ? 'Update' : 'Submit' }}
+          } @else {
+          <div class="align-middle">
+            <mat-progress-bar mode="indeterminate" color="primary" class="my-4"></mat-progress-bar>
+          </div>
+          }
         </button>
       </div>
     </form>

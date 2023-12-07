@@ -31,7 +31,6 @@ export class ProductEffects {
       ofType(productAction.loadProducts),
       withLatestFrom(this.store.select(isLoaded)),
       mergeMap(([action, loaded]) => {
-        console.log(action);
         return this.productService.getProducts(action?.queryParams && action?.queryParams).pipe(
           map(products => {
             return productAction.loadProductsSuccess({ products });
@@ -95,7 +94,6 @@ export class ProductEffects {
     return this.action$.pipe(
       ofType(productAction.deleteProduct),
       switchMap(action => {
-        console.log(action);
         return this.productService.deleteProduct(action?.id).pipe(
           catchError(err => {
             console.log('catch error', err);

@@ -1,9 +1,22 @@
-<div class="pt-3 pb-4 px-5 _content">
+<div class="pt-7 pb-4 px-5 _content">
+  
+  <div class="flex items-center justify-center pb-10">
+    <mat-icon color="warn" class="text-5xl h-12 w-12">delete</mat-icon>
+  </div>
+
   <h5 class="mb-2 text-center">{{ message }}</h5>
   <mat-dialog-actions align="center">
-    <button mat-raised-button color="warn" (click)="onConfirmClick()" tabindex="1">Delete</button>
     <button mat-raised-button mat-dialog-close tabindex="-1" class="m-2 bg-light text-dark">
-      Cancel
+      {{ config.successBtnText }}
+    </button>
+    <button mat-raised-button color="warn" (click)="onConfirmClick()" tabindex="1">
+      <span *ngIf="!isSubmitting; else loaderTemplate">{{ config.successBtnText }}</span>
     </button>
   </mat-dialog-actions>
 </div>
+
+<ng-template #loaderTemplate>
+  <div *ngIf="isSubmitting" class="align-middle">
+    <mat-progress-bar mode="indeterminate" color="primary" class="my-4"></mat-progress-bar>
+  </div>
+</ng-template>
