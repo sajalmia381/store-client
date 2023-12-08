@@ -49,7 +49,7 @@ export class CartEffects {
           map((res: any) => {
             const cart = res.data;
             this.store.dispatch(setLoading({ status: false }));
-            return cartAction.updateOneCartSuccess({ cart });
+            return cartAction.updateOneCartSuccess({ update: { id: cart._id, changes: cart } });
           })
         );
       })
@@ -60,9 +60,7 @@ export class CartEffects {
       ofType(cartAction.removeCart),
       switchMap(({ cartId }) => {
         return this.cartService.deleteCart(cartId).pipe(
-          map((res: any) => {
-            const cart = res.data;
-            console.log('cart', cart);
+          map(() => {
             this.store.dispatch(setLoading({ status: false }));
             return cartAction.removeCartSuccess({ cartId });
           }),
@@ -84,7 +82,7 @@ export class CartEffects {
           map((res: any) => {
             const cart = res.data;
             this.store.dispatch(setLoading({ status: false }));
-            return cartAction.updateOneCartSuccess({ cart });
+            return cartAction.updateOneCartSuccess({ update: { id: cart._id, changes: cart } });
           }),
           catchError(error => {
             this.store.dispatch(setLoading({ status: false }));
@@ -102,7 +100,7 @@ export class CartEffects {
           map((res: any) => {
             const cart = res.data;
             this.store.dispatch(setLoading({ status: false }));
-            return cartAction.updateOneCartSuccess({ cart });
+            return cartAction.updateOneCartSuccess({ update: { id: cart._id, changes: cart } });
           }),
           catchError(error => {
             this.store.dispatch(setLoading({ status: false }));

@@ -20,7 +20,7 @@ export const addOneCart = createAction(ADD_ONE_CART, props<{ payload: CartFormPa
 export const addOneCartSuccess = createAction(ADD_ONE_CART_SUCCESS, props<{ cart: Cart }>());
 
 export const updateOneCart = createAction(UPDATE_ONE_CART, props<{ cartId: string; payload: Pick<CartFormPayload, 'products'> }>()); // update cart
-export const updateOneCartSuccess = createAction(UPDATE_ONE_CART_SUCCESS, props<{ cart: Update<Cart> }>()); // update cart Success
+export const updateOneCartSuccess = createAction(UPDATE_ONE_CART_SUCCESS, props<{ update: Update<Cart> }>()); // update cart Success
 
 export const removeCart = createAction(REMOVE_CART, props<{ cartId: string }>());
 export const removeCartSuccess = createAction(REMOVE_CART_SUCCESS, props<{ cartId: string }>());
