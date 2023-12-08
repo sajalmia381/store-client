@@ -1,29 +1,21 @@
-<div class="topbar bg-white dark:bg-gray-900 border-b dark:border-gray-700 shadow py-4">
+<div class="sr-toolbar bg-white dark:bg-gray-900 border-b dark:border-gray-700 shadow py-4">
   <div class="container-fluid flex flex-wrap items-center">
     <div class="flex-grow flex items-center">
       <a routerLink="/">
-        <h2 class="text-xl font-bold">StoreApi</h2>
+        <h2 class="text-base font-medium">StoreRestApi</h2>
       </a>
-      <button
-        (click)="toggleSidenav.emit()"
-        mat-icon-button
-        class="bg-gray-100 dark:bg-gray-800 ml-3 md:hidden"
-      >
-        <mat-icon>menu</mat-icon>
-      </button>
     </div>
-    <div class="topbar__right sm:ml-auto mt-2 sm:mt-0">
+    <div class="sr-toolbar__right sm:ml-auto mt-2 sm:mt-0">
       <div class="flex flex-wrap items-center">
         <nav class="hidden md:block">
           <ul class="navbar__nav">
             <li class="nav__item">
-              <a
-                class="nav__link"
-                routerLink=""
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
-                ><mat-icon>home</mat-icon></a
-              >
+              <a class="nav__link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <div class="flex items-center">
+                  <mat-icon class="icon_sm mr-1">home</mat-icon>
+                  <span>Home</span>
+                </div>
+              </a>
             </li>
             <li class="nav__item">
               <a
@@ -32,7 +24,11 @@
                 routerLinkActive="active"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                >APIs Guide</a
+              >
+                <div class="flex items-center">
+                  <mat-icon class="icon_sm mr-1">article</mat-icon>
+                  <span>APIs Guide</span>
+                </div></a
               >
             </li>
             <li class="nav__item">
@@ -41,13 +37,12 @@
                 href="https://github.com/sajalmia381/store-api-go"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                >
+              >
                 <div class="flex items-center">
-                  <mat-icon class="icon_sm mr-2">location_on</mat-icon>
+                  <mat-icon class="icon_sm mr-1">location_on</mat-icon>
                   <span>Github</span>
                 </div>
-                </a
-              >
+              </a>
             </li>
           </ul>
         </nav>
@@ -65,13 +60,12 @@
           <button (click)="toggleTheme()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
             <mat-icon>{{ themeMode === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
           </button>
-          <a
-            routerLink="/admin"
-            mat-icon-button
-            class="bg-gray-100 dark:bg-gray-800 mr-3"
-          >
+          <a routerLink="/admin" mat-icon-button class="bg-gray-100 dark:bg-gray-800 mr-3">
             <mat-icon>people</mat-icon>
           </a>
+          <button (click)="toggleSidenav.emit()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 ml-3 md:hidden">
+            <mat-icon>menu_open</mat-icon>
+          </button>
         </div>
       </div>
     </div>
