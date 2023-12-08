@@ -68,7 +68,7 @@ export class UserEffects {
     this.action$.pipe(
       ofType(userAction.updateUser),
       switchMap(action => {
-        return this.userService.updateUser(action.user).pipe(
+        return this.userService.updateUser(action.userId, action.user).pipe(
           map(user => {
             console.log('effect update user', user);
             const updatedUser: Update<User> = {

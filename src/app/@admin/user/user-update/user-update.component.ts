@@ -21,7 +21,7 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
     name: new UntypedFormControl(null, Validators.required),
     number: new UntypedFormControl(null, Validators.required)
   });
-  user: User | undefined | null;
+  user!: User;
   constructor(
     private store: Store<UserState>,
     private router: Router,
@@ -33,8 +33,8 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
       .select(getUserById)
       .pipe(takeWhile(() => this.isAlive))
       .subscribe(data => {
-        this.user = data;
         if (data) {
+          this.user = data;
           this.userForm.patchValue({
             name: data?.name,
             number: data?.number
@@ -57,7 +57,6 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
       return;
     }
     const user = filterValidObjAttribute(this.userForm.value);
-    this.store.dispatch(updateUser({ user }));
-    // this.router.navigate(['/users']);
+    this.store.dispatch(updateUser({userId: this.user._id,  user}));
   }
 }
