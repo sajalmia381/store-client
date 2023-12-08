@@ -148,7 +148,6 @@ export class CartFormComponent implements OnInit {
       return
     }
     this.store.dispatch(setLoading({ status: true }));
-    console.log('this.data' ,this.data)
     if (this.data) {
       this.store.dispatch(updateOneCart({ cartId: this.data._id,  payload: this.form.value }));
       return 

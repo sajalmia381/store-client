@@ -3,13 +3,15 @@ import { CartState } from '../state/cart.state';
 import { Store } from '@ngrx/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { getCarts, isLoaded } from '../state/cart.selectors';
-import { loadCarts, removeCart, removeProductCart } from '../state/cart.actions';
+import { loadCarts, removeCart, removeCartSuccess, removeProductCart } from '../state/cart.actions';
 import { MatDialog } from '@angular/material/dialog';
 import { CartFormComponent } from '../cart-form/cart-form.component';
 import { Cart, CartProduct, ProductSpecification } from '../cart';
 import { DeleteConformationComponent } from '@shared/components/delete-conformation/delete-conformation.component';
 import { setLoading } from '@shared/store/shared.actions';
 import { SharedState } from '@shared/store/shared.state';
+import { Actions, ofType } from '@ngrx/effects';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart-list',
@@ -18,13 +20,21 @@ import { SharedState } from '@shared/store/shared.state';
 })
 export class CartListComponent implements OnInit {
   private store = inject<Store<CartState | SharedState>>(Store);
+  private action = inject(Actions);
   private dialog = inject(MatDialog);
+  private snackbar = inject(MatSnackBar)
 
   isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());
   carts$ = this.store.select(getCarts).pipe(takeUntilDestroyed());
 
+  removeSuccessAction$ = this.action.pipe(ofType(removeCartSuccess), takeUntilDestroyed());
+
   ngOnInit(): void {
     this.store.dispatch(loadCarts());
+    this.removeSuccessAction$.subscribe((res) => {
+      console.log(res)
+      this.snackbar.open("Success, Cart Removed")
+    })
   }
 
   onCartForm(): void {
@@ -83,7 +93,5 @@ export class CartListComponent implements OnInit {
     });
   }
 
-  onUpdateProduct(userId: string, product: ProductSpecification) {
-
-  }
+  onUpdateProduct(userId: string, product: ProductSpecification) {}
 }
