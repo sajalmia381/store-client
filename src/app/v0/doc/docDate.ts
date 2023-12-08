@@ -128,7 +128,7 @@ export default {
     },
     {
       name: 'Get Single Cart',
-      code: `fetch('${apiBaseUrl}/carts/6569bdf94e2a60e28710d724')
+      code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15')
         .then(response => response.json())
         .then(json => console.log(json))`
     },
@@ -159,19 +159,13 @@ export default {
     },
     {
       name: 'Update Cart',
-      code: `fetch('${apiBaseUrl}/carts/6569bdf94e2a60e28710d724',
+      code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15',
         {
             method: 'PUT',
             body: JSON.stringify({
               "products": [
-                {
-                  "productId": "61ab43350f34753bcedfa7aa",
-                  "quantity": 15
-                },
-                {
-                  "productId": "61ab434b0f34753bcedfa7ae",
-                  "quantity": 20
-                } 
+                { "productId": "61ab42d00f34753bcedfa79e", "quantity": 5 },
+                { "productId": "61ab42e90f34753bcedfa7a2", "quantity": 3 }
               ]
             }),
             headers: {
@@ -183,7 +177,7 @@ export default {
     },
     {
       name: 'Delete Cart',
-      code: `fetch('${apiBaseUrl}/carts/6569bdf94e2a60e28710d724',
+      code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15',
         {
             method: 'DELETE',
         })
