@@ -1,44 +1,32 @@
-<div class="topbar bg-blue-600 shadow p-4">
-  <div class="flex flex-wrap items-center">
+<div [class.sidebar-hidden]="isSmallDevice" class="admin-toolbar bg-blue-600 shadow px-4">
+  <div class="flex flex-wrap items-center gap-4">
     <div class="flex-grow flex items-center">
-      <a routerLink="/">
-        <h2 class="text-xl">StoreApi</h2>
+      @if (isSmallDevice) {
+      <button (click)="onToggleSidenav()" type="button" mat-icon-button class="bg-blue-700 mr-3">
+        <mat-icon>menu_open</mat-icon>
+      </button>
+      <a routerLink="/admin" mat-icon-button class="bg-blue-700">
+        <mat-icon>account_box</mat-icon>
       </a>
+      } @else {
+      <a routerLink="/admin">
+        <h2 class="text-base">StoreRestApi Admin</h2>
+      </a>
+      }
     </div>
-    <div class="topbar__right sm:ml-auto mt-2 sm:mt-0">
+    <div class="admin-toolbar__right ml-auto">
       <div class="flex items-center">
-        <button (click)="toggleTheme()" mat-icon-button class="bg-gray-100 dark:bg-black mr-3">
+        <button (click)="toggleTheme()" mat-icon-button class="bg-blue-700 mr-3">
           <mat-icon>{{ themeMode === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
         </button>
-        <div class="flex items-center">
-          <a
-            *ngIf="!userData"
-            routerLink="/auth/login"
-            mat-flat-button
-            class="bg-gray-100 dark:bg-black mx-3"
-          >
-            <mat-icon class="mr-2">login</mat-icon> Login
-          </a>
-          <!-- <a *ngIf="!userData" routerLink="/auth/register" mat-flat-button class="bg-gray-100 mr-3"><mat-icon class="mr-2">person_add</mat-icon> Register</a> -->
-        </div>
-        <button
-          *ngIf="userData"
-          [matMenuTriggerFor]="profileMenu"
-          class="bg-white dark:bg-black w-full flex items-center py-1 px-2 rounded"
-        >
+        @if (userData) {
+        <button *ngIf="userData" [matMenuTriggerFor]="profileMenu" class="bg-blue-700 w-full flex items-center py-1 px-2 rounded">
           <div class="flex items-center">
-            <img
-              class="w-10 h-10 rounded-lg"
-              [src]="userData?.avatar || 'assets/images/user-avatar.png'"
-              alt="My profile"
-            />
+            <img class="w-8 h-8 rounded-lg" [src]="userData?.avatar || 'assets/images/user-avatar.png'" alt="My profile" />
           </div>
           <div class="flex-grow px-3 text-left">
             <div class="text-sm font-semibold text-gray-700 dark:text-gray-100">
               {{ userData?.name }}
-            </div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">
-              {{ userData?.email }}
             </div>
           </div>
         </button>
@@ -48,6 +36,12 @@
             <span>Logout</span>
           </button>
         </mat-menu>
+        } @else {
+        <div class="flex items-center">
+          <a routerLink="/auth/login" mat-flat-button class="bg-blue-700 mx-3"> <mat-icon class="mr-2">login</mat-icon> Login </a>
+          <!-- <a *ngIf="!userData" routerLink="/auth/register" mat-flat-button class="bg-gray-100 mr-3"><mat-icon class="mr-2">person_add</mat-icon> Register</a> -->
+        </div>
+        }
       </div>
     </div>
   </div>

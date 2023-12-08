@@ -16,6 +16,7 @@ import 'prismjs/components/prism-typescript';
 })
 export class HomeComponent implements OnInit {
   apiBaseUrl: string = environment.apiBaseUrl;
+  adminRoutePrefix = '/admin'
   productEndpoint: string = '/products/running-sneaker';
   code: string = `
 fetch('${environment.apiBaseUrl + this.productEndpoint}')

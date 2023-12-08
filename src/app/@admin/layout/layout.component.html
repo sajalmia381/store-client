@@ -1,5 +1,5 @@
 <div class="example-container" [class.example-is-mobile]="isLessThenLargeDevice">
-  <app-header class="example-toolbar"></app-header>
+  <app-header (toggleSidenav)="toggleSidenav()" [isSmallDevice]="isLessThenLargeDevice" class="example-toolbar"></app-header>
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav
       #sidenav
@@ -7,7 +7,7 @@
       [mode]="isLessThenLargeDevice ? 'over' : 'side'"
       [fixedInViewport]="isLessThenLargeDevice"
     >
-      <app-sidenav class="layout__sidenav"></app-sidenav>
+      <app-sidenav class="layout__sidenav flex flex-col h-full"></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
       <main><router-outlet></router-outlet></main>

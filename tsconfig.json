@@ -27,6 +27,9 @@
       "@shared/*": [
         "src/app/shared/*",
       ],
+      "@shared/admin/*": [
+        "src/app/@admin/*",
+      ],
       "@shared/store/*": [
         "src/app/store/shared/*",
       ]
