@@ -1,6 +1,6 @@
 <div class="bg-card rounded">
   <div class="flex items-center justify-between border-b dark:border-gray-700">
-    <h3 mat-dialog-title>{{ data ? 'Update' : 'Add'}} Cart</h3>
+    <h3 mat-dialog-title>{{ data ? 'Update' : 'Add' }} Cart</h3>
     <button mat-icon-button mat-dialog-close class="ml-auto"><mat-icon>close</mat-icon></button>
   </div>
 
@@ -48,7 +48,7 @@
                 [disabled]="productsArray.controls.length < 2"
                 (click)="removeProductSpec(i)"
                 mat-icon-button
-                color="accent"
+                color="warn"
               >
                 <mat-icon>close</mat-icon>
               </button>
@@ -69,13 +69,11 @@
       </div>
 
       <div class="flex flex-col mt-4">
-        <button [disabled]="isSumitting" type="submit" mat-flat-button color="primary" class="h-[42px]">
+        <button [disabled]="isSumitting" type="submit" mat-flat-button color="primary" class="h-[42px] cart-submit-btn">
           @if (!isSumitting) {
           {{ data ? 'Update' : 'Submit' }}
           } @else {
-          <div class="align-middle">
-            <mat-progress-bar mode="indeterminate" color="primary" class="my-4"></mat-progress-bar>
-          </div>
+          <mat-progress-bar mode="indeterminate" color="accent" class="my-4"></mat-progress-bar>
           }
         </button>
       </div>
