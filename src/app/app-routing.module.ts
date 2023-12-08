@@ -11,7 +11,7 @@ const rootRoutes: Routes = [
     path: '',
     pathMatch: 'full',
     loadComponent: () => import('./v0/home/home.component').then(m => m.HomeComponent)
-  },
+  }
 ];
 
 const routes: Routes = [
@@ -32,12 +32,17 @@ const routes: Routes = [
     path: '',
     component: DefaultLayoutComponent,
     children: rootRoutes
-  },
-
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      // scrollOffset: [0, 70] // [x, y]
+    })
+  ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
