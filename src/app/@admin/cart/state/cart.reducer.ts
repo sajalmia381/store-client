@@ -19,7 +19,7 @@ const _cartReducer = createReducer(
     return cartAdapter.addOne(action.cart, state);
   }),
   on(updateOneCartSuccess, (state, action) => {
-    return cartAdapter.updateOne(action.cart, state);
+    return cartAdapter.updateOne(action.update, state);
   }),
   on(removeCartSuccess, (state, action) => {
     return cartAdapter.removeOne(action.cartId, state);
