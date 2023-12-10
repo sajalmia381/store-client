@@ -3,7 +3,7 @@
  * @use this.fb.array([], [CustomUniqueValidators('fieldName'), CustomUniqueValidators('AnotherFieldNaMe')])
  */
 
-import { AbstractControl, FormArray, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormArray, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 const isNil = (value: any): value is null | undefined => {
   return value === null || typeof value === 'undefined';
@@ -23,64 +23,50 @@ const isPresent = (value: any): boolean => {
 
 export const CustomDuplicateValidators = (fieldName: string, caseSensitive: boolean = true): ValidatorFn => {
   return (formArray): ValidationErrors | null => {
-    const controls: AbstractControl[] = (<FormArray>formArray).controls.filter((formGroup: any) => {
-      return isPresent(formGroup.get(fieldName).value);
-    });
-    const errorObj = { duplicate: true } as const;
-    let find: boolean = false;
+    const controls = (<FormArray>formArray).controls;
+    const len = controls.length;
+    if (len > 1) {
+      let find: boolean = false;
 
-    if (controls.length > 1) {
-      for (let i: number = 0; i < controls.length; i++) {
-        const formGroup: FormGroup | any = controls[i];
-        const mainControl: AbstractControl = formGroup.get(fieldName);
+      const errorObj = { duplicate: true } as const;
 
-        const val: string = mainControl.value;
+      controls.forEach((formGroup: any, index: number) => {
+        const control = formGroup.get(fieldName);
+        const val = control?.value;
 
-        const mainValue: string = caseSensitive ? val.toLowerCase() : val;
-        controls.forEach((group: any, index: number) => {
-          if (i === index) {
-            // Same group
-            return;
-          }
-
-          const currControl: any = group.get(fieldName);
-          const tempValue: string = currControl.value;
-          const currValue: string = caseSensitive ? tempValue.toLowerCase() : tempValue;
-          let newErrors: any;
-
-          if (mainValue === currValue) {
-            if (isBlank(currControl.errors)) {
-              newErrors = errorObj;
-            } else {
-              newErrors = Object.assign(currControl.errors, errorObj);
+        if (val) {
+          for (let i = 0; i < len; i++) {
+            console.log(index, i);
+            if (index === i) {
+              continue;
             }
 
-            find = true;
-          } else {
-            newErrors = currControl.errors;
+            const innerControl = controls[i].get(fieldName) as any;
 
-            if (isPresent(newErrors)) {
-              // delete duplicate error
-              delete newErrors['duplicate'];
-              if (isBlank(newErrors)) {
-                // {} to undefined/null
-                newErrors = null;
+            if (!innerControl) {
+              return;
+            }
+            const innerControlVal = innerControl.value;
+            // Compare two values
+            if (val === innerControlVal) {
+              if (isBlank(control.errors)) {
+                control.setErrors(errorObj);
+              } else {
+                control.setErrors(Object.assign(control.errors, errorObj));
+              }
+              // For Array Error
+              if (!find) {
+                find = true;
               }
             }
           }
-
-          // Add specific errors based on condition
-          currControl.setErrors(newErrors);
-        });
-      }
-
+        }
+      });
       if (find) {
         // Set errors to whole formArray
         return errorObj;
       }
     }
-
-    // Clean errors
     return null;
   };
 };

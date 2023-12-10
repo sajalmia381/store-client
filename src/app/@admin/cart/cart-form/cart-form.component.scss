@@ -6,6 +6,10 @@
   align-items: center;
   gap: 14px;
 
+  &.invalid {
+    @apply border-red-600;
+  }
+
   &__add-btn {
     font-size: 12px;
     line-height: 30px;
