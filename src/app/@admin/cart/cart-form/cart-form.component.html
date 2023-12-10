@@ -25,7 +25,7 @@
       <h3 class="mb-4">Products</h3>
       <div class="flex flex-col gap-4" formArrayName="products">
         <div *ngFor="let spec of productsArray.controls; let i = index" [formGroupName]="i">
-          <div class="product-spec">
+          <div class="product-spec" [class.invalid]="spec.invalid">
             <div class="w-full">
               <mat-form-field appearance="fill" class="product-spec__form-field w-full">
                 <mat-label>Product</mat-label>
