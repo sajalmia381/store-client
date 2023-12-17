@@ -16,7 +16,7 @@ export class TodoService {
       })
     );
   }
-  addTodo(category: Pick<Todo, "title" | 'completed'>): Observable<Todo> {
+  addTodo(category: Pick<Todo, "title" | 'status'>): Observable<Todo> {
     console.log(category);
     return this.http.post('/todos', category);
   }

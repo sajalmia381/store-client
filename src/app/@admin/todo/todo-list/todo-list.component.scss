@@ -1,0 +1,18 @@
+.todo_status {
+  @apply bg-gray-700;
+  &.todo {
+    @apply bg-yellow-500;
+  }
+  &.in_progress {
+    @apply bg-blue-500;
+  }
+  &.review {
+    @apply bg-purple-700;
+  }
+  &.completed {
+    @apply bg-green-500;
+  }
+  &.cancelled {
+    @apply bg-red-700;
+  }
+}
