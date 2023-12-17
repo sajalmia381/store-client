@@ -25,7 +25,7 @@ export class TodoFormComponent {
 
   form = this.fb.nonNullable.group({
     title: ['', [Validators.required]],
-    completed: [false]
+    status: ['TODO']
   })
 
   private readonly addTodoSuccess$ = this.action$.pipe(
@@ -43,7 +43,7 @@ export class TodoFormComponent {
   }
 
   onFormSubmit(): void {
-    const formData = this.form.value as Pick<Todo, "title" | 'completed'>;
+    const formData = this.form.value as Pick<Todo, "title" | 'status'>;
     this.store.dispatch(addOneTodo({ todo: formData}));
   }
 }

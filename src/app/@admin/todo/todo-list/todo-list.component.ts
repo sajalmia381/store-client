@@ -18,7 +18,7 @@ export class TodoListComponent {
   private store = inject<Store<TodoState>>(Store);
   private dialog = inject(MatDialog)
 
-  displayedColumns: string[] = ['title', 'completed'];
+  displayedColumns: string[] = ['title', 'status', 'completed'];
   dataSource: any;
 
   isLoaded$: Observable<boolean> = this.store.select(isLoaded).pipe(takeUntilDestroyed());

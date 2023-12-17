@@ -201,7 +201,7 @@
       <div class="card border dark:border-gray-700 mt-8">
         <h2 id="id_todo" class="card__title"><mat-icon>fact_check</mat-icon> Todo</h2>
         <div class="card__body">
-          <div id="id_category" class="card__content">
+          <div class="card__content">
             <div class="card__api">
               <h4 id="id_todo--1" class="card__sub_title mt-2">
                 {{docData?.todo?.[0]?.name}}
@@ -213,6 +213,20 @@
                 {{docData?.todo?.[1]?.name}}
               </h4>
               <as-prism [code]="docData?.todo?.[1]?.code" language="typescript"></as-prism>
+            </div>
+
+            <div class="card__api">
+              <h4 id="id_todo--3" class="card__sub_title mt-2">
+                {{docData?.todo?.[2]?.name}}
+              </h4>
+              <as-prism [code]="docData?.todo?.[2]?.code" language="typescript"></as-prism>
+            </div>
+
+            <div class="card__api">
+              <h4 id="id_todo--4" class="card__sub_title mt-2">
+                {{docData?.todo?.[3]?.name}}
+              </h4>
+              <as-prism [code]="docData?.todo?.[3]?.code" language="typescript"></as-prism>
             </div>
           </div>
         </div>

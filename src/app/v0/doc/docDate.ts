@@ -306,17 +306,43 @@ export default {
         .then(json => console.log(json))`
     },
     {
-      name: 'Add New todo',
+      name: 'Add New Todo',
       code: `fetch('${apiBaseUrl}/todos', 
         {
             method: 'POST',
             body: JSON.stringify({
               "title": "Conduct code reviews regularly",
-              "completed": false
+              "status": "TODO",
+              "description": "Some description"
             }),
             headers: {
               'Content-type': 'application/json; charset=UTF-8',
             },
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))`
+    },
+    {
+      name: 'Update Todo',
+      code: `fetch('${apiBaseUrl}/todos/654fbbee25a4902cc1fc7032', 
+        {
+            method: 'PUT',
+            body: JSON.stringify({
+              "status": "IN_PROGRESS",
+              "description": "Update description"
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))`
+    },
+    {
+      name: 'Delete Todo',
+      code: `fetch('${apiBaseUrl}/todos/654fbbee25a4902cc1fc7032',
+        {
+            method: 'DELETE',
         })
         .then(response => response.json())
         .then(json => console.log(json))`
