@@ -54,7 +54,7 @@ $store-dark-theme: mat.define-dark-theme(
 @include mat.all-component-themes($store-theme);
 .dark {
   background-color: var(--bg-color);
-  color: #ffffff;
+  color: var(--text-color);
   @include mat.all-component-colors($store-dark-theme);
 
   .mat-drawer {

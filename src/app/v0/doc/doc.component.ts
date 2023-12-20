@@ -7,6 +7,7 @@ import { takeWhile } from 'rxjs/operators';
 import DocData from './docDate';
 
 import 'prismjs/components/prism-typescript';
+import { IApi } from '@shared/components/api';
 
 @Component({
   selector: 'app-doc',
@@ -17,9 +18,10 @@ export class DocComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   isAlive: boolean = true;
   apiBaseUrl: string = environment.apiBaseUrl;
-  docData: any = DocData;
+  docData: Record<string, IApi[]> = DocData;
   isSmallDevice!: boolean;
   isSidenavExpand: boolean = true;
+  
   constructor(private breakpointObserver: BreakpointObserver, private title: Title) {
     this.breakpointObserver
       .observe(['(max-width: 991px)'])
