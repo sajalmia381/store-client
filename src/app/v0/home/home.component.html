@@ -1,22 +1,31 @@
-<div class="border-b dark:border-gray-700 pb-44 pt-40">
+<section class="hero__area border-b dark:border-gray-700 pb-44 pt-40">
   <div class="container">
-    <div class="flex flex-col items-center">
-      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-200">eCommerce Rest API</h2>
-      <p class="mt-3 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-        Free complete store rest api for testing your application and prototypes
-      </p>
-      <div class="flex items-center mt-8">
-        <a href="#try_area" class="bg-primary font-bold py-3 px-6 border border-transparent text-lg rounded mr-4"> Try now </a>
-        <a
-          routerLink="/docs"
-          class="items-center justify-center px-5 py-3 border border-transparent text-lg font-semibold rounded-md bg-yellow-400"
-        >
-          <span class="flex items-center">Read Docs <mat-icon class="ml-2">article</mat-icon></span>
-        </a>
+    <div class="grid xl:grid-cols-2 place-items-center gap-y-8 gap-x-4">
+      <div class="flex flex-col">
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-200">Free Fake eCommerce Rest APIs</h2>
+        <p class="mt-3 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+          Free complete store rest api for testing your application and prototypes
+        </p>
+        <div class="flex items-center mt-8">
+          <a href="#try_area" class="bg-primary font-bold py-2 px-6 border border-transparent rounded mr-4"> Try now </a>
+          <a
+            routerLink="/docs"
+            class="items-center justify-center px-5 py-2 border border-transparent font-semibold rounded-md bg-yellow-600"
+          >
+            <span class="flex items-center">Read Docs <mat-icon class="ml-2">article</mat-icon></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Carousel -->
+      <div class="w-full">
+        <as-prism [code]="heroShowcase" language="json"></as-prism>
       </div>
     </div>
+
   </div>
-</div>
+</section>
+
 <div class="pb-16">
   <div class="container">
     <div id="try_area" class="pt-16">
@@ -31,7 +40,7 @@
           <div *ngIf="isProductLoading" style="background-color: #272822; padding: 16px; margin: 8px 0; border-radius: 0.3em">
             <mat-spinner [strokeWidth]="2" [diameter]="20"></mat-spinner>
           </div>
-          <as-prism *ngIf="!isProductLoading" [code]="productRes ? (productRes | json) : '{}'" language="typescript"></as-prism>
+          <as-prism *ngIf="!isProductLoading" [code]="productRes ? (productRes | json) : '{}'" language="json"></as-prism>
         </div>
       </div>
     </div>
