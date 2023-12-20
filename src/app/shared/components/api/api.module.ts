@@ -5,6 +5,10 @@ import { AsPrismModule } from 'as-prism';
 import { MatButtonModule } from '@angular/material/button';
 import { ApiDescriptionComponent } from './api-description.component';
 
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-json';
+
+
 @NgModule({
   declarations: [ApiComponent, ApiDescriptionComponent],
   imports: [

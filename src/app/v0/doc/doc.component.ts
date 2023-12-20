@@ -4,9 +4,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Title } from '@angular/platform-browser';
 import { environment } from '@env/environment';
 import { takeWhile } from 'rxjs/operators';
-import DocData from './docDate';
+import { productDoc, categoryDoc, cartDoc, userDoc, authDoc, todoDoc } from './data';
 
-import 'prismjs/components/prism-typescript';
 import { IApi } from '@shared/components/api';
 
 @Component({
@@ -18,10 +17,16 @@ export class DocComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   isAlive: boolean = true;
   apiBaseUrl: string = environment.apiBaseUrl;
-  docData: Record<string, IApi[]> = DocData;
   isSmallDevice!: boolean;
   isSidenavExpand: boolean = true;
-  
+
+  productDoc = productDoc;
+  categoryDoc = categoryDoc;
+  cartDoc = cartDoc;
+  userDoc = userDoc;
+  authDoc = authDoc;
+  todoDoc = todoDoc;
+
   constructor(private breakpointObserver: BreakpointObserver, private title: Title) {
     this.breakpointObserver
       .observe(['(max-width: 991px)'])
@@ -37,7 +42,7 @@ export class DocComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.title.setTitle("Documentation | StoreRestApi")
+    this.title.setTitle('Documentation | StoreRestApi');
   }
   ngOnDestroy(): void {
     this.isAlive = false;

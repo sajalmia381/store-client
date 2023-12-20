@@ -21,12 +21,12 @@
         <h2 id="id_product" class="card__title"><mat-icon>view_in_ar</mat-icon> Product</h2>
         <div class="card__body">
           <div id="id_product" class="card__content">
-            <app-api id="id_product--0" [data]="docData.product[0]"> </app-api>
-            <app-api id="id_product--1" [data]="docData.product[1]"></app-api>
-            <app-api id="id_product--2" [data]="docData.product[2]"></app-api>
-            <app-api id="id_product--3" [data]="docData.product[3]"></app-api>
-            <app-api id="id_product--4" [data]="docData.product[4]"></app-api>
-            <app-api id="id_product--5" [data]="docData.product[5]"></app-api>
+            <app-api id="id_product--0" [data]="productDoc.list"> </app-api>
+            <app-api id="id_product--1" [data]="productDoc.description"></app-api>
+            <app-api id="id_product--2" [data]="productDoc.pagination"></app-api>
+            <app-api id="id_product--3" [data]="productDoc.create"></app-api>
+            <app-api id="id_product--4" [data]="productDoc.update"></app-api>
+            <app-api id="id_product--5" [data]="productDoc.destroy"></app-api>
           </div>
         </div>
       </section>
@@ -34,11 +34,11 @@
         <h2 id="id_category" class="card__title"><mat-icon>category</mat-icon> Category</h2>
         <div class="card__body">
           <div id="id_category" class="card__content">
-            <app-api id="id_category--0" [data]="docData.category[0]"></app-api>
-            <app-api id="id_category--1" [data]="docData.category[1]"></app-api>
-            <app-api id="id_category--2" [data]="docData.category[2]"></app-api>
-            <app-api id="id_category--3" [data]="docData.category[3]"></app-api>
-            <app-api id="id_category--4" [data]="docData.category[4]"></app-api>
+            <app-api id="id_category--0" [data]="categoryDoc.list"></app-api>
+            <app-api id="id_category--1" [data]="categoryDoc.description"></app-api>
+            <app-api id="id_category--2" [data]="categoryDoc.create"></app-api>
+            <app-api id="id_category--3" [data]="categoryDoc.update"></app-api>
+            <app-api id="id_category--4" [data]="categoryDoc.destroy"></app-api>
           </div>
         </div>
       </section>
@@ -46,11 +46,11 @@
         <h2 id="id_cart" class="card__title"><mat-icon>shopping_cart</mat-icon> Cart</h2>
         <div class="card__body">
           <div id="id_cart" class="card__content">
-            <app-api id="id_cart--0" [data]="docData.cart[0]"></app-api>
-            <app-api id="id_cart--1" [data]="docData.cart[1]"></app-api>
-            <app-api id="id_cart--2" [data]="docData.cart[2]"></app-api>
-            <app-api id="id_cart--3" [data]="docData.cart[3]"></app-api>
-            <app-api id="id_cart--4" [data]="docData.cart[4]"></app-api>
+            <app-api id="id_cart--0" [data]="cartDoc.list"></app-api>
+            <app-api id="id_cart--1" [data]="cartDoc.description"></app-api>
+            <app-api id="id_cart--2" [data]="cartDoc.create"></app-api>
+            <app-api id="id_cart--3" [data]="cartDoc.update"></app-api>
+            <app-api id="id_cart--4" [data]="cartDoc.destroy"></app-api>
           </div>
         </div>
       </section>
@@ -58,11 +58,11 @@
         <h2 id="id_user" class="card__title"><mat-icon>group</mat-icon> User</h2>
         <div class="card__body">
           <div id="id_user" class="card__content">
-            <app-api id="id_user--0" [data]="docData.user[0]"></app-api>
-            <app-api id="id_user--1" [data]="docData.user[1]"></app-api>
-            <app-api id="id_user--2" [data]="docData.user[2]"></app-api>
-            <app-api id="id_user--3" [data]="docData.user[3]"></app-api>
-            <app-api id="id_cart--4" [data]="docData.user[4]"></app-api>
+            <app-api id="id_user--0" [data]="userDoc.list"></app-api>
+            <app-api id="id_user--1" [data]="userDoc.description"></app-api>
+            <app-api id="id_user--2" [data]="userDoc.create"></app-api>
+            <app-api id="id_user--3" [data]="userDoc.update"></app-api>
+            <app-api id="id_cart--4" [data]="userDoc.destroy"></app-api>
           </div>
         </div>
       </section>
@@ -70,9 +70,9 @@
         <h2 id="id_auth" class="card__title"><mat-icon>app_registration</mat-icon> Auth</h2>
         <div class="card__body">
           <div id="id_auth" class="card__content">
-            <app-api id="id_auth--0" [data]="docData.auth[0]"></app-api>
-            <app-api id="id_auth--1" [data]="docData.auth[1]"></app-api>
-            <app-api id="id_auth--2" [data]="docData.auth[2]"></app-api>
+            <app-api id="id_auth--0" [data]="authDoc.login"></app-api>
+            <app-api id="id_auth--1" [data]="authDoc.registration"></app-api>
+            <app-api id="id_auth--2" [data]="authDoc.refreshToken"></app-api>
           </div>
         </div>
       </section>
@@ -80,10 +80,10 @@
         <h2 id="id_todo" class="card__title"><mat-icon>fact_check</mat-icon> Todo</h2>
         <div class="card__body">
           <div class="card__content">
-            <app-api id="id_todo--0" [data]="docData.todo[0]"></app-api>
-            <app-api id="id_todo--1" [data]="docData.todo[1]"></app-api>
-            <app-api id="id_todo--2" [data]="docData.todo[2]"></app-api>
-            <app-api id="id_todo--3" [data]="docData.todo[3]"></app-api>
+            <app-api id="id_todo--0" [data]="todoDoc.list"></app-api>
+            <app-api id="id_todo--1" [data]="todoDoc.create"></app-api>
+            <app-api id="id_todo--2" [data]="todoDoc.update"></app-api>
+            <app-api id="id_todo--3" [data]="todoDoc.destroy"></app-api>
           </div>
         </div>
       </section>
