@@ -7,10 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DocSidenavComponent } from './doc-sidenav/doc-sidenav.component';
 import { SharedModule } from '@shared/shared.module';
-import { AsPrismModule} from 'as-prism';
+import { AsPrismModule } from 'as-prism';
+import { ApiModule } from '@shared/components/api';
 
 @NgModule({
   declarations: [DocComponent, DocSidenavComponent],
-  imports: [CommonModule, DocRoutingModule, SharedModule, MatSidenavModule, MatIconModule, AsPrismModule]
+  imports: [CommonModule, DocRoutingModule, SharedModule, MatSidenavModule, MatIconModule, AsPrismModule, ApiModule]
 })
-export class DocModule { }
+export class DocModule {}
