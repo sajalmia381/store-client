@@ -24,10 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./@admin/admin.module').then(m => m.adminModule)
   },
   // V1
-  {
-    path: 'v1',
-    loadChildren: () => import('./v1/v1.module').then(m => m.V1Module)
-  },
+  // {
+  //   path: 'v1',
+  //   loadChildren: () => import('./v1/v1.module').then(m => m.V1Module)
+  // },
   {
     path: '',
     component: DefaultLayoutComponent,
