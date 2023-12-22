@@ -80,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "store-admin:build:production"
+              "browserTarget": "store-admin:build:production"
             },
             "development": {
-              "buildTarget": "store-admin:build:development"
+              "browserTarget": "store-admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "store-admin:build"
+            "browserTarget": "store-admin:build"
           }
         },
         "test": {
