@@ -1,15 +1,19 @@
 .light {
-  --border-color: #ced4da;
   --text-color: #5b626b;
+  --text-hint-color: #808080;
+  --border-color: #ced4da;
+
   --bg-color: #f5f5f5;
   --bg-card: #ffffff;
 }
 .dark {
   --text-color: #dee2e6;
+  --text-hint-color: #e2dfd2;
+  --border-color: #4a5869;
   --sidenav-bg-color: #2a3142;
+  
   --bg-color: #1f2431;
   --bg-card: #2a3142;
-  --border-color: #4a5869;
   --bg-input-color: #3b4654;
   --bg-popup: #363f55;
 }
