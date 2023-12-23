@@ -26,7 +26,7 @@ import { IApi } from './api.interfaces';
       }
       .ti-api__description {
         font-size: 14px;
-        color: var(--text-hint-color);
+        color: #e2dfd2;
         display: block;
         margin-top: 6px;
         font-weight: 300;
