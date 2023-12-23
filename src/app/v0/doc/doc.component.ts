@@ -4,7 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Title } from '@angular/platform-browser';
 import { environment } from '@env/environment';
 import { takeWhile } from 'rxjs/operators';
-import { productDoc, categoryDoc, cartDoc, userDoc, authDoc, todoDoc } from './data';
+import { productDoc, categoryDoc, cartDoc, userDoc, authDoc, todoDoc } from './common/data';
 
 import { IApi } from '@shared/components/api';
 
