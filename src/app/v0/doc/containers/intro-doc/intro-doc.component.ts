@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { productDoc, categoryDoc, cartDoc, userDoc, authDoc, todoDoc } from '../../common/data';
 import { JsonPipe, KeyValuePipe, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-intro-doc',
   standalone: true,
-  imports: [NgTemplateOutlet, JsonPipe, TitleCasePipe, KeyValuePipe],
+  imports: [RouterLink, NgTemplateOutlet, JsonPipe, TitleCasePipe, KeyValuePipe, MatIconModule],
   templateUrl: './intro-doc.component.html',
   styleUrl: './intro-doc.component.scss'
 })
