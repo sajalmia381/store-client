@@ -15,10 +15,6 @@ export const getUsersEntities = createSelector(getUsersState, userSelectors.sele
 export const isLoaded = createSelector(getUsersState, state => state.loaded);
 
 // user
-export const getUserById = createSelector(
-  getUsersEntities,
-  getCurrentRoute,
-  (users, route: RouterStateUrl) => {
-    return users ? users[route?.params?.id] : null;
-  }
-);
+export const getUserById = createSelector(getUsersEntities, getCurrentRoute, (users, route: RouterStateUrl) => {
+  return users ? users[route?.params?.id] : null;
+});

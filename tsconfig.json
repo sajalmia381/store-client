@@ -16,23 +16,12 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "@env/*": [
-        "src/environments/*"
-      ],
-      "@shared/*": [
-        "src/app/shared/*",
-      ],
-      "@shared/admin/*": [
-        "src/app/@admin/*",
-      ],
-      "@shared/store/*": [
-        "src/app/store/shared/*",
-      ]
+      "@env/*": ["src/environments/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@shared/admin/*": ["src/app/@admin/*"],
+      "@shared/store/*": ["src/app/store/shared/*"]
     },
     "useDefineForClassFields": false
   },

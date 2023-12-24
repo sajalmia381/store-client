@@ -12,11 +12,7 @@ import { logoutSuccess } from 'src/app/v0/auth/state/auth.actions';
 
 @Injectable()
 export class HttpClintInterceptor implements HttpInterceptor {
-  constructor(
-    private snackBar: MatSnackBar,
-    private router: Router,
-    private store: Store<AppState>
-  ) { }
+  constructor(private snackBar: MatSnackBar, private router: Router, private store: Store<AppState>) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.store.select(getAccessToken).pipe(

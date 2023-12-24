@@ -1,10 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import {
-  addOneCategorySuccess,
-  deleteCategorySuccess,
-  loadCategoriesSuccess,
-  updateCategorySuccess
-} from './category.actions';
+import { addOneCategorySuccess, deleteCategorySuccess, loadCategoriesSuccess, updateCategorySuccess } from './category.actions';
 import { initialState, categoryAdapter, CategoryState } from './category.state';
 
 const _categoryReducer = createReducer(

@@ -10,4 +10,4 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [LoginComponent, LogoutComponent],
   imports: [CommonModule, AuthRoutingModule, SharedModule, ReactiveFormsModule]
 })
-export class AuthModule { }
+export class AuthModule {}

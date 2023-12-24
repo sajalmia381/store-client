@@ -16,7 +16,7 @@ export class ToolbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter();
   themeMode!: string;
   isProductionMode: boolean = environment.production;
-  constructor(private store: Store<AuthState | SharedState>) { }
+  constructor(private store: Store<AuthState | SharedState>) {}
 
   ngOnInit(): void {
     this.store.select(getThemeMode).subscribe(theme => {

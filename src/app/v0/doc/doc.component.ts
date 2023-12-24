@@ -1,36 +1,30 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Title } from '@angular/platform-browser';
-import { environment } from '@env/environment';
-import { takeWhile } from 'rxjs/operators';
-import { productDoc, categoryDoc, cartDoc, userDoc, authDoc, todoDoc } from './data';
-
-import { IApi } from '@shared/components/api';
+import { ActivatedRoute } from '@angular/router';
+import { distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-doc',
   templateUrl: './doc.component.html',
   styleUrls: ['./doc.component.scss']
 })
-export class DocComponent implements OnInit, OnDestroy {
+export class DocComponent implements AfterViewInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
-  isAlive: boolean = true;
-  apiBaseUrl: string = environment.apiBaseUrl;
   isSmallDevice!: boolean;
   isSidenavExpand: boolean = true;
 
-  productDoc = productDoc;
-  categoryDoc = categoryDoc;
-  cartDoc = cartDoc;
-  userDoc = userDoc;
-  authDoc = authDoc;
-  todoDoc = todoDoc;
+  fragment$ = this.route.fragment.pipe(
+    takeUntilDestroyed(),
+    // distinctUntilChanged(),
+    filter(val => !!val)
+  );
 
-  constructor(private breakpointObserver: BreakpointObserver, private title: Title) {
+  constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute) {
     this.breakpointObserver
       .observe(['(max-width: 991px)'])
-      .pipe(takeWhile(() => this.isAlive))
+      .pipe(takeUntilDestroyed())
       .subscribe(({ matches }) => {
         this.isSmallDevice = matches;
         if (matches) {
@@ -41,12 +35,21 @@ export class DocComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnInit(): void {
-    this.title.setTitle('Documentation | StoreRestApi');
+  ngAfterViewInit(): void {
+    this.fragment$.subscribe(value => {
+      const target = document.getElementById(value || '');
+      const sidenavContent = <HTMLElement>document.querySelector('.doc-layout-content');
+      if (target && sidenavContent) {
+        console.dir(target);
+        console.log('offsetTop', target.offsetTop);
+        (<HTMLElement>document.querySelector('.doc-layout-content')).scrollTop =
+          target.offsetTop + (<HTMLElement>target.parentNode).offsetTop;
+      } else {
+        (<HTMLElement>document.querySelector('.doc-layout-content')).scrollTop = 0;
+      }
+    });
   }
-  ngOnDestroy(): void {
-    this.isAlive = false;
-  }
+
   toggleSidenav(): void {
     this.sidenav.toggle();
     this.isSidenavExpand = this.sidenav.opened;

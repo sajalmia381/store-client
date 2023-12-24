@@ -9,7 +9,10 @@ const routes: Routes = [
     component: DashboardComponent,
     // canActivate: [RoleBaseGuard],
     data: {
-      authorities: ['ROLE_SUPER_ADMIN']
+      authorities: ['ROLE_SUPER_ADMIN'],
+      title: 'Dashboard',
+      description: 'Resources summary list',
+      keywords: `product count, category count, cart count`
     }
   }
 ];

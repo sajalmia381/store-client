@@ -22,7 +22,7 @@ export class CartListComponent implements OnInit {
   private store = inject<Store<CartState | SharedState>>(Store);
   private action = inject(Actions);
   private dialog = inject(MatDialog);
-  private snackbar = inject(MatSnackBar)
+  private snackbar = inject(MatSnackBar);
 
   isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());
   carts$ = this.store.select(getCarts).pipe(takeUntilDestroyed());
@@ -31,10 +31,10 @@ export class CartListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(loadCarts());
-    this.removeSuccessAction$.subscribe((res) => {
-      console.log(res)
-      this.snackbar.open("Success, Cart Removed")
-    })
+    this.removeSuccessAction$.subscribe(res => {
+      console.log(res);
+      this.snackbar.open('Success, Cart Removed');
+    });
   }
 
   onCartForm(): void {

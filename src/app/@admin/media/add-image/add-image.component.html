@@ -1,22 +1,10 @@
 <div class="mb-2">
   <mat-dialog-content>
-    <div *ngIf="uploaded" class="rounded py-2 px-5 bg-green-400 mb-3">
-      Successfully! image uploaded!
-    </div>
+    <div *ngIf="uploaded" class="rounded py-2 px-5 bg-green-400 mb-3">Successfully! image uploaded!</div>
     <img [src]="imagePreview" width="100" alt="" />
     <div
       *ngIf="!imageFile"
-      class="
-        relative
-        h-40
-        rounded-lg
-        border-dashed border-2 border-gray-200
-        bg-white
-        flex
-        justify-center
-        items-center
-        hover:cursor-pointer
-      "
+      class="relative h-40 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer"
     >
       <div class="absolute">
         <div class="flex flex-col items-center">
@@ -26,25 +14,12 @@
           <span class="block text-blue-400 font-normal">Browse files</span>
         </div>
       </div>
-      <input
-        (change)="onFileSelect($event)"
-        type="file"
-        class="h-full w-full opacity-0 cursor-pointer"
-        required
-      />
+      <input (change)="onFileSelect($event)" type="file" class="h-full w-full opacity-0 cursor-pointer" required />
     </div>
   </mat-dialog-content>
 
   <mat-dialog-actions class="mt-5">
-    <button
-      [disabled]="!this.imageFile"
-      type="button"
-      (click)="onSubmit()"
-      mat-flat-button
-      color="primary"
-    >
-      Upload image
-    </button>
+    <button [disabled]="!this.imageFile" type="button" (click)="onSubmit()" mat-flat-button color="primary">Upload image</button>
     <button type="button" mat-dialog-close mat-flat-button color="warn" class="ml-2">Close</button>
   </mat-dialog-actions>
 </div>

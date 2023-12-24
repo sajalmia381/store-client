@@ -26,6 +26,6 @@ export const removeCart = createAction(REMOVE_CART, props<{ cartId: string }>())
 export const removeCartSuccess = createAction(REMOVE_CART_SUCCESS, props<{ cartId: string }>());
 
 export const updateProductCart = createAction(UPDATE_PRODUCT_CART, props<{ payload: RequestUserCartPayload }>()); // update cart
-export const removeProductCart = createAction(REMOVE_PRODUCT_CART, props<{ userId: string, productId: string }>()); // update cart
+export const removeProductCart = createAction(REMOVE_PRODUCT_CART, props<{ userId: string; productId: string }>()); // update cart
 
 export const dummyAction = createAction('[Cart] dummy action');

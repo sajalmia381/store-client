@@ -8,19 +8,39 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
 const routes: Routes = [
   {
     path: ':slug/edit',
-    component: ProductUpdateComponent
-  },
-  {
-    path: 'add-product',
-    component: ProductFormComponent
+    component: ProductUpdateComponent,
+    data: {
+      title: 'Product Update | Dashboard',
+      description: 'product update view',
+      keywords: `product update`
+    }
   },
   {
     path: ':slug',
-    component: ProductDetailsComponent
+    component: ProductDetailsComponent,
+    data: {
+      title: 'Product Description | Dashboard',
+      description: 'product description view',
+      keywords: `product description page`
+    }
+  },
+  {
+    path: 'add-product',
+    component: ProductFormComponent,
+    data: {
+      title: 'Product Form | Dashboard',
+      description: 'create new product view',
+      keywords: `product form, add new product`
+    }
   },
   {
     path: '',
-    component: ProductListComponent
+    component: ProductListComponent,
+    data: {
+      title: 'Product List | Dashboard',
+      description: 'product list and grid view',
+      keywords: `product list page, product grid page`
+    }
   }
 ];
 

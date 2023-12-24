@@ -17,10 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [
-    TodoListComponent,
-    TodoFormComponent
-  ],
+  declarations: [TodoListComponent, TodoFormComponent],
   imports: [
     CommonModule,
     TodoRoutingModule,
@@ -30,8 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatDialogModule,
     StoreModule.forFeature(TODO_STATE_NAME, todoReducer),
-    EffectsModule.forFeature([TodoEffects]),
+    EffectsModule.forFeature([TodoEffects])
   ],
   providers: [TodoService]
 })
-export class TodoModule { }
+export class TodoModule {}

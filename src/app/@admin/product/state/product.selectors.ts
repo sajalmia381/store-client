@@ -15,10 +15,6 @@ export const getProductEntities = createSelector(getProductState, productSelecto
 export const isLoaded = createSelector(getProductState, state => state.loaded);
 
 // product
-export const getProductBySlug = createSelector(
-  getProductEntities,
-  getCurrentRoute,
-  (products, route: RouterStateUrl) => {
-    return products ? products[route?.params?.slug] : null;
-  }
-);
+export const getProductBySlug = createSelector(getProductEntities, getCurrentRoute, (products, route: RouterStateUrl) => {
+  return products ? products[route?.params?.slug] : null;
+});

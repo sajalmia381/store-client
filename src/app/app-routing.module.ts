@@ -10,7 +10,26 @@ const <USERNAME>Routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    loadComponent: () => import('./v0/home/home.component').then(m => m.HomeComponent)
+    loadComponent: () => import('./v0/home/home.component').then(m => m.HomeComponent),
+    data: {
+      title: 'Home',
+      description: 'Prototype fake eCommerce rest api',
+      keywords: `fake api online, free fake api, fake api for testing, fake api store, fake rest api, fake api json,
+      login fake api, restapi, fake api, fake store api,
+      jsonplaceholder,
+      json placeholder,
+      fake api,
+      json api testing,
+      test json api,
+      json placeholder api,
+      free json api,
+      free api test,
+      dummy apis,
+      dummy api,
+      fake json api,
+      free api for testing,
+      fake rest api`
+    }
   }
 ];
 
@@ -39,8 +58,9 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled',
-      scrollOffset: [0, 70] // [x, y]
+      onSameUrlNavigation: 'reload',
+      anchorScrolling: 'enabled'
+      // scrollOffset: [0, 70] // [x, y]
     })
   ],
   exports: [RouterModule]

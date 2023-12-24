@@ -1,8 +1,6 @@
 <div class="page__container">
   <div class="page__toolbar">
-    <a routerLink="../" mat-flat-button
-      ><mat-icon class="mr-2">arrow_back</mat-icon> Back to categories</a
-    >
+    <a routerLink="../" mat-flat-button><mat-icon class="mr-2">arrow_back</mat-icon> Back to categories</a>
     <!-- <div class="ml-auto"></div> -->
   </div>
   <div class="page__content">
@@ -18,23 +16,8 @@
             <div class="bg-card p-6 rounded-lg">
               <a [routerLink]="['/admin/products', product?.slug]">
                 <img
-                  class="
-                    lg:h-60
-                    xl:h-56
-                    md:h-64
-                    sm:h-72
-                    xs:h-72
-                    h-72
-                    rounded
-                    w-full
-                    object-cover object-center
-                    mb-6
-                  "
-                  [src]="
-                    product?.image
-                      ? backendBaseUrl + '/' + product?.image
-                      : './assets/images/no-image-available.jpg'
-                  "
+                  class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6"
+                  [src]="product?.image ? backendBaseUrl + '/' + product?.image : './assets/images/no-image-available.jpg'"
                   alt="Image Size 720x400"
                 />
               </a>
@@ -47,11 +30,7 @@
                 {{ product.description }}
               </p>
               <div class="flex items-center flex-wrap gap-4">
-                <a
-                  mat-flat-button
-                  color="primary"
-                  [routerLink]="['/admin/products', product?.slug, 'edit']"
-                >
+                <a mat-flat-button color="primary" [routerLink]="['/admin/products', product?.slug, 'edit']">
                   <mat-icon>edit</mat-icon>
                   <span>Edit</span>
                 </a>

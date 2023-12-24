@@ -8,9 +8,9 @@ export const environment = {
   production: false,
   apiBaseUrl: domain,
   baseUrl: domain,
-  v1BaseUrl: domain + "/v1",
+  v1BaseUrl: domain + '/v1',
   GA: '',
-  adsenseClientId: ""
+  adsenseClientId: ''
 };
 
 /*

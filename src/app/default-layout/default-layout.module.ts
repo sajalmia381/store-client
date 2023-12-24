@@ -14,4 +14,4 @@ import { SidenavComponent } from './sidenav/sidenav.component';
   declarations: [ToolbarComponent, DefaultLayoutComponent, SidenavComponent],
   imports: [CommonModule, RouterModule, MatSidenavModule, MatIconModule, MatButtonModule, MatMenuModule]
 })
-export class DefaultLayoutModule { }
+export class DefaultLayoutModule {}
