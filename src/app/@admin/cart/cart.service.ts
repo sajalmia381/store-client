@@ -27,7 +27,7 @@ export class CartService {
 
   // Request User Cart
   getRequestUserCart(): Observable<Cart> {
-    return this.http.get('/cart',);
+    return this.http.get('/cart');
   }
   addRequestUserCart(payload: CartFormPayload): Observable<Cart> {
     console.log('payload', payload);

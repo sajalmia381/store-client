@@ -82,7 +82,6 @@ const TREE_DATA: MenuItem[] = [
 export class SidenavComponent implements OnInit {
   treeControl = new NestedTreeControl<MenuItem>(node => node.children);
   dataSource = new ArrayDataSource(TREE_DATA);
-  
 
   hasChild = (_: number, node: MenuItem) => !!node.children && node.children.length > 0;
 

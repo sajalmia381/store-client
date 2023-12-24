@@ -9,9 +9,8 @@ describe('UserDocComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [UserDocComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(UserDocComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

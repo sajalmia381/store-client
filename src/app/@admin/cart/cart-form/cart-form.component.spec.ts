@@ -9,9 +9,8 @@ describe('CartFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CartFormComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CartFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

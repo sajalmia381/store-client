@@ -13,15 +13,6 @@ import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent, SidenavComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule,
-    MatSidenavModule,
-    CdkTreeModule,
-    MatIconModule,
-    MatMenuModule,
-    MatButtonModule
-  ]
+  imports: [CommonModule, SharedModule, RouterModule, MatSidenavModule, CdkTreeModule, MatIconModule, MatMenuModule, MatButtonModule]
 })
 export class LayoutModule {}

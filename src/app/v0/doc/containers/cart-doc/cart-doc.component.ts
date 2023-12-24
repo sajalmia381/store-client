@@ -11,5 +11,5 @@ import { cartDoc } from '../../common/data';
   styleUrl: './cart-doc.component.scss'
 })
 export class CartDocComponent {
-  cartDoc = cartDoc
+  cartDoc = cartDoc;
 }

@@ -11,17 +11,10 @@ export const CategorySelectors = categoryAdapter.getSelectors();
 // Category
 export const getCategories = createSelector(getCategoryState, CategorySelectors.selectAll);
 export const getCategorySlugs = createSelector(getCategoryState, CategorySelectors.selectIds);
-export const getCategoryEntities = createSelector(
-  getCategoryState,
-  CategorySelectors.selectEntities
-);
+export const getCategoryEntities = createSelector(getCategoryState, CategorySelectors.selectEntities);
 export const isLoaded = createSelector(getCategoryState, state => state.loaded);
 
 // Category
-export const getCategoryBySlug = createSelector(
-  getCategoryEntities,
-  getCurrentRoute,
-  (categories, route: RouterStateUrl) => {
-    return categories ? categories[route?.params?.slug] : null;
-  }
-);
+export const getCategoryBySlug = createSelector(getCategoryEntities, getCurrentRoute, (categories, route: RouterStateUrl) => {
+  return categories ? categories[route?.params?.slug] : null;
+});

@@ -1,12 +1,12 @@
-import jwtDecode from "jwt-decode";
+import jwtDecode from 'jwt-decode';
 
 export default class JwtService {
-  static getTokenPayload (token: string): any {
+  static getTokenPayload(token: string): any {
     const decoded: any = jwtDecode(token);
     const data = {
       ...decoded.data
     };
-    return data
+    return data;
   }
   static isTokenValid(token: string): boolean {
     const decoded: any = jwtDecode(token);
@@ -28,7 +28,7 @@ export default class JwtService {
     if (expMilSecond < currentTime) {
       return [false, decoded.data];
     }
-    console.log(decoded)
+    console.log(decoded);
     return [true, decoded.data];
   }
 }

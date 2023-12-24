@@ -4,11 +4,7 @@
       <a routerLink="/">
         <h2 class="text-base font-bold">StoreRestApi</h2>
       </a>
-      <button
-        (click)="toggleSidenav.emit()"
-        mat-icon-button
-        class="bg-gray-100 dark:bg-gray-800 ml-3 md:hidden"
-      >
+      <button (click)="toggleSidenav.emit()" mat-icon-button class="bg-gray-100 dark:bg-gray-800 ml-3 md:hidden">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
@@ -17,11 +13,7 @@
         <nav class="hidden md:block">
           <ul class="navbar__nav">
             <li class="nav__item">
-              <a
-                class="nav__link"
-                routerLink="/v1"
-                routerLinkActive="active"
-                [routerLinkActiveOptions]="{ exact: true }"
+              <a class="nav__link" routerLink="/v1" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                 ><mat-icon>home</mat-icon></a
               >
             </li>
@@ -41,13 +33,12 @@
                 href="https://github.com/sajalmia381/store-api-go"
                 routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }"
-                >
+              >
                 <div class="flex items-center">
                   <mat-icon class="icon_sm mr-2">location_on</mat-icon>
                   <span>Github</span>
                 </div>
-                </a
-              >
+              </a>
             </li>
           </ul>
         </nav>

@@ -26,7 +26,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(appReducer),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production, connectInZone: true}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production, connectInZone: true }),
     StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer }),
     EffectsModule.forRoot([AuthEffects]),
 
@@ -51,4 +51,4 @@ import { EffectsModule } from '@ngrx/effects';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

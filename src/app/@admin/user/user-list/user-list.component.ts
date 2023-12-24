@@ -15,21 +15,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-
   user$!: Observable<User[]>;
   isLoaded$!: Observable<boolean>;
   loading: boolean = false;
 
   // Table
-  displayedColumns: string[] = [
-    'email',
-    'name',
-    'role',
-    'number',
-    'createdAt',
-    'updatedAt',
-    'action'
-  ];
+  displayedColumns: string[] = ['email', 'name', 'role', 'number', 'createdAt', 'updatedAt', 'action'];
   dataSource!: User[];
 
   constructor(private store: Store<UserState>, private dialog: MatDialog) {
@@ -38,13 +29,12 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user$
-      .subscribe(data => {
-        this.dataSource = data;
-      });
+    this.user$.subscribe(data => {
+      this.dataSource = data;
+    });
     this.store.dispatch(loadUsers());
   }
-  
+
   onDelete(user: User): void {
     const dialogRef = this.dialog.open(DeleteConformationComponent, {
       data: {

@@ -7,15 +7,30 @@ import { CategoryFormComponent } from './category-form/category-form.component';
 const routes: Routes = [
   {
     path: '',
-    component: CategoriesComponent
+    component: CategoriesComponent,
+    data: {
+      title: 'Category List | Dashboard',
+      description: 'category dashboard list',
+      keywords: `category data`
+    }
   },
   {
     path: 'add-new',
-    component: CategoryFormComponent
+    component: CategoryFormComponent,
+    data: {
+      title: 'Category Form | Dashboard',
+      description: 'category dashboard list',
+      keywords: `category form`
+    }
   },
   {
     path: ':slug',
-    component: CategoryDetailsComponent
+    component: CategoryDetailsComponent,
+    data: {
+      title: 'Category Description | Dashboard',
+      description: 'Category description',
+      keywords: `category description`
+    }
   }
 ];
 

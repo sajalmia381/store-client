@@ -9,9 +9,8 @@ describe('AuthDocComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AuthDocComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AuthDocComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

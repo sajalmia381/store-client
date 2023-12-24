@@ -22,10 +22,10 @@ export class V1HomeComponent implements OnInit {
 	.then(json => console.log(json))`;
   productRes: any;
   isProductLoading!: boolean;
-  
-  constructor(private http: V1HttpService) { }
 
-  ngOnInit(): void { }
+  constructor(private http: V1HttpService) {}
+
+  ngOnInit(): void {}
 
   fetchProduct(): void {
     this.isProductLoading = true;

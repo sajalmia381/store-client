@@ -8,7 +8,7 @@ const _authReducer = createReducer(
   on(loginSuccess, (state, action) => {
     const { userData } = action;
     const userInfo = JwtService.getTokenPayload(userData?.access_token);
-    return { isSignedIn: true, userData: {...userData, userInfo}, errors: {} };
+    return { isSignedIn: true, userData: { ...userData, userInfo }, errors: {} };
   }),
   on(logoutSuccess, () => {
     localStorage.removeItem('access_token');

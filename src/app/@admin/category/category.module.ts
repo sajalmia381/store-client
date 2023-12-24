@@ -19,12 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
-  declarations: [
-    CategoriesComponent,
-    CategoryFormComponent,
-    CategoryDetailsComponent,
-    CategoryUpdateComponent
-  ],
+  declarations: [CategoriesComponent, CategoryFormComponent, CategoryDetailsComponent, CategoryUpdateComponent],
   imports: [
     CommonModule,
     CategoryRoutingModule,
@@ -32,10 +27,10 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     MatTableModule,
     MatMenuModule,
     ClipboardModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
     // StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),
     // EffectsModule.forFeature([CategoryEffects]),
   ],
   providers: [CategoryService]
 })
-export class CategoryModule { }
+export class CategoryModule {}

@@ -20,14 +20,7 @@ const commonImportedModules = [
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatDialogModule,
-    ...commonImportedModules,
-    FooterComponent,
-    DeleteConformationComponent
-  ],
+  imports: [CommonModule, FormsModule, MatDialogModule, ...commonImportedModules, FooterComponent, DeleteConformationComponent],
   exports: [...commonImportedModules, DeleteConformationComponent, FooterComponent]
 })
-export class SharedModule { }
+export class SharedModule {}

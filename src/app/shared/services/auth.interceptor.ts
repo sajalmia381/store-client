@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { exhaustMap, switchMap, take } from 'rxjs/operators';
 import { AuthService } from 'src/app/v0/auth/auth.service';
@@ -15,7 +10,6 @@ import { loginSuccess } from 'src/app/v0/auth/state/auth.actions';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
   constructor(private authService: AuthService, private store: Store) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -28,23 +22,23 @@ export class AuthInterceptor implements HttpInterceptor {
         const accessToken: string = data?.access_token;
         if (!accessToken) {
           return next.handle(request);
-        };
+        }
         if (JwtService.isTokenValid(accessToken)) {
           let modifiedReq = request.clone({
             headers: request.headers.append('Authorization', `Bearer ${accessToken}`)
           });
-          return next.handle(modifiedReq)
-        };
+          return next.handle(modifiedReq);
+        }
         return this.authService.generateNewTokens(data?.refresh_token).pipe(
           switchMap((res: any) => {
             let modifiedReq = request.clone({
               headers: request.headers.append('Authorization', `Bearer ${res?.data?.access_token}`)
             });
             this.authService.saveTokensLocalStorage(res.data);
-            this.store.dispatch(loginSuccess({ userData: res.data, redirect: false }))
-            return next.handle(modifiedReq)
+            this.store.dispatch(loginSuccess({ userData: res.data, redirect: false }));
+            return next.handle(modifiedReq);
           })
-        )
+        );
       })
     );
   }

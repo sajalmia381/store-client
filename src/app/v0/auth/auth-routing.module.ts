@@ -6,11 +6,21 @@ import { LogoutComponent } from './logout/logout.component';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    data: {
+      title: 'Login | Auth',
+      description: 'login page',
+      keywords: `fake login example`
+    }
   },
   {
     path: 'logout',
-    component: LogoutComponent
+    component: LogoutComponent,
+    data: {
+      title: 'Logout | Auth',
+      description: 'logout process page',
+      keywords: `logout page`
+    }
   },
   {
     path: '',
