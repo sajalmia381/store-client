@@ -1,23 +1,13 @@
 <div class="page__container">
   <div class="page__toolbar">
     <div class="flex items-center">
-      <a
-        routerLink="../"
-        matTooltip="Back to Users"
-        mat-icon-button
-        class="mr-3 text-center"
-        ><mat-icon>keyboard_backspace</mat-icon></a
-      >
+      <a routerLink="../" matTooltip="Back to Users" mat-icon-button class="mr-3 text-center"><mat-icon>keyboard_backspace</mat-icon></a>
       <h2>New User Form</h2>
     </div>
   </div>
   <div class="page__content">
     <div class="px-4 flex justify-center pt-12">
-      <form
-        [formGroup]="userForm"
-        (ngSubmit)="onSubmit()"
-        class="ti-form bg-card p-page rounded w-full max-w-3xl"
-      >
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="ti-form bg-card p-page rounded w-full max-w-3xl">
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full px-3">
             <label for="id_email"> Email * </label>
@@ -28,15 +18,8 @@
               type="email"
               placeholder="Email"
             />
-            <p
-              *ngIf="email.touched && email.hasError('required')"
-              class="text-red-500 text-xs italic"
-            >
-              Please fill out this field.
-            </p>
-            <p *ngIf="email.touched && email.hasError('email')" class="text-red-500 text-xs italic">
-              Please input valid email
-            </p>
+            <p *ngIf="email.touched && email.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
+            <p *ngIf="email.touched && email.hasError('email')" class="text-red-500 text-xs italic">Please input valid email</p>
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -50,16 +33,8 @@
               placeholder="********"
               autocomplete="new-password"
             />
-            <p
-              *ngIf="password.touched && password.hasError('required')"
-              class="text-red-500 text-xs italic"
-            >
-              Please fill out this field.
-            </p>
-            <p
-              *ngIf="password.touched && password.hasError('minLength')"
-              class="text-red-500 text-xs italic"
-            >
+            <p *ngIf="password.touched && password.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
+            <p *ngIf="password.touched && password.hasError('minLength')" class="text-red-500 text-xs italic">
               Password must be equal or more than six letters
             </p>
           </div>
@@ -75,10 +50,7 @@
               placeholder="********"
               autocomplete="new-password"
             />
-            <p
-              *ngIf="passwordRepeat.touched && passwordRepeat.hasError('mustMatch')"
-              class="text-red-500 text-xs italic"
-            >
+            <p *ngIf="passwordRepeat.touched && passwordRepeat.hasError('mustMatch')" class="text-red-500 text-xs italic">
               Password is not match
             </p>
           </div>
@@ -93,12 +65,7 @@
               type="text"
               placeholder="Full name"
             />
-            <p
-              *ngIf="name.touched && name.hasError('required')"
-              class="text-red-500 text-xs italic"
-            >
-              Please fill out this field.
-            </p>
+            <p *ngIf="name.touched && name.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
           </div>
           <div class="w-full md:w-1/2 px-3">
             <label for="id_number"> Number </label>
@@ -106,13 +73,7 @@
           </div>
         </div>
         <div class="flex justify-end">
-          <button
-            [disabled]="userForm.invalid"
-            class="mt-2"
-            color="primary"
-            mat-flat-button
-            type="submit"
-          >
+          <button [disabled]="userForm.invalid" class="mt-2" color="primary" mat-flat-button type="submit">
             <mat-icon class="mr-2">save</mat-icon>Submit
           </button>
         </div>

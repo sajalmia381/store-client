@@ -23,12 +23,7 @@ import { UserService } from '../user/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    ProductListComponent,
-    ProductDetailsComponent,
-    ProductUpdateComponent,
-    ProductFormComponent
-  ],
+  declarations: [ProductListComponent, ProductDetailsComponent, ProductUpdateComponent, ProductFormComponent],
   imports: [
     CommonModule,
     ProductRoutingModule,
@@ -45,4 +40,4 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [ProductService, UserService]
 })
-export class ProductModule { }
+export class ProductModule {}

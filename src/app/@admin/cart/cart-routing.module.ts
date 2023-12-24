@@ -5,7 +5,12 @@ import { CartListComponent } from './cart-list/cart-list.component';
 const routes: Routes = [
   {
     path: '',
-    component: CartListComponent
+    component: CartListComponent,
+    data: {
+      title: 'Cart List | Dashboard',
+      description: 'cart dashboard list',
+      keywords: `cart data`
+    }
   }
 ];
 
@@ -13,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CartRoutingModule { }
+export class CartRoutingModule {}

@@ -15,12 +15,10 @@
           <mat-panel-title>
             <div class="flex flex-col">
               <h4 class="text-primary">{{ cart?.user?.name }}</h4>
-              <span class="mt-1 text-xs text-gray-700 dark:text-gray-300">Id: {{cart._id}}</span>
+              <span class="mt-1 text-xs text-gray-700 dark:text-gray-300">Id: {{ cart._id }}</span>
             </div>
-          
           </mat-panel-title>
-          <mat-panel-description
-            >
+          <mat-panel-description>
             <span>Products: {{ cart.products.length }}</span>
             <button
               (click)="onUpdate($event, cart)"
@@ -55,11 +53,20 @@
                   <td class="px-6 py-4">
                     <div>
                       <div class="flex justify-center w-1/5">
-                        <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
-                        </svg>
-                        <input class="mx-2 border text-center w-8 dark:bg-gray-600 dark:border-gray-800 rounded" type="text" [value]="item.quantity" />
                         <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512">
-                          <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                          <path
+                            d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                          />
+                        </svg>
+                        <input
+                          class="mx-2 border text-center w-8 dark:bg-gray-600 dark:border-gray-800 rounded"
+                          type="text"
+                          [value]="item.quantity"
+                        />
+                        <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512">
+                          <path
+                            d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                          />
                         </svg>
                       </div>
                     </div>

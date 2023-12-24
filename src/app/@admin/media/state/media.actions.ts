@@ -22,8 +22,5 @@ export const deleteImage = createAction(DELETE_IMAGE, props<{ id: string }>());
 export const deleteImageSuccess = createAction(DELETE_IMAGE_SUCCESS, props<{ id: string }>());
 // bulk
 export const bulkDeleteImages = createAction(BULK_DELETE_IMAGE, props<{ slugs: string[] }>());
-export const bulkDeleteImagesSuccess = createAction(
-  BULK_DELETE_IMAGE_SUCCESS,
-  props<{ slugs: string[] }>()
-);
+export const bulkDeleteImagesSuccess = createAction(BULK_DELETE_IMAGE_SUCCESS, props<{ slugs: string[] }>());
 export const dummyAction = createAction('[media] dummy action');

@@ -6,8 +6,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TodoService {
-
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService) {}
 
   getTodos(): Observable<Todo[]> {
     return this.http.get('/todos').pipe(
@@ -16,7 +15,7 @@ export class TodoService {
       })
     );
   }
-  addTodo(category: Pick<Todo, "title" | 'status'>): Observable<Todo> {
+  addTodo(category: Pick<Todo, 'title' | 'status'>): Observable<Todo> {
     console.log(category);
     return this.http.post('/todos', category);
   }

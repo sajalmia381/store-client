@@ -44,7 +44,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     private httpService: HttpService,
     private action$: Actions,
     private userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.store

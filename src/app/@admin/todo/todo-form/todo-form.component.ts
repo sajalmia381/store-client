@@ -10,8 +10,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface TodoForm {
-  title: string,
-  completed: boolean
+  title: string;
+  completed: boolean;
 }
 
 @Component({
@@ -26,24 +26,21 @@ export class TodoFormComponent {
   form = this.fb.nonNullable.group({
     title: ['', [Validators.required]],
     status: ['TODO']
-  })
+  });
 
-  private readonly addTodoSuccess$ = this.action$.pipe(
-    ofType(addOneTodoSuccess),
-    takeUntilDestroyed()
-  )
+  private readonly addTodoSuccess$ = this.action$.pipe(ofType(addOneTodoSuccess), takeUntilDestroyed());
 
   constructor(private dialogRef: MatDialogRef<TodoFormComponent>, private snackbar: MatSnackBar, private action$: Actions) {
-    this.addTodoSuccess$.subscribe((res) => {
-      this.snackbar.open("Successfully: Todo Added", 'Close', {
+    this.addTodoSuccess$.subscribe(res => {
+      this.snackbar.open('Successfully: Todo Added', 'Close', {
         duration: 5000
-      })
-      this.dialogRef.close(res.todo)
-    })
+      });
+      this.dialogRef.close(res.todo);
+    });
   }
 
   onFormSubmit(): void {
-    const formData = this.form.value as Pick<Todo, "title" | 'status'>;
-    this.store.dispatch(addOneTodo({ todo: formData}));
+    const formData = this.form.value as Pick<Todo, 'title' | 'status'>;
+    this.store.dispatch(addOneTodo({ todo: formData }));
   }
 }

@@ -1,0 +1,24 @@
+<h3 class="text-xl border-b-2 dark:border-gray-700 py-4 mb-8">Resources</h3>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6">
+  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: productDoc, resourceName: 'product' }"></ng-container>
+  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: categoryDoc, resourceName: 'category' }"></ng-container>
+  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: cartDoc, resourceName: 'cart' }"></ng-container>
+  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: userDoc, resourceName: 'user' }"></ng-container>
+  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: authDoc, resourceName: 'auth' }"></ng-container>
+  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: todoDoc, resourceName: 'todo' }"></ng-container>
+</div>
+
+<ng-template #resourceTemplate let-data let-resourceName="resourceName">
+  <div class="border dark:border-gray-700 rounded w-full shadow-lg pt-4">
+    <h3 class="text-center font-semibold text-xl mb-3">{{ resourceName | titlecase }}</h3>
+    <div class="w-full">
+      @for (item of data | keyvalue; track $index) {
+      <a href="#" class="block group hover:bg-blue p-4 border-t dark:border-gray-700">
+        <p class="font-bold text-lg mb-1 opacity-80">{{ $any(item.key) | titlecase }}</p>
+        <p class="text-gray-500">{{ $any(item.value).name }}</p>
+      </a>
+      }
+    </div>
+  </div>
+</ng-template>

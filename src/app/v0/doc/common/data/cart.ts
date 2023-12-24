@@ -2,30 +2,36 @@ import { environment } from '@env/environment';
 import { IApi } from '@shared/components/api';
 const apiBaseUrl = environment.apiBaseUrl;
 
-export const userDoc: Record<string, IApi> = {
+export const cartDoc: Record<string, IApi> = {
   list: {
-    name: 'Get all users',
-    code: `fetch('${apiBaseUrl}/users')
+    name: 'Get all carts',
+    code: `fetch('${apiBaseUrl}/carts')
         .then(response => response.json())
         .then(json => console.log(json))`
   },
   description: {
-    name: 'Get single user',
-    code: `fetch('${apiBaseUrl}/users/612e4851345dcc333ac6cb24')
+    name: 'Get Single Cart',
+    code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15')
         .then(response => response.json())
         .then(json => console.log(json))`
   },
   create: {
-    name: 'Add new user',
-    code: `fetch('${apiBaseUrl}/users', 
+    name: 'Add new cart',
+    code: `fetch('${apiBaseUrl}/carts', 
         {
           method: 'POST',
           body: JSON.stringify({
-              name: 'Ron Bin Nawaz',
-              email: 'ron@gmail.com',
-              number: 72342341,
-              password: 'pass12345',
-              password_repeat: 'pass12345'
+            "userId": "612e48bf345dcc333ac6cb28",
+            "products": [
+              {
+                "productId": "61ab43350f34753bcedfa7aa",
+                "quantity": 5
+              },
+              {
+                "productId": "61ab434b0f34753bcedfa7ae",
+                "quantity": 7
+              } 
+            ]
           }),
           headers: {
               'Content-type': 'application/json; charset=UTF-8',
@@ -35,15 +41,15 @@ export const userDoc: Record<string, IApi> = {
         .then(json => console.log(json))`
   },
   update: {
-    name: 'Update user',
-    code: `fetch('${apiBaseUrl}/users/612e4851345dcc333ac6cb24',
+    name: 'Update cart',
+    code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15',
         {
           method: 'PUT',
           body: JSON.stringify({
-              name: 'Alex Pi',
-              number: 12025550108,
-              password: 'Simple12345'
-              password_repeat: 'Simple12345'
+            "products": [
+              { "productId": "61ab42d00f34753bcedfa79e", "quantity": 5 },
+              { "productId": "61ab42e90f34753bcedfa7a2", "quantity": 3 }
+            ]
           }),
           headers: {
               'Content-type': 'application/json; charset=UTF-8',
@@ -53,8 +59,8 @@ export const userDoc: Record<string, IApi> = {
         .then(json => console.log(json))`
   },
   destroy: {
-    name: 'Delete user',
-    code: `fetch('${apiBaseUrl}/users/612e4851345dcc333ac6cb24',
+    name: 'Delete cart',
+    code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15',
         {
           method: 'DELETE',
         })

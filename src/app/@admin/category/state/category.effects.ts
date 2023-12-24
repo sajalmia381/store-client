@@ -11,11 +11,7 @@ import { Category } from '../category';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 @Injectable()
 export class CategoryEffects {
-  constructor(
-    private store: Store,
-    private action$: Actions,
-    private categoryService: CategoryService
-  ) {}
+  constructor(private store: Store, private action$: Actions, private categoryService: CategoryService) {}
   loadCategories$ = createEffect(() => {
     return this.action$.pipe(
       ofType(categoryAction.loadCategories),

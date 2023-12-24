@@ -6,12 +6,12 @@ export interface RouterStateUrl {
   params: Params;
   queryParams: Params;
   data?: Data;
+  fragment?: string | null;
 }
 
 export class RouterSerializer implements RouterStateSerializer<RouterStateUrl> {
   serialize(routerState: RouterStateSnapshot): RouterStateUrl {
     let route = routerState.root;
-
     while (route.firstChild) {
       route = route.firstChild;
     }
@@ -19,7 +19,7 @@ export class RouterSerializer implements RouterStateSerializer<RouterStateUrl> {
       url,
       root: { queryParams }
     } = routerState;
-    const { params, data } = route;
-    return { url, params, queryParams, data };
+    const { fragment, params, data } = route;
+    return { url, fragment, params, queryParams, data };
   }
 }

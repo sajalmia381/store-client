@@ -1,10 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import {
-  addOneCartSuccess,
-  loadCartsSuccess,
-  removeCartSuccess,
-  updateOneCartSuccess,
-} from './cart.actions';
+import { addOneCartSuccess, loadCartsSuccess, removeCartSuccess, updateOneCartSuccess } from './cart.actions';
 import { initialState, cartAdapter, CartState } from './cart.state';
 
 const _cartReducer = createReducer(
@@ -23,7 +18,7 @@ const _cartReducer = createReducer(
   }),
   on(removeCartSuccess, (state, action) => {
     return cartAdapter.removeOne(action.cartId, state);
-  }),
+  })
 );
 
 export const cartReducer = (state: CartState | undefined, action: Action) => {

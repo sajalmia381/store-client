@@ -4,16 +4,7 @@ import { Update } from '@ngrx/entity';
 import { RouterNavigatedAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import {
-  catchError,
-  filter,
-  map,
-  mergeMap,
-  switchMap,
-  take,
-  tap,
-  withLatestFrom
-} from 'rxjs/operators';
+import { catchError, filter, map, mergeMap, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
 import { ProductService } from '../product.service';
 import { Product } from '../product';
 import * as productAction from './product.actions';
@@ -21,11 +12,7 @@ import { getProductSlugs, isLoaded } from './product.selectors';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 @Injectable()
 export class ProductEffects {
-  constructor(
-    private store: Store,
-    private action$: Actions,
-    private productService: ProductService
-  ) {}
+  constructor(private store: Store, private action$: Actions, private productService: ProductService) {}
   loadProducts$ = createEffect(() => {
     return this.action$.pipe(
       ofType(productAction.loadProducts),

@@ -2,15 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import {
-  catchError,
-  exhaustMap,
-  map,
-  mergeMap,
-  switchMap,
-  tap,
-  withLatestFrom
-} from 'rxjs/operators';
+import { catchError, exhaustMap, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import * as imageAction from './media.actions';
 import { getImageIds, isLoaded } from './media.selectors';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';

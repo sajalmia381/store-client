@@ -11,17 +11,8 @@ import { ToolbarComponent } from './core/toolbar/toolbar.component';
 import { SidenavComponent } from './core/sidenav/sidenav.component';
 
 @NgModule({
-  declarations: [
-    V1Component, ToolbarComponent, SidenavComponent
-  ],
-  imports: [
-    CommonModule,
-    V1RoutingModule,
-    RouterModule,
-    MatSidenavModule,
-    MatMenuModule,
-    SharedModule
-  ],
+  declarations: [V1Component, ToolbarComponent, SidenavComponent],
+  imports: [CommonModule, V1RoutingModule, RouterModule, MatSidenavModule, MatMenuModule, SharedModule],
   exports: [ToolbarComponent, SidenavComponent]
 })
-export class V1Module { }
+export class V1Module {}

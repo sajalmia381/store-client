@@ -11,17 +11,12 @@ import { loginRequest, loginSuccess, logoutSuccess, setLoginError } from './auth
 
 @Injectable({ providedIn: 'root' })
 export class AuthEffects {
-  constructor(
-    private action$: Actions,
-    private router: Router,
-    private store: Store<AppState>,
-    private authService: AuthService
-  ) {}
+  constructor(private action$: Actions, private router: Router, private store: Store<AppState>, private authService: AuthService) {}
   login$ = createEffect(() =>
     this.action$.pipe(
       ofType(loginRequest),
       exhaustMap(action => {
-        console.log('action', action)
+        console.log('action', action);
         return this.authService.onLogin(action?.email, action?.password).pipe(
           map(res => {
             console.log(res);
@@ -32,9 +27,7 @@ export class AuthEffects {
           }),
           catchError(error => {
             if (error?.error?.code === 'INVALID_USER') {
-              this.store.dispatch(
-                setLoginError({ payload: { password: 'Password is not valid' } })
-              );
+              this.store.dispatch(setLoginError({ payload: { password: 'Password is not valid' } }));
             } else {
               this.store.dispatch(setLoginError({ payload: { email: 'User is not found!' } }));
             }
