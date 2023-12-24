@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor
-} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '@env/environment';
@@ -15,11 +10,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ErrorsInterceptor implements HttpInterceptor {
-
-  constructor(private store: Store<AuthState>, private snackBar: MatSnackBar) { }
+  constructor(private store: Store<AuthState>, private snackBar: MatSnackBar) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request).pipe(catchError((res) => this.errorHandler(res)));
+    return next.handle(request).pipe(catchError(res => this.errorHandler(res)));
   }
 
   private errorHandler(response: any): Observable<any> {
@@ -31,7 +25,7 @@ export class ErrorsInterceptor implements HttpInterceptor {
       this.snackBar.open('May be session is ended! please login again', 'close', {
         duration: 10000
       });
-      this.store.dispatch(logoutSuccess())
+      this.store.dispatch(logoutSuccess());
     }
     const error = response.error;
     let key = 'error';

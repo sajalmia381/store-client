@@ -1,4 +1,3 @@
-
 import { environment } from '@env/environment';
 import { IApi } from '@shared/components/api';
 const apiBaseUrl = environment.apiBaseUrl;
@@ -73,4 +72,4 @@ export const categoryDoc: Record<string, IApi> = {
         .then(response => response.json())
         .then(json => console.log(json))`
   }
-}
+};

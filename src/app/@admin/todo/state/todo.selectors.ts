@@ -8,9 +8,5 @@ export const TodoSelectors = todoAdapter.getSelectors();
 
 // Category
 export const getTodos = createSelector(getTodoState, TodoSelectors.selectAll);
-export const getTodoEntities = createSelector(
-  getTodoState,
-  TodoSelectors.selectEntities
-);
+export const getTodoEntities = createSelector(getTodoState, TodoSelectors.selectEntities);
 export const isLoaded = createSelector(getTodoState, state => state.loaded);
-

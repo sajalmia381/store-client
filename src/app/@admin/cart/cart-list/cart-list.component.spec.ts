@@ -9,9 +9,8 @@ describe('CartListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CartListComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CartListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

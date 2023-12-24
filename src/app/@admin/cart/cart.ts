@@ -1,35 +1,35 @@
-import { User } from "../user/user"
+import { User } from '../user/user';
 
 export type CartProduct = {
-  _id: string,
-  title: string,
-  slug: string,
-  price: number
-}
+  _id: string;
+  title: string;
+  slug: string;
+  price: number;
+};
 export type ProductSpecification = {
-  product: CartProduct,
-  quantity: number
-}
+  product: CartProduct;
+  quantity: number;
+};
 export type Cart = {
-  _id: string,
-  user: Pick<User, "_id" | "name" | "role" | "email">;
+  _id: string;
+  user: Pick<User, '_id' | 'name' | 'role' | 'email'>;
   products: ProductSpecification[];
   updatedAt: Date;
   createdAt: Date;
-}
+};
 
 /* Form Interface */
 export type CartFormProductSpecPayload = {
-  productId: string,
-  quantity: number
-}
+  productId: string;
+  quantity: number;
+};
 export type CartFormPayload = {
-  userId: string,
-  products: CartFormProductSpecPayload[]
-}
+  userId: string;
+  products: CartFormProductSpecPayload[];
+};
 // Request User payload
 export type RequestUserCartPayload = {
-  userId?: string,
-  productId: string,
-  quantity: number
-}
+  userId?: string;
+  productId: string;
+  quantity: number;
+};

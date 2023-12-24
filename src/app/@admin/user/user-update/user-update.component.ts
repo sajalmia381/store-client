@@ -22,11 +22,7 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
     number: new UntypedFormControl(null, Validators.required)
   });
   user!: User;
-  constructor(
-    private store: Store<UserState>,
-    private router: Router,
-    private snackbar: MatSnackBar
-  ) {}
+  constructor(private store: Store<UserState>, private router: Router, private snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.store
@@ -57,6 +53,6 @@ export class UserUpdateComponent implements OnInit, OnDestroy {
       return;
     }
     const user = filterValidObjAttribute(this.userForm.value);
-    this.store.dispatch(updateUser({userId: this.user._id,  user}));
+    this.store.dispatch(updateUser({ userId: this.user._id, user }));
   }
 }

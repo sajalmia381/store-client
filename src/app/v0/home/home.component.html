@@ -9,7 +9,7 @@
         <div class="flex items-center mt-8">
           <a href="#try_area" class="bg-primary font-bold py-2 px-6 border border-transparent rounded mr-4"> Try now </a>
           <a
-            routerLink="/docs"
+            routerLink="/docs/product"
             class="items-center justify-center px-5 py-2 border border-transparent font-semibold rounded-md bg-yellow-600"
           >
             <span class="flex items-center">Read Docs <mat-icon class="ml-2">article</mat-icon></span>
@@ -20,9 +20,9 @@
       <!-- Carousel -->
       <div class="w-full">
         <as-prism [code]="heroShowcase" language="json"></as-prism>
+        <h5 class="text-center mt-3 text-lg">👉 Product Description</h5>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -50,10 +50,9 @@
         <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Resources</h3>
         <p class="text-lg mt-2 text-gray-500">The main resources need in shopping prototypes</p>
         <div class="flex flex-col max-w-xl shadow rounded mt-2">
-          
           <a
             target="_blank"
-            [href]="adminRoutePrefix + '/users'"
+            [routerLink]="'/docs/user'"
             class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700"
           >
             <div class="mr-2">
@@ -63,7 +62,7 @@
           </a>
           <a
             target="_blank"
-            [href]="adminRoutePrefix + '/products'"
+            [routerLink]="'/docs/product'"
             class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700"
           >
             <div class="mr-2">
@@ -74,7 +73,7 @@
 
           <a
             target="_blank"
-            [href]="adminRoutePrefix + '/categories'"
+            [routerLink]="'/docs/category'"
             class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700"
           >
             <div class="mr-2">
@@ -84,7 +83,7 @@
           </a>
           <a
             target="_blank"
-            [href]="adminRoutePrefix + '/carts'"
+            [routerLink]="'/docs/cart'"
             class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700"
           >
             <div class="mr-2">
@@ -99,7 +98,7 @@
           </a>
           <a
             target="_blank"
-            [href]="adminRoutePrefix + '/todos'"
+            [routerLink]="'/docs/todo'"
             class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700"
           >
             <div class="mr-2">
@@ -145,12 +144,14 @@
             <span class="text-primary">/auth/slug</span>
           </li>
         </ul>
-        <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
+        <a routerLink="/docs/auth" class="text-indigo-400 mt-4 inline-block">Check auth documentation</a>
       </div>
       <div class="mt-16 px-4">
         <h3 class="text-3xl font-extrabold tracking-tight text-indigo-900 dark:text-indigo-200">Routes</h3>
         <p class="text-lg mt-2 mb-2 text-gray-500">Http protocol is support 👍</p>
-        <h4 class="text-md mb-2 text-gray-500">Slug is used for Product, Category resources. And _id is used for User, Cart, Todo resource</h4>
+        <h4 class="text-md mb-2 text-gray-500">
+          Slug is used for Product, Category resources. And _id is used for User, Cart, Todo resource
+        </h4>
         <ul class="shadow rounded max-w-xl">
           <li class="flex items-center justify-between font-bold bg-gray-400 p-4">
             <div class="ms-2 me-auto">
@@ -190,7 +191,7 @@
           </li>
         </ul>
         <p class="mt-4">Note: User and Cart case slug will replace by object _id.</p>
-        <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
+        <a routerLink="/docs/product" class="text-indigo-400 mt-4 inline-block">Check product documentation</a>
       </div>
       <div class="mt-16 px-4">
         <ng-adsense></ng-adsense>

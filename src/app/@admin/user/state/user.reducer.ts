@@ -1,10 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import {
-  addUserSuccess,
-  deleteUserSuccess,
-  loadUsersSuccess,
-  updateUserSuccess
-} from './user.actions';
+import { addUserSuccess, deleteUserSuccess, loadUsersSuccess, updateUserSuccess } from './user.actions';
 import { initialState, userAdapter, UserState } from './user.state';
 
 const _userReducer = createReducer(

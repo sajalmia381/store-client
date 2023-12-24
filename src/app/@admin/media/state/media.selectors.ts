@@ -15,10 +15,6 @@ export const getImageEntities = createSelector(getImageState, imageSelectors.sel
 export const isLoaded = createSelector(getImageState, state => state.loaded);
 
 // Image
-export const getImageById = createSelector(
-  getImageEntities,
-  getCurrentRoute,
-  (images, route: RouterStateUrl) => {
-    return images ? images[route?.params?.id] : null;
-  }
-);
+export const getImageById = createSelector(getImageEntities, getCurrentRoute, (images, route: RouterStateUrl) => {
+  return images ? images[route?.params?.id] : null;
+});

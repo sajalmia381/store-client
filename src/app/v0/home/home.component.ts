@@ -29,26 +29,22 @@ fetch('${environment.apiBaseUrl + this.productEndpoint}')
   readonly heroShowcase = `
   {
     "status": 200,
+    "message": "Success! Product description",
     "data": {
         "_id": "61ab43350f34753bcedfa7aa",
         "title": "men casual shoes sports running sneakers",
+        "slug": "men-casual-shoes-sports-running-sneakers",
         "price": 100,
+        "description": "...",
         "category": {
-            "_id": "61ab1d0e4a0fef3f27dc664d",
-            "name": "bags & shoes",
-            "slug": "bags-and-shoes"
+           ...
         },
-        "description": null,
         "createdBy": {
-            "role": "ROLE_CUSTOMER",
-            "_id": "612e48fb345dcc333ac6cb2e",
-            "name": "Noah Ali"
+           ...
         },
         "createdAt": "2021-12-04T10:30:13.299Z",
-        "updatedAt": "2021-12-04T10:30:13.299Z",
-        "slug": "men-casual-shoes-sports-running-sneakers"
-    },
-    "message": "Success! Product found"
+        "updatedAt": "2021-12-04T10:30:13.299Z"
+    }
   }
   `;
 
