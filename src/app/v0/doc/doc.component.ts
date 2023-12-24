@@ -1,9 +1,8 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
@@ -38,16 +37,11 @@ export class DocComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.fragment$.subscribe(value => {
-      console.log('value', value);
-      console.log('doc', document.getElementById(value || ''));
       const target = document.getElementById(value || '');
       const sidenavContent = <HTMLElement>document.querySelector('.doc-layout-content');
       if (target && sidenavContent) {
         console.dir(target);
         console.log('offsetTop', target.offsetTop);
-        console.log('p', (<HTMLElement>target.parentNode).offsetTop);
-        // console.log('offsetHeight', target.offsetHeight);
-        console.dir(sidenavContent);
         (<HTMLElement>document.querySelector('.doc-layout-content')).scrollTop =
           target.offsetTop + (<HTMLElement>target.parentNode).offsetTop;
       } else {

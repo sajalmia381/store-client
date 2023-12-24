@@ -4,12 +4,12 @@
       ><h3 class="link__group__heading text-gray-800 dark:text-gray-200"><mat-icon class="mr-2">view_in_ar</mat-icon> Product</h3></a
     >
     <nav class="link__nav mt-3">
-      <a routerLink="/docs/product" fragment="id_product--0" routerLinkActive="current">Get all products</a>
-      <a routerLink="/docs/product" fragment="id_product--1" routerLinkActive="current">Get single product</a>
-      <a routerLink="/docs/product" fragment="id_product--2" routerLinkActive="current">Pagination Results</a>
-      <a routerLink="/docs/product" fragment="id_product--3" routerLinkActive="current">Add product</a>
-      <a routerLink="/docs/product" fragment="id_product--4" routerLinkActive="current">Update product</a>
-      <a routerLink="/docs/product" fragment="id_product--5" routerLinkActive="current">Delete product</a>
+      <a routerLink="/docs/product" fragment="id_product_list" routerLinkActive="current">Get all products</a>
+      <a routerLink="/docs/product" fragment="id_product_description" routerLinkActive="current">Get single product</a>
+      <a routerLink="/docs/product" fragment="id_product_pagination" routerLinkActive="current">Pagination Results</a>
+      <a routerLink="/docs/product" fragment="id_product_create" routerLinkActive="current">Add product</a>
+      <a routerLink="/docs/product" fragment="id_product_update" routerLinkActive="current">Update product</a>
+      <a routerLink="/docs/product" fragment="id_product_destroy" routerLinkActive="current">Delete product</a>
     </nav>
   </div>
   <!-- Category Link -->
@@ -18,11 +18,11 @@
       ><h3 class="link__group__heading text-gray-800 dark:text-gray-200"><mat-icon class="mr-2">category</mat-icon> Category</h3></a
     >
     <nav class="link__nav mt-3">
-      <a routerLink="/docs/category" fragment="id_category--0">Get all categories</a>
-      <a routerLink="/docs/category" fragment="id_category--1">Get single category</a>
-      <a routerLink="/docs/category" fragment="id_category--2">Add category</a>
-      <a routerLink="/docs/category" fragment="id_category--3">Update category</a>
-      <a routerLink="/docs/category" fragment="id_category--4">Delete category</a>
+      <a routerLink="/docs/category" fragment="id_category_list">Get all categories</a>
+      <a routerLink="/docs/category" fragment="id_category_description">Get single category</a>
+      <a routerLink="/docs/category" fragment="id_category_create">Add category</a>
+      <a routerLink="/docs/category" fragment="id_category_update">Update category</a>
+      <a routerLink="/docs/category" fragment="id_category_destroy">Delete category</a>
     </nav>
   </div>
   <!-- Cart Link -->
@@ -36,11 +36,11 @@
       </h3></a
     >
     <nav class="link__nav mt-3">
-      <a routerLink="/docs/cart" fragment="id_cart--0">Get all carts</a>
-      <a routerLink="/docs/cart" fragment="id_cart--1">Get single cart</a>
-      <a routerLink="/docs/cart" fragment="id_cart--2">Add new cart</a>
-      <a routerLink="/docs/cart" fragment="id_cart--3">Update cart</a>
-      <a routerLink="/docs/cart" fragment="id_cart--4">Delete cart</a>
+      <a routerLink="/docs/cart" fragment="id_cart_list">Get all carts</a>
+      <a routerLink="/docs/cart" fragment="id_cart_description">Get single cart</a>
+      <a routerLink="/docs/cart" fragment="id_cart_create">Add new cart</a>
+      <a routerLink="/docs/cart" fragment="id_cart_update">Update cart</a>
+      <a routerLink="/docs/cart" fragment="id_cart_destroy">Delete cart</a>
     </nav>
   </div>
   <!-- User Link -->
@@ -49,22 +49,22 @@
       ><h3 class="link__group__heading text-gray-800 dark:text-gray-200"><mat-icon class="mr-2">group</mat-icon> User</h3></a
     >
     <nav class="link__nav mt-3">
-      <a routerLink="/docs/user" fragment="id_user--0">Get all users</a>
-      <a routerLink="/docs/user" fragment="id_user--1">Get single user</a>
-      <a routerLink="/docs/user" fragment="id_user--2">Add user</a>
-      <a routerLink="/docs/user" fragment="id_user--3">Update user</a>
-      <a routerLink="/docs/user" fragment="id_user--4">Delete user</a>
+      <a routerLink="/docs/user" fragment="id_user_list">Get all users</a>
+      <a routerLink="/docs/user" fragment="id_user_description">Get single user</a>
+      <a routerLink="/docs/user" fragment="id_user_create">Add user</a>
+      <a routerLink="/docs/user" fragment="id_user_update">Update user</a>
+      <a routerLink="/docs/user" fragment="id_user_destroy">Delete user</a>
     </nav>
   </div>
   <!-- Auth Link -->
   <div class="link__group mt-8">
-    <a class="link__group__link" routerLink="/docs/auth#id_auth"
+    <a class="link__group__link" routerLink="/docs/auth" fragment="id_auth"
       ><h3 class="link__group__heading text-gray-800 dark:text-gray-200"><mat-icon class="mr-2">app_registration</mat-icon> Auth</h3></a
     >
     <nav class="link__nav mt-3">
-      <a routerLink="/docs/auth" fragment="id_auth--0">Login</a>
-      <a routerLink="/docs/auth" fragment="id_auth--1">Register</a>
-      <a routerLink="/docs/auth" fragment="id_auth--2">Refresh Token</a>
+      <a routerLink="/docs/auth" fragment="id_auth_login">Login</a>
+      <a routerLink="/docs/auth" fragment="id_auth_register">Register</a>
+      <a routerLink="/docs/auth" fragment="id_auth_refresh_token">Refresh Token</a>
     </nav>
   </div>
 
@@ -79,10 +79,10 @@
       </h3></a
     >
     <nav class="link__nav mt-3">
-      <a routerLink="/docs/todo" fragment="id_todo--0">Get all todos</a>
-      <a routerLink="/docs/todo" fragment="id_todo--1">Add todo</a>
-      <a routerLink="/docs/todo" fragment="id_todo--2">Update todo</a>
-      <a routerLink="/docs/todo" fragment="id_todo--3">Delete todo</a>
+      <a routerLink="/docs/todo" fragment="id_todo_list">Get all todos</a>
+      <a routerLink="/docs/todo" fragment="id_todo_create">Add todo</a>
+      <a routerLink="/docs/todo" fragment="id_todo_update">Update todo</a>
+      <a routerLink="/docs/todo" fragment="id_todo_destroy">Delete todo</a>
     </nav>
   </div>
 
