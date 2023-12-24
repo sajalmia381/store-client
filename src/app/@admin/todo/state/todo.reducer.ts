@@ -1,8 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import {
-  addOneTodoSuccess,
-  loadCategoriesSuccess,
-} from './todo.actions';
+import { addOneTodoSuccess, loadCategoriesSuccess } from './todo.actions';
 import { initialState, todoAdapter, TodoState } from './todo.state';
 
 const _todoReducer = createReducer(

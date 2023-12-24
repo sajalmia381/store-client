@@ -17,7 +17,7 @@ import 'prismjs/components/prism-json';
 })
 export class HomeComponent implements OnInit {
   apiBaseUrl: string = environment.apiBaseUrl;
-  adminRoutePrefix = '/admin'
+  adminRoutePrefix = '/admin';
   productEndpoint: string = '/products/running-sneaker';
   readonly code = `
 fetch('${environment.apiBaseUrl + this.productEndpoint}')
@@ -45,11 +45,11 @@ fetch('${environment.apiBaseUrl + this.productEndpoint}')
         "updatedAt": "2021-12-04T10:30:13.299Z"
     }
   }
-  `
+  `;
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   fetchProduct(): void {
     this.isProductLoading = true;

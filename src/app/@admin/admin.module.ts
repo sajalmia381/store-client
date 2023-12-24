@@ -9,11 +9,6 @@ import { ImageEffects } from './media/state/media.effects';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    adminRoutingModule,
-    LayoutModule,
-    EffectsModule.forFeature([CategoryEffects, ImageEffects])
-  ]
+  imports: [CommonModule, adminRoutingModule, LayoutModule, EffectsModule.forFeature([CategoryEffects, ImageEffects])]
 })
 export class adminModule {}

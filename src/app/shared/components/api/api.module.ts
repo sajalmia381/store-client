@@ -8,14 +8,9 @@ import { ApiDescriptionComponent } from './api-description.component';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-json';
 
-
 @NgModule({
   declarations: [ApiComponent, ApiDescriptionComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    AsPrismModule
-  ],
+  imports: [CommonModule, MatButtonModule, AsPrismModule],
   exports: [ApiComponent, ApiDescriptionComponent]
 })
-export class ApiModule { }
+export class ApiModule {}

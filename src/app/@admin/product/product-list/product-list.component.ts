@@ -24,15 +24,7 @@ export class ProductListComponent implements OnInit {
   currentView = 'list';
   isLoaded$!: Observable<boolean>;
   products$!: Observable<Product[]>;
-  displayedColumns: string[] = [
-    'select',
-    'title',
-    'price',
-    'category',
-    'createdBy',
-    'createdAt',
-    'action'
-  ];
+  displayedColumns: string[] = ['select', 'title', 'price', 'category', 'createdBy', 'createdAt', 'action'];
   selection = new SelectionModel<Product>(true, []);
   dataSource: any = new MatTableDataSource<Product>([]);
   backendBaseUrl: string = environment.baseUrl;
@@ -103,10 +95,7 @@ export class ProductListComponent implements OnInit {
       width: '100%',
       maxWidth: '400px',
       data: {
-        message:
-          'Are you sure! you want to bulk delete "' +
-          this.selection.selected.map(item => item.slug) +
-          '"?'
+        message: 'Are you sure! you want to bulk delete "' + this.selection.selected.map(item => item.slug) + '"?'
       }
     });
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
@@ -123,9 +112,7 @@ export class ProductListComponent implements OnInit {
   onFilter(): void {
     console.log();
     if (this.filterForm.dirty) {
-      this.store.dispatch(
-        loadProducts({ queryParams: filterValidObjAttribute(this.filterForm.value) })
-      );
+      this.store.dispatch(loadProducts({ queryParams: filterValidObjAttribute(this.filterForm.value) }));
     }
   }
 }

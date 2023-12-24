@@ -11,5 +11,5 @@ import { authDoc } from '../../common/data';
   styleUrl: './auth-doc.component.scss'
 })
 export class AuthDocComponent {
-  authDoc = authDoc
+  authDoc = authDoc;
 }

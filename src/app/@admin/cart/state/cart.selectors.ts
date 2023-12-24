@@ -8,9 +8,6 @@ export const CartSelectors = cartAdapter.getSelectors();
 
 // Category
 export const getCarts = createSelector(getCartState, CartSelectors.selectAll);
-export const getCartEntities = createSelector(
-  getCartState,
-  CartSelectors.selectEntities
-);
+export const getCartEntities = createSelector(getCartState, CartSelectors.selectEntities);
 
 export const isLoaded = createSelector(getCartState, state => state.loaded);

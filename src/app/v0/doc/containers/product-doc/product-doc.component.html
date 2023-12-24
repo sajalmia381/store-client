@@ -1,13 +1,11 @@
 <section class="card border dark:border-gray-700">
   <h2 id="id_product" class="card__title"><mat-icon>view_in_ar</mat-icon> Product</h2>
-  <div class="card__body">
-    <div id="id_product" class="card__content">
-      <app-api id="id_product--0" [data]="productDoc.list"> </app-api>
-      <app-api id="id_product--1" [data]="productDoc.description"></app-api>
-      <app-api id="id_product--2" [data]="productDoc.pagination"></app-api>
-      <app-api id="id_product--3" [data]="productDoc.create"></app-api>
-      <app-api id="id_product--4" [data]="productDoc.update"></app-api>
-      <app-api id="id_product--5" [data]="productDoc.destroy"></app-api>
-    </div>
+  <div class="card__content">
+    <app-api id="id_product--0" [data]="productDoc.list"> </app-api>
+    <app-api id="id_product--1" [data]="productDoc.description"></app-api>
+    <app-api id="id_product--2" [data]="productDoc.pagination"></app-api>
+    <app-api id="id_product--3" [data]="productDoc.create"></app-api>
+    <app-api id="id_product--4" [data]="productDoc.update"></app-api>
+    <app-api id="id_product--5" [data]="productDoc.destroy"></app-api>
   </div>
 </section>

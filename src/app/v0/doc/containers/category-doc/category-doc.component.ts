@@ -12,5 +12,4 @@ import { categoryDoc } from '../../common/data';
 })
 export class CategoryDocComponent {
   categoryDoc = categoryDoc;
-
 }

@@ -14,15 +14,15 @@ export class AuthService {
   onLogin(email: string, password: string): Observable<any> {
     const qp = {
       duration: this.tokenDuration
-    }
+    };
     return this.httpService.post(LOGIN_ENDPOINT, { email, password });
   }
-  
+
   generateNewTokens(refresh_token: string): Observable<HttpEvent<any>> {
     const qp = {
       duration: this.tokenDuration
-    }
-    return this.httpService.post(REFRESH_ENDPOINT, { refresh_token })
+    };
+    return this.httpService.post(REFRESH_ENDPOINT, { refresh_token });
   }
 
   saveTokensLocalStorage(tokens: any): void {

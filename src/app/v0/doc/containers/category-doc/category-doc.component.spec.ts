@@ -9,9 +9,8 @@ describe('CategoryDocComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CategoryDocComponent]
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CategoryDocComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
