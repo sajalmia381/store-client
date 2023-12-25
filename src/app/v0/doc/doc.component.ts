@@ -1,16 +1,22 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, ViewChild, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSidenav } from '@angular/material/sidenav';
-import { ActivatedRoute } from '@angular/router';
-import { distinctUntilChanged, filter } from 'rxjs/operators';
+import { ActivatedRoute, NavigationEnd, Router, Scroll } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-doc',
   templateUrl: './doc.component.html',
   styleUrls: ['./doc.component.scss']
 })
-export class DocComponent implements AfterViewInit {
+export class DocComponent {
+  private document = inject(DOCUMENT);
+  private route = inject(ActivatedRoute);
+  private breakpointObserver = inject(BreakpointObserver);
+  private router = inject(Router);
+
   @ViewChild('sidenav') sidenav!: MatSidenav;
   isSmallDevice!: boolean;
   isSidenavExpand: boolean = true;
@@ -21,7 +27,9 @@ export class DocComponent implements AfterViewInit {
     filter(val => !!val)
   );
 
-  constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute) {
+  isResourceFeatureRoute: boolean = false;
+
+  constructor() {
     this.breakpointObserver
       .observe(['(max-width: 991px)'])
       .pipe(takeUntilDestroyed())
@@ -33,21 +41,40 @@ export class DocComponent implements AfterViewInit {
           this.isSidenavExpand = true;
         }
       });
-  }
 
-  ngAfterViewInit(): void {
-    this.fragment$.subscribe(value => {
-      const target = document.getElementById(value || '');
-      const sidenavContent = <HTMLElement>document.querySelector('.doc-layout-content');
-      if (target && sidenavContent) {
-        console.dir(target);
-        console.log('offsetTop', target.offsetTop);
-        (<HTMLElement>document.querySelector('.doc-layout-content')).scrollTop =
-          target.offsetTop + (<HTMLElement>target.parentNode).offsetTop;
-      } else {
-        (<HTMLElement>document.querySelector('.doc-layout-content')).scrollTop = 0;
-      }
-    });
+    this.router.events
+      .pipe(
+        takeUntilDestroyed(),
+        filter(event => {
+          // For reload or first browse this docs page
+          if (event instanceof Scroll) {
+            return event.routerEvent.id === 1;
+          }
+          return event instanceof NavigationEnd;
+        }),
+        map(() => this.route),
+        map(route => {
+          while (route.firstChild) {
+            route = route.firstChild;
+          }
+          this.isResourceFeatureRoute = !!route.snapshot.url.length;
+          return route.snapshot.fragment;
+        })
+      )
+      .subscribe(fragment => {
+        const sidenavContent = <HTMLElement>this.document.querySelector('.doc-layout-content');
+        if (fragment && sidenavContent) {
+          const target = this.document.getElementById(fragment);
+          // console.log('offsetTop', target?.offsetTop);
+          // console.log('scrollHeight', target?.scrollHeight);
+          if (target) {
+            (<HTMLElement>this.document.querySelector('.doc-layout-content')).scrollTop =
+              target.offsetTop + (<HTMLElement>target?.offsetParent).offsetTop - 20;
+          }
+        } else {
+          (<HTMLElement>this.document.querySelector('.doc-layout-content')).scrollTop = 0;
+        }
+      });
   }
 
   toggleSidenav(): void {
