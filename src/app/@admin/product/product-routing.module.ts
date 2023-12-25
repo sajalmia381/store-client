@@ -7,6 +7,15 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
 
 const routes: Routes = [
   {
+    path: 'add-product',
+    component: ProductFormComponent,
+    data: {
+      title: 'Product Form | Dashboard',
+      description: 'create new product view',
+      keywords: `product form, add new product`
+    }
+  },
+  {
     path: ':slug/edit',
     component: ProductUpdateComponent,
     data: {
@@ -25,16 +34,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'add-product',
-    component: ProductFormComponent,
-    data: {
-      title: 'Product Form | Dashboard',
-      description: 'create new product view',
-      keywords: `product form, add new product`
-    }
-  },
-  {
     path: '',
+    pathMatch: 'full',
     component: ProductListComponent,
     data: {
       title: 'Product List | Dashboard',
