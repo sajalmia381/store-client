@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration, withHttpTransferCacheOptions } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -47,7 +47,12 @@ import { EffectsModule } from '@ngrx/effects';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorsInterceptor,
       multi: true
-    }
+    },
+    provideClientHydration(
+      // withHttpTransferCacheOptions({
+      //   includePostRequests: true,
+      // }),
+    )
   ],
   bootstrap: [AppComponent]
 })
