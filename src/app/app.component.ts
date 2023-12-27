@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { filter, map } from 'rxjs/operators';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { getThemeMode } from './store/shared/shared.selectors';
 import { getCurrentRoute } from './store/router/router.selectors';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,10 @@ import { getCurrentRoute } from './store/router/router.selectors';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  document = inject(DOCUMENT);
   constructor(private store: Store, private title: Title, private meta: Meta) {
     this.store.select(getThemeMode).subscribe(theme => {
-      const body = document.body;
+      const body = this.document.body;
       if (theme === 'dark') {
         if (body.classList.contains('light')) {
           body.classList.remove('light');
