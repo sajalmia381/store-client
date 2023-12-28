@@ -24,7 +24,9 @@ export class ToolbarComponent implements OnInit {
     });
   }
   toggleTheme(): void {
-    this.store.dispatch(setThemeMode({ theme: this.themeMode === 'dark' ? 'light' : 'dark' }));
+    const theme = this.themeMode === 'dark' ? 'light' : 'dark'
+    localStorage.setItem('theme-mode', theme);
+    this.store.dispatch(setThemeMode({ theme }));
   }
   onLogout(): void {
     this.store.dispatch(logoutSuccess());

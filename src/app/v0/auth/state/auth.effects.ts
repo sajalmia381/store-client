@@ -59,6 +59,8 @@ export class AuthEffects {
       this.action$.pipe(
         ofType(logoutSuccess),
         tap(action => {
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
           this.router.navigate(['/auth/login']);
         })
       ),
