@@ -1,4 +1,4 @@
-import { Component, DestroyRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation, inject } from '@angular/core';
+import { Component, DestroyRef, EventEmitter, Input, OnInit, Output, ViewEncapsulation, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getUserData } from 'src/app/v0/auth/state/auth.selectors';
 import { AuthState } from 'src/app/v0/auth/state/auth.state';
@@ -14,7 +14,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   private store: Store<AuthState | SharedState> = inject(Store);
 
@@ -39,9 +39,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {}
   toggleTheme(): void {
-    this.store.dispatch(setThemeMode({ theme: this.themeMode === 'dark' ? 'light' : 'dark' }));
+    const theme = this.themeMode === 'dark' ? 'light' : 'dark'
+    localStorage.setItem('theme-mode', theme);
+    this.store.dispatch(setThemeMode({ theme }));
   }
   onToggleSidenav(): void {
     this.toggleSidenav.emit();
