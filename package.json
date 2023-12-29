@@ -1,19 +1,19 @@
 {
-  "name": "store-admin",
-  "version": "0.0.1",
+  "name": "store-client",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
     "build": "ng build --configuration production --source-map=false",
-    "deploy": "sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-admin/* ubuntu@ec2-3-7-68-106.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html",
+    "deploy": "sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-client/* ubuntu@ec2-3-7-68-106.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html",
     "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
     "test": "ng test",
     
-    "dev:ssr": "ng run store-admin:serve-ssr",
-    "serve:ssr": "node dist/store-admin/server/main.js",
-    "build:ssr": "ng build && ng run store-admin:server",
-    "prerender": "ng run store-admin:prerender"
+    "dev:ssr": "ng run store-client:serve-ssr",
+    "serve:ssr": "node dist/store-client/server/main.js",
+    "build:ssr": "ng build && ng run store-client:server",
+    "prerender": "ng run store-client:prerender"
   },
   "private": true,
   "dependencies": {

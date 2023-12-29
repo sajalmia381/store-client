@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "store-admin": {
+    "store-client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/store-admin/browser",
+            "outputPath": "dist/store-client/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "store-admin:build:production"
+              "buildTarget": "store-client:build:production"
             },
             "development": {
-              "buildTarget": "store-admin:build:development"
+              "buildTarget": "store-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "store-admin:build"
+            "buildTarget": "store-client:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/store-admin/server",
+            "outputPath": "dist/store-client/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "inlineStyleLanguage": "scss"
@@ -135,12 +135,12 @@
           "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "store-admin:build:development",
-              "serverTarget": "store-admin:server:development"
+              "browserTarget": "store-client:build:development",
+              "serverTarget": "store-client:server:development"
             },
             "production": {
-              "browserTarget": "store-admin:build:production",
-              "serverTarget": "store-admin:server:production"
+              "browserTarget": "store-client:build:production",
+              "serverTarget": "store-client:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -154,12 +154,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "store-admin:build:production",
-              "serverTarget": "store-admin:server:production"
+              "browserTarget": "store-client:build:production",
+              "serverTarget": "store-client:server:production"
             },
             "development": {
-              "browserTarget": "store-admin:build:development",
-              "serverTarget": "store-admin:server:development"
+              "browserTarget": "store-client:build:development",
+              "serverTarget": "store-client:server:development"
             }
           },
           "defaultConfiguration": "production"
