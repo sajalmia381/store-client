@@ -1,11 +1,25 @@
 #!/bin/bash
 
-# echo '[INFO] Starting Config Initialization'
+echo '[INFO] Starting Config Initialization'
 
-# find /usr/share/nginx/html/main*.js -type f -exec sed -i 's@API_ENDPOINT@'"$API_ENDPOINT"'@' {} +
+echo $STORE_CLIENT_API_BASE_URL ''
+echo $STORE_CLIENT_BASE_URL ''
+echo $STORE_CLIENT_V1_BASE_URL ''
+# Server Port
+echo $STORE_CLIENT_PORT ''
+echo $STORE_GA ''
+echo $STORE_ADSENSE_CLIENT_ID ''
 
-# echo '[INFO] Config Initialization Completed'
+find /app/dist/store-client/browser/main*.js -type f -exec sed -i 's@STORE_CLIENT_API_BASE_URL@'"$STORE_CLIENT_API_BASE_URL"'@' {} +
+find /app/dist/store-client/browser/main*.js -type f -exec sed -i 's@STORE_CLIENT_BASE_URL@'"$STORE_CLIENT_BASE_URL"'@' {} +
+find /app/dist/store-client/browser/main*.js -type f -exec sed -i 's@STORE_CLIENT_V1_BASE_URL@'"$STORE_CLIENT_V1_BASE_URL"'@' {} +
+find /app/dist/store-client/browser/main*.js -type f -exec sed -i 's@STORE_CLIENT_PORT@'"$STORE_CLIENT_PORT"'@' {} +
+find /app/dist/store-client/browser/main*.js -type f -exec sed -i 's@STORE_GA@'"$STORE_GA"'@' {} +
+find /app/dist/store-client/browser/main*.js -type f -exec sed -i 's@STORE_ADSENSE_CLIENT_ID@'"$STORE_ADSENSE_CLIENT_ID"'@' {} +
 
-echo '[INFO] Starting Nginx'
 
-nginx -g 'daemon off;'
+echo '[INFO] Config Initialization Completed'
+
+echo '[INFO] Starting Node Server'
+
+node /app/dist/store-client/server/main.js
