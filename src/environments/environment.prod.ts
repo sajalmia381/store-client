@@ -1,10 +1,10 @@
-const domain = 'https://api.storerestapi.com';
+const domain = 'STORE_CLIENT_API_BASE_URL';
 
 export const environment = {
   production: true,
   apiBaseUrl: domain,
   baseUrl: domain,
   v1BaseUrl: domain + '/v1',
-  GA: 'G-FZ9HXX4GYB',
-  adsenseClientId: 'ca-pub-6922458926245751'
+  GA: 'STORE_GA',
+  adsenseClientId: 'STORE_ADSENSE_CLIENT_ID'
 };

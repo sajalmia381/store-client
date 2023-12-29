@@ -1,21 +1,18 @@
 version: '3'
 services:
   store-client:
-    image: storerestapi/store-client:latest
+    build: .
     container_name: store-client
     environment:
-      - APP_PORT=8000
-      - STORE_CLIENT_API_BASE_URL=https://api.storerestapi.com
-      - STORE_CLIENT_BASE_URL=https://api.storerestapi.com
-      - STORE_CLIENT_V1_BASE_URL=https://api.storerestapi.com/v1
-      - STORE_CLIENT_PORT=4000
-      - STORE_GA='G-FZ9HXX4GYB'
-      - STORE_ADSENSE_CLIENT_ID=ca-pub-6922458926245751
+      - STORE_CLIENT_API_BASE_URL=${STORE_CLIENT_API_BASE_URL}
+      - STORE_GA=${STORE_GA}
+      - STORE_ADSENSE_CLIENT_ID=${STORE_ADSENSE_CLIENT_ID}
+      - STORE_CLIENT_PORT=${STORE_CLIENT_PORT}
     ports:
-      - "4000:4000"
+      - "4000:${STORE_CLIENT_PORT}"
     restart: always
     networks:
       - store-network
 networks:
   store-network:
-    driver: bridge
+    external: true
