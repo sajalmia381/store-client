@@ -4,15 +4,11 @@
 ```sh
 docker network create store-network
 ```
-
 ### Build docker image for multipe build architect
 ```sh
-docker buildx ls
-docker buildx create --name store-builder
 docker buildx use store-builder
-docker buildx inspect --bootstrap
-docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <store-client:x.x.x> --push .
-docker run --name store-api -d -p 8000:8000 <store-client:latest>:<943e28233b51>
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerestapi/store-client:1.0.0 --push .
+docker buildx imagetools create -t storerestapi/store-client:1.0.0 storerestapi/store-client:latest
 ```
 
 ### Build Docker Images with docker-compose
@@ -49,6 +45,17 @@ sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-client/* ubuntu@ec2-3-7-6
 # Generate SSL
 ```bash
 sudo openssl req -x509 -nodes -days 365 -subj "/C=CA/ST=QC/O=Company, Inc./CN=test.storerestapi.com" -addext "subjectAltName=DNS:test.storerestapi.com" -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt;
+```
+
+### Build docker image for multipe build architect
+```sh
+docker buildx ls
+docker buildx create --name store-builder
+docker buildx use store-builder
+docker buildx inspect --bootstrap
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <username>/<store-client:x.x.x> --push .
+docker buildx imagetools create -t <username>/<store-client:x.x.x> <username>/<store-client:latest>
+docker run --name store-api -d -p 8000:8000 <store-client:latest>:<943e28233b51>
 ```
 
 
