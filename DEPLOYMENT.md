@@ -1,0 +1,55 @@
+# Deployment Store-Api App
+### Create Docker Store-Api Network
+```sh
+docker network create store-network
+```
+### Build Docker Images
+```sh
+docker-compose -f docker-compose.client.yml build
+```
+### Up docker images
+```sh
+docker-compose -f docker-compose.client.yml up -d
+docker-compose -f docker-compose.client.yml up --no-deps -d
+```
+
+### Down docker images
+```sh
+docker-compose -f docker-compose.client.yml down -v
+```
+
+### Restart Service
+```sh
+docker-compose -f docker-compose.client.yml restart --no-deps
+```
+
+#### Ex.
+```bash
+sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-client/* ubuntu@ec2-3-7-68-106.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html
+```
+
+
+### Thanks to those article for deployment on ec2 with docker container
+- [https://robert-isaac.medium.com/deploying-angular-ssr-and-nestjs-application-to-vps-bf7e400a7b48](https://robert-isaac.medium.com/deploying-angular-ssr-and-nestjs-application-to-vps-bf7e400a7b48)
+
+
+# Generate SSL
+```bash
+sudo openssl req -x509 -nodes -days 365 -subj "/C=CA/ST=QC/O=Company, Inc./CN=test.storerestapi.com" -addext "subjectAltName=DNS:test.storerestapi.com" -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt;
+```
+
+
+# nginx
+
+### update nginx file: 
+  file location: /etc/nginx/sites-available/default
+
+### restart nginx 
+```
+systemctl restart nginx
+```
+
+### check nginx status
+```
+nginx -t
+```

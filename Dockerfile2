@@ -1,17 +1,4 @@
-## STAGE 1: Build Container
-FROM node:18-slim as builder
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm run build:ssr
-
-## STAGE 2: Production container
+## Use Node Slim image
 FROM node:18-slim
 
 ENV STORE_CLIENT_API_BASE_URL ''

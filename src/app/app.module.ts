@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration, withHttpTransferCacheOptions } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,7 +10,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from '../environments/environment';
 import { appReducer } from './store';
 import { RouterSerializer } from './store/router/router.serializer';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { DefaultLayoutModule } from './default-layout/default-layout.module';
 import { MatSnackBarModule as MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
@@ -47,7 +47,15 @@ import { EffectsModule } from '@ngrx/effects';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorsInterceptor,
       multi: true
-    }
+    },
+    provideClientHydration(
+      // withHttpTransferCacheOptions({
+      //   includePostRequests: true,
+      // }),
+    ),
+    provideHttpClient(
+      withFetch(),
+    ),
   ],
   bootstrap: [AppComponent]
 })
