@@ -12,7 +12,7 @@ docker buildx create --name store-builder
 docker buildx use store-builder
 docker buildx inspect --bootstrap
 docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <store-client:x.x.x> --push .
-docker run --name store-api -d - p 8000:8000 <store-client:latest>:<943e28233b51>
+docker run --name store-api -d -p 8000:8000 <store-client:latest>:<943e28233b51>
 ```
 
 ### Build Docker Images with docker-compose
