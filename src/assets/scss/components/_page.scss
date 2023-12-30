@@ -31,7 +31,7 @@
     @apply pt-4;
   }
   &__toolbar {
-    @apply bg-gray-100;
+    background-color: var(--bg-color);
     @apply p-page flex items-center flex-wrap;
   }
 }
@@ -40,13 +40,6 @@
     &__inner,
     &__table {
       @apply px-2;
-    }
-  }
-}
-.dark {
-  .page {
-    &__toolbar {
-      background-color: var(--bg-color);
     }
   }
 }

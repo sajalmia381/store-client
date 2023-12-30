@@ -9,6 +9,7 @@ import { DOCUMENT } from '@angular/common';
 import { setThemeMode } from '@shared/store/shared.actions';
 import JwtService from '@shared/helper/JwtService';
 import { loginSuccess } from './v0/auth/state/auth.actions';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-<USERNAME>',
@@ -16,9 +17,12 @@ import { loginSuccess } from './v0/auth/state/auth.actions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  document = inject(DOCUMENT);
+  private store = inject(Store)
+  private document = inject(DOCUMENT);
+  public loader = inject(LoadingBarService);
 
-  constructor(private store: Store, private title: Title, private meta: Meta) {
+  progress = 0
+  constructor(private title: Title, private meta: Meta) {
     // Set inititlizer value from localStorage
     afterNextRender(() => {
       // retrive token from localstorage
@@ -101,5 +105,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loader.value$.subscribe((val) => {
+      this.progress = val
+    })
   }
 }

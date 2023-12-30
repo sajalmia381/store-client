@@ -18,6 +18,8 @@ import { AuthInterceptor } from '@shared/services/auth.interceptor';
 import { ErrorsInterceptor } from '@shared/services/errors.interceptor';
 import { AuthEffects } from './v0/auth/state/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +37,9 @@ import { EffectsModule } from '@ngrx/effects';
 
     DefaultLayoutModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule,
+    LoadingBarRouterModule
   ],
   providers: [
     {
