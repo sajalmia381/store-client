@@ -1,3 +1,8 @@
+# My Server
+```bash
+sudo ssh -i ~/Desktop/pem/storeApi.pem ubuntu@ec2-3-7-68-106.ap-south-1.compute.amazonaws.com
+```
+
 # Deployment Store-Api App
 
 ### Create Docker Store-Api Network
@@ -7,8 +12,8 @@ docker network create store-network
 ### Build docker image for multipe build architect
 ```sh
 docker buildx use store-builder
-docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerestapi/store-client:1.0.0 --push .
-docker buildx imagetools create -t storerestapi/store-client:1.0.0 storerestapi/store-client:latest
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerestapi/store-client:2.0.1 --push .
+docker buildx imagetools create -t storerestapi/store-client:latest storerestapi/store-client:2.0.1
 ```
 
 ### Build Docker Images with docker-compose
@@ -22,14 +27,20 @@ docker-compose -f docker-compose.client.yml up -d
 docker-compose -f docker-compose.client.yml up --no-deps -d
 ```
 
+### Service Update
+```sh
+docker pull storerestapi/store-client:latest
+docker-compose -f docker-compose.client.yml up --no-deps -d store-client
+```
+
 ### Down docker images
 ```sh
 docker-compose -f docker-compose.client.yml down -v
 ```
 
-### Restart Service
+### Update Service
 ```sh
-docker-compose -f docker-compose.client.yml restart --no-deps
+docker-compose -f docker-compose.client.yml restart store-client
 ```
 
 #### Ex.
