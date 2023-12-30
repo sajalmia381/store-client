@@ -1,12 +1,25 @@
 # Deployment Store-Api App
+
 ### Create Docker Store-Api Network
 ```sh
 docker network create store-network
 ```
-### Build Docker Images
+
+### Build docker image for multipe build architect
+```sh
+docker buildx ls
+docker buildx create --name store-builder
+docker buildx use store-builder
+docker buildx inspect --bootstrap
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <store-client:x.x.x> --push .
+docker run --name store-api -d - p 8000:8000 <store-client:latest>:<943e28233b51>
+```
+
+### Build Docker Images with docker-compose
 ```sh
 docker-compose -f docker-compose.client.yml build
 ```
+
 ### Up docker images
 ```sh
 docker-compose -f docker-compose.client.yml up -d
