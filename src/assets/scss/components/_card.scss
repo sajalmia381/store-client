@@ -1,22 +1,20 @@
 // Doc Card
 .card {
   @apply flex flex-col;
-  @apply min-w-0 p-4 xxl:p-8;
+  @apply min-w-0;
   @apply rounded;
   @apply break-words;
   position: relative;
   background-clip: border-box;
   border-radius: 0.25rem;
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2.5rem;
-  }
-
   &__title {
-    @apply mb-0 mb-10 font-extrabold flex items-center;
     font-size: 1.5rem;
+    font-weight: 800;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    @apply p-4 xxl:py-3 xxl:px-6;
     .mat-icon {
       font-size: 1.5rem;
       line-height: 1.5rem;
@@ -26,4 +24,21 @@
       @apply text-primary;
     }
   }
+
+  &__content {
+    @apply p-4 xxl:p-6;
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      &:not(:first-child) {
+        padding-top: 1.8rem;
+        border-top: 2px solid var(--border-color);
+      }
+      &:not(:last-child) {
+        padding-bottom: 2.2rem;
+      }
+    }
+  }
+
 }

@@ -29,6 +29,15 @@ const childRoutes: Routes = [
   {
     path: '',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: '**',
+    loadComponent: () => import('../errors/error-404/error-404.component').then(m => m.Error404Component),
+    data: {
+      title: '404 | Admin',
+      homeBtnLink: "/admin",
+      homeBtnLabel: "Go To Dashboard"
+    }
   }
 ];
 const routes: Routes = [

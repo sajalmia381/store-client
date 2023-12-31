@@ -67,6 +67,15 @@ const resourceRoute: Routes = [
       description: 'todo crud apis',
       keywords: `todo fake api`
     }
+  },
+  {
+    path: '**',
+    loadComponent: () => import('../../errors/error-404/error-404.component').then(m => m.Error404Component),
+    data: {
+      title: '404 | Documentation',
+      homeBtnLink: "/docs",
+      homeBtnLabel: "Go To Resources"
+    }
   }
 ];
 
