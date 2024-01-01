@@ -6,7 +6,7 @@ on:
   push:
     branches: [ "github-pipeline" ]
     # tags:
-    #   - "v*.*.*-p"
+    #   - "v*.*"
   pull_request:
     branches: [ "github-pipeline" ]
 
@@ -93,4 +93,4 @@ jobs:
     
     - name: Inspect
       run: |
-        docker buildx imagetools inspect ${{ steps.meta.outputs.tags }}/store-client:dummy --format '{{json .}}'
+        docker buildx imagetools inspect ${{ steps.meta.outputs.tags }} --format '{{json .}}'
