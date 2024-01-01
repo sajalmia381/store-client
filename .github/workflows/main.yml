@@ -9,6 +9,17 @@ on:
   pull_request:
     branches: [ "github-pipeline" ]
 
+  workflow_dispatch:
+    inputs:
+      buildx-version:
+        description: 'Buildx version or Git context'
+        default: '15.3.0'
+        required: false
+      buildkit-image:
+        description: 'BuildKit image'
+        default: 'moby/buildkit:buildx-stable-1'
+        required: false
+
 jobs:
   build-angular-app:
 
@@ -21,10 +32,53 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
     - run: npm install
     - run: npm run build:ssr
+
+  standalone:
+    runs-on: ubuntu-latest
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v4
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          version: ${{ inputs.buildx-version || env.BUILDX_VERSION }}
+          driver-opts: |
+            network=host
+            image=${{ inputs.buildkit-image || env.BUILDKIT_IMAGE }}
+          buildkitd-flags: --debug
+      -
+        name: Build and push
+        uses: ./
+        with:
+          context: ./test
+          file: ./test/multi.Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            # ${{ env.DOCKER_USERNAME }}/store-client:latest
+            ${{ env.DOCKER_USERNAME }}/store-client:dummy
+          cache-from: type=gha,scope=ci-${{ matrix.buildx_version }}
+          cache-to: type=gha,scope=ci-${{ matrix.buildx_version }}
+      -
+        name: Inspect
+        run: |
+          docker buildx imagetools inspect ${{ env.DOCKER_USERNAME }}/store-client:dummy --format '{{json .}}'
