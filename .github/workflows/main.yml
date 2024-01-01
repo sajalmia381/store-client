@@ -1,11 +1,14 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+# For more information see: https://docs.docker.com/build/ci/github-actions/multi-platform/
 
-name: Node.js CI
+name: ci
 
 on:
+  schedule:
+    - cron: "0 10 * * *"
   push:
     branches: [ "github-pipeline" ]
+    # tags:
+    #   - "v*.*.*-p"
   pull_request:
     branches: [ "github-pipeline" ]
 
@@ -15,19 +18,30 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false
-
       matrix:
         node-version: [18.x]
-        platform:
-          - linux/amd64
-          # - linux/arm/v6
-          - linux/arm/v7
-          - linux/arm64
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        # list of Docker images to use as base name for tags
+        images: |
+          name/app
+          ghcr.io/username/app            
+        # generate Docker tags based on the following events/attributes
+        tags: |
+          type=schedule
+          type=ref,event=branch
+          type=ref,event=pr
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=semver,pattern={{major}}
+          type=sha     
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -51,6 +65,7 @@ jobs:
       uses: docker/setup-buildx-action@v3
 
     - name: Login to Docker Hub
+      if: github.event_name != 'pull_request'
       uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -61,10 +76,12 @@ jobs:
       with:
         context: .
         file: Dockerfile2
-        platforms: ${{ matrix.platform }}
-        push: true
-        tags: |
-          ${{ secrets.DOCKER_USERNAME }}/store-client:dummy
+        platforms: linux/amd64,linux/arm64,linux/arm/v7
+        push: ${{ github.event_name != 'pull_request' }}
+        # tags: |
+        #   ${{ secrets.DOCKER_USERNAME }}/store-client:dummy
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
     
     - name: Inspect
       run: |
