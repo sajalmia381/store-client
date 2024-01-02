@@ -75,12 +75,12 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
 
-    # - name: Push image to GHCR
-    #   if: (github.event_name == 'push' && contains(github.ref, '/tags/v'))
-    #   run: |
-    #     docker buildx imagetools create \
-    #       --tag ${{ secrets.DOCKER_USERNAME }}/store-client:latest \
-    #       ${{ secrets.DOCKER_USERNAME }}/store-client:dummy
+    - name: Push image to GHCR
+      if: (github.event_name == 'push' && contains(github.ref, '/tags/v'))
+      run: |
+        docker buildx imagetools create \
+          --tag ${{ steps.meta.images }}:stable \
+          ${{ steps.meta.outputs.tags }}
     
     - name: Inspect
       run: |
