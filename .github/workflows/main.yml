@@ -96,19 +96,15 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Get the tag from GitHub event
-        id: get_tag
-        run: echo "::set-output name=tag::${GITHUB_REF#refs/tags/}"
-
       - name: Push To Stable Tag
         if: (github.event_name == 'push' && contains(github.ref, '/tags/v'))
         run: |
-          echo ${{ steps.get_tag.outputs.tag }}
-          echo ${{ env.IMAGE_NAME }}:${{env.DOCKER_METADATA_OUTPUT_TAGS}}
+          echo ${{ env.IMAGE_NAME }}:${{env.DOCKER_METADATA_OUTPUT_VERSION}}
           docker buildx imagetools create \
             --tag ${{ env.IMAGE_NAME }}:stable \
-            ${{ env.IMAGE_NAME }}:${{ steps.get_tag.outputs.tag }}
+            echo ${{ env.IMAGE_NAME }}:${{env.DOCKER_METADATA_OUTPUT_VERSION}}
+
       
-      # - name: Inspect
-      #   run: |
-      #     docker buildx imagetools inspect ${{ steps.meta.outputs.tags }} --format '{{json .}}'
+      - name: Inspect
+        run: |
+          docker buildx imagetools inspect ${{ steps.meta.outputs.tags }} --format '{{json .}}'
