@@ -25,6 +25,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
 
     - name: Install Packages
       run: npm install
@@ -48,12 +54,6 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
 
       - # Add support for more platforms with QEMU (optional)
         # https://github.com/docker/setup-qemu-action
