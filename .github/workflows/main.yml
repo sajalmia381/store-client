@@ -102,7 +102,7 @@ jobs:
           echo ${{ env.IMAGE_NAME }}:${{env.DOCKER_METADATA_OUTPUT_VERSION}}
           docker buildx imagetools create \
             --tag ${{ env.IMAGE_NAME }}:stable \
-            echo ${{ env.IMAGE_NAME }}:${{env.DOCKER_METADATA_OUTPUT_VERSION}}
+            ${{ env.IMAGE_NAME }}:${{env.DOCKER_METADATA_OUTPUT_VERSION}}
 
       
       - name: Inspect
