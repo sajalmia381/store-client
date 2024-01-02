@@ -78,23 +78,25 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: Bundle
-          path: /app
-      
+      - name: Display structure of downloaded files
+        run: ls -R
+
       - name: Echo 
         run: |
           echo ${{ github.sha }}
           echo ${{ github.workspace }}
           echo ${{ github.ref }}
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: Bundle
       
       - name: Docker Build And Push
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: app/Dockerfile2
+          file: Dockerfile2
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: ${{ github.event_name != 'pull_request' }}
           # tags: |
