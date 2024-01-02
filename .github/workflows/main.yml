@@ -14,7 +14,7 @@ env:
   IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/store-client
 
 jobs:
-  application-build:
+  Frontend-Build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -46,9 +46,9 @@ jobs:
           Dockerfile2
           run.sh
 
-  container-build-and-push:
+  Container-Build-And-Push:
     runs-on: ubuntu-latest
-    needs: application-build
+    needs: Frontend-Build
     steps:
       - name: Docker meta
         id: meta
@@ -58,7 +58,7 @@ jobs:
             ${{ env.IMAGE_NAME }}
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{version}}
 
       - # Add support for more platforms with QEMU (optional)
         # https://github.com/docker/setup-qemu-action
