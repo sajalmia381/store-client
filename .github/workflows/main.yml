@@ -37,7 +37,7 @@ jobs:
     - name: Build Angular SSR
       run: npm run build:ssr
     
-    - name: Upload artifact
+    - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: Bundle
@@ -68,17 +68,17 @@ jobs:
         name: Set UP QEMU
         uses: docker/setup-qemu-action@v3
 
-      - name: Set Up Docker Buildx
+      - name: Set UP Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub
+      - name: Login To Docker Hub
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      - name: Display structure of downloaded files
+      - name: Display Structure of Downloaded Files
         run: ls -R
 
       - name: Echo 
@@ -87,7 +87,7 @@ jobs:
           echo ${{ github.workspace }}
           echo ${{ github.ref }}
 
-      - name: Download artifact
+      - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
           name: Bundle
@@ -104,7 +104,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Push to latest tag
+      - name: Push To Latest Tag
         if: (github.event_name == 'push' && contains(github.ref, '/tags/v'))
         run: |
           docker buildx imagetools create \
