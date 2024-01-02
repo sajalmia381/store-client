@@ -105,10 +105,13 @@ jobs:
       - name: Push To Latest Tag
         if: (github.event_name == 'push' && contains(github.ref, '/tags/v'))
         run: |
+          echo ${{github}}
+          echo ${{env.DOCKER_METADATA_OUTPUT_TAGS}}
+
           docker buildx imagetools create \
             --tag ${{ env.IMAGE_NAME }}:stable \
             ${{ env.DOCKER_METADATA_OUTPUT_TAGS }}
       
-      - name: Inspect
-        run: |
-          docker buildx imagetools inspect ${{ steps.meta.outputs.tags }} --format '{{json .}}'
+      # - name: Inspect
+      #   run: |
+      #     docker buildx imagetools inspect ${{ steps.meta.outputs.tags }} --format '{{json .}}'
