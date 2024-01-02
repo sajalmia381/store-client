@@ -74,13 +74,14 @@ jobs:
       - name: Echo 
         run: |
           echo ${{ github.sha }}
-          echo ${{ github.sha }}
+          echo ${{ github.workspace }}
+          echo ${{ github.ref }}
       
       - name: Docker Build And Push
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ${{ github.sha }}/Dockerfile2
+          file: ${{ github.workspace }}/Dockerfile2
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: ${{ github.event_name != 'pull_request' }}
           # tags: |
