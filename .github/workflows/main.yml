@@ -7,8 +7,11 @@ on:
     branches: [ "github-pipeline" ]
     tags:
       - "v*.*"
-  pull_request:
-    branches: [ "github-pipeline" ]
+  # pull_request:
+  #   branches: [ "github-pipeline" ]
+
+env:
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/store-client
 
 jobs:
   build-and-push-docker:
@@ -28,7 +31,7 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: |
-          ${{ secrets.DOCKER_USERNAME }}/store-client
+          ${{ env.IMAGE_NAME }}
         # generate Docker tags based on the following events/attributes
         tags: |
           type=ref,event=branch
@@ -79,7 +82,7 @@ jobs:
       if: (github.event_name == 'push' && contains(github.ref, '/tags/v'))
       run: |
         docker buildx imagetools create \
-          --tag ${{ steps.meta.images }}:stable \
+          --tag ${{ env.IMAGE_NAME }}:stable \
           ${{ steps.meta.outputs.tags }}
     
     - name: Inspect
