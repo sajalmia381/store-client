@@ -78,12 +78,6 @@ jobs:
       - name: Display Structure of Downloaded Files
         run: ls -R
 
-      - name: Echo 
-        run: |
-          echo ${{ github.sha }}
-          echo ${{ github.workspace }}
-          echo ${{ github.ref }}
-
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
@@ -102,15 +96,18 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Push To Latest Tag
+      - name: Get the tag from GitHub event
+        id: get_tag
+        run: echo "::set-output name=tag::${GITHUB_REF#refs/tags/}"
+
+      - name: Push To Stable Tag
         if: (github.event_name == 'push' && contains(github.ref, '/tags/v'))
         run: |
-          echo ${{github}}
-          echo ${{env.DOCKER_METADATA_OUTPUT_TAGS}}
-
+          echo ${{ steps.get_tag.outputs.tag }}
+          echo ${{ env.IMAGE_NAME }}:${{env.DOCKER_METADATA_OUTPUT_TAGS}}
           docker buildx imagetools create \
             --tag ${{ env.IMAGE_NAME }}:stable \
-            ${{ env.DOCKER_METADATA_OUTPUT_TAGS }}
+            ${{ env.IMAGE_NAME }}:${{ steps.get_tag.outputs.tag }}
       
       # - name: Inspect
       #   run: |
