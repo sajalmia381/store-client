@@ -4,7 +4,7 @@ name: ci
 
 on:
   push:
-    branches: [ "github-pipeline" ]
+    # branches: [ "github-pipeline" ]
     tags:
       - "v*.*"
   # pull_request:
@@ -58,10 +58,7 @@ jobs:
             ${{ env.IMAGE_NAME }}
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=ref,event=branch
-            type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
 
       - # Add support for more platforms with QEMU (optional)
         # https://github.com/docker/setup-qemu-action
