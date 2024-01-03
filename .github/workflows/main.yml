@@ -73,13 +73,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      - name: Display Structure of Downloaded Files
-        run: ls -R
-
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
           name: Bundle
+
+      - name: Display Structure of Downloaded Files
+        run: ls -R
       
       - name: Docker Build And Push
         id: build-and-push

@@ -1,7 +1,7 @@
 version: '3'
 services:
   store-client:
-    image: storerestapi/store-client:latest
+    image: storerestapi/store-client:stable
     container_name: store-client
     environment:
       - STORE_CLIENT_API_BASE_URL=""
