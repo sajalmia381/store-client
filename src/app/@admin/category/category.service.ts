@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Category } from './category';
 
 @Injectable({
-  providedIn: '<USERNAME>'
+  providedIn: 'root'
 })
 export class CategoryService {
   constructor(private http: HttpService) {}

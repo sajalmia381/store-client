@@ -9,7 +9,7 @@ import { setLoading } from 'src/app/store/shared/shared.actions';
 import { AuthService } from '../auth.service';
 import { loginRequest, loginSuccess, logoutSuccess, setLoginError } from './auth.actions';
 
-@Injectable({ providedIn: '<USERNAME>' })
+@Injectable({ providedIn: 'root' })
 export class AuthEffects {
   constructor(private action$: Actions, private router: Router, private store: Store<AppState>, private authService: AuthService) {}
   login$ = createEffect(() =>

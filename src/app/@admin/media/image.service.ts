@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Image } from './Image';
 
 @Injectable({
-  providedIn: '<USERNAME>'
+  providedIn: 'root'
 })
 export class ImageService {
   constructor(private http: HttpService) {}

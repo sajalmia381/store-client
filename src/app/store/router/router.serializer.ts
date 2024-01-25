@@ -11,13 +11,13 @@ export interface RouterStateUrl {
 
 export class RouterSerializer implements RouterStateSerializer<RouterStateUrl> {
   serialize(routerState: RouterStateSnapshot): RouterStateUrl {
-    let route = routerState.<USERNAME>;
+    let route = routerState.root;
     while (route.firstChild) {
       route = route.firstChild;
     }
     const {
       url,
-      <USERNAME>: { queryParams }
+      root: { queryParams }
     } = routerState;
     const { fragment, params, data } = route;
     return { url, fragment, params, queryParams, data };

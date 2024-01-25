@@ -16,7 +16,7 @@
           "strict": true
         }
       },
-      "<USERNAME>": "",
+      "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {

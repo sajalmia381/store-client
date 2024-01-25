@@ -9,7 +9,7 @@ import { getUserData } from 'src/app/v0/auth/state/auth.selectors';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 
 @Injectable({
-  providedIn: '<USERNAME>'
+  providedIn: 'root'
 })
 export class RoleBaseGuard implements CanActivate {
   constructor(private store: Store, private router: Router, private snackBar: MatSnackBar) {}

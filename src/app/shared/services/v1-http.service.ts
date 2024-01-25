@@ -4,7 +4,7 @@ import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: '<USERNAME>'
+  providedIn: 'root'
 })
 export class V1HttpService {
   apiBaseUrl: string;

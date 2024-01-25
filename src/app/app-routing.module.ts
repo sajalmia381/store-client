@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
 
-const <USERNAME>Routes: Routes = [
+const rootRoutes: Routes = [
   {
     path: 'docs',
     loadChildren: () => import('./v0/doc/doc.module').then(m => m.DocModule)
@@ -59,7 +59,7 @@ const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-    children: <USERNAME>Routes
+    children: rootRoutes
   }
 ];
 

@@ -5,7 +5,7 @@ import { HttpService } from '@shared/services/http.service';
 import { LOGIN_ENDPOINT, REFRESH_ENDPOINT } from './auth.endpoint';
 
 @Injectable({
-  providedIn: '<USERNAME>'
+  providedIn: 'root'
 })
 export class AuthService {
   tokenDuration: string = 'short';
