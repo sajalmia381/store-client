@@ -1,25 +1,75 @@
-<h3 class="text-xl border-b-2 dark:border-gray-700 py-4 mb-8">Resources</h3>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6">
-  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: productDoc, resourceName: 'product', icon: 'view_in_ar' }"></ng-container>
-  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: categoryDoc, resourceName: 'category', icon: 'category' }"></ng-container>
-  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: cartDoc, resourceName: 'cart', icon: 'shopping_cart' }"></ng-container>
-  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: userDoc, resourceName: 'user', icon: 'group' }"></ng-container>
-  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: authDoc, resourceName: 'auth', icon: 'app_registration' }"></ng-container>
-  <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: todoDoc, resourceName: 'todo', icon: 'fact_check' }"></ng-container>
-</div>
+<section>
+  <h4 class="text-2xl">Intro</h4>
+  <p class="mt-3 text-hint">
+    StoreRestApi can be used with any type of frontend project that needs users, products, categories, carts, todos or any fake data in JSON format.
+  </p>
+</section>
 
-<ng-template #resourceTemplate let-data let-resourceName="resourceName" let-icon="icon">
+<section id="id_intro_usage" class="mt-10">
+  <h2 class="text-xl border-b-2 dark:border-gray-700 pb-2 mb-5">How to use resources?</h2>
+  <p class="mt-3 text-hint">
+    Slug is used for Product, Category resources. And _id is used for User, Cart, Todo resource
+  </p>
+  <as-prism class="block border dark:border-gray-700 rounded mt-3" [code]="demoUsageCode" language="typescript"></as-prism>
+</section>
+
+<section id="id_intro_resource" class="mt-10">
+  <h1 class="text-xl border-b-2 dark:border-gray-700 pb-2 mb-5">Resources Summary</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xxl:grid-cols-5 gap-x-4 gap-y-6">
+    <ng-container *ngTemplateOutlet="resourceTemplate; context: { $implicit: userDoc, resourceName: 'user', icon: 'group' }"></ng-container>
+    <ng-container
+      *ngTemplateOutlet="resourceTemplate; context: { $implicit: productDoc, resourceName: 'product', icon: 'view_in_ar' }"
+    ></ng-container>
+    <ng-container
+      *ngTemplateOutlet="resourceTemplate; context: { $implicit: categoryDoc, resourceName: 'category', icon: 'category' }"
+    ></ng-container>
+    <ng-container
+      *ngTemplateOutlet="resourceTemplate; context: { $implicit: cartDoc, resourceName: 'cart', icon: 'shopping_cart' }"
+    ></ng-container>
+    <ng-container
+      *ngTemplateOutlet="resourceTemplate; context: { $implicit: todoDoc, resourceName: 'todo', icon: 'fact_check' }"
+    ></ng-container>
+  </div>
+</section>
+
+<section id="id_intro_auth" class="mt-10">
+  <h2 class="text-xl border-b-2 dark:border-gray-700 pb-2 mb-5">Authentication Summary</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xxl:grid-cols-5 gap-x-4 gap-y-6">
+    <div class="col-span-2">
+      <ng-container
+        *ngTemplateOutlet="resourceTemplate; context: { $implicit: authDoc, resourceName: 'auth', icon: 'app_registration', headingAlignLeft: true }"
+      ></ng-container>
+    </div>
+  </div>
+</section>
+
+
+<!-- Template -->
+<ng-template #resourceTemplate let-data let-resourceName="resourceName" let-icon="icon" let-headingAlignLeft="headingAlignLeft">
   <div class="border dark:border-gray-700 rounded w-full shadow-lg">
-    <h3 class="flex items-center justify-center text-center font-semibold text-lg py-3 bg-gray-200 dark:bg-teal-800 dark:bg-opacity-70">
-      <mat-icon color="primary" class="mr-2 text-lg">{{icon}}</mat-icon>
+    <h3 [class.justify-center]="!headingAlignLeft" class="text-sm flex items-center font-semibold p-3 bg-gray-200 dark:bg-teal-800 dark:bg-opacity-50">
+      <mat-icon color="primary" class="mr-2 text-lg">{{ icon }}</mat-icon>
       {{ resourceName | titlecase }}
     </h3>
     <div class="w-full">
       @for (item of data | keyvalue; track $index) {
-      <a [routerLink]="['/docs', resourceName]" [fragment]="'id_' + resourceName + '_' + item.key" class="block group hover:bg-blue p-4 border-t dark:border-gray-700 hover:text-primary hover:bg-slate-100 hover:dark:bg-teal-950">
-        <p class="font-bold text-lg mb-1 opacity-80">{{ $any(item.key) | titlecase }}</p>
-        <p class="text-gray-500">{{ $any(item.value).name }}</p>
+      <a
+        [routerLink]="['/docs', resourceName]"
+        [fragment]="'id_' + resourceName + '_' + item.key"
+        class="
+          text-sm
+          block
+          group
+          hover:bg-blue
+          p-3
+          border-t
+          dark:border-gray-700
+          hover:text-primary hover:bg-slate-100 hover:dark:bg-teal-950
+        "
+      >
+        <p class="font-bold mb-1 opacity-80">{{ $any(item.key) | titlecase }}</p>
+        <p class="text-hint text-xs">{{ $any(item.value).name }}</p>
       </a>
       }
     </div>

@@ -52,25 +52,28 @@ $store-dark-theme: mat.define-dark-theme(
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($store-theme);
+
+
 .dark {
-  background-color: var(--bg-color);
-  color: var(--text-color);
   @include mat.all-component-colors($store-dark-theme);
 
-  .mat-drawer {
-    background-color: var(--sidenav-bg-color);
-    &-container {
-      background-color: var(--bg-color);
-    }
-  }
-  .mat-expansion-panel,
-  .mat-table {
-    background-color: var(--bg-card);
-  }
-  .mat-select-panel,
-  .mat-menu-panel,
+  .mat-mdc-select-panel,
+  .mat-mdc-menu-panel,
   .mat-dialog-container {
     background-color: var(--bg-popup);
+  }
+}
+
+// Override Material
+.mat-expansion-panel,
+.mat-mdc-table {
+  background-color: var(--bg-card)!important;
+}
+
+.mat-drawer {
+  background-color: var(--sidenav-bg-color)!important;
+  &-container {
+    background-color: var(--bg-color)!important;
   }
 }
 
@@ -87,6 +90,8 @@ $store-dark-theme: mat.define-dark-theme(
 // Variables always will be top
 @import './assets/scss/variables.scss';
 @import './assets/scss';
+
+
 html,
 body {
   height: 100%;
@@ -99,13 +104,15 @@ body {
   margin: 0;
   font-family: 'Roboto', 'Helvetica Neue', sans-serif;
   letter-spacing: 0.3px;
+  
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
+
 a {
   transition: all 0.3s linear;
 }
-.light {
-  background: #fafafa;
-}
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -118,6 +125,7 @@ a {
     @apply pl-4 pr-4;
   }
 }
+
 @screen xxl {
   .container {
     &-fluid {
@@ -125,6 +133,7 @@ a {
     }
   }
 }
+
 .global-loader {
   @apply fixed;
   top: 0;

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  store-client:
+    image: storerestapi/store-client:stable
+    container_name: store-client
+    environment:
+      - STORE_CLIENT_API_BASE_URL=""
+      - STORE_GA=""
+      - STORE_ADSENSE_CLIENT_ID=""
+      - STORE_CLIENT_PORT=8000
+    ports:
+      - "4000:8000"
+    restart: always
+    networks:
+      - store-network
+networks:
+  store-network:
+    external: true

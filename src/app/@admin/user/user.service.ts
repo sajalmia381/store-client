@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { User } from './user';
 
 @Injectable({
-  providedIn: '<USERNAME>'
+  providedIn: 'root'
 })
 export class UserService {
   constructor(private http: HttpService) {}

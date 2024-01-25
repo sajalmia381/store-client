@@ -1,0 +1,25 @@
+.route-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// ::ng-deep {
+//   .route-progress-bar.mat-mdc-progress-bar {
+//     .mdc-linear-progress__bar-inner {
+//       border-color: #42A5F5
+//     }
+//     .mdc-linear-progress__buffer-bar {
+//       background-color: #1565C0;
+//     }
+//   }
+// }

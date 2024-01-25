@@ -1,28 +1,18 @@
 version: '3'
 services:
-  webserver:
-    image: storerestapi/store-client:latest
-    container_name: store-webserver
+  store-client:
+    build: .
+    container_name: store-client
+    environment:
+      - STORE_CLIENT_API_BASE_URL=${STORE_CLIENT_API_BASE_URL}
+      - STORE_GA=${STORE_GA}
+      - STORE_ADSENSE_CLIENT_ID=${STORE_ADSENSE_CLIENT_ID}
+      - STORE_CLIENT_PORT=${STORE_CLIENT_PORT}
     ports:
-      - "80:80"
-      - "443:443"
-      - "8000:8000"
+      - "4000:${STORE_CLIENT_PORT}"
     restart: always
-    depends_on:
-      - database
-      - node-app
-    volumes:
-      - web-<USERNAME>:/usr/share/nginx/html
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
     networks:
       - store-network
-volumes:
-  mongo-db:
-  certbot-etc:
-  certbot-var:
-  web-<USERNAME>:
 networks:
   store-network:
-    driver: bridge
+    external: true

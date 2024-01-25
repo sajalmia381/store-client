@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
 
-const <USERNAME>Routes: Routes = [
+const rootRoutes: Routes = [
   {
     path: 'docs',
     loadChildren: () => import('./v0/doc/doc.module').then(m => m.DocModule)
@@ -30,6 +30,15 @@ const <USERNAME>Routes: Routes = [
       free api for testing,
       fake rest api`
     }
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./errors/error-404/error-404.component').then(m => m.Error404Component),
+    data: {
+      title: '404',
+      homeBtnLink: "/",
+      homeBtnLabel: "Go To Home"
+    }
   }
 ];
 
@@ -50,7 +59,7 @@ const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-    children: <USERNAME>Routes
+    children: rootRoutes
   }
 ];
 

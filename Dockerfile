@@ -1,5 +1,6 @@
-## STAGE 1: Build app
-FROM node:16.13.1-alpine as builder
+## STAGE 1: Build Container
+FROM node:18-slim as builder
+
 WORKDIR /app
 
 COPY package*.json ./
@@ -8,18 +9,31 @@ RUN npm install
 
 COPY . .
 
-RUN npm run prod
+RUN npm run build:ssr
 
-## STAGE 2: Setup Server
-FROM nginx:1.21.5-alpine
+## STAGE 2: Production container
+FROM node:18-slim
 
-# Copy our default nginx config
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+ENV STORE_CLIENT_API_BASE_URL ''
+# Server Port
+ENV STORE_CLIENT_PORT ''
 
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
+ENV STORE_GA ''
+ENV STORE_ADSENSE_CLIENT_ID ''
 
-COPY --from=builder /app/dist/store-admin /usr/share/nginx/html
+## Container Working path 
+WORKDIR /app
 
-EXPOSE 3000
+## Copy builded code
+COPY ./dist ./dist
 
-ENTRYPOINT ["bin/sh", "/app/run.sh"]
+## Prepare sh script file
+COPY run.sh ./run.sh
+RUN chmod +x ./run.sh
+RUN sed -i -e 's/\r$//' ./run.sh
+
+## Expose container port
+EXPOSE 4000
+
+## Start the application
+ENTRYPOINT ["/app/run.sh"]

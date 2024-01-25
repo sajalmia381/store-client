@@ -7,6 +7,15 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 
 const routes: Routes = [
   {
+    path: 'add-user',
+    component: UserFormComponent,
+    data: {
+      title: 'User Form | Dashboard',
+      description: 'add new user form',
+      keywords: `user form page`
+    }
+  },
+  {
     path: ':id/edit',
     component: UserUpdateComponent,
     data: {
@@ -25,16 +34,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'add-user',
-    component: UserFormComponent,
-    data: {
-      title: 'User Form | Dashboard',
-      description: 'add new user form',
-      keywords: `user form page`
-    }
-  },
-  {
     path: '',
+    pathMatch: 'full',
     component: UserListComponent,
     data: {
       title: 'User List | Dashboard',

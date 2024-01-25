@@ -11,8 +11,6 @@ const _authReducer = createReducer(
     return { isSignedIn: true, userData: { ...userData, userInfo }, errors: {} };
   }),
   on(logoutSuccess, () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
     return { isSignedIn: false, userData: null, errors: {} };
   }),
   on(setLoginError, (state, action) => {

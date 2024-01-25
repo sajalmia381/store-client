@@ -9,7 +9,7 @@ import { setLoading } from 'src/app/store/shared/shared.actions';
 import { AuthService } from '../auth.service';
 import { loginRequest, loginSuccess, logoutSuccess, setLoginError } from './auth.actions';
 
-@Injectable({ providedIn: '<USERNAME>' })
+@Injectable({ providedIn: 'root' })
 export class AuthEffects {
   constructor(private action$: Actions, private router: Router, private store: Store<AppState>, private authService: AuthService) {}
   login$ = createEffect(() =>
@@ -59,6 +59,8 @@ export class AuthEffects {
       this.action$.pipe(
         ofType(logoutSuccess),
         tap(action => {
+          localStorage.removeItem('access_token');
+          localStorage.removeItem('refresh_token');
           this.router.navigate(['/auth/login']);
         })
       ),

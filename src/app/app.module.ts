@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration, withHttpTransferCacheOptions } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,7 +10,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from '../environments/environment';
 import { appReducer } from './store';
 import { RouterSerializer } from './store/router/router.serializer';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { DefaultLayoutModule } from './default-layout/default-layout.module';
 import { MatSnackBarModule as MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
@@ -19,6 +19,8 @@ import { ErrorsInterceptor } from '@shared/services/errors.interceptor';
 import { AuthEffects } from './v0/auth/state/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { AdsenseModule } from 'ng2-adsense';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +42,9 @@ import { AdsenseModule } from 'ng2-adsense';
 
     DefaultLayoutModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule,
+    LoadingBarRouterModule
   ],
   providers: [
     {
@@ -52,7 +56,15 @@ import { AdsenseModule } from 'ng2-adsense';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorsInterceptor,
       multi: true
-    }
+    },
+    provideClientHydration(
+      // withHttpTransferCacheOptions({
+      //   includePostRequests: true,
+      // }),
+    ),
+    provideHttpClient(
+      withFetch(),
+    ),
   ],
   bootstrap: [AppComponent]
 })
