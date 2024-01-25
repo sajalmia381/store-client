@@ -4,6 +4,7 @@ import { environment } from '@env/environment';
 import { HttpService } from '@shared/services/http.service';
 import { SharedModule } from '@shared/shared.module';
 import { AsPrismModule } from 'as-prism';
+import { AdsenseModule } from 'ng2-adsense';
 
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-json';
@@ -11,7 +12,7 @@ import 'prismjs/components/prism-json';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, SharedModule, AsPrismModule],
+  imports: [CommonModule, SharedModule, AsPrismModule, AdsenseModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

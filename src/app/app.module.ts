@@ -18,6 +18,7 @@ import { AuthInterceptor } from '@shared/services/auth.interceptor';
 import { ErrorsInterceptor } from '@shared/services/errors.interceptor';
 import { AuthEffects } from './v0/auth/state/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { AdsenseModule } from 'ng2-adsense';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
@@ -34,6 +35,10 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
     NgxGoogleAnalyticsModule.forRoot(environment.GA),
     // NgxGoogleAnalyticsRouterModule.forRoot({ exclude: ['/admin/*'] }),
+    AdsenseModule.forRoot({
+      adClient: environment.adsenseClientId,
+      adSlot: 7259870550,
+    }),
 
     DefaultLayoutModule,
     HttpClientModule,
