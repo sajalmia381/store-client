@@ -9,7 +9,6 @@
         <div>
           <h2>{{ category.name | titlecase }}</h2>
         </div>
-        {{ category | json }}
         <hr class="mt-2 mb-4" />
         <div class="flex flex-wrap -m-4" *ngIf="category?.products?.length">
           <div *ngFor="let product of category?.products" class="xxl:w-1/4 xl:w-1/3 md:w-1/2 p-4">
