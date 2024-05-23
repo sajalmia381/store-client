@@ -7,13 +7,70 @@ export const cartDoc: Record<string, IApi> = {
     name: 'Get all carts',
     code: `fetch('${apiBaseUrl}/carts')
         .then(response => response.json())
-        .then(json => console.log(json))`
+        .then(json => console.log(json))`,
+    output: `{
+      "status": 200,
+      "message": "Success, Cart list",
+      "data": [
+        {
+          "_id": "6572b6bcf610af2847fcb9d0",
+          "user": {
+            "role": "ROLE_CUSTOMER",
+            "_id": "612e4851345dcc333ac6cb24",
+            "name": "Robert Gonzalez",
+            "email": "robertgonzalez@gmail.com"
+          },
+          "products": [
+            {
+              "product": {
+                "_id": "61ab420c0f34753bcedfa787",
+                "title": "special cotton shirt for men",
+                "slug": "special-cotton-shirt-for-men",
+                "price": 15
+              },
+              "quantity": 6
+            },
+            ...
+          ],
+          "createdAt": "2023-12-08T06:25:00.722Z",
+          "updatedAt": "2023-12-08T06:25:00.722Z"
+        },
+        ...
+      ]
+    }`
   },
   description: {
     name: 'Get Single Cart',
     code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15')
         .then(response => response.json())
-        .then(json => console.log(json))`
+        .then(json => console.log(json))`,
+    output: `{
+      "status": 200,
+      "message": "Success, Cart Description",
+      "data": {
+        "_id": "6572b9c1f610af2847fcba15",
+        "user": {
+          "role": "ROLE_CUSTOMER",
+          "_id": "61e944df2cefb5a72936696a",
+          "name": "Torine Walker",
+          "email": "torinewalker@gmail.com"
+        },
+        "products": [
+          {
+            "product": {
+              "_id": "61ab42d00f34753bcedfa79e",
+              "title": "cotton pullover embroidery sweatshirt women",
+              "slug": "cotton-pullover-embroidery-sweatshirt-women",
+              "price": 100
+            },
+            "quantity": 1
+          },
+          ...
+        ],
+        "createdAt": "2023-12-08T06:37:53.271Z",
+        "updatedAt": "2023-12-08T06:37:53.271Z"
+      }
+    }`
   },
   create: {
     name: 'Add new cart',
@@ -56,7 +113,41 @@ export const cartDoc: Record<string, IApi> = {
           },
         })
         .then(response => response.json())
-        .then(json => console.log(json))`
+        .then(json => console.log(json))`,
+    output: `{
+      "data": {
+        "_id": "6572b9c1f610af2847fcba15",
+        "user": {
+          "_id": "61e944df2cefb5a72936696a",
+          "name": "Torine Walker",
+          "email": "torinewalker@gmail.com"
+        },
+        "products": [
+          {
+            "product": {
+              "_id": "61ab42d00f34753bcedfa79e",
+              "title": "cotton pullover embroidery sweatshirt women",
+              "slug": "cotton-pullover-embroidery-sweatshirt-women",
+              "price": 100
+            },
+            "quantity": 5
+          },
+          {
+            "product": {
+              "_id": "61ab42e90f34753bcedfa7a2",
+              "title": "breast button belt sur collar winter coat women",
+              "slug": "breast-button-belt-sur-collar-winter-coat-women",
+              "price": 120
+            },
+            "quantity": 3
+          }
+        ],
+        "createdAt": "2023-12-08T06:37:53.271Z",
+        "updatedAt": "2023-12-08T06:37:53.271Z"
+      },
+      "status": 200,
+      "message": "Success! Cart updated"
+    }`
   },
   destroy: {
     name: 'Delete cart',
@@ -65,6 +156,10 @@ export const cartDoc: Record<string, IApi> = {
           method: 'DELETE',
         })
         .then(response => response.json())
-        .then(json => console.log(json))`
+        .then(json => console.log(json))`,
+    output: `{
+      "status": 202,
+      "message": "Success! Cart deleted"
+    }`
   }
 };
