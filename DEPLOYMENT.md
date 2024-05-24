@@ -24,11 +24,11 @@ docker network create store-network
 ### Build docker image for multipe build architect
 ```sh
 docker buildx use store-builder
-docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerestapi/store-client:2.0.2 --push .
-docker buildx imagetools create -t storerestapi/store-client:latest storerestapi/store-client:2.0.2
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerestapi/store-client:4.1.1 --push .
+docker buildx imagetools create -t storerestapi/store-client:stable storerestapi/store-client:4.1.1
 
 npm run build:ssr
-docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerestapi/store-client:2.0.2 -f Dockerfile2 --push .
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerestapi/store-client:4.1.1 -f Dockerfile2 --push .
 ```
 
 ### Build Docker Images with docker-compose
