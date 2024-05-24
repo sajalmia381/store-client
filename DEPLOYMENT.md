@@ -5,6 +5,18 @@ sudo ssh -i ~/Desktop/pem/storeApi.pem ubuntu@ec2-3-7-68-106.ap-south-1.compute.
 
 # Deployment Store-Api App
 
+### Update Service
+```sh
+docker pull storerestapi/store-client:stable
+docker compose -f docker-compose.prod.yaml up -d --no-deps store-webapp
+```
+
+### Log
+```sh
+docker logs -f --tail 50 store-webapp ## Client
+docker logs -f --tail 50 store-webserver ## Nginx Server
+```
+
 ### Create Docker Store-Api Network
 ```sh
 docker network create store-network
@@ -21,29 +33,18 @@ docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerest
 
 ### Build Docker Images with docker-compose
 ```sh
-docker-compose -f docker-compose.client.yml build
+docker compose -f docker-compose.prod.yaml build
 ```
 
 ### Up docker images
 ```sh
-docker-compose -f docker-compose.client.yml up -d
-docker-compose -f docker-compose.client.yml up --no-deps -d
-```
-
-### Service Update
-```sh
-docker pull storerestapi/store-client:latest
-docker-compose -f docker-compose.client.yml up --no-deps -d store-client
+docker compose -f docker-compose.prod.yaml up -d
+docker compose -f docker-compose.prod.yaml up -d --no-deps store-webapp
 ```
 
 ### Down docker images
 ```sh
-docker-compose -f docker-compose.client.yml down -v
-```
-
-### Update Service
-```sh
-docker-compose -f docker-compose.client.yml restart store-client
+docker compose -f docker-compose.prod.yaml down -v
 ```
 
 #### Ex.

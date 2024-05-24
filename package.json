@@ -11,7 +11,7 @@
     "test": "ng test",
     "dev:ssr": "ng run store-client:serve-ssr",
     "serve:ssr": "node dist/store-client/server/main.js",
-    "build:ssr": "ng build && ng run store-client:server",
+    "build:ssr": "ng build --configuration production --source-map=false && ng run store-client:server",
     "prerender": "ng run store-client:prerender"
   },
   "private": true,
