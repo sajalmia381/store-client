@@ -14,7 +14,10 @@
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Name</th>
           <td mat-cell *matCellDef="let element">
-            <a class="text-primary" [routerLink]="element?.slug">{{ element?.name }}</a>
+            <div class="flex flex-col">
+              <a class="text-primary" [routerLink]="element?.slug">{{ element?.name | titlecase }}</a>
+              <span class="mt-1 text-xs text-gray-700 dark:text-gray-300">Id: {{ element._id }}</span>
+            </div>
           </td>
         </ng-container>
 

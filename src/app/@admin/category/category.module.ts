@@ -5,11 +5,11 @@ import { CategoryRoutingModule } from './category-routing.module';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryFormComponent } from './category-form/category-form.component';
 import { CategoryDetailsComponent } from './category-details/category-details.component';
-import { StoreModule } from '@ngrx/store';
-import { CATEGORY_STATE_NAME } from './state/category.selectors';
-import { categoryReducer } from './state/category.reducer';
-import { CategoryEffects } from './state/category.effects';
-import { EffectsModule } from '@ngrx/effects';
+// import { StoreModule } from '@ngrx/store';
+// import { CATEGORY_STATE_NAME } from './state/category.selectors';
+// import { categoryReducer } from './state/category.reducer';
+// import { CategoryEffects } from './state/category.effects';
+// import { EffectsModule } from '@ngrx/effects';
 import { CategoryService } from './category.service';
 import { SharedModule } from '@shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
@@ -17,6 +17,8 @@ import { CategoryUpdateComponent } from './category-update/category-update.compo
 import { MatMenuModule } from '@angular/material/menu';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [CategoriesComponent, CategoryFormComponent, CategoryDetailsComponent, CategoryUpdateComponent],
@@ -26,6 +28,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     SharedModule,
     MatTableModule,
     MatMenuModule,
+    MatDialogModule,
+    MatSnackBarModule,
     ClipboardModule,
     ReactiveFormsModule
     // StoreModule.forFeature(CATEGORY_STATE_NAME, categoryReducer),

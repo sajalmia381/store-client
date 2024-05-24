@@ -9,6 +9,7 @@ import { getCategorySlugs, isLoaded } from './category.selectors';
 import { CategoryService } from '../category.service';
 import { Category } from '../category';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
+
 @Injectable()
 export class CategoryEffects {
   constructor(private store: Store, private action$: Actions, private categoryService: CategoryService) {}
@@ -64,12 +65,12 @@ export class CategoryEffects {
     this.action$.pipe(
       ofType(categoryAction.updateCategory),
       switchMap(action => {
-        return this.categoryService.updateCategory(action.category).pipe(
+        return this.categoryService.updateCategory(action.slug, action.payload).pipe(
           map(category => {
             const updatedCategory: Update<Category> = {
-              id: action.category._id,
+              id: action._id,
               changes: {
-                ...action.category
+                ...action.payload
               }
             };
             return categoryAction.updateCategorySuccess({ category: updatedCategory });

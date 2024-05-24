@@ -116,7 +116,7 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
     }
     const formData = this.productForm.value;
     this.store.dispatch(updateProduct({ product: formData }));
-    this.router.navigate(['/products']);
+    this.router.navigate(['/admin/products']);
   }
   fetchCategory(): void {
     this.store

@@ -1,1 +1,26 @@
-<p>category-update works!</p>
+<div class="bg-card rounded">
+  <h3 mat-dialog-title class="border-b dark:border-gray-700">Update Category</h3>
+  <mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="ti-form mt-4 pt-4">
+      <div class="flex flex-wrap -mx-3">
+        <div class="w-full px-3">
+          <label for="id_name"> Name * </label>
+          <input
+            formControlName="name"
+            [class.border-red-500]="form.get('name')?.touched && form.get('name')?.invalid"
+            id="id_name"
+            type="text"
+            placeholder="Category name"
+          />
+          <p *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')" class="text-red-500 text-xs italic">
+            Please fill out this field.
+          </p>
+        </div>
+      </div>
+      <div class="flex justify-end mt-2">
+        <button class="mr-4" type="button" mat-button mat-dialog-close>Cancel</button>
+        <button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">Update</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>

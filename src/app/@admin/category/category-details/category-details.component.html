@@ -4,8 +4,8 @@
     <!-- <div class="ml-auto"></div> -->
   </div>
   <div class="page__content">
-    <div class="pt-5 px-4" *ngIf="category$ | async as category; else emptyMessage">
-      <div class="container">
+    <div class="pt-5" *ngIf="category$ | async as category; else emptyMessage">
+      <div>
         <div>
           <h2>{{ category.name | titlecase }}</h2>
         </div>
