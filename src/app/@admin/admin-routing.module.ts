@@ -35,8 +35,8 @@ const childRoutes: Routes = [
     loadComponent: () => import('../errors/error-404/error-404.component').then(m => m.Error404Component),
     data: {
       title: '404 | Admin',
-      homeBtnLink: "/admin",
-      homeBtnLabel: "Go To Dashboard"
+      homeBtnLink: '/admin',
+      homeBtnLabel: 'Go To Dashboard'
     }
   }
 ];

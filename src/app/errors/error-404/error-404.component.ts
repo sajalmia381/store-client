@@ -10,7 +10,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   styleUrl: './error-404.component.scss'
 })
 export class Error404Component {
-  private route = inject(ActivatedRoute)
+  private route = inject(ActivatedRoute);
 
-  data = this.route.snapshot.data
+  data = this.route.snapshot.data;
 }

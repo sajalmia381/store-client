@@ -17,11 +17,11 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  private store = inject(Store)
+  private store = inject(Store);
   private document = inject(DOCUMENT);
   public loader = inject(LoadingBarService);
 
-  progress = 0
+  progress = 0;
   constructor(private title: Title, private meta: Meta) {
     // Set inititlizer value from localStorage
     afterNextRender(() => {
@@ -40,10 +40,10 @@ export class AppComponent implements OnInit {
       // Set theme value from localStorage
       const themeMode = localStorage.getItem('theme-mode');
       if (themeMode !== null) {
-        this.store.dispatch(setThemeMode({theme: themeMode}))
+        this.store.dispatch(setThemeMode({ theme: themeMode }));
       }
     });
-    
+
     this.store.select(getThemeMode).subscribe(theme => {
       const body = this.document.body;
       if (theme === 'dark') {
@@ -105,8 +105,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loader.value$.subscribe((val) => {
-      this.progress = val
-    })
+    this.loader.value$.subscribe(val => {
+      this.progress = val;
+    });
   }
 }

@@ -36,8 +36,8 @@ const rootRoutes: Routes = [
     loadComponent: () => import('./errors/error-404/error-404.component').then(m => m.Error404Component),
     data: {
       title: '404',
-      homeBtnLink: "/",
-      homeBtnLabel: "Go To Home"
+      homeBtnLink: '/',
+      homeBtnLabel: 'Go To Home'
     }
   }
 ];

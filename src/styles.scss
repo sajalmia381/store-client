@@ -53,7 +53,6 @@ $store-dark-theme: mat.define-dark-theme(
 // that you are using.
 @include mat.all-component-themes($store-theme);
 
-
 .dark {
   @include mat.all-component-colors($store-dark-theme);
 
@@ -67,13 +66,13 @@ $store-dark-theme: mat.define-dark-theme(
 // Override Material
 .mat-expansion-panel,
 .mat-mdc-table {
-  background-color: var(--bg-card)!important;
+  background-color: var(--bg-card) !important;
 }
 
 .mat-drawer {
-  background-color: var(--sidenav-bg-color)!important;
+  background-color: var(--sidenav-bg-color) !important;
   &-container {
-    background-color: var(--bg-color)!important;
+    background-color: var(--bg-color) !important;
   }
 }
 
@@ -91,7 +90,6 @@ $store-dark-theme: mat.define-dark-theme(
 @import './assets/scss/variables.scss';
 @import './assets/scss';
 
-
 html,
 body {
   height: 100%;
@@ -104,7 +102,7 @@ body {
   margin: 0;
   font-family: 'Roboto', 'Helvetica Neue', sans-serif;
   letter-spacing: 0.3px;
-  
+
   background-color: var(--bg-color);
   color: var(--text-color);
 }

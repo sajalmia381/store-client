@@ -32,7 +32,7 @@ export class CartFormComponent implements OnInit {
   private action$ = inject(Actions);
   public data?: any = inject(MAT_DIALOG_DATA);
   private snackbar = inject(MatSnackBar);
-  private dialogRef = inject(MatDialogRef<CartFormComponent>)
+  private dialogRef = inject(MatDialogRef<CartFormComponent>);
 
   users$ = this.store.select(getUsers).pipe(
     takeUntilDestroyed(),

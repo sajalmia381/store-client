@@ -3,8 +3,12 @@
     <div>
       <h1 class="text-5xl xl:text-7xl">404</h1>
       <h2 class="text-2xl xl:text-4xl mt-4">We lost this page</h2>
-      <p class="xl:text-xl mt-4 max-w-[627px]">We searched high and low but couldn’t find what you’re looking for. Let’s find a better place for you to go.</p>
-      <a class="mt-4" mat-raised-button [routerLink]="[data.homeBtnLink || '/']" routerLinkActive="router-link-active">{{data.homeBtnLabel || 'Go To Home'}}</a>
+      <p class="xl:text-xl mt-4 max-w-[627px]">
+        We searched high and low but couldn’t find what you’re looking for. Let’s find a better place for you to go.
+      </p>
+      <a class="mt-4" mat-raised-button [routerLink]="[data.homeBtnLink || '/']" routerLinkActive="router-link-active">{{
+        data.homeBtnLabel || 'Go To Home'
+      }}</a>
     </div>
   </section>
 </div>
