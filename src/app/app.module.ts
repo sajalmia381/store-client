@@ -10,7 +10,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from '../environments/environment';
 import { appReducer } from './store';
 import { RouterSerializer } from './store/router/router.serializer';
-import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { DefaultLayoutModule } from './default-layout/default-layout.module';
 import { MatSnackBarModule as MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
