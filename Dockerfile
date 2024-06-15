@@ -1,5 +1,5 @@
 ## STAGE 1: Build Container
-FROM node:18-slim as builder
+FROM node:20-slim as builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ COPY . .
 RUN npm run build:ssr
 
 ## STAGE 2: Production container
-FROM node:18-slim
+FROM node:20-slim
 
 ENV STORE_CLIENT_API_BASE_URL ''
 # Server Port
