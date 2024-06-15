@@ -21,6 +21,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
+import 'prismjs'
+
 @NgModule({
   declarations: [AppComponent],
   bootstrap: [AppComponent],
