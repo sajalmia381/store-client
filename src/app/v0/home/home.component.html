@@ -40,7 +40,12 @@
           <div *ngIf="isProductLoading" style="background-color: #272822; padding: 16px; margin: 8px 0; border-radius: 0.3em">
             <mat-spinner [strokeWidth]="2" [diameter]="20"></mat-spinner>
           </div>
-          <as-prism [showCopyBtn]="false" *ngIf="!isProductLoading" [code]="productRes ? (productRes | json) : '{}'" language="json"></as-prism>
+          <as-prism
+            [showCopyBtn]="false"
+            *ngIf="!isProductLoading"
+            [code]="productRes ? (productRes | json) : '{}'"
+            language="json"
+          ></as-prism>
         </div>
       </div>
     </div>

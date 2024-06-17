@@ -1,4 +1,4 @@
-const domain = 'STORE_CLIENT_API_BASE_URL';
+const domain = 'https://api.storerestapi.com';
 
 export const environment = {
   production: true,

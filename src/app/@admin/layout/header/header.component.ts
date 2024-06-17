@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleTheme(): void {
-    const theme = this.themeMode === 'dark' ? 'light' : 'dark'
+    const theme = this.themeMode === 'dark' ? 'light' : 'dark';
     localStorage.setItem('theme-mode', theme);
     this.store.dispatch(setThemeMode({ theme }));
   }

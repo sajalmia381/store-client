@@ -73,8 +73,8 @@ const resourceRoute: Routes = [
     loadComponent: () => import('../../errors/error-404/error-404.component').then(m => m.Error404Component),
     data: {
       title: '404 | Documentation',
-      homeBtnLink: "/docs",
-      homeBtnLabel: "Go To Resources"
+      homeBtnLink: '/docs',
+      homeBtnLabel: 'Go To Resources'
     }
   }
 ];

@@ -21,7 +21,7 @@ export class UserEffects {
       mergeMap(([action, loaded]) => {
         return this.userService.getUsers().pipe(
           map(users => {
-            console.log(users);
+            // console.log('users', users);
             return userAction.loadUsersSuccess({ users });
           })
         );

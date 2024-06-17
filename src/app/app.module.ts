@@ -10,7 +10,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from '../environments/environment';
 import { appReducer } from './store';
 import { RouterSerializer } from './store/router/router.serializer';
-import { HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { DefaultLayoutModule } from './default-layout/default-layout.module';
 import { MatSnackBarModule as MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
@@ -21,8 +21,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
+import 'prismjs'
+
 @NgModule({
   declarations: [AppComponent],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,12 +34,9 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production, connectInZone: true }),
     StoreRouterConnectingModule.forRoot({ serializer: RouterSerializer }),
     EffectsModule.forRoot([AuthEffects]),
-
     NgxGoogleAnalyticsModule.forRoot(environment.GA),
     // NgxGoogleAnalyticsRouterModule.forRoot({ exclude: ['/admin/*'] }),
-
     DefaultLayoutModule,
-    HttpClientModule,
     MatSnackBarModule,
     MatProgressBarModule,
     LoadingBarRouterModule
@@ -52,15 +52,12 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
       useClass: ErrorsInterceptor,
       multi: true
     },
-    provideClientHydration(
-      // withHttpTransferCacheOptions({
-      //   includePostRequests: true,
-      // }),
-    ),
-    provideHttpClient(
-      withFetch(),
-    ),
-  ],
-  bootstrap: [AppComponent]
+    provideClientHydration(),
+    // withHttpTransferCacheOptions({
+    //   includePostRequests: true,
+    // }),
+    provideHttpClient(withFetch()),
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule {}

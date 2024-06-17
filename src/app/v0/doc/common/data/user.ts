@@ -92,7 +92,7 @@ export const userDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-	output: `{
+    output: `{
 		"status": 202,
 		"message": "Success! User updated",
 		"data": {
@@ -111,7 +111,7 @@ export const userDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-	output: `{
+    output: `{
 		"status": 202,
 		"message": "Success! User deleted"
 	  }`

@@ -16,4 +16,4 @@ echo '[INFO] Config Initialization Completed'
 
 echo '[INFO] Starting Node Server'
 
-node /app/dist/store-client/server/main.js
+node /app/dist/store-client/server/server.mjs
