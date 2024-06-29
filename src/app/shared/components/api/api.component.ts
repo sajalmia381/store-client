@@ -6,7 +6,7 @@ import { IApi } from './api.interfaces';
   encapsulation: ViewEncapsulation.None,
   template: `
     <h4 class="ti-api__title">
-      {{ data.name }}
+      {{ data.name | titlecase }}
     </h4>
     @if (data.description) {
     <app-api-description>{{ data.description }}</app-api-description>
