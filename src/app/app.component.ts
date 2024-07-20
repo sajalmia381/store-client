@@ -47,14 +47,10 @@ export class AppComponent implements OnInit {
     this.store.select(getThemeMode).subscribe(theme => {
       const body = this.document.body;
       if (theme === 'dark') {
-        if (body.classList.contains('light')) {
-          body.classList.remove('light');
-        }
+        if (body.classList.contains('light')) body.classList.remove('light');
         body.classList.add('dark');
       } else {
-        if (body.classList.contains('dark')) {
-          body.classList.remove('dark');
-        }
+        if (body.classList.contains('dark')) body.classList.remove('dark');
         body.classList.add('light');
       }
     });
