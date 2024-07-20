@@ -4,7 +4,7 @@ import { Component, ViewChild, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router, Scroll } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
+import { delay, filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-doc',
@@ -59,14 +59,13 @@ export class DocComponent {
           }
           this.isResourceFeatureRoute = !!route.snapshot.url.length;
           return route.snapshot.fragment;
-        })
+        }),
+        delay(100)
       )
       .subscribe(fragment => {
         const sidenavContent = <HTMLElement>this.document.querySelector('.doc-layout-content');
         if (fragment && sidenavContent) {
           const target = this.document.getElementById(fragment);
-          // console.log('offsetTop', target?.offsetTop);
-          // console.log('scrollHeight', target?.scrollHeight);
           if (target) {
             (<HTMLElement>this.document.querySelector('.doc-layout-content')).scrollTop =
               target.offsetTop + (<HTMLElement>target?.offsetParent).offsetTop - 20;
