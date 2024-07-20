@@ -5,7 +5,7 @@ const apiBaseUrl = environment.apiBaseUrl;
 export const productDoc: Record<string, IApi> = {
   list: {
     name: 'Get All Products',
-    description: 'ℹ️ Available filter query params: q: string, categoryId: string, userId: string',
+    description: 'Available filter query params: ?q=string&categoryId=string&userId=string',
     code: `fetch('${apiBaseUrl}/products')
         .then(response => response.json())
         .then(json => console.log(json))`,

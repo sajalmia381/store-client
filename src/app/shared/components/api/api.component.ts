@@ -16,7 +16,7 @@ import { IApi } from './api.interfaces';
     @if (data.output) {
     <button class="mt-3" (click)="showOutput = !showOutput" mat-stroked-button>{{ showOutput ? 'Hide Output' : 'Show Output' }}</button>
     @if (showOutput) {
-    <as-prism class="block border dark:border-gray-700 rounded mt-3" [code]="data.output" language="json"></as-prism>
+    <as-prism [showCopyBtn]="false" class="block border dark:border-gray-700 rounded mt-3" [code]="data.output" language="json"></as-prism>
     } }
   `,
   styles: [
