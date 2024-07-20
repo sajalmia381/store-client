@@ -4,7 +4,7 @@ const apiBaseUrl = environment.apiBaseUrl;
 
 export const todoDoc: Record<string, IApi> = {
   list: {
-    name: 'Get all todos',
+    name: 'Get All Todos',
     code: `fetch('${apiBaseUrl}/todos')
         .then(response => response.json())
         .then(json => console.log(json))`,
@@ -37,7 +37,7 @@ export const todoDoc: Record<string, IApi> = {
     }`
   },
   create: {
-    name: 'Add new todo',
+    name: 'Add New Todo',
     code: `fetch('${apiBaseUrl}/todos', 
         {
           method: 'POST',
@@ -66,7 +66,7 @@ export const todoDoc: Record<string, IApi> = {
     }`
   },
   update: {
-    name: 'Update todo',
+    name: 'Update Todo',
     code: `fetch('${apiBaseUrl}/todos/654fbbee25a4902cc1fc7032', 
         {
           method: 'PUT',
@@ -95,7 +95,7 @@ export const todoDoc: Record<string, IApi> = {
     }`
   },
   destroy: {
-    name: 'Delete todo',
+    name: 'Delete Todo',
     code: `fetch('${apiBaseUrl}/todos/654fbbee25a4902cc1fc7032',
         {
           method: 'DELETE',

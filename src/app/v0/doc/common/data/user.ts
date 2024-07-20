@@ -4,7 +4,7 @@ const apiBaseUrl = environment.apiBaseUrl;
 
 export const userDoc: Record<string, IApi> = {
   list: {
-    name: 'Get all users',
+    name: 'Get All Users',
     code: `fetch('${apiBaseUrl}/users')
         .then(response => response.json())
         .then(json => console.log(json))`,
@@ -27,7 +27,7 @@ export const userDoc: Record<string, IApi> = {
     }`
   },
   description: {
-    name: 'Get single user',
+    name: 'Get Single User',
     code: `fetch('${apiBaseUrl}/users/612e4851345dcc333ac6cb24')
         .then(response => response.json())
         .then(json => console.log(json))`,
@@ -47,7 +47,7 @@ export const userDoc: Record<string, IApi> = {
     }`
   },
   create: {
-    name: 'Add new user',
+    name: 'Add New User',
     code: `fetch('${apiBaseUrl}/users', 
         {
           method: 'POST',
@@ -78,7 +78,7 @@ export const userDoc: Record<string, IApi> = {
     }`
   },
   update: {
-    name: 'Update user',
+    name: 'Update User',
     code: `fetch('${apiBaseUrl}/users/612e4851345dcc333ac6cb24',
         {
           method: 'PUT',
@@ -104,7 +104,7 @@ export const userDoc: Record<string, IApi> = {
 	  }`
   },
   destroy: {
-    name: 'Delete user',
+    name: 'Delete User',
     code: `fetch('${apiBaseUrl}/users/612e4851345dcc333ac6cb24',
         {
           method: 'DELETE',

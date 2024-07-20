@@ -4,7 +4,7 @@ const apiBaseUrl = environment.apiBaseUrl;
 
 export const cartDoc: Record<string, IApi> = {
   list: {
-    name: 'Get all carts',
+    name: 'Get All Carts',
     code: `fetch('${apiBaseUrl}/carts')
         .then(response => response.json())
         .then(json => console.log(json))`,
@@ -73,7 +73,7 @@ export const cartDoc: Record<string, IApi> = {
     }`
   },
   create: {
-    name: 'Add new cart',
+    name: 'Add New Cart',
     code: `fetch('${apiBaseUrl}/carts', 
         {
           method: 'POST',
@@ -98,7 +98,7 @@ export const cartDoc: Record<string, IApi> = {
         .then(json => console.log(json))`
   },
   update: {
-    name: 'Update cart',
+    name: 'Update Cart',
     code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15',
         {
           method: 'PUT',
@@ -150,7 +150,7 @@ export const cartDoc: Record<string, IApi> = {
     }`
   },
   destroy: {
-    name: 'Delete cart',
+    name: 'Delete Cart',
     code: `fetch('${apiBaseUrl}/carts/6572b9c1f610af2847fcba15',
         {
           method: 'DELETE',

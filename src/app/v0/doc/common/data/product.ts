@@ -4,7 +4,7 @@ const apiBaseUrl = environment.apiBaseUrl;
 
 export const productDoc: Record<string, IApi> = {
   list: {
-    name: 'Get all products',
+    name: 'Get All Products',
     description: 'ℹ️ Available filter query params: q: string, categoryId: string, userId: string',
     code: `fetch('${apiBaseUrl}/products')
         .then(response => response.json())
@@ -34,7 +34,7 @@ export const productDoc: Record<string, IApi> = {
     }`
   },
   description: {
-    name: 'Get single product',
+    name: 'Get Single Product',
     code: `fetch('${apiBaseUrl}/products/running-sneaker')
         .then(response => response.json())
         .then(json => console.log(json))`,
@@ -63,7 +63,7 @@ export const productDoc: Record<string, IApi> = {
     }`
   },
   pagination: {
-    name: 'Pagination results',
+    name: 'Pagination Results',
     code: `fetch('${apiBaseUrl}/products?limit=10&page=1')
         .then(response => response.json())
         .then(json => console.log(json))`,
@@ -101,7 +101,7 @@ export const productDoc: Record<string, IApi> = {
     }`
   },
   create: {
-    name: 'Create product',
+    name: 'Create Product',
     code: `fetch('${apiBaseUrl}/products',
         {
           method: 'POST',
@@ -132,7 +132,7 @@ export const productDoc: Record<string, IApi> = {
     }`
   },
   update: {
-    name: 'Update product',
+    name: 'Update Product',
     code: `fetch('${apiBaseUrl}/products/running-sneaker',
         {
           method: 'PUT',
@@ -163,7 +163,7 @@ export const productDoc: Record<string, IApi> = {
     }`
   },
   destroy: {
-    name: 'Delete product',
+    name: 'Delete Product',
     code: `fetch('${apiBaseUrl}/products/running-sneaker',
         {
           method: 'DELETE',
