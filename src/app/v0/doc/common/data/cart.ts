@@ -10,7 +10,7 @@ export const cartDoc: Record<string, IApi> = {
         .then(json => console.log(json))`,
     output: `{
       "status": 200,
-      "message": "Success, Cart list",
+      "message": "Success! Cart list",
       "data": [
         {
           "_id": "6572b6bcf610af2847fcb9d0",
@@ -46,7 +46,7 @@ export const cartDoc: Record<string, IApi> = {
         .then(json => console.log(json))`,
     output: `{
       "status": 200,
-      "message": "Success, Cart Description",
+      "message": "Success! Cart description",
       "data": {
         "_id": "6572b9c1f610af2847fcba15",
         "user": {

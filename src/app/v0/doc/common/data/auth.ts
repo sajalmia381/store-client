@@ -70,7 +70,7 @@ export const authDoc: Record<string, IApi> = {
         .then(json => console.log(json))`,
     output: `{
         "status": 201,
-        "message": "User created",
+        "message": "Success! New Token geneated",
         "data": {
           "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY2NGY3NWY3N2VmZTlkYzJmZWFiMTMxZiIsIm5hbWUiOiJBbGV4IFBpIiwicm9sZSI6IlJPTEVfQ1VTVE9NRVIiLCJlbWFpbCI6ImV4YW1wbGVAbWFpbC5jb20ifSwiaWF0IjoxNzE2NDgzNTc1LCJleHAiOjE3MTY0ODQ0NzV9.qrexhDpWknEObE1qrA_s4iALP-C4qW9sOnuo-lcBB8Y",
           "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjY2NGY3NWY3N2VmZTlkYzJmZWFiMTMxZiIsIm5hbWUiOiJBbGV4IFBpIiwicm9sZSI6IlJPTEVfQ1VTVE9NRVIiLCJlbWFpbCI6ImV4YW1wbGVAbWFpbC5jb20ifSwiaWF0IjoxNzE2NDgzNTc1LCJleHAiOjE3MTcwODgzNzV9.QcYOn2Xtr-zyLT4WTk3Z1JvKVCvrxk1hW__8wAIogrM"

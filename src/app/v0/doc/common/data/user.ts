@@ -10,7 +10,7 @@ export const userDoc: Record<string, IApi> = {
         .then(json => console.log(json))`,
     output: `{
       "status": 200,
-      "message": "Success",
+      "message": "Success! User List",
       "data": [
         {
           "role": "ROLE_CUSTOMER",
@@ -33,7 +33,7 @@ export const userDoc: Record<string, IApi> = {
         .then(json => console.log(json))`,
     output: `{
       "status": 200,
-      "message": "Success: User description.",
+      "message": "Success! User description",
       "data": {
         "role": "ROLE_CUSTOMER",
         "_id": "612e4851345dcc333ac6cb24",
@@ -93,14 +93,14 @@ export const userDoc: Record<string, IApi> = {
         .then(response => response.json())
         .then(json => console.log(json))`,
     output: `{
-		"status": 202,
-		"message": "Success! User updated",
-		"data": {
-		  "name": "Alex Pi",
-		  "email": "robertgonzalez@gmail.com",
-		  "number": "12025550108",
-		  "role": "ROLE_CUSTOMER"
-		}
+    "status": 202,
+    "message": "Success! User updated",
+    "data": {
+      "name": "Alex Pi",
+      "email": "robertgonzalez@gmail.com",
+      "number": "12025550108",
+      "role": "ROLE_CUSTOMER"
+    }
 	  }`
   },
   destroy: {
@@ -112,8 +112,8 @@ export const userDoc: Record<string, IApi> = {
         .then(response => response.json())
         .then(json => console.log(json))`,
     output: `{
-		"status": 202,
-		"message": "Success! User deleted"
+    "status": 202,
+    "message": "Success! User deleted"
 	  }`
   }
 };

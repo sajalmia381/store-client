@@ -30,7 +30,7 @@ export const productDoc: Record<string, IApi> = {
         ...
       ],
       "status": 200,
-      "message": "Success"
+      "message": "Success! Product list"
     }`
   },
   description: {
@@ -59,7 +59,7 @@ export const productDoc: Record<string, IApi> = {
         "slug": "..."
       },
       "status": 200,
-      "message": "Success! Product Description"
+      "message": "Success! Product description"
     }`
   },
   pagination: {
@@ -97,7 +97,7 @@ export const productDoc: Record<string, IApi> = {
         ...
       ],
       "status": 200,
-      "message": "Success: Product list with pagination"
+      "message": "Success! Product list with pagination"
     }`
   },
   create: {
@@ -128,7 +128,7 @@ export const productDoc: Record<string, IApi> = {
         "createdBy": "612e48e3345dcc333ac6cb2b"
       },
       "status": 201,
-      "message": "Success! product created"
+      "message": "Success! Product created"
     }`
   },
   update: {
@@ -159,7 +159,7 @@ export const productDoc: Record<string, IApi> = {
         "createdBy": "612e48e3345dcc333ac6cb2b"
       },
       "status": 201,
-      "message": "Success! product created"
+      "message": "Success! Product updated"
     }`
   },
   destroy: {

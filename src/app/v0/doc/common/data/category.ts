@@ -52,7 +52,7 @@ export const categoryDoc: Record<string, IApi> = {
           "slug": "phone-and-tablets"
       },
       "status": 200,
-      "message": "Success! Category found"
+      "message": "Success! Category description"
   }`
   },
   create: {

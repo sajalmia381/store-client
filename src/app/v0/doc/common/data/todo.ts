@@ -33,7 +33,7 @@ export const todoDoc: Record<string, IApi> = {
         ...
       ],
       "status": 200,
-      "message": "Success! Todo List"
+      "message": "Success! Todo list"
     }`
   },
   create: {
@@ -91,7 +91,7 @@ export const todoDoc: Record<string, IApi> = {
         "updatedAt": "2023-11-11T17:37:50.481Z"
       },
       "status": 202,
-      "message": "Success! todo updated"
+      "message": "Success! Todo updated"
     }`
   },
   destroy: {
