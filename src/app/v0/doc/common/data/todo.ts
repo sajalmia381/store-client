@@ -52,18 +52,18 @@ export const todoDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-    output: `{
-      "data": {
-        "_id": "664f76cf7efe9d60afab1325",
-        "title": "Conduct code reviews regularly",
-        "completed": false,
-        "status": "TODO",
-        "description": "Some description",
-        "createdBy": "612e4959345dcc333ac6cb35"
+    output: {
+      data: {
+        _id: '664f76cf7efe9d60afab1325',
+        title: 'Conduct code reviews regularly',
+        completed: false,
+        status: 'TODO',
+        description: 'Some description',
+        createdBy: '612e4959345dcc333ac6cb35'
       },
-      "status": 201,
-      "message": "Success! Todo created"
-    }`
+      status: 201,
+      message: 'Success! Todo created'
+    }
   },
   update: {
     name: 'Update Todo',
@@ -80,19 +80,19 @@ export const todoDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-    output: `{
-      "data": {
-        "_id": "654fbbee25a4902cc1fc7032",
-        "title": "Set up version control system (e.g., Git)",
-        "status": "IN_PROGRESS",
-        "description": "Update description",
-        "completed": false,
-        "createdAt": "2023-11-11T17:37:50.481Z",
-        "updatedAt": "2023-11-11T17:37:50.481Z"
+    output: {
+      data: {
+        _id: '654fbbee25a4902cc1fc7032',
+        title: 'Set up version control system (e.g., Git)',
+        status: 'IN_PROGRESS',
+        description: 'Update description',
+        completed: false,
+        createdAt: '2023-11-11T17:37:50.481Z',
+        updatedAt: '2023-11-11T17:37:50.481Z'
       },
-      "status": 202,
-      "message": "Success! Todo updated"
-    }`
+      status: 202,
+      message: 'Success! Todo updated'
+    }
   },
   destroy: {
     name: 'Delete Todo',
@@ -102,9 +102,9 @@ export const todoDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-    output: `{
-      "status": 202,
-      "message": "Success! Todo deleted"
-    }`
+    output: {
+      status: 202,
+      message: 'Success! Todo deleted'
+    }
   }
 };

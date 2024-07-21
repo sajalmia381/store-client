@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { IApi } from './api.interfaces';
 
 @Component({
@@ -16,7 +16,7 @@ import { IApi } from './api.interfaces';
     @if (data.output) {
     <button class="mt-3" (click)="showOutput = !showOutput" mat-stroked-button>{{ showOutput ? 'Hide Output' : 'Show Output' }}</button>
     @if (showOutput) {
-    <as-prism [showCopyBtn]="false" class="block border dark:border-gray-700 rounded mt-3" [code]="data.output" language="json"></as-prism>
+    <as-prism [showCopyBtn]="false" class="block border dark:border-gray-700 rounded mt-3" [code]="output" language="json"></as-prism>
     } }
   `,
   styles: [
@@ -37,7 +37,17 @@ import { IApi } from './api.interfaces';
     class: 'ti-api block'
   }
 })
-export class ApiComponent {
+export class ApiComponent implements OnInit {
   @Input({ required: true }) public data!: IApi;
   showOutput: boolean = false;
+
+  output!: string;
+
+  ngOnInit(): void {
+    if (this.data.output && typeof this.data.output !== 'string') {
+      this.output = JSON.stringify(this.data.output, null, 2);
+    } else {
+      this.output = this.data.output as string;
+    }
+  }
 }

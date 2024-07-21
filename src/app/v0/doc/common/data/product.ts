@@ -38,29 +38,29 @@ export const productDoc: Record<string, IApi> = {
     code: `fetch('${apiBaseUrl}/products/running-sneaker')
         .then(response => response.json())
         .then(json => console.log(json))`,
-    output: `{
-      "data": {
-        "_id": "...",
-        "title": "..",
-        "price": 200,
-        "category": {
-          "_id": "...",
-          "name": "...",
-          "slug": "..."
+    output: {
+      data: {
+        _id: '...',
+        title: '..',
+        price: 200,
+        category: {
+          _id: '...',
+          name: '...',
+          slug: '...'
         },
-        "description": "...",
-        "createdBy": {
-          "role": "...",
-          "_id": "...",
-          "name": "..."
+        description: '...',
+        createdBy: {
+          role: '...',
+          _id: '...',
+          name: '...'
         },
-        "createdAt": "...",
-        "updatedAt": "...",
-        "slug": "..."
+        createdAt: '...',
+        updatedAt: '...',
+        slug: '...'
       },
-      "status": 200,
-      "message": "Success! Product description"
-    }`
+      status: 200,
+      message: 'Success! Product description'
+    }
   },
   pagination: {
     name: 'Pagination Results',
@@ -117,19 +117,19 @@ export const productDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-    output: `{
-      "data": {
-        "_id": "6582fac0f66e0b31fbc635ec",
-        "title": "Men Boxer Sneakers For Men  (Black)",
-        "slug": "men-boxer-sneakers-for-men-(black)",
-        "price": 799,
-        "category": "612e42d755b07f20de9ec6a5",
-        "description": "Lorem Ipsum is simply dummy text of the printing",
-        "createdBy": "612e48e3345dcc333ac6cb2b"
+    output: {
+      data: {
+        _id: '6582fac0f66e0b31fbc635ec',
+        title: 'Men Boxer Sneakers For Men  (Black)',
+        slug: 'men-boxer-sneakers-for-men-(black)',
+        price: 799,
+        category: '612e42d755b07f20de9ec6a5',
+        description: 'Lorem Ipsum is simply dummy text of the printing',
+        createdBy: '612e48e3345dcc333ac6cb2b'
       },
-      "status": 201,
-      "message": "Success! Product created"
-    }`
+      status: 201,
+      message: 'Success! Product created'
+    }
   },
   update: {
     name: 'Update Product',
@@ -148,19 +148,19 @@ export const productDoc: Record<string, IApi> = {
         })
       .then(response => response.json())
       .then(json => console.log(json))`,
-    output: `{
-      "data": {
-        "_id": "6582fac0f66e0b31fbc635ec",
-        "title": "Men Boxer Sneakers For Men  (Black)",
-        "slug": "men-boxer-sneakers-for-men-(black)",
-        "price": 799,
-        "category": "612e42d755b07f20de9ec6a5",
-        "description": "Lorem Ipsum is simply dummy text of the printing",
-        "createdBy": "612e48e3345dcc333ac6cb2b"
+    output: {
+      data: {
+        _id: '6582fac0f66e0b31fbc635ec',
+        title: 'Men Boxer Sneakers For Men  (Black)',
+        slug: 'men-boxer-sneakers-for-men-(black)',
+        price: 799,
+        category: '612e42d755b07f20de9ec6a5',
+        description: 'Lorem Ipsum is simply dummy text of the printing',
+        createdBy: '612e48e3345dcc333ac6cb2b'
       },
-      "status": 201,
-      "message": "Success! Product updated"
-    }`
+      status: 201,
+      message: 'Success! Product updated'
+    }
   },
   destroy: {
     name: 'Delete Product',
@@ -170,9 +170,9 @@ export const productDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-    output: `{
-      "status": 202,
-      "message":"Success! Product deleted"
-    }`
+    output: {
+      status: 202,
+      message: 'Success! Product deleted'
+    }
   }
 };

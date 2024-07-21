@@ -114,40 +114,40 @@ export const cartDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-    output: `{
-      "data": {
-        "_id": "6572b9c1f610af2847fcba15",
-        "user": {
-          "_id": "61e944df2cefb5a72936696a",
-          "name": "Torine Walker",
-          "email": "torinewalker@gmail.com"
+    output: {
+      data: {
+        _id: '6572b9c1f610af2847fcba15',
+        user: {
+          _id: '61e944df2cefb5a72936696a',
+          name: 'Torine Walker',
+          email: 'torinewalker@gmail.com'
         },
-        "products": [
+        products: [
           {
-            "product": {
-              "_id": "61ab42d00f34753bcedfa79e",
-              "title": "cotton pullover embroidery sweatshirt women",
-              "slug": "cotton-pullover-embroidery-sweatshirt-women",
-              "price": 100
+            product: {
+              _id: '61ab42d00f34753bcedfa79e',
+              title: 'cotton pullover embroidery sweatshirt women',
+              slug: 'cotton-pullover-embroidery-sweatshirt-women',
+              price: 100
             },
-            "quantity": 5
+            quantity: 5
           },
           {
-            "product": {
-              "_id": "61ab42e90f34753bcedfa7a2",
-              "title": "breast button belt sur collar winter coat women",
-              "slug": "breast-button-belt-sur-collar-winter-coat-women",
-              "price": 120
+            product: {
+              _id: '61ab42e90f34753bcedfa7a2',
+              title: 'breast button belt sur collar winter coat women',
+              slug: 'breast-button-belt-sur-collar-winter-coat-women',
+              price: 120
             },
-            "quantity": 3
+            quantity: 3
           }
         ],
-        "createdAt": "2023-12-08T06:37:53.271Z",
-        "updatedAt": "2023-12-08T06:37:53.271Z"
+        createdAt: '2023-12-08T06:37:53.271Z',
+        updatedAt: '2023-12-08T06:37:53.271Z'
       },
-      "status": 200,
-      "message": "Success! Cart updated"
-    }`
+      status: 200,
+      message: 'Success! Cart updated'
+    }
   },
   destroy: {
     name: 'Delete Cart',
@@ -157,9 +157,9 @@ export const cartDoc: Record<string, IApi> = {
         })
         .then(response => response.json())
         .then(json => console.log(json))`,
-    output: `{
-      "status": 202,
-      "message": "Success! Cart deleted"
-    }`
+    output: {
+      status: 202,
+      message: 'Success! Cart deleted'
+    }
   }
 };
