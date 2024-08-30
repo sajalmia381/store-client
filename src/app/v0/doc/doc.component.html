@@ -4,19 +4,22 @@
   </mat-sidenav>
   <mat-sidenav-content class="doc-layout-content">
     <div class="doc__content">
-      <div class="mb-12" *ngIf="isResourceFeatureRoute">
-        <h4 class="text-3xl">Documentation</h4>
-        <p class="mt-3">You can copy paste the code in your browser console to quickly test Store API.</p>
-      </div>
+      @if (isResourceFeatureRoute) {
+        <div class="mb-12">
+          <h4 class="text-3xl">Documentation</h4>
+          <p class="mt-3">You can copy paste the code in your browser console to quickly test Store API.</p>
+        </div>
+      }
       <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>
-    <div
-      (click)="toggleSidenav()"
-      *ngIf="isSmallDevice"
-      class="opacity-50 hover:opacity-100 fixed left-0 inset-y-1/2 bg-yellow-900 h-10 w-10 flex items-center justify-center"
-    >
-      <mat-icon>list</mat-icon>
-    </div>
+    @if (isSmallDevice) {
+      <div
+        (click)="toggleSidenav()"
+        class="opacity-50 hover:opacity-100 fixed left-0 inset-y-1/2 bg-yellow-900 h-10 w-10 flex items-center justify-center"
+        >
+        <mat-icon>list</mat-icon>
+      </div>
+    }
   </mat-sidenav-content>
 </mat-sidenav-container>

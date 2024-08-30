@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-delete-conformation',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule, MatProgressBarModule, MatIconModule],
+  imports: [MatDialogModule, MatButtonModule, MatProgressBarModule, MatIconModule],
   templateUrl: './delete-conformation.component.html',
   styleUrls: ['./delete-conformation.component.scss']
 })

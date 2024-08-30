@@ -5,16 +5,17 @@
       <!-- <div class="ml-auto"></div> -->
     </div>
     <div class="page__table">
-      <div *ngIf="user$ | async as user; else emptyUser">
-        <h2>User name: {{ user.name }}</h2>
-        <p>Email: {{ user.email }}</p>
-      </div>
-      <ng-template #emptyUser>
+      @if (user$ | async; as user) {
+        <div>
+          <h2>User name: {{ user.name }}</h2>
+          <p>Email: {{ user.email }}</p>
+        </div>
+      } @else {
         <div class="flex items-center flex-col">
           <h4>Nothing found!</h4>
           <a mat-flat-button color="accent" routerLink="/users">Back to user list</a>
         </div>
-      </ng-template>
+      }
     </div>
   </div>
 </div>

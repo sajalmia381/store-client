@@ -11,10 +11,12 @@
             id="id_title"
             type="text"
             placeholder="Todo title"
-          />
-          <p *ngIf="form.get('title')?.touched && form.get('title')?.hasError('required')" class="text-red-500 text-xs italic">
-            Please fill out this field.
-          </p>
+            />
+          @if (form.get('title')?.touched && form.get('title')?.hasError('required')) {
+            <p class="text-red-500 text-xs italic">
+              Please fill out this field.
+            </p>
+          }
         </div>
       </div>
       <div class="flex justify-end mt-2">

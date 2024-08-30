@@ -12,7 +12,7 @@
         <a
           routerLink="/docs"
           class="items-center justify-center px-5 py-3 border border-transparent text-lg font-semibold rounded-md bg-yellow-400"
-        >
+          >
           <span class="flex items-center">Read Docs <mat-icon class="ml-2">article</mat-icon></span>
         </a>
       </div>
@@ -30,10 +30,14 @@
           <button (click)="fetchProduct()" type="button" class="bg-primary text-black py-1 px-3 mt-2 rounded text-sm">Run script</button>
         </div>
         <div class="px-2">
-          <div *ngIf="isProductLoading" style="background-color: #272822; padding: 16px; margin: 8px 0; border-radius: 0.3em">
-            <mat-spinner [strokeWidth]="2" [diameter]="20"></mat-spinner>
-          </div>
-          <as-prism *ngIf="!isProductLoading" [code]="productRes ? (productRes | json) : '{}'" language="typescript"></as-prism>
+          @if (isProductLoading) {
+            <div style="background-color: #272822; padding: 16px; margin: 8px 0; border-radius: 0.3em">
+              <mat-spinner [strokeWidth]="2" [diameter]="20"></mat-spinner>
+            </div>
+          }
+          @if (!isProductLoading) {
+            <as-prism [code]="productRes ? (productRes | json) : '{}'" language="typescript"></as-prism>
+          }
         </div>
       </div>
     </div>
@@ -47,7 +51,7 @@
             target="_blank"
             [href]="apiBaseUrl + '/users'"
             class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700"
-          >
+            >
             <div class="mr-2">
               <div>User</div>
             </div>
@@ -57,7 +61,7 @@
             target="_blank"
             [href]="apiBaseUrl + '/products'"
             class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4 border-b dark:border-gray-700"
-          >
+            >
             <div class="mr-2">
               <div>Product</div>
             </div>
@@ -67,7 +71,7 @@
             target="_blank"
             [href]="apiBaseUrl + '/categories'"
             class="flex justify-between items-center hover:bg-indigo-100 dark:hover:bg-gray-700 py-4 px-4"
-          >
+            >
             <div class="mr-2">
               <div>Category</div>
             </div>
@@ -154,10 +158,10 @@
         <a routerLink="/docs" class="text-indigo-400 mt-4 inline-block">Check all APIs documentation</a>
       </div>
       <!-- <div class="mt-16 px-4">
-        <a href="https://namecheap.pxf.io/c/1287154/1184526/5618" target="_top" id="1184526"><img src="//a.impactradius-go.com/display-ad/5618-1184526" border="0" alt="" width="100%"/></a><img height="0" width="0" src="https://namecheap.pxf.io/i/1287154/1184526/5618" style="position:absolute;visibility:hidden;" border="0" />
-      </div> -->
-    </div>
+      <a href="https://namecheap.pxf.io/c/1287154/1184526/5618" target="_top" id="1184526"><img src="//a.impactradius-go.com/display-ad/5618-1184526" border="0" alt="" width="100%"/></a><img height="0" width="0" src="https://namecheap.pxf.io/i/1287154/1184526/5618" style="position:absolute;visibility:hidden;" border="0" />
+    </div> -->
   </div>
+</div>
 </div>
 <!-- Footer -->
 <app-footer></app-footer>

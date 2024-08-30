@@ -9,15 +9,19 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         class="menu-item w-full flex items-center justify-start"
-      >
-        <mat-icon class="menu-item__icon" *ngIf="node?.iconName">{{ node.iconName }}</mat-icon>
+        >
+        @if (node?.iconName) {
+          <mat-icon class="menu-item__icon">{{ node.iconName }}</mat-icon>
+        }
         {{ node.name }}
       </a>
     </cdk-nested-tree-node>
     <!-- This is the tree node template for expandable nodes -->
     <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: hasChild" class="tree-node">
       <button class="menu-item flex items-center w-full" [attr.aria-label]="'Toggle ' + node.name" cdkTreeNodeToggle>
-        <mat-icon class="menu-item__icon" *ngIf="node?.iconName">{{ node.iconName }}</mat-icon>
+        @if (node?.iconName) {
+          <mat-icon class="menu-item__icon">{{ node.iconName }}</mat-icon>
+        }
         <span>{{ node.name }}</span>
         <mat-icon class="mat-icon-rtl-mirror ml-auto menu-item__icon--toggler">
           {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
@@ -37,7 +41,7 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       class="menu-item w-full flex items-center justify-start"
-    >
+      >
       <mat-icon class="menu-item__icon">home</mat-icon>
       Home
     </a>
@@ -46,7 +50,7 @@
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       class="menu-item w-full flex items-center justify-start"
-    >
+      >
       <mat-icon class="menu-item__icon">assignment</mat-icon>
       APIs Documentation
     </a>

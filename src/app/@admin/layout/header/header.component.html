@@ -2,16 +2,16 @@
   <div class="flex flex-wrap items-center gap-4">
     <div class="flex-grow flex items-center">
       @if (isSmallDevice) {
-      <button (click)="onToggleSidenav()" type="button" mat-icon-button class="bg-blue-700 mr-3">
-        <mat-icon>menu_open</mat-icon>
-      </button>
-      <a routerLink="/admin" mat-icon-button class="bg-blue-700">
-        <mat-icon>account_box</mat-icon>
-      </a>
+        <button (click)="onToggleSidenav()" type="button" mat-icon-button class="bg-blue-700 mr-3">
+          <mat-icon>menu_open</mat-icon>
+        </button>
+        <a routerLink="/admin" mat-icon-button class="bg-blue-700">
+          <mat-icon>account_box</mat-icon>
+        </a>
       } @else {
-      <a routerLink="/admin">
-        <span class="underline"><span class="font-bold">Store</span>RestApi</span> Admin
-      </a>
+        <a routerLink="/admin">
+          <span class="underline"><span class="font-bold">Store</span>RestApi</span> Admin
+        </a>
       }
     </div>
     <div class="admin-toolbar__right ml-auto">
@@ -20,27 +20,29 @@
           <mat-icon>{{ themeMode === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
         </button>
         @if (userData) {
-        <button *ngIf="userData" [matMenuTriggerFor]="profileMenu" class="bg-blue-700 w-full flex items-center py-1 px-2 rounded">
-          <div class="flex items-center">
-            <img class="w-8 h-8 rounded-lg" [src]="userData?.avatar || 'assets/images/user-avatar.png'" alt="My profile" />
-          </div>
-          <div class="flex-grow px-3 text-left">
-            <div class="text-sm font-semibold text-gray-700 dark:text-gray-100">
-              {{ userData?.name }}
-            </div>
-          </div>
-        </button>
-        <mat-menu class="profile-menu" #profileMenu="matMenu" xPosition="before">
-          <button mat-menu-item (click)="onLogout()">
-            <mat-icon>logout</mat-icon>
-            <span>Logout</span>
-          </button>
-        </mat-menu>
+          @if (userData) {
+            <button [matMenuTriggerFor]="profileMenu" class="bg-blue-700 w-full flex items-center py-1 px-2 rounded">
+              <div class="flex items-center">
+                <img class="w-8 h-8 rounded-lg" [src]="userData?.avatar || 'assets/images/user-avatar.png'" alt="My profile" />
+              </div>
+              <div class="flex-grow px-3 text-left">
+                <div class="text-sm font-semibold text-gray-700 dark:text-gray-100">
+                  {{ userData?.name }}
+                </div>
+              </div>
+            </button>
+          }
+          <mat-menu class="profile-menu" #profileMenu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="onLogout()">
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
         } @else {
-        <div class="flex items-center">
-          <a routerLink="/auth/login" mat-flat-button class="bg-blue-700 mx-3"> <mat-icon class="mr-2">login</mat-icon> Login </a>
-          <!-- <a *ngIf="!userData" routerLink="/auth/register" mat-flat-button class="bg-gray-100 mr-3"><mat-icon class="mr-2">person_add</mat-icon> Register</a> -->
-        </div>
+          <div class="flex items-center">
+            <a routerLink="/auth/login" mat-flat-button class="bg-blue-700 mx-3"> <mat-icon class="mr-2">login</mat-icon> Login </a>
+            <!-- <a *ngIf="!userData" routerLink="/auth/register" mat-flat-button class="bg-gray-100 mr-3"><mat-icon class="mr-2">person_add</mat-icon> Register</a> -->
+          </div>
         }
       </div>
     </div>
