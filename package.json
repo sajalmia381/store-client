@@ -26,11 +26,11 @@
     "@angular/router": "^18.2.2",
     "@angular/ssr": "^18.2.2",
     "@ngneat/tailwind": "^7.0.3",
-    "@ngrx/effects": "^18.0.0-beta.1",
-    "@ngrx/entity": "^18.0.0-beta.1",
-    "@ngrx/router-store": "^18.0.0-beta.1",
-    "@ngrx/store": "^18.0.0-beta.1",
-    "@ngrx/store-devtools": "^18.0.0-beta.1",
+    "@ngrx/effects": "^18.0.2",
+    "@ngrx/entity": "^18.0.2",
+    "@ngrx/router-store": "^18.0.2",
+    "@ngrx/store": "^18.0.2",
+    "@ngrx/store-devtools": "^18.0.2",
     "@ngx-loading-bar/core": "^6.0.2",
     "@ngx-loading-bar/router": "^6.0.2",
     "as-prism": "^4.0.1",
@@ -40,7 +40,8 @@
     "prismjs": "^1.29.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.10"
+    "zone.js": "~0.14.10",
+    "@ngrx/operators": "^18.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.2",
