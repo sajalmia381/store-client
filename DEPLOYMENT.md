@@ -10,7 +10,7 @@ sudo ssh -i ~/Desktop/pem/storeApi.pem ubuntu@ec2-3-7-68-106.ap-south-1.compute.
 
 ```sh
 docker pull storerestapi/store-client:stable
-docker compose -f docker-compose.prod.yaml up -d --no-deps store-webapp
+docker compose -f docker-compose.api.yaml up -d --no-deps store-webapp
 ```
 
 ### Log
@@ -40,20 +40,20 @@ docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerest
 ### Build Docker Images with docker-compose
 
 ```sh
-docker compose -f docker-compose.prod.yaml build
+docker compose -f docker-compose.api.yaml build
 ```
 
 ### Up docker images
 
 ```sh
-docker compose -f docker-compose.prod.yaml up -d
-docker compose -f docker-compose.prod.yaml up -d --no-deps store-webapp
+docker compose -f docker-compose.api.yaml up -d
+docker compose -f docker-compose.api.yaml up -d --no-deps store-webapp
 ```
 
 ### Down docker images
 
 ```sh
-docker compose -f docker-compose.prod.yaml down -v
+docker compose -f docker-compose.api.yaml down -v
 ```
 
 #### Ex.
@@ -72,6 +72,11 @@ sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-client/* ubuntu@ec2-3-7-6
 sudo openssl req -x509 -nodes -days 365 -subj "/C=CA/ST=QC/O=Company, Inc./CN=test.storerestapi.com" -addext "subjectAltName=DNS:test.storerestapi.com" -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt;
 ```
 
+# Build Webapp
+```sh
+npm run build
+```
+
 ### Build docker image for multipe build architect
 
 ```sh
@@ -80,6 +85,7 @@ docker buildx create --name store-builder
 docker buildx use store-builder
 docker buildx inspect --bootstrap
 docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <username>/<store-client:x.x.x> --push .
+# Example: docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t storerestapi/store-client:5.0.2 --push .
 docker buildx imagetools create -t <username>/<store-client:x.x.x> <username>/<store-client:latest>
 docker run --name store-api -d -p 8000:8000 <store-client:latest>:<943e28233b51>
 ```
