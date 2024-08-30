@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpService } from '@shared/services/http.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpService) {}
+  private http = inject(HttpService);
+
 
   getUsers(): Observable<User[]> {
     return this.http.get('/users').pipe(

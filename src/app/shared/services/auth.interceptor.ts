@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { exhaustMap, switchMap, take } from 'rxjs/operators';
@@ -10,7 +10,9 @@ import { loginSuccess } from 'src/app/v0/auth/state/auth.actions';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private store: Store) {}
+  private authService = inject(AuthService);
+  private store = inject(Store);
+
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.url.indexOf('/auth/refresh') !== -1) {

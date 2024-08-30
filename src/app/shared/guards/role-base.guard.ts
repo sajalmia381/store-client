@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -12,7 +12,10 @@ import { getCurrentRoute } from 'src/app/store/router/router.selectors';
   providedIn: 'root'
 })
 export class RoleBaseGuard implements CanActivate {
-  constructor(private store: Store, private router: Router, private snackBar: MatSnackBar) {}
+  private store = inject(Store);
+  private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
+
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     console.log('call role guard');
     return this.store.select(getUserData).pipe(

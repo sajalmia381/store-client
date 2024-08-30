@@ -7,87 +7,89 @@
   </div>
   <div class="page__content">
     @if (!(isLoaded$ | async)) {
-    <mat-spinner [strokeWidth]="2" [diameter]="35"></mat-spinner>
+      <mat-spinner [strokeWidth]="2" [diameter]="35"></mat-spinner>
     } @else {
-    <mat-accordion *ngIf="carts$ | async as cartList" class="cart-accordion" multi>
-      <mat-expansion-panel *ngFor="let cart of cartList; let i = index">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="flex flex-col">
-              <h4 class="text-primary">{{ cart?.user?.name }}</h4>
-              <span class="mt-1 text-xs text-gray-700 dark:text-gray-300">Id: {{ cart._id }}</span>
-            </div>
-          </mat-panel-title>
-          <mat-panel-description>
-            <span>Products: {{ cart.products.length }}</span>
-            <button
-              (click)="onUpdate($event, cart)"
-              mat-icon-button
-              class="bg-gray-100 dark:bg-slate-500 dark:bg-opacity-50 h-6 w-6 leading-9 p-0 ml-2"
-            >
-              <mat-icon class="text-sm">edit</mat-icon>
-            </button>
-
-            <button (click)="onDelete($event, cart)" class="ml-auto" mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <div class="pt-4">
-          <div class="relative">
-            <table class="w-full text-sm text-left">
-              <thead class="text-xs uppercase bg-gray-200 dark:text-gray-300 dark:bg-gray-800 dark:bg-opacity-70">
-                <tr class="border-b border-gray-300 dark:border-gray-700">
-                  <th scope="col" class="px-6 py-3" width="40%">Product name</th>
-                  <th scope="col" class="px-6 py-3">Price</th>
-                  <th scope="col" class="px-6 py-3">Quantity</th>
-                  <th scope="col" class="px-6 py-3"></th>
-                </tr>
-              </thead>
-              <tbody>
-                @for (item of cart.products; track $index) {
-                <tr class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
-                  <td class="px-6 py-4 font-medium text-gray-800 whitespace-nowrap dark:text-white">
-                    {{ item.product.title | titlecase }}
-                  </td>
-                  <td class="px-6 py-4">{{ item.product.price }}</td>
-                  <td class="px-6 py-4">
-                    <div>
-                      <div class="flex justify-center w-1/5">
-                        <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512">
-                          <path
-                            d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                          />
-                        </svg>
-                        <input
-                          class="mx-2 border text-center w-8 dark:bg-gray-600 dark:border-gray-800 rounded"
-                          type="text"
-                          [value]="item.quantity"
-                        />
-                        <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512">
-                          <path
-                            d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-end">
-                    <button
-                      (click)="onRemoveProduct(cart.user._id, item.product)"
-                      mat-icon-button
-                      class="bg-gray-200 dark:bg-slate-500 dark:bg-opacity-50 h-8 w-8 p-0 ml-3"
+      @if (carts$ | async; as cartList) {
+        <mat-accordion class="cart-accordion" multi>
+          @for (cart of cartList; track cart; let i = $index) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="flex flex-col">
+                    <h4 class="text-primary">{{ cart?.user?.name }}</h4>
+                    <span class="mt-1 text-xs text-gray-700 dark:text-gray-300">Id: {{ cart._id }}</span>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description>
+                  <span>Products: {{ cart.products.length }}</span>
+                  <button
+                    (click)="onUpdate($event, cart)"
+                    mat-icon-button
+                    class="bg-gray-100 dark:bg-slate-500 dark:bg-opacity-50 h-6 w-6 leading-9 p-0 ml-2"
                     >
-                      <mat-icon class="text-lg">delete</mat-icon>
-                    </button>
-                  </td>
-                </tr>
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
+                    <mat-icon class="text-sm">edit</mat-icon>
+                  </button>
+                  <button (click)="onDelete($event, cart)" class="ml-auto" mat-icon-button color="accent"><mat-icon>delete</mat-icon></button>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="pt-4">
+                <div class="relative">
+                  <table class="w-full text-sm text-left">
+                    <thead class="text-xs uppercase bg-gray-200 dark:text-gray-300 dark:bg-gray-800 dark:bg-opacity-70">
+                      <tr class="border-b border-gray-300 dark:border-gray-700">
+                        <th scope="col" class="px-6 py-3" width="40%">Product name</th>
+                        <th scope="col" class="px-6 py-3">Price</th>
+                        <th scope="col" class="px-6 py-3">Quantity</th>
+                        <th scope="col" class="px-6 py-3"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @for (item of cart.products; track $index) {
+                        <tr class="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
+                          <td class="px-6 py-4 font-medium text-gray-800 whitespace-nowrap dark:text-white">
+                            {{ item.product.title | titlecase }}
+                          </td>
+                          <td class="px-6 py-4">{{ item.product.price }}</td>
+                          <td class="px-6 py-4">
+                            <div>
+                              <div class="flex justify-center w-1/5">
+                                <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512">
+                                  <path
+                                    d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                    />
+                                </svg>
+                                <input
+                                  class="mx-2 border text-center w-8 dark:bg-gray-600 dark:border-gray-800 rounded"
+                                  type="text"
+                                  [value]="item.quantity"
+                                  />
+                                <svg class="fill-current cursor-pointer text-gray-600 hover:text-white w-3" viewBox="0 0 448 512">
+                                  <path
+                                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                                    />
+                                </svg>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="text-end">
+                            <button
+                              (click)="onRemoveProduct(cart.user._id, item.product)"
+                              mat-icon-button
+                              class="bg-gray-200 dark:bg-slate-500 dark:bg-opacity-50 h-8 w-8 p-0 ml-3"
+                              >
+                              <mat-icon class="text-lg">delete</mat-icon>
+                            </button>
+                          </td>
+                        </tr>
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          }
+        </mat-accordion>
+      }
     }
   </div>
 </div>

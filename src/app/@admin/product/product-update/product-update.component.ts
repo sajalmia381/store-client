@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -26,6 +26,13 @@ import { filterValidObjAttribute } from '@shared/helper/utils';
   styleUrls: ['./product-update.component.scss']
 })
 export class ProductUpdateComponent implements OnInit, OnDestroy {
+  private store = inject(Store);
+  private router = inject(Router);
+  private snackbar = inject(MatSnackBar);
+  private fb = inject(UntypedFormBuilder);
+  private userService = inject(UserService);
+  private httpService = inject(HttpService);
+
   isAlive = true;
   isLoggedIn!: boolean;
   users!: User[];
@@ -39,14 +46,7 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
     price: new UntypedFormControl(null, Validators.required)
   });
   product!: Product | undefined | null;
-  constructor(
-    private store: Store,
-    private router: Router,
-    private snackbar: MatSnackBar,
-    private fb: UntypedFormBuilder,
-    private userService: UserService,
-    private httpService: HttpService
-  ) {
+  constructor() {
     this.productForm = this.fb.group({
       slug: ['', Validators.required],
       title: ['', Validators.required],

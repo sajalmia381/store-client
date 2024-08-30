@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -12,11 +12,13 @@ import { ImageState } from '../state/media.state';
   styleUrls: ['./add-image.component.scss']
 })
 export class AddImageComponent implements OnInit {
+  private store = inject<Store<ImageState>>(Store);
+  private imageEffect = inject(ImageEffects);
+  private dialogRef = inject<MatDialogRef<AddImageComponent>>(MatDialogRef);
+
   imageFile!: File;
   imagePreview!: any;
   uploaded!: boolean;
-
-  constructor(private store: Store<ImageState>, private imageEffect: ImageEffects, private dialogRef: MatDialogRef<AddImageComponent>) {}
 
   ngOnInit(): void {
     this.imageEffect.addImage$.pipe(ofType(addImageSuccess)).subscribe(_ => {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -15,6 +15,9 @@ import { getLoginErrors, isSignedIn } from '../state/auth.selectors';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  private store = inject<Store<AppState>>(Store);
+  private router = inject(Router);
+
   isAlive: boolean = true;
   loginForm: UntypedFormGroup = new UntypedFormGroup({
     email: new UntypedFormControl('', [Validators.required, Validators.email]),
@@ -22,7 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   });
   isLoading!: boolean;
   formErrors: any;
-  constructor(private store: Store<AppState>, private router: Router) {
+  constructor() {
     this.store
       .select(isSignedIn)
       .pipe(takeWhile(() => this.isAlive))

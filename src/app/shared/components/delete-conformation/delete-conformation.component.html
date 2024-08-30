@@ -9,13 +9,16 @@
       {{ config.successBtnText }}
     </button>
     <button mat-raised-button color="warn" (click)="onConfirmClick()" tabindex="1">
-      <span *ngIf="!isSubmitting; else loaderTemplate">{{ config.successBtnText }}</span>
+      @if (!isSubmitting) {
+        <span>{{ config.successBtnText }}</span>
+      } @else {
+        @if (isSubmitting) {
+          <div class="align-middle">
+            <mat-progress-bar mode="indeterminate" color="primary" class="my-4"></mat-progress-bar>
+          </div>
+        }
+      }
     </button>
   </mat-dialog-actions>
 </div>
 
-<ng-template #loaderTemplate>
-  <div *ngIf="isSubmitting" class="align-middle">
-    <mat-progress-bar mode="indeterminate" color="primary" class="my-4"></mat-progress-bar>
-  </div>
-</ng-template>

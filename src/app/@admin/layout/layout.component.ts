@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, takeWhile } from 'rxjs/operators';
@@ -10,13 +10,16 @@ import { filter, takeWhile } from 'rxjs/operators';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit, OnDestroy {
+  private breakpointObserver = inject(BreakpointObserver);
+  private router = inject(Router);
+
   @ViewChild('sidenav')
   sidenav!: MatSidenav;
   isAlive: boolean = true;
   isSidenavExpand = true;
   isLessThenLargeDevice = true;
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor() {
     this.breakpointObserver
       .observe(['(max-width: 1199px)'])
       .pipe(takeWhile(() => this.isAlive))

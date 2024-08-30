@@ -17,9 +17,13 @@
               id="id_email"
               type="email"
               placeholder="Email"
-            />
-            <p *ngIf="email.touched && email.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
-            <p *ngIf="email.touched && email.hasError('email')" class="text-red-500 text-xs italic">Please input valid email</p>
+              />
+            @if (email.touched && email.hasError('required')) {
+              <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+            }
+            @if (email.touched && email.hasError('email')) {
+              <p class="text-red-500 text-xs italic">Please input valid email</p>
+            }
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -32,11 +36,15 @@
               type="password"
               placeholder="********"
               autocomplete="new-password"
-            />
-            <p *ngIf="password.touched && password.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
-            <p *ngIf="password.touched && password.hasError('minLength')" class="text-red-500 text-xs italic">
-              Password must be equal or more than six letters
-            </p>
+              />
+            @if (password.touched && password.hasError('required')) {
+              <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+            }
+            @if (password.touched && password.hasError('minLength')) {
+              <p class="text-red-500 text-xs italic">
+                Password must be equal or more than six letters
+              </p>
+            }
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -49,10 +57,12 @@
               type="password"
               placeholder="********"
               autocomplete="new-password"
-            />
-            <p *ngIf="passwordRepeat.touched && passwordRepeat.hasError('mustMatch')" class="text-red-500 text-xs italic">
-              Password is not match
-            </p>
+              />
+            @if (passwordRepeat.touched && passwordRepeat.hasError('mustMatch')) {
+              <p class="text-red-500 text-xs italic">
+                Password is not match
+              </p>
+            }
           </div>
         </div>
         <div class="flex flex-wrap -mx-3">
@@ -64,8 +74,10 @@
               id="id_name"
               type="text"
               placeholder="Full name"
-            />
-            <p *ngIf="name.touched && name.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
+              />
+            @if (name.touched && name.hasError('required')) {
+              <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+            }
           </div>
           <div class="w-full md:w-1/2 px-3">
             <label for="id_number"> Number </label>

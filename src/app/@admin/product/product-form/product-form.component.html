@@ -3,110 +3,129 @@
     <div class="flex items-center">
       <a routerLink="../" matTooltip="Back to products" mat-icon-button class="mr-3 bg-white dark:bg-gray-400 text-center"
         ><mat-icon>keyboard_backspace</mat-icon></a
-      >
-      <h2>Add Product</h2>
+        >
+        <h2>Add Product</h2>
+      </div>
     </div>
-  </div>
-  <div class="page__content">
-    <div class="flex justify-center py-12">
-      <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()" class="ti-form bg-card p-page rounded w-full max-w-3xl">
-        <h3 *ngIf="productUpdated && productForm.untouched" class="bg-green-400 bg-opacity-70 rounded px-4 py-1 mb-4">Product uploaded</h3>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3">
-            <label for="id_title"> Title * </label>
-            <input
-              formControlName="title"
-              [class.border-red-500]="title.touched && title.invalid"
-              id="id_title"
-              type="text"
-              placeholder="Title"
-            />
-            <p *ngIf="title.touched && title.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
+    <div class="page__content">
+      <div class="flex justify-center py-12">
+        <form [formGroup]="productForm" (ngSubmit)="onFormSubmit()" class="ti-form bg-card p-page rounded w-full max-w-3xl">
+          @if (productUpdated && productForm.untouched) {
+            <h3 class="bg-green-400 bg-opacity-70 rounded px-4 py-1 mb-4">Product uploaded</h3>
+          }
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label for="id_title"> Title * </label>
+              <input
+                formControlName="title"
+                [class.border-red-500]="title.touched && title.invalid"
+                id="id_title"
+                type="text"
+                placeholder="Title"
+                />
+              @if (title.touched && title.hasError('required')) {
+                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+              }
+            </div>
           </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3">
-            <label for="id_price"> Price * </label>
-            <input
-              formControlName="price"
-              [class.border-red-500]="price.touched && price.invalid"
-              id="id_price"
-              type="number"
-              placeholder="Price"
-            />
-            <p *ngIf="price.touched && price.hasError('required')" class="text-red-500 text-xs italic">Please fill out this field.</p>
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label for="id_price"> Price * </label>
+              <input
+                formControlName="price"
+                [class.border-red-500]="price.touched && price.invalid"
+                id="id_price"
+                type="number"
+                placeholder="Price"
+                />
+              @if (price.touched && price.hasError('required')) {
+                <p class="text-red-500 text-xs italic">Please fill out this field.</p>
+              }
+            </div>
           </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3">
-            <label for="id_image"> Image * </label>
-            <div *ngIf="uploadedImage">
-              <img width="100" [src]="baseUrl + '/' + uploadedImage.webUrl" alt="product img" />
-              <div class="flex">
-                <button mat-icon-button (click)="onImageDelete()">
-                  <mat-icon>delete</mat-icon>
-                </button>
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label for="id_image"> Image * </label>
+              @if (uploadedImage) {
+                <div>
+                  <img width="100" [src]="baseUrl + '/' + uploadedImage.webUrl" alt="product img" />
+                  <div class="flex">
+                    <button mat-icon-button (click)="onImageDelete()">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              }
+              @if (!uploadedImage) {
+                <input
+                  (change)="onFileSelect($event)"
+                  [class.border-red-500]="image.touched && image.invalid"
+                  id="id_image"
+                  type="file"
+                  placeholder="image"
+                  />
+              }
+              @if (image.touched && image.hasError('required')) {
+                <p class="text-red-500 text-xs italic">Please attach product image.</p>
+              }
+            </div>
+          </div>
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label for="id_description"> Descriptions </label>
+              <textarea
+                [class.border-red-500]="description.touched && description.invalid"
+                formControlName="description"
+                id="id_description"
+                type="text"
+                placeholder="Description"
+                rows="5"
+              ></textarea>
+            </div>
+          </div>
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+              <label for="id_category"> Category </label>
+              <mat-form-field appearance="outline" class="field__mat-field">
+                <!-- <mat-label *ngIf="!category.value">Select Category</mat-label> -->
+                <mat-select formControlName="category" id="id_category">
+                  @for (item of categories; track item) {
+                    <mat-option [value]="item._id">
+                      {{ item.name | titlecase }}
+                    </mat-option>
+                  }
+                </mat-select>
+                @if (category.touched && category.hasError('required')) {
+                  <mat-error class="text-xs italic">
+                    Please fill out this field.
+                  </mat-error>
+                }
+              </mat-form-field>
+            </div>
+          </div>
+          @if (isLoggedIn) {
+            <div class="flex flex-wrap -mx-3 mb-6">
+              <div class="w-full px-3">
+                <label for="id_user"> Create By </label>
+                <mat-form-field appearance="outline" class="field__mat-field">
+                  <!-- <mat-label *ngIf="!createdBy.value">Select product owner</mat-label> -->
+                  <mat-select formControlName="createdBy" id="id_user">
+                    @for (item of users; track item) {
+                      <mat-option [value]="item._id">
+                        {{ item.name | titlecase }}
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
               </div>
             </div>
-            <input
-              *ngIf="!uploadedImage"
-              (change)="onFileSelect($event)"
-              [class.border-red-500]="image.touched && image.invalid"
-              id="id_image"
-              type="file"
-              placeholder="image"
-            />
-            <p *ngIf="image.touched && image.hasError('required')" class="text-red-500 text-xs italic">Please attach product image.</p>
+          }
+          <div class="flex justify-end">
+            <button [disabled]="productForm.invalid" type="submit" color="primary" mat-flat-button>
+              <mat-icon class="mr-2">save</mat-icon>Submit
+            </button>
           </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3">
-            <label for="id_description"> Descriptions </label>
-            <textarea
-              [class.border-red-500]="description.touched && description.invalid"
-              formControlName="description"
-              id="id_description"
-              type="text"
-              placeholder="Description"
-              rows="5"
-            ></textarea>
-          </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3">
-            <label for="id_category"> Category </label>
-            <mat-form-field appearance="outline" class="field__mat-field">
-              <!-- <mat-label *ngIf="!category.value">Select Category</mat-label> -->
-              <mat-select formControlName="category" id="id_category">
-                <mat-option *ngFor="let item of categories" [value]="item._id">
-                  {{ item.name | titlecase }}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="category.touched && category.hasError('required')" class="text-xs italic">
-                Please fill out this field.
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6" *ngIf="isLoggedIn">
-          <div class="w-full px-3">
-            <label for="id_user"> Create By </label>
-            <mat-form-field appearance="outline" class="field__mat-field">
-              <!-- <mat-label *ngIf="!createdBy.value">Select product owner</mat-label> -->
-              <mat-select formControlName="createdBy" id="id_user">
-                <mat-option *ngFor="let item of users" [value]="item._id">
-                  {{ item.name | titlecase }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="flex justify-end">
-          <button [disabled]="productForm.invalid" type="submit" color="primary" mat-flat-button>
-            <mat-icon class="mr-2">save</mat-icon>Submit
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { logoutSuccess } from 'src/app/v0/auth/state/auth.actions';
 import { AuthState } from 'src/app/v0/auth/state/auth.state';
@@ -13,10 +13,11 @@ import { environment } from '@env/environment';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  private store = inject<Store<AuthState | SharedState>>(Store);
+
   @Output() toggleSidenav = new EventEmitter();
   themeMode!: string;
   isProductionMode: boolean = environment.production;
-  constructor(private store: Store<AuthState | SharedState>) {}
 
   ngOnInit(): void {
     this.store.select(getThemeMode).subscribe(theme => {

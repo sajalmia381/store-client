@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpService } from '@shared/services/http.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { Category } from './category';
   providedIn: 'root'
 })
 export class CategoryService {
-  constructor(private http: HttpService) {}
+  private http = inject(HttpService);
+
 
   getCategories(): Observable<Category[]> {
     return this.http.get('/categories').pipe(

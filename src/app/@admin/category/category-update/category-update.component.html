@@ -11,10 +11,12 @@
             id="id_name"
             type="text"
             placeholder="Category name"
-          />
-          <p *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')" class="text-red-500 text-xs italic">
-            Please fill out this field.
-          </p>
+            />
+          @if (form.get('name')?.touched && form.get('name')?.hasError('required')) {
+            <p class="text-red-500 text-xs italic">
+              Please fill out this field.
+            </p>
+          }
         </div>
       </div>
       <div class="flex justify-end mt-2">

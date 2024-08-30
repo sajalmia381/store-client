@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
@@ -12,7 +12,10 @@ import { throwError } from 'rxjs';
 
 @Injectable()
 export class CartEffects {
-  constructor(private store: Store<SharedState | CartState>, private action$: Actions, private cartService: CartService) {}
+  private store = inject<Store<SharedState | CartState>>(Store);
+  private action$ = inject(Actions);
+  private cartService = inject(CartService);
+
 
   loadCarts$ = createEffect(() => {
     return this.action$.pipe(

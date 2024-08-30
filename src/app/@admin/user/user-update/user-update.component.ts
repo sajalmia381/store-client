@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -16,13 +16,16 @@ import { User } from '../user';
   styleUrls: ['./user-update.component.scss']
 })
 export class UserUpdateComponent implements OnInit, OnDestroy {
+  private store = inject<Store<UserState>>(Store);
+  private router = inject(Router);
+  private snackbar = inject(MatSnackBar);
+
   isAlive = true;
   userForm: UntypedFormGroup = new UntypedFormGroup({
     name: new UntypedFormControl(null, Validators.required),
     number: new UntypedFormControl(null, Validators.required)
   });
   user!: User;
-  constructor(private store: Store<UserState>, private router: Router, private snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.store

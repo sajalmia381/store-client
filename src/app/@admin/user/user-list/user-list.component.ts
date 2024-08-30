@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { DeleteConformationComponent } from '@shared/components/delete-conformation/delete-conformation.component';
@@ -15,6 +15,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+  private store = inject<Store<UserState>>(Store);
+  private dialog = inject(MatDialog);
+
   user$!: Observable<User[]>;
   isLoaded$!: Observable<boolean>;
   loading: boolean = false;
@@ -23,7 +26,7 @@ export class UserListComponent implements OnInit {
   displayedColumns: string[] = ['email', 'name', 'role', 'number', 'createdAt', 'updatedAt', 'action'];
   dataSource!: User[];
 
-  constructor(private store: Store<UserState>, private dialog: MatDialog) {
+  constructor() {
     this.user$ = this.store.select(getUsers).pipe(takeUntilDestroyed());
     this.isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());
   }

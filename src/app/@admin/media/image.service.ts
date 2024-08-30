@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpService } from '@shared/services/http.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { Image } from './Image';
   providedIn: 'root'
 })
 export class ImageService {
-  constructor(private http: HttpService) {}
+  private http = inject(HttpService);
+
 
   getImages(): Observable<Image[]> {
     return this.http.get('/images').pipe(

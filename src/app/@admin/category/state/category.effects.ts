@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
 import { Store } from '@ngrx/store';
@@ -12,7 +12,10 @@ import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 
 @Injectable()
 export class CategoryEffects {
-  constructor(private store: Store, private action$: Actions, private categoryService: CategoryService) {}
+  private store = inject(Store);
+  private action$ = inject(Actions);
+  private categoryService = inject(CategoryService);
+
   loadCategories$ = createEffect(() => {
     return this.action$.pipe(
       ofType(categoryAction.loadCategories),

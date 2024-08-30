@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
@@ -8,7 +8,10 @@ import { TodoService } from '../todo.service';
 
 @Injectable()
 export class TodoEffects {
-  constructor(private store: Store, private action$: Actions, private todoService: TodoService) {}
+  private store = inject(Store);
+  private action$ = inject(Actions);
+  private todoService = inject(TodoService);
+
 
   loadtodos$ = createEffect(() => {
     return this.action$.pipe(

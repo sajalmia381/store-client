@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -11,7 +11,11 @@ import { loginRequest, loginSuccess, logoutSuccess, setLoginError } from './auth
 
 @Injectable({ providedIn: 'root' })
 export class AuthEffects {
-  constructor(private action$: Actions, private router: Router, private store: Store<AppState>, private authService: AuthService) {}
+  private action$ = inject(Actions);
+  private router = inject(Router);
+  private store = inject<Store<AppState>>(Store);
+  private authService = inject(AuthService);
+
   login$ = createEffect(() =>
     this.action$.pipe(
       ofType(loginRequest),
