@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from '../product';
@@ -12,8 +12,9 @@ import { ProductState } from '../state/product.state';
   styleUrls: ['./product-details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit {
+  private store = inject<Store<ProductState>>(Store);
+
   product$!: Observable<Product | undefined | null>;
-  constructor(private store: Store<ProductState>) {}
 
   ngOnInit(): void {
     this.product$ = this.store.select(getProductBySlug);

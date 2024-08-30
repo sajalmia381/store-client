@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { loadUser } from '../state/user.actions';
@@ -12,8 +12,9 @@ import { User } from '../user';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit {
+  private store = inject<Store<UserState>>(Store);
+
   user$!: Observable<User | undefined | null>;
-  constructor(private store: Store<UserState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(loadUser());

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from '@env/environment';
 import { V1HttpService } from '@shared/services/v1-http.service';
@@ -15,6 +15,8 @@ import 'prismjs/components/prism-typescript';
   styleUrls: ['./v1-home.component.scss']
 })
 export class V1HomeComponent implements OnInit {
+  private http = inject(V1HttpService);
+
   apiBaseUrl: string = environment.v1BaseUrl;
   productEndpoint: string = '/products/running-sneaker';
   code: string = `fetch('${environment.v1BaseUrl + this.productEndpoint}')
@@ -22,8 +24,6 @@ export class V1HomeComponent implements OnInit {
 	.then(json => console.log(json))`;
   productRes: any;
   isProductLoading!: boolean;
-
-  constructor(private http: V1HttpService) {}
 
   ngOnInit(): void {}
 

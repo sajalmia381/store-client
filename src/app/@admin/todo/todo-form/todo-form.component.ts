@@ -20,6 +20,10 @@ interface TodoForm {
   styleUrls: ['./todo-form.component.scss']
 })
 export class TodoFormComponent {
+  private dialogRef = inject<MatDialogRef<TodoFormComponent>>(MatDialogRef);
+  private snackbar = inject(MatSnackBar);
+  private action$ = inject(Actions);
+
   private fb = inject(FormBuilder);
   private store: Store<TodoState> = inject(Store);
 
@@ -30,7 +34,7 @@ export class TodoFormComponent {
 
   private readonly addTodoSuccess$ = this.action$.pipe(ofType(addOneTodoSuccess), takeUntilDestroyed());
 
-  constructor(private dialogRef: MatDialogRef<TodoFormComponent>, private snackbar: MatSnackBar, private action$: Actions) {
+  constructor() {
     this.addTodoSuccess$.subscribe(res => {
       this.snackbar.open('Successfully: Todo Added', 'Close', {
         duration: 5000

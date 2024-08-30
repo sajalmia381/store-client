@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { DeleteConformationComponent } from '@shared/components/delete-conformation/delete-conformation.component';
@@ -16,10 +16,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrls: ['./image-list.component.scss']
 })
 export class ImageListComponent implements OnInit {
+  private store = inject<Store<ImageState>>(Store);
+  private dialog = inject(MatDialog);
+
   images$!: Observable<Image[]>;
   isLoaded$!: Observable<boolean>;
 
-  constructor(private store: Store<ImageState>, private dialog: MatDialog) {
+  constructor() {
     this.images$ = this.store.select(getImages).pipe(takeUntilDestroyed());
     this.isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());
   }

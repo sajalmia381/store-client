@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Category } from '../category';
@@ -15,6 +15,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./category-update.component.scss']
 })
 export class CategoryUpdateComponent implements OnInit {
+  private category = inject<Category>(MAT_DIALOG_DATA);
+  private dialogRef = inject<MatDialogRef<CategoryUpdateComponent>>(MatDialogRef);
+
   private _fb = inject(FormBuilder);
   private store = inject<Store<CategoryState>>(Store);
   private _snackbar = inject(MatSnackBar);
@@ -26,7 +29,7 @@ export class CategoryUpdateComponent implements OnInit {
 
   private readonly addSuccess$ = this._action$.pipe(ofType(updateCategorySuccess), takeUntilDestroyed());
 
-  constructor(@Inject(MAT_DIALOG_DATA) private category: Category, private dialogRef: MatDialogRef<CategoryUpdateComponent>) {
+  constructor() {
     this.addSuccess$.subscribe(res => {
       this._snackbar.open('Successfully: Todo Added', 'Close', {
         duration: 5000

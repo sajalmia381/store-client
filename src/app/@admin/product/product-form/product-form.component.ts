@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
@@ -27,6 +27,13 @@ import { isSignedIn } from 'src/app/v0/auth/state/auth.selectors';
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
+  private fb = inject(UntypedFormBuilder);
+  private store = inject<Store<ProductState | ImageState | AuthState>>(Store);
+  private snackBar = inject(MatSnackBar);
+  private httpService = inject(HttpService);
+  private action$ = inject(Actions);
+  private userService = inject(UserService);
+
   isAlive: boolean = true;
   productForm!: UntypedFormGroup;
   categories: Category[] = [];
@@ -36,15 +43,6 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   productUpdated?: boolean;
   isLoggedIn!: boolean;
   users: any[] = [];
-
-  constructor(
-    private fb: UntypedFormBuilder,
-    private store: Store<ProductState | ImageState | AuthState>,
-    private snackBar: MatSnackBar,
-    private httpService: HttpService,
-    private action$: Actions,
-    private userService: UserService
-  ) {}
 
   ngOnInit(): void {
     this.store

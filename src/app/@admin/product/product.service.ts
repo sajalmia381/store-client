@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpService } from '../../shared/services/http.service';
@@ -6,7 +6,8 @@ import { Product } from './product';
 
 @Injectable()
 export class ProductService {
-  constructor(private http: HttpService) {}
+  private http = inject(HttpService);
+
 
   getProducts(queryParams?: any): Observable<Product[]> {
     return this.http.get('/products', queryParams && queryParams).pipe(

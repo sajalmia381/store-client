@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
@@ -13,8 +13,10 @@ import { UserState } from '../state/user.state';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
+  private store = inject<Store<UserState>>(Store);
+  private snackBar = inject(MatSnackBar);
+
   userForm!: UntypedFormGroup;
-  constructor(private store: Store<UserState>, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.userForm = new UntypedFormGroup(

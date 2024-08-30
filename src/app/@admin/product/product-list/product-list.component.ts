@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -20,6 +20,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
+  private store = inject(Store);
+  private dialog = inject(MatDialog);
+
   @ViewChild('filterSidenav') filterSidenav!: MatSidenav;
   currentView = 'list';
   isLoaded$!: Observable<boolean>;
@@ -30,7 +33,7 @@ export class ProductListComponent implements OnInit {
   backendBaseUrl: string = environment.baseUrl;
   filterForm!: UntypedFormGroup;
 
-  constructor(private store: Store, private dialog: MatDialog) {
+  constructor() {
     this.isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());
     this.products$ = this.store.select(getProducts).pipe(takeUntilDestroyed());
   }

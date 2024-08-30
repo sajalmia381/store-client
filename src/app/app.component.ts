@@ -17,12 +17,15 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  private title = inject(Title);
+  private meta = inject(Meta);
+
   private store = inject(Store);
   private document = inject(DOCUMENT);
   public loader = inject(LoadingBarService);
 
   progress = 0;
-  constructor(private title: Title, private meta: Meta) {
+  constructor() {
     // Set inititlizer value from localStorage
     afterNextRender(() => {
       // retrive token from localstorage

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { logoutSuccess } from '../state/auth.actions';
 import { AuthState } from '../state/auth.state';
@@ -8,7 +8,8 @@ import { AuthState } from '../state/auth.state';
   template: ``
 })
 export class LogoutComponent implements OnInit {
-  constructor(private store: Store<AuthState>) {}
+  private store = inject<Store<AuthState>>(Store);
+
 
   ngOnInit(): void {
     this.store.dispatch(logoutSuccess());

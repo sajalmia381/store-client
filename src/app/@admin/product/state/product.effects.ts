@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
 import { RouterNavigatedAction, ROUTER_NAVIGATION } from '@ngrx/router-store';
@@ -12,7 +12,10 @@ import { getProductSlugs, isLoaded } from './product.selectors';
 import { getCurrentRoute } from 'src/app/store/router/router.selectors';
 @Injectable()
 export class ProductEffects {
-  constructor(private store: Store, private action$: Actions, private productService: ProductService) {}
+  private store = inject(Store);
+  private action$ = inject(Actions);
+  private productService = inject(ProductService);
+
   loadProducts$ = createEffect(() => {
     return this.action$.pipe(
       ofType(productAction.loadProducts),

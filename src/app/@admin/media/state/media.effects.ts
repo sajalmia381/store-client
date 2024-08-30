@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
@@ -10,7 +10,10 @@ import { ImageService } from '../image.service';
 
 @Injectable()
 export class ImageEffects {
-  constructor(private store: Store, private action$: Actions, private imageService: ImageService) {}
+  private store = inject(Store);
+  private action$ = inject(Actions);
+  private imageService = inject(ImageService);
+
   loadImages$ = createEffect(() => {
     return this.action$.pipe(
       ofType(imageAction.loadImages),

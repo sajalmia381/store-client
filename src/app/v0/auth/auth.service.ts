@@ -1,5 +1,5 @@
 import { HttpEvent } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpService } from '@shared/services/http.service';
 import { LOGIN_ENDPOINT, REFRESH_ENDPOINT } from './auth.endpoint';
@@ -8,8 +8,9 @@ import { LOGIN_ENDPOINT, REFRESH_ENDPOINT } from './auth.endpoint';
   providedIn: 'root'
 })
 export class AuthService {
+  private httpService = inject(HttpService);
+
   tokenDuration: string = 'short';
-  constructor(private httpService: HttpService) {}
 
   onLogin(email: string, password: string): Observable<any> {
     const qp = {

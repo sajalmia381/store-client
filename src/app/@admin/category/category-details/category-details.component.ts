@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { environment } from '@env/environment';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -13,9 +13,10 @@ import { CategoryState } from '../state/category.state';
   styleUrls: ['./category-details.component.scss']
 })
 export class CategoryDetailsComponent implements OnInit {
+  private store = inject<Store<CategoryState>>(Store);
+
   category$!: Observable<Category | undefined | null>;
   backendBaseUrl: string = environment.baseUrl;
-  constructor(private store: Store<CategoryState>) {}
 
   ngOnInit(): void {
     this.category$ = this.store.select(getCategoryBySlug);

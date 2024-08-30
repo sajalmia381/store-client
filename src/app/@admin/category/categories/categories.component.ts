@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { DeleteConformationComponent } from '@shared/components/delete-conformation/delete-conformation.component';
@@ -16,11 +16,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
+  private store = inject<Store<CategoryState>>(Store);
+  private dialog = inject(MatDialog);
+
   isLoaded$!: Observable<boolean>;
   categories$!: Observable<Category[]>;
   displayedColumns: string[] = ['name', 'products', 'action'];
   dataSource: any;
-  constructor(private store: Store<CategoryState>, private dialog: MatDialog) {
+  constructor() {
     this.isLoaded$ = this.store.select(isLoaded).pipe(takeUntilDestroyed());
     this.categories$ = this.store.select(getCategories).pipe(takeUntilDestroyed());
   }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { environment } from '@env/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,9 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpService {
+  private http = inject(HttpClient);
+
   apiBaseUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.apiBaseUrl = environment.apiBaseUrl;
   }
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
 import { Store } from '@ngrx/store';
@@ -13,7 +13,10 @@ import { getUsersId, isLoaded } from './user.selectors';
 
 @Injectable()
 export class UserEffects {
-  constructor(private store: Store, private action$: Actions, private userService: UserService) {}
+  private store = inject(Store);
+  private action$ = inject(Actions);
+  private userService = inject(UserService);
+
   loadUsers$ = createEffect(() => {
     return this.action$.pipe(
       ofType(userAction.loadUsers),

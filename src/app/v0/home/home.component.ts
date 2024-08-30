@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { environment } from '@env/environment';
 import { HttpService } from '@shared/services/http.service';
 import { SharedModule } from '@shared/shared.module';
@@ -16,6 +16,8 @@ import 'prismjs/components/prism-json';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  private http = inject(HttpService);
+
   apiBaseUrl: string = environment.apiBaseUrl;
   adminRoutePrefix = '/admin';
   productEndpoint: string = '/products/running-sneaker';
@@ -46,8 +48,6 @@ fetch('${environment.apiBaseUrl + this.productEndpoint}')
     }
   }
   `;
-
-  constructor(private http: HttpService) {}
 
   ngOnInit(): void {}
 

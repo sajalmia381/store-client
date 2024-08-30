@@ -1,5 +1,5 @@
 
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -14,6 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./delete-conformation.component.scss']
 })
 export class DeleteConformationComponent {
+  private data = inject<Partial<IDeleteConformation>>(MAT_DIALOG_DATA);
+  private dialogRef = inject<MatDialogRef<DeleteConformationComponent>>(MatDialogRef);
+
   @Input() isSubmitting: boolean = false;
 
   message: string = 'Are you sure?';
@@ -26,10 +29,10 @@ export class DeleteConformationComponent {
     cancelBtnText: 'Cancel'
   };
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) private data: Partial<IDeleteConformation>,
-    private dialogRef: MatDialogRef<DeleteConformationComponent>
-  ) {
+  constructor() {
+    const data = this.data;
+    const dialogRef = this.dialogRef;
+
     dialogRef.disableClose = true;
     const { successBtnText, cancelBtnText, message } = data;
     if (successBtnText !== undefined) {

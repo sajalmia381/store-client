@@ -1,5 +1,5 @@
 import jwtDecode from 'jwt-decode';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,7 +12,10 @@ import { logoutSuccess } from 'src/app/v0/auth/state/auth.actions';
 
 @Injectable()
 export class HttpClintInterceptor implements HttpInterceptor {
-  constructor(private snackBar: MatSnackBar, private router: Router, private store: Store<AppState>) {}
+  private snackBar = inject(MatSnackBar);
+  private router = inject(Router);
+  private store = inject<Store<AppState>>(Store);
+
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.store.select(getAccessToken).pipe(
