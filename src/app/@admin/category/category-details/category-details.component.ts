@@ -8,9 +8,10 @@ import { getCategoryBySlug } from '../state/category.selectors';
 import { CategoryState } from '../state/category.state';
 
 @Component({
-  selector: 'app-category-details',
-  templateUrl: './category-details.component.html',
-  styleUrls: ['./category-details.component.scss']
+    selector: 'app-category-details',
+    templateUrl: './category-details.component.html',
+    styleUrls: ['./category-details.component.scss'],
+    standalone: false
 })
 export class CategoryDetailsComponent implements OnInit {
   private store = inject<Store<CategoryState>>(Store);

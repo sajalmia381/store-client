@@ -15,9 +15,10 @@ import { filterValidObjAttribute } from '@shared/helper/utils';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.scss'],
+    standalone: false
 })
 export class ProductListComponent implements OnInit {
   private store = inject(Store);

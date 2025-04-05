@@ -10,9 +10,10 @@ import { loginRequest } from '../state/auth.actions';
 import { getLoginErrors, isSignedIn } from '../state/auth.selectors';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit, OnDestroy {
   private store = inject<Store<AppState>>(Store);

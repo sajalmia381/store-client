@@ -5,9 +5,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter, takeWhile } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+    selector: 'app-layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.scss'],
+    standalone: false
 })
 export class LayoutComponent implements OnInit, OnDestroy {
   private breakpointObserver = inject(BreakpointObserver);

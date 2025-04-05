@@ -7,11 +7,10 @@ import { IDeleteConformation } from './delete-conformation.interface';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-delete-conformation',
-  standalone: true,
-  imports: [MatDialogModule, MatButtonModule, MatProgressBarModule, MatIconModule],
-  templateUrl: './delete-conformation.component.html',
-  styleUrls: ['./delete-conformation.component.scss']
+    selector: 'app-delete-conformation',
+    imports: [MatDialogModule, MatButtonModule, MatProgressBarModule, MatIconModule],
+    templateUrl: './delete-conformation.component.html',
+    styleUrls: ['./delete-conformation.component.scss']
 })
 export class DeleteConformationComponent {
   private data = inject<Partial<IDeleteConformation>>(MAT_DIALOG_DATA);

@@ -7,9 +7,10 @@ import { UserState } from '../state/user.state';
 import { User } from '../user';
 
 @Component({
-  selector: 'app-user-details',
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+    selector: 'app-user-details',
+    templateUrl: './user-details.component.html',
+    styleUrls: ['./user-details.component.scss'],
+    standalone: false
 })
 export class UserDetailsComponent implements OnInit {
   private store = inject<Store<UserState>>(Store);

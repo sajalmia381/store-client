@@ -4,11 +4,10 @@ import { ApiModule } from '@shared/components/api';
 import { todoDoc } from '../../common/data';
 
 @Component({
-  selector: 'app-todo-doc',
-  standalone: true,
-  imports: [MatIconModule, ApiModule],
-  templateUrl: './todo-doc.component.html',
-  styleUrl: './todo-doc.component.scss'
+    selector: 'app-todo-doc',
+    imports: [MatIconModule, ApiModule],
+    templateUrl: './todo-doc.component.html',
+    styleUrl: './todo-doc.component.scss'
 })
 export class TodoDocComponent {
   todoDoc = todoDoc;

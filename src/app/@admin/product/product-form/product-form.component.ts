@@ -22,9 +22,10 @@ import { AuthState } from 'src/app/v0/auth/state/auth.state';
 import { isSignedIn } from 'src/app/v0/auth/state/auth.selectors';
 
 @Component({
-  selector: 'app-product-form',
-  templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss']
+    selector: 'app-product-form',
+    templateUrl: './product-form.component.html',
+    styleUrls: ['./product-form.component.scss'],
+    standalone: false
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   private fb = inject(UntypedFormBuilder);

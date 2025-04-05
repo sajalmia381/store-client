@@ -75,9 +75,10 @@ const TREE_DATA: MenuItem[] = [
 ];
 
 @Component({
-  selector: 'app-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+    selector: 'app-sidenav',
+    templateUrl: './sidenav.component.html',
+    styleUrls: ['./sidenav.component.scss'],
+    standalone: false
 })
 export class SidenavComponent implements OnInit {
   treeControl = new NestedTreeControl<MenuItem>(node => node.children);

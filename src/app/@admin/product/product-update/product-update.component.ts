@@ -21,9 +21,10 @@ import { loadProduct } from '../state/product.actions';
 import { filterValidObjAttribute } from '@shared/helper/utils';
 
 @Component({
-  selector: 'app-product-update',
-  templateUrl: './product-update.component.html',
-  styleUrls: ['./product-update.component.scss']
+    selector: 'app-product-update',
+    templateUrl: './product-update.component.html',
+    styleUrls: ['./product-update.component.scss'],
+    standalone: false
 })
 export class ProductUpdateComponent implements OnInit, OnDestroy {
   private store = inject(Store);

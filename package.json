@@ -8,23 +8,22 @@
     "build": "ng build --configuration production --source-map=false",
     "deploy": "sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-client/* ubuntu@ec2-3-7-68-106.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html",
     "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
-    "test": "ng test",
-    "serve:ssr": "node dist/store-client/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^18.2.2",
+    "@angular/animations": "^19.2.5",
     "@angular/cdk": "^18.2.2",
-    "@angular/common": "^18.2.2",
-    "@angular/compiler": "^18.2.2",
-    "@angular/core": "^18.2.2",
-    "@angular/forms": "^18.2.2",
+    "@angular/common": "^19.2.5",
+    "@angular/compiler": "^19.2.5",
+    "@angular/core": "^19.2.5",
+    "@angular/forms": "^19.2.5",
     "@angular/material": "^18.2.2",
-    "@angular/platform-browser": "^18.2.2",
-    "@angular/platform-browser-dynamic": "^18.2.2",
-    "@angular/platform-server": "^18.2.2",
-    "@angular/router": "^18.2.2",
-    "@angular/ssr": "^18.2.2",
+    "@angular/platform-browser": "^19.2.5",
+    "@angular/platform-browser-dynamic": "^19.2.5",
+    "@angular/platform-server": "^19.2.5",
+    "@angular/router": "^19.2.5",
+    "@angular/ssr": "^19.2.6",
     "@ngneat/tailwind": "^7.0.3",
     "@ngrx/effects": "^18.0.2",
     "@ngrx/entity": "^18.0.2",
@@ -40,13 +39,13 @@
     "prismjs": "^1.29.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.10",
+    "zone.js": "~0.15.0",
     "@ngrx/operators": "^18.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.2.2",
-    "@angular/cli": "^18.2.2",
-    "@angular/compiler-cli": "^18.2.2",
+    "@angular-devkit/build-angular": "^19.2.6",
+    "@angular/cli": "^19.2.6",
+    "@angular/compiler-cli": "^19.2.5",
     "@schuchard/prettier": "^5.1.0",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.7",
@@ -67,7 +66,7 @@
     "prettier": "2.3.2",
     "tailwindcss": "^3.1.8",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "~5.4.5"
+    "typescript": "~5.8.3"
   },
   "lint-staged": {
     "*.{js,json,css,scss,less,md,ts,html,component.html}": [

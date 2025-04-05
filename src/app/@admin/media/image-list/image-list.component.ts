@@ -11,9 +11,10 @@ import { ImageState } from '../state/media.state';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-image-list',
-  templateUrl: './image-list.component.html',
-  styleUrls: ['./image-list.component.scss']
+    selector: 'app-image-list',
+    templateUrl: './image-list.component.html',
+    styleUrls: ['./image-list.component.scss'],
+    standalone: false
 })
 export class ImageListComponent implements OnInit {
   private store = inject<Store<ImageState>>(Store);

@@ -10,9 +10,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-category-update',
-  templateUrl: './category-update.component.html',
-  styleUrls: ['./category-update.component.scss']
+    selector: 'app-category-update',
+    templateUrl: './category-update.component.html',
+    styleUrls: ['./category-update.component.scss'],
+    standalone: false
 })
 export class CategoryUpdateComponent implements OnInit {
   private category = inject<Category>(MAT_DIALOG_DATA);

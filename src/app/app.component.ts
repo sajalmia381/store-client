@@ -12,9 +12,10 @@ import { loginSuccess } from './v0/auth/state/auth.actions';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
   private title = inject(Title);

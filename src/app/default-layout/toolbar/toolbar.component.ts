@@ -8,9 +8,10 @@ import { SharedState } from 'src/app/store/shared/shared.state';
 import { environment } from '@env/environment';
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+    selector: 'app-toolbar',
+    templateUrl: './toolbar.component.html',
+    styleUrls: ['./toolbar.component.scss'],
+    standalone: false
 })
 export class ToolbarComponent implements OnInit {
   private store = inject<Store<AuthState | SharedState>>(Store);
