@@ -8,7 +8,8 @@
     "build": "ng build --configuration production --source-map=false",
     "deploy": "sudo scp -i ~/Desktop/pem/storeApi.pem -r ./dist/store-client/* ubuntu@ec2-3-7-68-106.ap-south-1.compute.amazonaws.com:/usr/share/nginx/html",
     "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
-    "test": "ng test"
+    "test": "ng test",
+    "serve:ssr": "node dist/store-client/server/server.mjs"
   },
   "private": true,
   "dependencies": {
