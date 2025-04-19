@@ -4,11 +4,10 @@ import { ApiModule } from '@shared/components/api';
 import { categoryDoc } from '../../common/data';
 
 @Component({
-  selector: 'app-category-doc',
-  standalone: true,
-  imports: [MatIconModule, ApiModule],
-  templateUrl: './category-doc.component.html',
-  styleUrl: './category-doc.component.scss'
+    selector: 'app-category-doc',
+    imports: [MatIconModule, ApiModule],
+    templateUrl: './category-doc.component.html',
+    styleUrl: './category-doc.component.scss'
 })
 export class CategoryDocComponent {
   categoryDoc = categoryDoc;

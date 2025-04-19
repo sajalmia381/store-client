@@ -4,11 +4,10 @@ import { ApiModule } from '@shared/components/api';
 import { userDoc } from '../../common/data';
 
 @Component({
-  selector: 'app-user-doc',
-  standalone: true,
-  imports: [MatIconModule, ApiModule],
-  templateUrl: './user-doc.component.html',
-  styleUrl: './user-doc.component.scss'
+    selector: 'app-user-doc',
+    imports: [MatIconModule, ApiModule],
+    templateUrl: './user-doc.component.html',
+    styleUrl: './user-doc.component.scss'
 })
 export class UserDocComponent {
   userDoc = userDoc;

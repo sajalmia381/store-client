@@ -7,9 +7,10 @@ import { ActivatedRoute, NavigationEnd, Router, Scroll } from '@angular/router';
 import { delay, filter, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-doc',
-  templateUrl: './doc.component.html',
-  styleUrls: ['./doc.component.scss']
+    selector: 'app-doc',
+    templateUrl: './doc.component.html',
+    styleUrls: ['./doc.component.scss'],
+    standalone: false
 })
 export class DocComponent {
   private document = inject(DOCUMENT);

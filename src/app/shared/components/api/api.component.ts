@@ -2,9 +2,9 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { IApi } from './api.interfaces';
 
 @Component({
-  selector: 'app-api',
-  encapsulation: ViewEncapsulation.None,
-  template: `
+    selector: 'app-api',
+    encapsulation: ViewEncapsulation.None,
+    template: `
     <h4 class="ti-api__title">
       {{ data.name | titlecase }}
     </h4>
@@ -19,8 +19,8 @@ import { IApi } from './api.interfaces';
     <as-prism [showCopyBtn]="false" class="block border dark:border-gray-700 rounded mt-3" [code]="output" language="json"></as-prism>
     } }
   `,
-  styles: [
-    `
+    styles: [
+        `
       .ti-api__title {
         font-size: 1.15rem;
       }
@@ -32,10 +32,11 @@ import { IApi } from './api.interfaces';
         font-weight: 300;
       }
     `
-  ],
-  host: {
-    class: 'ti-api block'
-  }
+    ],
+    host: {
+        class: 'ti-api block'
+    },
+    standalone: false
 })
 export class ApiComponent implements OnInit {
   @Input({ required: true }) public data!: IApi;

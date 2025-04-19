@@ -7,9 +7,10 @@ import { ImageEffects } from '../state/media.effects';
 import { ImageState } from '../state/media.state';
 
 @Component({
-  selector: 'app-add-image',
-  templateUrl: './add-image.component.html',
-  styleUrls: ['./add-image.component.scss']
+    selector: 'app-add-image',
+    templateUrl: './add-image.component.html',
+    styleUrls: ['./add-image.component.scss'],
+    standalone: false
 })
 export class AddImageComponent implements OnInit {
   private store = inject<Store<ImageState>>(Store);

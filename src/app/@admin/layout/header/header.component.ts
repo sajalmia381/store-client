@@ -9,10 +9,11 @@ import { SharedState } from 'src/app/store/shared/shared.state';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class HeaderComponent implements OnInit {
   private destroyRef = inject(DestroyRef);

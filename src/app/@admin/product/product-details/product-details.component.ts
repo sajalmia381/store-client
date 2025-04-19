@@ -7,9 +7,10 @@ import { getProductBySlug } from '../state/product.selectors';
 import { ProductState } from '../state/product.state';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+    selector: 'app-product-details',
+    templateUrl: './product-details.component.html',
+    styleUrls: ['./product-details.component.scss'],
+    standalone: false
 })
 export class ProductDetailsComponent implements OnInit {
   private store = inject<Store<ProductState>>(Store);

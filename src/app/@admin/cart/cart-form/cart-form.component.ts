@@ -22,9 +22,10 @@ import { getCarts } from '../state/cart.selectors';
 import { CustomDuplicateValidators } from '@shared/validations/duplicate.validator';
 
 @Component({
-  selector: 'app-cart-form',
-  templateUrl: './cart-form.component.html',
-  styleUrl: './cart-form.component.scss'
+    selector: 'app-cart-form',
+    templateUrl: './cart-form.component.html',
+    styleUrl: './cart-form.component.scss',
+    standalone: false
 })
 export class CartFormComponent implements OnInit {
   private fb = inject(FormBuilder);

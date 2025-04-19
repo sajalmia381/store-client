@@ -10,9 +10,10 @@ import { TodoFormComponent } from '../todo-form/todo-form.component';
 import { Todo } from '../todo';
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+    selector: 'app-todo-list',
+    templateUrl: './todo-list.component.html',
+    styleUrls: ['./todo-list.component.scss'],
+    standalone: false
 })
 export class TodoListComponent {
   private store = inject<Store<TodoState>>(Store);

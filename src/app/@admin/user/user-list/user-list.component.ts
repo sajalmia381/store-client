@@ -10,9 +10,10 @@ import { User } from '../user';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+    selector: 'app-user-list',
+    templateUrl: './user-list.component.html',
+    styleUrls: ['./user-list.component.scss'],
+    standalone: false
 })
 export class UserListComponent implements OnInit {
   private store = inject<Store<UserState>>(Store);

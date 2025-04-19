@@ -8,9 +8,10 @@ import { addUser } from '../state/user.actions';
 import { UserState } from '../state/user.state';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+    selector: 'app-user-form',
+    templateUrl: './user-form.component.html',
+    styleUrls: ['./user-form.component.scss'],
+    standalone: false
 })
 export class UserFormComponent implements OnInit {
   private store = inject<Store<UserState>>(Store);

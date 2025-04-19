@@ -15,9 +15,10 @@ interface TodoForm {
 }
 
 @Component({
-  selector: 'app-todo-form',
-  templateUrl: './todo-form.component.html',
-  styleUrls: ['./todo-form.component.scss']
+    selector: 'app-todo-form',
+    templateUrl: './todo-form.component.html',
+    styleUrls: ['./todo-form.component.scss'],
+    standalone: false
 })
 export class TodoFormComponent {
   private dialogRef = inject<MatDialogRef<TodoFormComponent>>(MatDialogRef);

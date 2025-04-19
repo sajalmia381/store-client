@@ -4,9 +4,10 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { takeWhile } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-default-layout',
-  templateUrl: './default-layout.component.html',
-  styleUrls: ['./default-layout.component.scss']
+    selector: 'app-default-layout',
+    templateUrl: './default-layout.component.html',
+    styleUrls: ['./default-layout.component.scss'],
+    standalone: false
 })
 export class DefaultLayoutComponent implements OnInit {
   private breakpointObserver = inject(BreakpointObserver);

@@ -14,9 +14,10 @@ import { Actions, ofType } from '@ngrx/effects';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-cart-list',
-  templateUrl: './cart-list.component.html',
-  styleUrl: './cart-list.component.scss'
+    selector: 'app-cart-list',
+    templateUrl: './cart-list.component.html',
+    styleUrl: './cart-list.component.scss',
+    standalone: false
 })
 export class CartListComponent implements OnInit {
   private store = inject<Store<CartState | SharedState>>(Store);
