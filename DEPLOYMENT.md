@@ -1,7 +1,7 @@
 # My Server
 
 ```bash
-sudo ssh -i ~/Desktop/pem/storeApi.pem ubuntu@ec2-3-7-68-106.ap-south-1.compute.amazonaws.com
+sudo ssh -i ~/Desktop/pem/storeApi.pem ubuntu@ec2-3-110-211-79.ap-south-1.compute.amazonaws.com
 ```
 
 # Deployment Store-Api App
