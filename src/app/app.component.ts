@@ -1,11 +1,11 @@
-import { Component, OnInit, afterNextRender, inject } from '@angular/core';
+import { Component, OnInit, afterNextRender, inject, DOCUMENT } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { filter, map } from 'rxjs/operators';
 import { Meta, Title } from '@angular/platform-browser';
 
 import { getThemeMode } from './store/shared/shared.selectors';
 import { getCurrentRoute } from './store/router/router.selectors';
-import { DOCUMENT } from '@angular/common';
+
 import { setThemeMode } from '@shared/store/shared.actions';
 import JwtService from '@shared/helper/JwtService';
 import { loginSuccess } from './v0/auth/state/auth.actions';
